@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.0.4...orbit-solana-v0.1.0) (2025-10-21)
+
+
+### Features
+
+* initialize ([4c98d18](https://github.com/TuwaIO/orbit/commit/4c98d18e74e3b6494c65a06d0224403600792e2b))
+
 ## [0.0.4](https://github.com/TuwaIO/satellite-connect/compare/orbit-solana-v0.0.3...orbit-solana-v0.0.4) (2025-09-25)
 
 
