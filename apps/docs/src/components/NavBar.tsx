@@ -2,44 +2,25 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
 import { Navbar as NextraNavbar } from 'nextra-theme-docs';
 
 import NoSSR from '@/components/NoSSR';
 
 export function Navbar() {
-  const { resolvedTheme } = useTheme();
-
   return (
     <NextraNavbar
       logo={
         <NoSSR>
           <Image
-            width={50}
-            height={50}
-            src={
-              resolvedTheme === 'dark'
-                ? 'https://raw.githubusercontent.com/TuwaIO/workflows/refs/heads/main/preview/tuwaLogoWhite.svg'
-                : 'https://raw.githubusercontent.com/TuwaIO/workflows/refs/heads/main/preview/tuwaLogoDark.svg'
-            }
+            width={120}
+            height={40}
+            src="https://raw.githubusercontent.com/TuwaIO/workflows/refs/heads/main/preview/tuwa_logo.svg"
             alt="TUWA Logo"
           />
         </NoSSR>
       }
     >
       <div className="flex items-center gap-3">
-        <Link
-          href="https://stories.tuwa.io/?path=/docs/introduction--docs"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:flex items-center gap-1 px-2 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-        >
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M16.71 16.71a1 1 0 0 0-.33-.21a7 7 0 0 0-9.09-8.93a1 1 0 0 0-.66.84a1 1 0 0 0 .5 1.05a5 5 0 0 1 2.83 4.84a1 1 0 0 0 .43.86a1 1 0 0 0 .93.11a3 3 0 0 1 3.85 1.79a1 1 0 0 0 1.84-.37z" />
-          </svg>
-          Storybook
-        </Link>
-
         <Link
           href="https://npmjs.com/org/tuwaio"
           target="_blank"
@@ -53,7 +34,7 @@ export function Navbar() {
         </Link>
 
         <Link
-          href="https://github.com/TuwaIO/satellite-connect"
+          href="https://github.com/TuwaIO/orbit"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
