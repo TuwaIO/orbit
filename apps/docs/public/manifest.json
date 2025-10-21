@@ -1,0 +1,17 @@
+{
+  "name": "Orbit Utils Documentation",
+  "short_name": "Orbit Utils Documentation",
+  "description": "The official documentation for Orbit Utils, your toolkit for easily building user interfaces for web3 applications.",
+  "iconPath": "icon0.svg",
+  "icons": [
+    {
+      "iconPath": "icon0.svg",
+      "sizes": "32x32",
+      "type": "image/svg"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

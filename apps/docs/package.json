@@ -1,0 +1,41 @@
+{
+  "name": "@tuwaio/orbit-docs",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Oleksandr Tkach",
+  "license": "Apache-2.0",
+  "description": "Source code for the official documentation site for the Orbit Utils, the some utils for web3 build by TUWA. Built with Next.js and Nextra.",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build && pnpm postbuild",
+    "start": "next start",
+    "lint": "next lint",
+    "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@tuwaio/nova-core": "0.0.10",
+    "clsx": "^2.1.1",
+    "next": "15.5.6",
+    "next-themes": "^0.4.6",
+    "next-images": "^1.8.5",
+    "nextra": "^4.6.0",
+    "nextra-theme-docs": "^4.6.0",
+    "nextjs-toploader": "^3.9.17",
+    "pagefind": "^1.4.0",
+    "pino-pretty": "13.1.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-syntax-highlighter": "^15.6.6",
+    "superjson": "^2.2.2",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.15",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "tailwindcss": "^4"
+  }
+}
