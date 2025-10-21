@@ -6,7 +6,7 @@
 
 > **getAvatar**(`name`): `Promise`\<`string` \| `null`\>
 
-Defined in: [packages/orbit-evm/src/utils/ensUtils.ts:55](https://github.com/TuwaIO/orbit/blob/fcf1335e65144c0118c68edf3decad829e18a2e4/packages/orbit-evm/src/utils/ensUtils.ts#L55)
+Defined in: [packages/orbit-evm/src/utils/ensUtils.ts:55](https://github.com/TuwaIO/orbit/blob/a902995532cb7705561cfaf0951d316b084413ee/packages/orbit-evm/src/utils/ensUtils.ts#L55)
 
 Fetches the avatar URL for a given ENS name from the Ethereum Mainnet.
 Includes caching for performance.

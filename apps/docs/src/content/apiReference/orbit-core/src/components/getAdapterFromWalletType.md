@@ -6,7 +6,7 @@
 
 > **getAdapterFromWalletType**(`walletType`): [`OrbitAdapter`](../enumerations/OrbitAdapter.md)
 
-Defined in: [packages/orbit-core/src/utils/getAdapterFromWalletType.ts:25](https://github.com/TuwaIO/orbit/blob/fcf1335e65144c0118c68edf3decad829e18a2e4/packages/orbit-core/src/utils/getAdapterFromWalletType.ts#L25)
+Defined in: [packages/orbit-core/src/utils/getAdapterFromWalletType.ts:25](https://github.com/TuwaIO/orbit/blob/a902995532cb7705561cfaf0951d316b084413ee/packages/orbit-core/src/utils/getAdapterFromWalletType.ts#L25)
 
 Extracts the adapter type from a wallet type string
 

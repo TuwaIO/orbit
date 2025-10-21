@@ -17,7 +17,7 @@ EVM-specific implementation for the TUWA ecosystem, providing comprehensive util
 ## ✨ Key Features
 
 - **Type-Safe Development:** Full TypeScript 5.9 support
-- **Tree-Shaking Optimized:** Efficient bundle size through careful exports
+- **Tree-Shaking Optimized:** Efficient bundle size through careful exports.
 
 ---
 

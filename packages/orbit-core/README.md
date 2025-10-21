@@ -18,7 +18,7 @@ Its primary purpose is to provide a unified interface for interacting with diffe
 
 ## ✨ Key Features
 
-- **Multi-Chain Architecture:** Native support for EVM, Solana, and Starknet through a unified adapter interface
+- **Multi-Chain Architecture:** Native support for EVM, Solana, and Starknet through a unified adapter interface.
 - **Framework Independence:** Compatible with any JavaScript framework or vanilla JS
 - **Type-Safe Development:** Full TypeScript support with comprehensive type definitions
 - **Flexible Adapter System:** Easily extensible for new blockchain architectures
