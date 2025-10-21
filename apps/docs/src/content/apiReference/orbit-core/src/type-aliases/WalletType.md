@@ -6,7 +6,7 @@
 
 > **WalletType** = `` `${OrbitAdapter}:${string}` ``
 
-Defined in: [packages/orbit-core/src/types.ts:118](https://github.com/TuwaIO/orbit/blob/4c98d18e74e3b6494c65a06d0224403600792e2b/packages/orbit-core/src/types.ts#L118)
+Defined in: [packages/orbit-core/src/types.ts:118](https://github.com/TuwaIO/orbit/blob/fcf1335e65144c0118c68edf3decad829e18a2e4/packages/orbit-core/src/types.ts#L118)
 
 Type representing a wallet identifier in format "OrbitAdapter:wallet"
 
