@@ -12,7 +12,7 @@ The goal is to provide clear, comprehensive, and easy-to-navigate documentation 
 
 ## 🛠 Tech Stack
 
--   **Framework**: Next.js 15+
+-   **Framework**: Next.js 16+
 -   **Documentation Theme**: Nextra 4+ (`nextra`, `nextra-theme-docs`)
 -   **Styling**: Tailwind CSS 4+ with PostCSS and TUWA's `@tuwaio/nova-core` styles.
 -   **UI Components**: React 19+, Headless UI (`@headlessui/react`), Heroicons (`@heroicons/react`).
