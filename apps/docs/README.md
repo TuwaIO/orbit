@@ -1,87 +1,93 @@
-# Satellite Connect - Documentation Site
+# Orbit Utils - Documentation Site
 
 > 🔴 **Private Repository:** This repository contains the source code for the official Orbit Utils documentation website, available at **[orbit.docs.tuwa.io](https://orbit.docs.tuwa.io)**.
 
 ## About This Project
 
-This project houses the official documentation for the entire Orbit Utils ecosystem. It's built with **Next.js** and **Nextra**, a powerful documentation framework that allows us to write content in MDX and create a fast, searchable, and user-friendly website.
+This project houses the official documentation for the entire **Orbit Utils** ecosystem. It's built using **Next.js** with the **Nextra** documentation theme (`nextra-theme-docs`), a powerful framework that allows us to write content in **MDX** (Markdown with JSX) and generate a fast, searchable, and user-friendly static website]/page.jsx].
 
-The goal is to provide clear, comprehensive, and easy-to-navigate documentation for all packages in the `orbit` monorepo.
+The goal is to provide clear, comprehensive, and easy-to-navigate documentation for all packages within the `@tuwaio/orbit` monorepo, covering `@tuwaio/orbit-core`, `@tuwaio/orbit-evm`, and `@tuwaio/orbit-solana`.
 
 ---
 
 ## 🛠 Tech Stack
 
--   **Framework**: Next.js & Nextra
--   **Styling**: Tailwind CSS
--   **Search**: Pagefind (for fast, client-side search)
--   **Deployment**: Vercel
+-   **Framework**: Next.js 15+
+-   **Documentation Theme**: Nextra 4+ (`nextra`, `nextra-theme-docs`)
+-   **Styling**: Tailwind CSS 4+ with PostCSS and TUWA's `@tuwaio/nova-core` styles.
+-   **UI Components**: React 19+, Headless UI (`@headlessui/react`), Heroicons (`@heroicons/react`).
+-   **Code Highlighting**: `react-syntax-highlighter`.
+-   **State/Theme Management**: `next-themes` for dark/light mode.
+-   **Client-Side Search**: Pagefind (integrated via `postbuild` script).
+-   **Deployment**: Vercel.
 
 ---
 
 ## 🚀 Getting Started
 
-To run the documentation website on your local machine, follow these steps.
+To run the documentation website locally, follow these steps.
 
 ### 1. Prerequisites
 
-Ensure you have installed all dependencies from the **root of the monorepo**:
+Ensure you have installed all dependencies from the **root of the monorepo** using `pnpm`:
 
 ```bash
-# Run from the monorepo root, not from this directory
+# Run from the monorepo root (tuwaio/orbit/), not from apps/docs/
 pnpm install
 ````
 
+This command installs dependencies for all packages in the workspace, including the necessary build steps (`postinstall` script in root `package.json`).
+
 ### 2. Running the Dev Server
 
-Run the following command from the **root of the monorepo** to start the Next.js development server for the docs site:
+Run the following command from the **root of the monorepo** to start the Next.js development server for the docs site using Turbopack:
 
 ```bash
-pnpm --filter @tuwaio/orbit-docs
+pnpm --filter @tuwaio/orbit-docs dev
 ```
 
-The documentation site will then be available at **[http://localhost:3000](http://localhost:3000)**.
+*(Note: The filter `@tuwaio/orbit-docs` targets this specific application based on its `name` in `apps/docs/package.json`)*
+
+The documentation site will then be available, typically at **[http://localhost:3000](http://localhost:3000)**. The site uses `nextjs-toploader` for a loading bar during navigation.
 
 -----
 
 ## ✍️ How to Add and Edit Content
 
-Content creation is straightforward with Nextra's file-based routing.
+Content creation leverages Nextra's file-based routing and MDX capabilities.
 
 ### Creating Pages
 
-All documentation pages are **MDX files** (`.mdx`) located in the `src/content` directory. The file and folder structure within this directory directly maps to the URL structure of the site.
+All documentation pages are **MDX files** (`.mdx` or `.jsx` if primarily components) located within the `src/content` directory. The structure of files and folders here directly maps to the URL paths on the site.
 
 - `src/content/index.mdx` → `/`
-- `src/content/getting-started.mdx` → `/getting-started`
+- `src/content/apiReference/orbit-core/src/index.md` → `/apiReference/orbit-core/src/` (Note: `.md` files from TypeDoc are also used here)
 
 ### Managing Sidebar Navigation
 
-The sidebar navigation is controlled by `_meta.json` files within each directory. To add a new page, change the order, or create sections, simply edit the corresponding `_meta.json` file.
+Sidebar navigation, page titles, and grouping are primarily controlled by `_meta.jsx` files within each content directory. These files export a default object defining the structure.
 
-**Example: `src/content/_meta.json`**
+**Example: `src/content/_meta.jsx`**
 
-```json
-{
-  "index": "Introduction",
-  "-- Getting Started": {
-    "type": "separator",
-    "title": "Getting Started"
+```jsx
+export default {
+  index: 'Introduction', // Maps index.mdx to 'Introduction' title
+  '--': {               // Creates a visual separator
+    type: 'separator',
   },
-  "gettingStarted": "Installation",
-  "quickStart": "Quick Start",
-  "-- API": {
-    "type": "separator",
-    "title": "API Reference"
-  }
-}
+  apiReference: 'API reference', // Maps the apiReference folder
+};
 ```
 
-This configuration creates a structured sidebar with separators and custom titles.
+*(For deeper nesting, like API Reference, `_meta.json` or `_meta.jsx` files are used within those subdirectories as well)*.
+
+### API Reference Generation
+
+The API reference content within `src/content/apiReference` is automatically generated using **TypeDoc** with `typedoc-plugin-markdown`. The generation is triggered by the `docs:gen` script in the root `package.json` and runs automatically on pre-commit via Husky. Manual regeneration can be done by running `pnpm docs:gen` from the monorepo root.
 
 ### Using Custom Components
 
-You can create custom React components and import them directly into your MDX files to create rich, interactive content. Place your custom components in the `src/components` directory and use them like any other React component.
+Custom React components enhance the documentation. They are located in `src/components` (e.g., `CodeBlock.tsx`, `PackageInstallationTabs.tsx`) and can be imported directly into MDX files. The site uses `src/mdx-components.ts` to merge Nextra's default components with custom ones. NoSSR component is used to prevent Server-Side Rendering issues for certain components.
 
 -----
 
@@ -90,10 +96,7 @@ You can create custom React components and import them directly into your MDX fi
 The documentation site is automatically deployed to **Vercel**.
 
 - **Production URL:** [**https://orbit.docs.tuwa.io**](https://orbit.docs.tuwa.io)
-- Deployment is triggered automatically on every push to the `main` branch.
-- The search index is generated by `pagefind` during the `postbuild` step and requires no extra configuration.
-
------
+- The client-side search index is generated by **Pagefind** during the `postbuild` step defined in `apps/docs/package.json` and requires no extra configuration on Vercel.
 
 ## 🔗 Quick Links
 
@@ -102,6 +105,9 @@ The documentation site is automatically deployed to **Vercel**.
 | **Live Docs Site** | [**orbit.docs.tuwa.io**](https://orbit.docs.tuwa.io)   |
 | **Nextra Documentation** | [`https://nextra.site/docs`](https://nextra.site/docs) |
 | **Pagefind Documentation**| [`https://pagefind.app/`](https://pagefind.app/)       |
+| **Tailwind CSS Docs** | [`https://tailwindcss.com/docs`](https://tailwindcss.com/docs) |
+| **TypeDoc Docs** | [`https://typedoc.org/`](https://typedoc.org/)           |
+
 
 ## 📄 License
 

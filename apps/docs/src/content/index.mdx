@@ -1,30 +1,72 @@
 # Introduction
 
-Framework-agnostic blockchain interaction libraries:
+<img src="https://raw.githubusercontent.com/TuwaIO/workflows/refs/heads/main/preview/repos/orbit_utils.png" alt="Orbit Utils" width="400" style={{ borderRadius: '10px', textAlign: 'center', marginBottom: '20px', marginTop: '20px', marginLeft: 'auto', marginRight: 'auto', display: 'block' }} />
 
-#### Core Components
-- **@tuwaio/orbit-core** - Foundation for blockchain interactions
-- **@tuwaio/orbit-evm** - EVM-specific utilities and helpers
-- **@tuwaio/orbit-solana** - Solana-specific utilities and helpers
+**A powerful, framework-agnostic foundation for seamless multi-chain blockchain interactions in user interfaces.**
+
+Orbit Utils, developed by **TUWA**, provides the core building blocks and utilities needed to create web3 applications that can easily support multiple blockchain networks like EVM chains (Ethereum, Polygon, etc.) and Solana.
+
+---
+
+## 🏛️ What is Orbit Utils?
+
+Orbit Utils is a **headless** and **framework-agnostic** library ecosystem designed to simplify the development of cross-chain dApp frontends. It provides a **unified interface** and essential utilities for interacting with different blockchain architectures through a flexible **adapter system**.
+
+**Why Orbit Utils?**
+
+Building user interfaces that interact with multiple blockchains often leads to repetitive code and complex conditional logic. Orbit Utils addresses this by:
+
+1.  **Abstracting Chain Differences:** It provides a common structure (`BaseAdapter`) and selection mechanism (`selectAdapterByKey`), allowing your UI code to be less dependent on the specifics of each chain.
+2.  **Providing Common Utilities:** Offers ready-to-use functions for frequent tasks like managing wallet connection state, formatting addresses/chain IDs, handling ENS/Solana name resolution, and generating explorer links, reducing boilerplate code.
+3.  **Ensuring Consistency:** Acts as a foundational layer used across TUWA projects, promoting code reuse and standardization.
+
+---
 
 ## ✨ Key Features
-- Chain-agnostic operations
-- Type-safe development
-- Framework independence
-- Optimized performance
+
+-   **Multi-Chain Foundation:** Core types and adapter system supporting EVM, Solana, and Starknet (via `OrbitAdapter` enum).
+-   **Framework Agnostic & Headless:** Works with any JavaScript framework (React, Vue, etc.) or vanilla JS as it contains no UI components.
+-   **Type-Safe:** Fully written in TypeScript for improved reliability and developer experience.
+-   **Flexible Adapter System:** Easily select and use chain-specific implementations (`@tuwaio/orbit-evm`, `@tuwaio/orbit-solana`).
+-   **Essential Utilities:** Helpers for formatting, chain identification, localStorage management, ENS/Solana name/avatar resolution, explorer links, and async operations.
+-   **SSR Safe:** Designed to function correctly in both client-side and server-side rendering environments.
+
+---
+
+## 🧩 Ecosystem Packages
+
+Orbit Utils is modular:
+
+-   **`@tuwaio/orbit-core`:** The foundational package with core types, the adapter system, and common, chain-agnostic utilities.
+-   **`@tuwaio/orbit-evm`:** Provides the adapter implementation and specific helper functions for EVM-compatible chains, using `viem` and `@wagmi/core`.
+-   **`@tuwaio/orbit-solana`:** Offers the adapter implementation and utilities for the Solana blockchain, leveraging `gill` and the Wallet Standard.
+
+---
 
 ## 💾 Getting Started
 
+Install the core package and the specific chain adapters you need.
+
 ```bash
-# Install Satellite Connect components
+# Using pnpm (recommended)
+
+# Install Core
 pnpm add @tuwaio/orbit-core
 
-# Add chain-specific adapters
-pnpm add @tuwaio/orbit-evm @tuwaio/orbit-solana
-```
+# Install EVM adapter (includes necessary peer dependencies)
+pnpm add @tuwaio/orbit-evm @wagmi/core viem
+
+# Install Solana adapter (includes necessary peer dependencies)
+pnpm add @tuwaio/orbit-solana gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
+````
+
+*(See the individual package READMEs for `npm` and `yarn` commands and detailed peer dependency information)*.
+
+-----
 
 ## 📚 Next Steps
 
-In progress
+  - Explore the **[API Reference](./apiReference/README/)** for detailed documentation on all exported types and functions. The API reference is automatically generated from the source code comments using TypeDoc.
+  - Check the README files within each package ([`orbit-core`](https://github.com/TuwaIO/orbit/tree/main/packages/orbit-core), [`orbit-evm`](https://github.com/TuwaIO/orbit/tree/main/packages/orbit-evm), [`orbit-solana`](https://github.com/TuwaIO/orbit/tree/main/packages/orbit-solana)) for specific usage examples.
 
 **Built with ❤️ by the [TUWA Team](https://github.com/TuwaIO)**

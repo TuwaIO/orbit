@@ -4,88 +4,182 @@
 [![License](https://img.shields.io/npm/l/@tuwaio/orbit-core.svg)](./LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/TuwaIO/orbit/release.yml?branch=main)](https://github.com/TuwaIO/orbit/actions)
 
-A powerful, framework-agnostic library for seamless multi-chain blockchain interactions, providing a unified interface for EVM, Solana, and Starknet operations.
+The foundational, framework-agnostic library for the Orbit Utils ecosystem, providing core types, utilities, and an adapter system for seamless multi-chain blockchain interactions in user interfaces.
 
 ---
 
 ## 🏛️ What is `@tuwaio/orbit-core`?
 
-`@tuwaio/orbit-core` is the foundation of the TUWA ecosystem. It's designed as a **headless** and **framework-agnostic** library that provides essential infrastructure for multi-chain blockchain interactions. The library doesn't include UI components or framework-specific code, making it versatile for any JavaScript or TypeScript application.
+`@tuwaio/orbit-core` is the central pillar of the **Orbit Utils** ecosystem, designed by **TUWA** to simplify the creation of cross-chain web3 user interfaces. It's a **headless** library, meaning it contains no UI components or framework-specific logic, making it universally compatible with any JavaScript or TypeScript application, regardless of the frontend framework (React, Vue, Svelte, Angular, or vanilla JS).
 
-Its primary purpose is to provide a unified interface for interacting with different blockchain architectures through a flexible adapter system. Built with TypeScript for type safety and maintainability, it serves as the backbone for blockchain applications requiring multi-chain support.
+Its primary goal is to establish a **unified interface** for interacting with diverse blockchain architectures (like EVM and Solana) through a flexible **adapter system**. Built entirely in **TypeScript**, it ensures type safety and provides the essential infrastructure – including core types, utility functions, and adapter management – that underpins multi-chain dApp development within the TUWA ecosystem. It serves as the backbone for simplifying interactions rather than repeating logic across different projects.
 
 ---
 
 ## ✨ Key Features
 
-- **Multi-Chain Architecture:** Native support for EVM, Solana, and Starknet through a unified adapter interface.
-- **Framework Independence:** Compatible with any JavaScript framework or vanilla JS
-- **Type-Safe Development:** Full TypeScript support with comprehensive type definitions
-- **Flexible Adapter System:** Easily extensible for new blockchain architectures
-- **Optimized Performance:** Minimal overhead for blockchain operations
-- **Robust Error Handling:** Comprehensive error management across different chains
+-   **Multi-Chain Foundation:** Defines the core `OrbitAdapter` enum (supporting EVM, Solana, Starknet) and types for building consistent multi-chain support.
+-   **Framework Agnostic & Headless:** Contains only logic, no UI components, ensuring compatibility with any frontend setup.
+-   **Type-Safe Development:** Fully written in TypeScript 5.9+ for a robust developer experience.
+-   **Flexible Adapter System:** Provides utilities like `selectAdapterByKey` to easily manage and switch between different blockchain adapter implementations.
+-   **Essential Utilities:** Includes common helpers for tasks such as:
+    * Formatting wallet names and chain IDs (`formatWalletName`, `formatWalletChainId`).
+    * Identifying chain types (`isSolanaChain`, `getAdapterFromWalletType`).
+    * Managing wallet connection state in localStorage (`lastConnectedWalletHelpers`, `recentConnectedWalletHelpers`).
+    * Handling impersonation for development/testing (`impersonatedHelpers`).
+    * Basic async operations (`delay`, `waitFor`).
+-   **SSR Safe:** Utilities are designed to work safely in both browser and Server-Side Rendering environments.
 
 ---
 
 ## 💾 Installation
+
 ```bash
-# Using pnpm
+# Using pnpm (recommended)
 pnpm add @tuwaio/orbit-core
+
 # Using npm
 npm install @tuwaio/orbit-core
+
 # Using yarn
 yarn add @tuwaio/orbit-core
-``` 
+````
 
----
+*Note: `@tuwaio/orbit-core` provides the core logic. You will typically install chain-specific packages like `@tuwaio/orbit-evm` or `@tuwaio/orbit-solana` alongside it.*
+
+-----
 
 ## 🚀 Quick Start
 
-### Basic Usage
-```typescript
-import { OrbitAdapter, selectAdapterByKey } from '@tuwaio/orbit-core';
-// Configure your adapter 
-const adapter = { key: OrbitAdapter.EVM };  // adapter implementation
-// Select adapter for specific chain 
-const evmAdapter = selectAdapterByKey({ adapterKey: OrbitAdapter.EVM, adapter, });
-``` 
+### Basic Adapter Usage
 
-### Supported Chain Types
-```typescript
-// Available blockchain adapters 
-import { OrbitAdapter } from '@tuwaio/orbit-core';
-const chains = { evm: OrbitAdapter.EVM }; // Ethereum, Polygon, BSC, etc. solana: OrbitAdapter.SOLANA, // Solana blockchain starknet: OrbitAdapter.Starknet // Starknet L2
-``` 
+`@tuwaio/orbit-core` defines the structure and allows selection, but requires chain-specific packages (`@tuwaio/orbit-evm`, `@tuwaio/orbit-solana`) for actual adapter implementations.
 
----
+```typescript
+import { OrbitAdapter, selectAdapterByKey, BaseAdapter } from '@tuwaio/orbit-core';
+
+// Assume these are implementations provided by @tuwaio/orbit-evm and @tuwaio/orbit-solana
+// (Implementations details are simplified for this example)
+interface EvmAdapter extends BaseAdapter {
+  key: OrbitAdapter.EVM;
+}
+interface SolanaAdapter extends BaseAdapter {
+  key: OrbitAdapter.SOLANA;
+}
+
+const evmAdapterImpl: EvmAdapter = {
+    key: OrbitAdapter.EVM,
+    getExplorerUrl: (url, chainId) => `https://etherscan.io/${url}`,
+    getName: async (address) => null, // Placeholder
+    getAvatar: async (name) => null, // Placeholder
+};
+
+const solanaAdapterImpl: SolanaAdapter = {
+    key: OrbitAdapter.SOLANA,
+    getExplorerUrl: (url, chainId) => `https://solscan.io/${url}?cluster=${chainId}`,
+    getName: async (address) => null, // Placeholder
+    getAvatar: async (name) => null, // Placeholder
+};
+
+
+const configuredAdapters = [evmAdapterImpl, solanaAdapterImpl];
+
+// --- Selecting an Adapter ---
+
+// Select the EVM adapter based on its key
+const selectedEvmAdapter = selectAdapterByKey({
+  adapterKey: OrbitAdapter.EVM,
+  adapter: configuredAdapters,
+});
+
+if (selectedEvmAdapter && selectedEvmAdapter.key === OrbitAdapter.EVM) {
+  console.log('Selected EVM Adapter Chain:', selectedEvmAdapter.getChainName()); // Output: Ethereum
+} else {
+  console.error('EVM Adapter not found or configured.');
+}
+
+// Select the Solana adapter
+const selectedSolanaAdapter = selectAdapterByKey({
+  adapterKey: OrbitAdapter.SOLANA,
+  adapter: configuredAdapters,
+});
+
+if (selectedSolanaAdapter && selectedSolanaAdapter.key === OrbitAdapter.SOLANA) {
+    console.log('Selected Solana Adapter Cluster:', selectedSolanaAdapter.getCluster()); // Output: mainnet-beta
+    console.log('Explorer URL:', selectedSolanaAdapter.getExplorerUrl('tx/abc...', 'mainnet-beta')); // Output: [https://solscan.io/tx/abc...?cluster=mainnet-beta](https://solscan.io/tx/abc...?cluster=mainnet-beta)
+} else {
+    console.error('Solana Adapter not found or configured.');
+}
+```
+
+### Using Core Utilities
+
+```typescript
+import {
+  OrbitAdapter,
+  formatWalletName,
+  getAdapterFromWalletType,
+  getWalletTypeFromConnectorName,
+  isSolanaChain,
+  lastConnectedWalletHelpers
+} from '@tuwaio/orbit-core';
+
+// Formatting
+const formattedName = formatWalletName('MetaMask'); // "metamask"
+console.log(formattedName);
+const walletType = getWalletTypeFromConnectorName(OrbitAdapter.EVM, 'Brave Wallet'); // "evm:bravewallet"
+console.log(walletType);
+
+// Identification
+const adapterType = getAdapterFromWalletType(walletType); // OrbitAdapter.EVM
+console.log(adapterType);
+console.log(isSolanaChain('devnet')); // true
+console.log(isSolanaChain(1)); // false
+
+// Local Storage Management for Last Connected Wallet
+lastConnectedWalletHelpers.setLastConnectedWallet({
+  walletType: 'evm:metamask',
+  chainId: 1,
+  address: '0x123...'
+});
+const lastWallet = lastConnectedWalletHelpers.getLastConnectedWallet();
+console.log(lastWallet); // { walletType: 'evm:metamask', chainId: 1, address: '0x123...' }
+
+// lastConnectedWalletHelpers.removeLastConnectedWallet();
+```
+
+-----
 
 ## 🔧 Architecture
 
-Orbit Core is built on these main concepts:
+Orbit Core is designed around modularity and abstraction:
 
-1. **Adapters:** Chain-specific implementations that handle blockchain interactions
-2. **Type System:** Comprehensive TypeScript definitions for type-safe development
-3. **Utilities:** Helper functions for common blockchain operations
+1.  **Core Types (`types.ts`):** Defines fundamental structures like `OrbitAdapter` (enum for EVM, Solana, Starknet), `BaseAdapter` (common interface), and `WalletType`.
+2.  **Adapter System:** Enables handling multiple blockchain types via a common interface. The `selectAdapterByKey` utility allows runtime selection of the correct adapter implementation based on the `OrbitAdapter` key. Chain-specific logic resides in separate packages (e.g., `@tuwaio/orbit-evm`).
+3.  **Utilities (`utils/`):** A collection of framework-agnostic helper functions covering formatting, chain identification, localStorage management (for connection state persistence), async operations, and other common tasks needed when building multi-chain UIs.
 
-### Core Components
+### Key Exports (`index.ts`)
 
-- `OrbitAdapter`: Enum defining supported blockchain types
-- `selectAdapterByKey`: Utility for runtime adapter selection
-- Chain-specific helpers and utilities
+- **Types:** `OrbitAdapter`, `BaseAdapter`, `WalletType`, `OrbitGenericAdapter`, `RecentConnectedWallet`.
+- **Adapter Utilities:** `selectAdapterByKey`, `getAdapterFromWalletType`.
+- **Formatting Utilities:** `formatWalletChainId`, `formatWalletName`, `getWalletTypeFromConnectorName`.
+- **Chain Helpers:** `isSolanaChain`, `setChainId`.
+- **Storage Helpers:** `lastConnectedWalletHelpers`, `recentConnectedWalletHelpers`, `impersonatedHelpers`, `getParsedStorageItem`.
+- **General Utilities:** `delay`, `filterUniqueByKey`, `waitFor`, `isSafeApp`.
 
----
+-----
 
 ## ✨ How It Connects to the Ecosystem
 
-The Orbit ecosystem consists of several packages:
+The Orbit Utils ecosystem is designed for modularity:
 
-- **`@tuwaio/orbit-core`:** The foundation providing core functionality
-- **`@tuwaio/orbit-evm`:** EVM-specific helpers implementation
-- **`@tuwaio/orbit-solana`:** Solana blockchain helpers
+- **`@tuwaio/orbit-core`:** (This package) Provides the core, non-chain-specific types, utilities, and adapter structure.
+- **`@tuwaio/orbit-evm`:** Contains the specific adapter implementation and helper functions for EVM-compatible chains (using libraries like `viem` and `@wagmi/core`).
+- **`@tuwaio/orbit-solana`:** Contains the specific adapter implementation and helpers for the Solana blockchain (using libraries like `gill`).
 
-Each package serves a specific purpose while maintaining modularity and flexibility.
+Developers typically install `@tuwaio/orbit-core` along with one or more chain-specific packages based on their application's needs. The core package ensures consistency and provides shared utilities, while the specific packages handle the unique aspects of each blockchain.
 
----
+-----
 
 ## 🤝 Contributing & Support
 
