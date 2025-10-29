@@ -5,6 +5,7 @@ const WALLET_MAPPINGS = new Map([
   ['Trust Wallet', 'trustwallet'],
   ['Brave Кошелек', 'bravewallet'],
   ['Brave Wallet', 'bravewallet'],
+  ['Base Account', 'coinbasewallet'], // TODO: need fix
 ]);
 
 export const formatWalletName = (walletName: string): string => {
