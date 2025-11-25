@@ -1,3 +1,5 @@
+// TODO: need fix, logic is not correct
+
 import { getConnectedSolanaWallet } from './getConnectedSolanaWallet';
 
 /**

@@ -1,3 +1,5 @@
+// TODO: need fix, logic is not correct
+
 import { lastConnectedWalletHelpers } from '@tuwaio/orbit-core';
 
 import { getConnectedSolanaWallet } from './getConnectedSolanaWallet';
