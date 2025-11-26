@@ -10,7 +10,7 @@ EVM-specific adapter implementation and utilities for the **Orbit Utils** ecosys
 
 ## 🏛️ What is `@tuwaio/orbit-evm`?
 
-`@tuwaio/orbit-evm` extends the core capabilities of `@tuwaio/orbit-core` by providing concrete implementations and utilities tailored specifically for **EVM (Ethereum Virtual Machine)** compatible blockchains. It acts as the EVM adapter within the Orbit Utils ecosystem, designed to simplify interactions with networks like Ethereum, Polygon, Binance Smart Chain, and others.
+`@tuwaio/orbit-evm` provides concrete implementations and utilities tailored specifically for **EVM (Ethereum Virtual Machine)** compatible blockchains. It acts as the EVM adapter within the Orbit Utils ecosystem, designed to simplify interactions with networks like Ethereum, Polygon, Binance Smart Chain, and others.
 
 Built with **TypeScript** and leveraging powerful libraries like **`@wagmi/core`** and **`viem`**, this package offers specialized tools for common EVM tasks required in web3 UI development.
 
@@ -18,17 +18,17 @@ Built with **TypeScript** and leveraging powerful libraries like **`@wagmi/core`
 
 ## ✨ Key Features
 
--   **Chain Switching:** Utility (`checkAndSwitchChain`) to prompt users to switch their wallet to the correct EVM network.
--   **Viem Public Client Management:** Efficiently creates and caches `viem` Public Clients for read-only blockchain interactions (`createViemClient`).
--   **ENS (Ethereum Name Service) Utilities:**
-    * Resolve ENS names to addresses (`getAddress`).
-    * Reverse resolve addresses to primary ENS names (`getName`).
-    * Fetch ENS avatar URLs (`getAvatar`).
-    * Basic ENS name format checking (`isEnsName`).
-    * All ENS lookups target Ethereum Mainnet and include caching.
--   **Built on Wagmi & Viem:** Leverages the robust and type-safe functionalities provided by `@wagmi/core` and `viem`.
--   **Type-Safe Development:** Fully typed with TypeScript 5.9+.
--   **Optimized Bundling:** Built with `tsup` for efficient CommonJS and ESM outputs with tree-shaking.
+- **Chain Switching:** Utility (`checkAndSwitchChain`) to prompt users to switch their wallet to the correct EVM network.
+- **Viem Public Client Management:** Efficiently creates and caches `viem` Public Clients for read-only blockchain interactions (`createViemClient`).
+- **ENS (Ethereum Name Service) Utilities:**
+  - Resolve ENS names to addresses (`getAddress`).
+  - Reverse resolve addresses to primary ENS names (`getName`).
+  - Fetch ENS avatar URLs (`getAvatar`).
+  - Basic ENS name format checking (`isEnsName`).
+  - All ENS lookups target Ethereum Mainnet and include caching.
+- **Built on Wagmi & Viem:** Leverages the robust and type-safe functionalities provided by `@wagmi/core` and `viem`.
+- **Type-Safe Development:** Fully typed with TypeScript 5.9+.
+- **Optimized Bundling:** Built with `tsup` for efficient CommonJS and ESM outputs with tree-shaking.
 
 ---
 
@@ -36,19 +36,18 @@ Built with **TypeScript** and leveraging powerful libraries like **`@wagmi/core`
 
 ### Requirements
 
--   Node.js 20+
--   TypeScript 5.9+
--   `@tuwaio/orbit-core` (as a foundational peer dependency)
+- Node.js 20+
+- TypeScript 5.9+
 
 ```bash
 # Using pnpm (recommended)
-pnpm add @tuwaio/orbit-evm @tuwaio/orbit-core @wagmi/core viem
+pnpm add @tuwaio/orbit-evm @wagmi/core viem
 
 # Using npm
-npm install @tuwaio/orbit-evm @tuwaio/orbit-core @wagmi/core viem
+npm install @tuwaio/orbit-evm @wagmi/core viem
 
 # Using yarn
-yarn add @tuwaio/orbit-evm @tuwaio/orbit-core @wagmi/core viem
+yarn add @tuwaio/orbit-evm @wagmi/core viem
 ````
 
 *Note: `@wagmi/core` and `viem` are **peer dependencies** and must be installed alongside `@tuwaio/orbit-evm`*.
@@ -130,7 +129,6 @@ displayEnsName('0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'); // Example: Vitali
 
 ## ✨ How It Connects to the Ecosystem
 
-- **Depends on `@tuwaio/orbit-core`:** Inherits core types (`OrbitAdapter`, `BaseAdapter`) and potentially uses core utilities.
 - **Provides EVM Functionality:** Offers the specific logic needed for EVM chain interactions within applications using Orbit Utils.
 - **Leverages Wagmi/Viem:** Relies on `@wagmi/core` for wallet actions (like chain switching) and `viem` for RPC interactions (like ENS resolution and client creation).
 

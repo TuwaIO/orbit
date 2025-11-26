@@ -2,7 +2,7 @@
  * Internal function for safely retrieving and parsing data from localStorage.
  *
  * @param key - The key for localStorage
- * @returns The parsed LastConnectedWallet object or undefined if data is not found/invalid
+ * @returns The parsed LastConnectedConnector object or undefined if data is not found/invalid
  */
 export function getParsedStorageItem<ReturnType>(key: string): ReturnType | undefined {
   if (typeof window === 'undefined') {

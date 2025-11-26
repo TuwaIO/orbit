@@ -112,7 +112,7 @@ export type BaseAdapter = {
 };
 
 /**
- * Type representing a wallet identifier in format "OrbitAdapter:wallet"
+ * Type representing a connector identifier in format "OrbitAdapter:connector"
  * @example "evm:metamask" | "solana:phantom"
  */
-export type WalletType = `${OrbitAdapter}:${string}`;
+export type ConnectorType = `${OrbitAdapter}:${string}`;

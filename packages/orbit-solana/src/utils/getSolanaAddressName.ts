@@ -1,6 +1,6 @@
 // TODO: need fix, logic is not correct
 
-import { getConnectedSolanaWallet } from './getConnectedSolanaWallet';
+import { getConnectedSolanaConnector } from './getConnectedSolanaConnector';
 
 /**
  * Cache for Solana address lookup results.
@@ -25,10 +25,10 @@ export const getSolanaAddressName = async (address: string): Promise<string> => 
     return cachedName;
   }
 
-  const connectedWallet = getConnectedSolanaWallet();
+  const connectedConnector = getConnectedSolanaConnector();
   // The result is the found label, or the original address if no label was found.
   const resultName =
-    connectedWallet.accounts.find((a) => a.address.toLowerCase() === normalizedAddress)?.label ?? address;
+    connectedConnector.accounts.find((a) => a.address.toLowerCase() === normalizedAddress)?.label ?? address;
   // Store the result (including the fallback address string if label is null) in the cache.
   solanaNameCache.set(normalizedAddress, resultName);
 

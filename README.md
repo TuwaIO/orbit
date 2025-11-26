@@ -3,7 +3,6 @@
 [![License](https://img.shields.io/npm/l/@tuwaio/orbit-core.svg)](./LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/TuwaIO/orbit/release.yml?branch=main)](https://github.com/TuwaIO/orbit/actions)
 
-
 <img src="https://raw.githubusercontent.com/TuwaIO/workflows/refs/heads/main/preview/repos/orbit_utils.png" alt="Orbit Utils" width="400" style="border-radius: 10px; text-align: center; margin-bottom: 20px; margin-top: 20px; margin-left: auto; margin-right: auto; display: block;" />
 
 A powerful, framework-agnostic library for seamless multi-chain blockchain interactions, providing a unified interface for EVM, Solana, and Starknet operations.
@@ -104,21 +103,21 @@ console.log(OrbitAdapter.Starknet); // 'starknet' - For Starknet L2
 
 Orbit Utils is built on these main concepts:
 
-1.  **Adapters:** Chain-specific implementations that handle blockchain interactions.
-2.  **Type System:** Comprehensive TypeScript definitions for type-safe development.
-3.  **Utilities:** Helper functions for common blockchain operations and UI tasks.
+1. **Adapters:** Chain-specific implementations that handle blockchain interactions.
+2. **Type System:** Comprehensive TypeScript definitions for type-safe development.
+3. **Utilities:** Helper functions for common blockchain operations and UI tasks.
 
 ### Core Components from `@tuwaio/orbit-core`
 
 * `OrbitAdapter`: Enum defining supported blockchain types (EVM, Solana, Starknet).
 * `selectAdapterByKey`: Utility for runtime adapter selection based on the `OrbitAdapter` key.
-* Various type definitions (`BaseAdapter`, `WalletType`, etc.).
-* Helper functions for formatting, storage management (`lastConnectedWalletHelpers`, `impersonatedHelpers`), and general utilities (`delay`, `filterUniqueByKey`, etc.).
+* Various type definitions (`BaseAdapter`, `ConnectorType`, etc.).
+* Helper functions for formatting, storage management (`lastConnectedConnectorHelpers`, `impersonatedHelpers`), and general utilities (`delay`, `filterUniqueByKey`, etc.).
 
 ### Chain-Specific Packages
 
 * **`@tuwaio/orbit-evm`:** Provides EVM utilities like chain switching (`checkAndSwitchChain`), Viem client creation (`createViemClient`), and ENS interactions (`getName`, `getAvatar`, `getAddress`, `isEnsName`).
-* **`@tuwaio/orbit-solana`:** Offers Solana utilities such as RPC client creation with caching (`createSolanaClientWithCache`, `createSolanaRPC`), wallet discovery (`getAvailableWallets`, `getConnectedSolanaWallet`), name/avatar resolution (`getSolanaAddressName`, `getSolanaAddressAvatar`), and explorer link generation (`getSolanaExplorerLink`).
+* **`@tuwaio/orbit-solana`:** Offers Solana utilities such as RPC client creation with caching (`createSolanaClientWithCache`, `createSolanaRPC`), connector discovery (`getAvailableConnectors`, `getConnectedSolanaConnector`), name/avatar resolution (`getSolanaAddressName`, `getSolanaAddressAvatar`), and explorer link generation (`getSolanaExplorerLink`).
 
 -----
 

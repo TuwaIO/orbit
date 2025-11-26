@@ -6,7 +6,7 @@
 
 > **getParsedStorageItem**\<`ReturnType`\>(`key`): `ReturnType` \| `undefined`
 
-Defined in: [packages/orbit-core/src/utils/getParsedStorageItem.ts:7](https://github.com/TuwaIO/orbit/blob/bb4731051db0cb58dffc8aa2df36399ed3be335f/packages/orbit-core/src/utils/getParsedStorageItem.ts#L7)
+Defined in: [packages/orbit-core/src/utils/getParsedStorageItem.ts:7](https://github.com/TuwaIO/orbit/blob/a02ae737d6c6c3bc32f9a45a4139dbb40f4e43bc/packages/orbit-core/src/utils/getParsedStorageItem.ts#L7)
 
 Internal function for safely retrieving and parsing data from localStorage.
 
@@ -28,4 +28,4 @@ The key for localStorage
 
 `ReturnType` \| `undefined`
 
-The parsed LastConnectedWallet object or undefined if data is not found/invalid
+The parsed LastConnectedConnector object or undefined if data is not found/invalid
