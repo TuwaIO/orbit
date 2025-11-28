@@ -8,19 +8,23 @@
 
 - [OrbitAdapter](enumerations/OrbitAdapter.md)
 
+## Interfaces
+
+- [RecentlyConnectedConnectorData](interfaces/RecentlyConnectedConnectorData.md)
+
 ## Type Aliases
 
 - [BaseAdapter](type-aliases/BaseAdapter.md)
 - [ConnectorType](type-aliases/ConnectorType.md)
 - [OrbitGenericAdapter](type-aliases/OrbitGenericAdapter.md)
-- [RecentConnectedConnector](type-aliases/RecentConnectedConnector.md)
+- [RecentlyConnectedConnectorsList](type-aliases/RecentlyConnectedConnectorsList.md)
 
 ## Variables
 
 - [impersonatedHelpers](variables/impersonatedHelpers.md)
 - [isSafeApp](variables/isSafeApp.md)
 - [lastConnectedConnectorHelpers](variables/lastConnectedConnectorHelpers.md)
-- [recentConnectedConnectorHelpers](variables/recentConnectedConnectorHelpers.md)
+- [recentlyConnectedConnectorsListHelpers](variables/recentlyConnectedConnectorsListHelpers.md)
 
 ## Functions
 

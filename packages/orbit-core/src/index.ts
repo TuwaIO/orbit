@@ -9,7 +9,7 @@ export * from './utils/getParsedStorageItem';
 export * from './utils/impersonatedHelpers';
 export * from './utils/isSafeApp';
 export * from './utils/lastConnectedConnectorHelpers';
-export * from './utils/recentConnectedConnectorHelpers';
+export * from './utils/recentlyConnectedConnectorsListHelpers';
 export * from './utils/selectAdapterByKey';
 export * from './utils/waitFor';
 export * from './utils/сhainHelpers';
