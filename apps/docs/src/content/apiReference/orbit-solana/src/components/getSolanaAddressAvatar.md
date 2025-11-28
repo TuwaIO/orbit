@@ -4,23 +4,26 @@
 
 # getSolanaAddressAvatar()
 
-> **getSolanaAddressAvatar**(`name`): `Promise`\<`string`\>
+> **getSolanaAddressAvatar**(`addressOrDomain`): `Promise`\<`string`\>
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts:20](https://github.com/TuwaIO/orbit/blob/a02ae737d6c6c3bc32f9a45a4139dbb40f4e43bc/packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts#L20)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts:89](https://github.com/TuwaIO/orbit/blob/dc7f910f503327f4fdf398696c0348c9b3406975/packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts#L89)
 
-Searches and returns the avatar URL (icon) for a given Solana account name (label)
-among connected wallets. Includes caching for performance on repeated requests.
+Searches and returns the avatar URL for a given Solana address or SNS domain.
+Priority order:
+1. Check cache
+2. If it's a valid SNS domain (.sol), try to get SNS avatar
+3. Generate default avatar based on identifier
 
 ## Parameters
 
-### name
+### addressOrDomain
 
 `string`
 
-The account name (label) to look up.
+The Solana address or SNS domain to look up avatar for
 
 ## Returns
 
 `Promise`\<`string`\>
 
-A promise that resolves to the account's icon URL, or the original name string if the icon is not found.
+A promise that resolves to the avatar URL

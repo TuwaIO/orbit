@@ -6,10 +6,13 @@
 
 > **getSolanaAddressName**(`address`): `Promise`\<`string`\>
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:18](https://github.com/TuwaIO/orbit/blob/a02ae737d6c6c3bc32f9a45a4139dbb40f4e43bc/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L18)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:66](https://github.com/TuwaIO/orbit/blob/dc7f910f503327f4fdf398696c0348c9b3406975/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L66)
 
-Searches and returns the account name (label) for a given Solana address
-among connected wallets. Includes caching for performance on repeated requests.
+Searches and returns the account name (label) for a given Solana address.
+Priority order:
+1. Check cache
+2. Try to resolve SNS domain name
+3. Fall back to original address
 
 ## Parameters
 
@@ -23,4 +26,4 @@ The Solana account address to look up.
 
 `Promise`\<`string`\>
 
-A promise that resolves to the account's name/label, or the original address string if the name is not found.
+A promise that resolves to the account's name/label, or the original address string if no name is found.
