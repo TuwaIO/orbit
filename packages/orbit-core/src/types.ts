@@ -109,6 +109,9 @@ export type BaseAdapter = {
 
   /** Optional method to get avatar for resolved names */
   getAvatar?: (name: string) => Promise<string | null>;
+
+  /** Optional method to resolve names to addresses */
+  getAddress?: (name: string) => Promise<string | null>;
 };
 
 /**

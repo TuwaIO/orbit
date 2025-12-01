@@ -6,7 +6,7 @@
 
 > **waitFor**(`predicate`, `maxChecks`, `checkIntervalMs`): `Promise`\<`void`\>
 
-Defined in: [packages/orbit-core/src/utils/waitFor.ts:1](https://github.com/TuwaIO/orbit/blob/91db535e35edab132fad22e629bd09406488d5f8/packages/orbit-core/src/utils/waitFor.ts#L1)
+Defined in: [packages/orbit-core/src/utils/waitFor.ts:1](https://github.com/TuwaIO/orbit/blob/efc1769b5130904fb64cb27e939c2baf445b5e8f/packages/orbit-core/src/utils/waitFor.ts#L1)
 
 ## Parameters
 

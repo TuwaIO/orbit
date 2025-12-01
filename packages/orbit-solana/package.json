@@ -40,8 +40,8 @@
     }
   ],
   "peerDependencies": {
-    "@tuwaio/orbit-core": ">=0",
-    "gill": ">=0.12",
+    "@tuwaio/orbit-core": ">=0.2",
+    "gill": ">=0.14",
     "@wallet-standard/app": "1.x.x",
     "@wallet-standard/ui-core": "1.x.x",
     "@wallet-standard/ui-registry": "1.x.x"
