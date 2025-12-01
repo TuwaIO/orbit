@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.1.1...orbit-solana-v0.2.0) (2025-12-01)
+
+
+### Features
+
+* update packages and logic ([#8](https://github.com/TuwaIO/orbit/issues/8)) ([babb6a7](https://github.com/TuwaIO/orbit/commit/babb6a7e1977f66a4e0a1eeb5ed61b66133db55e))
+
 ## [0.1.1](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.1.0...orbit-solana-v0.1.1) (2025-10-23)
 
 
