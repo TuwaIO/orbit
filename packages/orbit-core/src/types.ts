@@ -109,10 +109,13 @@ export type BaseAdapter = {
 
   /** Optional method to get avatar for resolved names */
   getAvatar?: (name: string) => Promise<string | null>;
+
+  /** Optional method to resolve names to addresses */
+  getAddress?: (name: string) => Promise<string | null>;
 };
 
 /**
- * Type representing a wallet identifier in format "OrbitAdapter:wallet"
+ * Type representing a connector identifier in format "OrbitAdapter:connector"
  * @example "evm:metamask" | "solana:phantom"
  */
-export type WalletType = `${OrbitAdapter}:${string}`;
+export type ConnectorType = `${OrbitAdapter}:${string}`;

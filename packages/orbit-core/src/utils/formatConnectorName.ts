@@ -1,4 +1,4 @@
-const WALLET_MAPPINGS = new Map([
+const CONNECTOR_MAPPINGS = new Map([
   ['Impersonated Connector', 'impersonatedwallet'],
   ['Safe', 'safewallet'],
   ['Trust', 'trustwallet'],
@@ -8,6 +8,6 @@ const WALLET_MAPPINGS = new Map([
   ['Base Account', 'coinbasewallet'], // TODO: need fix
 ]);
 
-export const formatWalletName = (walletName: string): string => {
-  return WALLET_MAPPINGS.get(walletName) ?? walletName.replace(/\s+/g, '').toLowerCase();
+export const formatConnectorName = (connectorName: string): string => {
+  return CONNECTOR_MAPPINGS.get(connectorName) ?? connectorName.replace(/\s+/g, '').toLowerCase();
 };

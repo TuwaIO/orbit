@@ -40,13 +40,13 @@
     }
   ],
   "peerDependencies": {
-    "@wagmi/core": "2.x.x",
+    "@wagmi/core": "3.x.x",
     "viem": "2.x.x"
   },
   "devDependencies": {
-    "@wagmi/core": "^2.22.1",
-    "tsup": "^8.5.0",
+    "@wagmi/core": "^3.0.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3",
-    "viem": "^2.38.5"
+    "viem": "^2.40.3"
   }
 }

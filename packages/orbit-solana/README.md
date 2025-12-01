@@ -18,13 +18,13 @@ Built with **TypeScript**, this package utilizes **`gill`** (an improvement laye
 
 ## ✨ Key Features
 
--   **RPC Client Management:** Efficiently creates and caches Solana RPC clients (`SolanaClient` and lower-level `Rpc`) using `gill` (`createSolanaClientWithCache`, `createSolanaRPC`). Supports default and custom RPC URLs.
--   **Wallet Standard Integration:** Discovers available Solana wallets compatible with the Wallet Standard (`getAvailableWallets`). Retrieves the currently connected wallet based on stored address (`getConnectedSolanaWallet`).
--   **Account Info Resolution:** Fetches user-set account labels (names) and icons (avatars) directly from the connected wallet's accounts (`getSolanaAddressName`, `getSolanaAddressAvatar`), including caching.
--   **Cluster & RPC URL Helpers:** Utilities to parse cluster names (e.g., 'mainnet', 'devnet') from chain IDs and retrieve corresponding RPC URLs (`getCluster`, `getRpcUrlForCluster`).
--   **Explorer Link Generation:** Creates links to Solana explorers (like Solscan) for transactions, addresses, etc., correctly handling cluster parameters (`getSolanaExplorerLink`).
--   **Type-Safe Development:** Fully typed using TypeScript 5.9+.
--   **Optimized Bundling:** Built with `tsup` for efficient CommonJS and ESM outputs with tree-shaking.
+- **RPC Client Management:** Efficiently creates and caches Solana RPC clients (`SolanaClient` and lower-level `Rpc`) using `gill` (`createSolanaClientWithCache`, `createSolanaRPC`). Supports default and custom RPC URLs.
+- **Wallet Standard Integration:** Discovers available Solana wallets compatible with the Wallet Standard (`getAvailableSolanaConnectors`). Retrieves the currently connected wallet based on stored address (`getConnectedSolanaConnector`).
+- **Account Info Resolution:** Fetches user-set account labels (names) and icons (avatars) directly from the connected wallet's accounts (`getSolanaAddressName`, `getSolanaAddressAvatar`), including caching.
+- **Cluster & RPC URL Helpers:** Utilities to parse cluster names (e.g., 'mainnet', 'devnet') from chain IDs and retrieve corresponding RPC URLs (`getCluster`, `getRpcUrlForCluster`).
+- **Explorer Link Generation:** Creates links to Solana explorers (like Solscan) for transactions, addresses, etc., correctly handling cluster parameters (`getSolanaExplorerLink`).
+- **Type-Safe Development:** Fully typed using TypeScript 5.9+.
+- **Optimized Bundling:** Built with `tsup` for efficient CommonJS and ESM outputs with tree-shaking.
 
 ---
 
@@ -32,9 +32,9 @@ Built with **TypeScript**, this package utilizes **`gill`** (an improvement laye
 
 ### Requirements
 
--   Node.js 20+
--   TypeScript 5.9+
--   `@tuwaio/orbit-core` (as a foundational peer dependency)
+- Node.js 20+
+- TypeScript 5.9+
+- `@tuwaio/orbit-core` (as a foundational peer dependency)
 
 ```bash
 # Using pnpm (recommended)
@@ -96,10 +96,10 @@ Assuming a wallet is connected and its address is stored (e.g., using `lastConne
 
 ```typescript
 import { getSolanaAddressName } from '@tuwaio/orbit-solana';
-import { lastConnectedWalletHelpers } from '@tuwaio/orbit-core'; // Needed to know which address is connected
+import { lastConnectedConnectorHelpers } from '@tuwaio/orbit-core'; // Needed to know which address is connected
 
 async function displayAccountName() {
-  const connectedWalletInfo = lastConnectedWalletHelpers.getLastConnectedWallet();
+  const connectedWalletInfo = lastConnectedConnectorHelpers.getLastConnectedConnector();
   if (connectedWalletInfo?.address && connectedWalletInfo.walletType.startsWith('solana:')) {
     try {
         const name = await getSolanaAddressName(connectedWalletInfo.address);
@@ -143,7 +143,7 @@ console.log(devnetExplorerUrl);
 - **Types (`types.ts`)**: Defines Solana-specific types like `SolanaRPCUrls`.
 - **Cluster Helpers (`clusterHelpers.ts`)**: Functions `getCluster` and `getRpcUrlForCluster` for managing Solana network identifiers and RPC endpoints.
 - **Client Creation (`createSolanaClientWithCache.ts`, `createSolanaRPC.ts`)**: Provides cached instances of `gill`'s `SolanaClient` and `Rpc`. Includes default RPC URLs.
-- **Wallet Interaction (`getAvailableSolanaWallets.ts`, `getConnectedSolanaWallet.ts`)**: Leverages `@wallet-standard` to find and identify Solana wallets.
+- **Wallet Interaction (`getAvailableSolanaConnectors.ts`, `getConnectedSolanaConnector.ts`)**: Leverages `@wallet-standard` to find and identify Solana wallets.
 - **Account Info (`getSolanaAddressAvatar.ts`, `getSolanaAddressName.ts`)**: Retrieves metadata (label, icon) associated with accounts within the connected wallet.
 - **Explorer Links (`getSolanaExplorerLink.ts`)**: Utility for constructing explorer URLs.
 
@@ -158,7 +158,7 @@ console.log(devnetExplorerUrl);
 
 ## ✨ How It Connects to the Ecosystem
 
-- **Depends on `@tuwaio/orbit-core`:** Relies on core types (`OrbitAdapter`, `BaseAdapter`) and utilities (`lastConnectedWalletHelpers`, `filterUniqueByKey`).
+- **Depends on `@tuwaio/orbit-core`:** Relies on core types (`OrbitAdapter`, `BaseAdapter`) and utilities (`lastConnectedConnectorHelpers`, `filterUniqueByKey`).
 - **Provides Solana Functionality:** Implements the specific logic for Solana interactions needed by applications using Orbit Utils.
 - **Leverages Gill & Wallet Standard:** Uses `gill` for simplified RPC communication and the Wallet Standard packages for wallet detection and interaction.
 

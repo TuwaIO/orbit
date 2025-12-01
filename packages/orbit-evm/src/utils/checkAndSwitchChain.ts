@@ -2,7 +2,7 @@
  * @file This file contains a utility to ensure the user's wallet is connected to the correct chain before proceeding with a transaction.
  */
 
-import { Config, getAccount, switchChain } from '@wagmi/core';
+import { Config, getConnection, switchChain } from '@wagmi/core';
 
 /**
  * Checks if the user's wallet is connected to the specified chain. If not, it prompts
@@ -18,7 +18,7 @@ import { Config, getAccount, switchChain } from '@wagmi/core';
  * @throws {Error} Throws a specific error if the user rejects the chain switch or if the switch fails for other reasons.
  */
 export async function checkAndSwitchChain(chainId: number, config: Config): Promise<void> {
-  const { connector, chainId: activeChainId } = getAccount(config);
+  const { connector, chainId: activeChainId } = getConnection(config);
 
   // Proceed only if a wallet is connected and it is on a different chain than required.
   if (connector && activeChainId !== chainId) {

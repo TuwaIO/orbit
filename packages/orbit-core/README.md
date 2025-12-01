@@ -18,17 +18,17 @@ Its primary goal is to establish a **unified interface** for interacting with di
 
 ## ✨ Key Features
 
--   **Multi-Chain Foundation:** Defines the core `OrbitAdapter` enum (supporting EVM, Solana, Starknet) and types for building consistent multi-chain support.
--   **Framework Agnostic & Headless:** Contains only logic, no UI components, ensuring compatibility with any frontend setup.
--   **Type-Safe Development:** Fully written in TypeScript 5.9+ for a robust developer experience.
--   **Flexible Adapter System:** Provides utilities like `selectAdapterByKey` to easily manage and switch between different blockchain adapter implementations.
--   **Essential Utilities:** Includes common helpers for tasks such as:
-    * Formatting wallet names and chain IDs (`formatWalletName`, `formatWalletChainId`).
-    * Identifying chain types (`isSolanaChain`, `getAdapterFromWalletType`).
-    * Managing wallet connection state in localStorage (`lastConnectedWalletHelpers`, `recentConnectedWalletHelpers`).
-    * Handling impersonation for development/testing (`impersonatedHelpers`).
-    * Basic async operations (`delay`, `waitFor`).
--   **SSR Safe:** Utilities are designed to work safely in both browser and Server-Side Rendering environments.
+- **Multi-Chain Foundation:** Defines the core `OrbitAdapter` enum (supporting EVM, Solana, Starknet) and types for building consistent multi-chain support.
+- **Framework Agnostic & Headless:** Contains only logic, no UI components, ensuring compatibility with any frontend setup.
+- **Type-Safe Development:** Fully written in TypeScript 5.9+ for a robust developer experience.
+- **Flexible Adapter System:** Provides utilities like `selectAdapterByKey` to easily manage and switch between different blockchain adapter implementations.
+- **Essential Utilities:** Includes common helpers for tasks such as:
+  - Formatting connector names and chain IDs (`formatConnectorName`, `formatConnectorChainId`).
+  - Identifying chain types (`isSolanaChain`, `getAdapterFromConnectorType`).
+  - Managing connector connection state in localStorage (`lastConnectedConnectorHelpers`, `recentConnectedConnectorHelpers`).
+  - Handling impersonation for development/testing (`impersonatedHelpers`).
+  - Basic async operations (`delay`, `waitFor`).
+- **SSR Safe:** Utilities are designed to work safely in both browser and Server-Side Rendering environments.
 
 ---
 
@@ -117,33 +117,33 @@ if (selectedSolanaAdapter && selectedSolanaAdapter.key === OrbitAdapter.SOLANA) 
 ```typescript
 import {
   OrbitAdapter,
-  formatWalletName,
-  getAdapterFromWalletType,
-  getWalletTypeFromConnectorName,
+  formatConnectorName,
+  getAdapterFromConnectorType,
+  getConnectorTypeFromName,
   isSolanaChain,
-  lastConnectedWalletHelpers
+  lastConnectedConnectorHelpers
 } from '@tuwaio/orbit-core';
 
 // Formatting
-const formattedName = formatWalletName('MetaMask'); // "metamask"
+const formattedName = formatConnectorName('MetaMask'); // "metamask"
 console.log(formattedName);
-const walletType = getWalletTypeFromConnectorName(OrbitAdapter.EVM, 'Brave Wallet'); // "evm:bravewallet"
-console.log(walletType);
+const connectorType = getConnectorTypeFromName(OrbitAdapter.EVM, 'Brave Wallet'); // "evm:bravewallet"
+console.log(connectorType);
 
 // Identification
-const adapterType = getAdapterFromWalletType(walletType); // OrbitAdapter.EVM
+const adapterType = getAdapterFromConnectorType(connectorType); // OrbitAdapter.EVM
 console.log(adapterType);
 console.log(isSolanaChain('devnet')); // true
 console.log(isSolanaChain(1)); // false
 
-// Local Storage Management for Last Connected Wallet
-lastConnectedWalletHelpers.setLastConnectedWallet({
-  walletType: 'evm:metamask',
+// Local Storage Management for Last Connected Connector
+lastConnectedConnectorHelpers.setLastConnectedConnector({
+  connectorType: 'evm:metamask',
   chainId: 1,
   address: '0x123...'
 });
-const lastWallet = lastConnectedWalletHelpers.getLastConnectedWallet();
-console.log(lastWallet); // { walletType: 'evm:metamask', chainId: 1, address: '0x123...' }
+const lastWallet = lastConnectedConnectorHelpers.getLastConnectedConnector();
+console.log(lastWallet); // { connectorType: 'evm:metamask', chainId: 1, address: '0x123...' }
 
 // lastConnectedWalletHelpers.removeLastConnectedWallet();
 ```
@@ -154,17 +154,17 @@ console.log(lastWallet); // { walletType: 'evm:metamask', chainId: 1, address: '
 
 Orbit Core is designed around modularity and abstraction:
 
-1.  **Core Types (`types.ts`):** Defines fundamental structures like `OrbitAdapter` (enum for EVM, Solana, Starknet), `BaseAdapter` (common interface), and `WalletType`.
-2.  **Adapter System:** Enables handling multiple blockchain types via a common interface. The `selectAdapterByKey` utility allows runtime selection of the correct adapter implementation based on the `OrbitAdapter` key. Chain-specific logic resides in separate packages (e.g., `@tuwaio/orbit-evm`).
-3.  **Utilities (`utils/`):** A collection of framework-agnostic helper functions covering formatting, chain identification, localStorage management (for connection state persistence), async operations, and other common tasks needed when building multi-chain UIs.
+1. **Core Types (`types.ts`):** Defines fundamental structures like `OrbitAdapter` (enum for EVM, Solana, Starknet), `BaseAdapter` (common interface), and `ConnectorType`.
+2. **Adapter System:** Enables handling multiple blockchain types via a common interface. The `selectAdapterByKey` utility allows runtime selection of the correct adapter implementation based on the `OrbitAdapter` key. Chain-specific logic resides in separate packages (e.g., `@tuwaio/orbit-evm`).
+3. **Utilities (`utils/`):** A collection of framework-agnostic helper functions covering formatting, chain identification, localStorage management (for connection state persistence), async operations, and other common tasks needed when building multi-chain UIs.
 
 ### Key Exports (`index.ts`)
 
-- **Types:** `OrbitAdapter`, `BaseAdapter`, `WalletType`, `OrbitGenericAdapter`, `RecentConnectedWallet`.
-- **Adapter Utilities:** `selectAdapterByKey`, `getAdapterFromWalletType`.
-- **Formatting Utilities:** `formatWalletChainId`, `formatWalletName`, `getWalletTypeFromConnectorName`.
+- **Types:** `OrbitAdapter`, `BaseAdapter`, `ConnectorType`, `OrbitGenericAdapter`, `RecentConnectedConnector`.
+- **Adapter Utilities:** `selectAdapterByKey`, `getAdapterFromConnectorType`.
+- **Formatting Utilities:** `formatConnectorChainId`, `formatConnectorName`, `getConnectorTypeFromName`.
 - **Chain Helpers:** `isSolanaChain`, `setChainId`.
-- **Storage Helpers:** `lastConnectedWalletHelpers`, `recentConnectedWalletHelpers`, `impersonatedHelpers`, `getParsedStorageItem`.
+- **Storage Helpers:** `lastConnectedConnectorHelpers`, `recentConnectedConnectorHelpers`, `impersonatedHelpers`, `getParsedStorageItem`.
 - **General Utilities:** `delay`, `filterUniqueByKey`, `waitFor`, `isSafeApp`.
 
 -----

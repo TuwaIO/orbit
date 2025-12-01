@@ -8,29 +8,33 @@
 
 - [OrbitAdapter](enumerations/OrbitAdapter.md)
 
+## Interfaces
+
+- [RecentlyConnectedConnectorData](interfaces/RecentlyConnectedConnectorData.md)
+
 ## Type Aliases
 
 - [BaseAdapter](type-aliases/BaseAdapter.md)
+- [ConnectorType](type-aliases/ConnectorType.md)
 - [OrbitGenericAdapter](type-aliases/OrbitGenericAdapter.md)
-- [RecentConnectedWallet](type-aliases/RecentConnectedWallet.md)
-- [WalletType](type-aliases/WalletType.md)
+- [RecentlyConnectedConnectorsList](type-aliases/RecentlyConnectedConnectorsList.md)
 
 ## Variables
 
 - [impersonatedHelpers](variables/impersonatedHelpers.md)
 - [isSafeApp](variables/isSafeApp.md)
-- [lastConnectedWalletHelpers](variables/lastConnectedWalletHelpers.md)
-- [recentConnectedWalletHelpers](variables/recentConnectedWalletHelpers.md)
+- [lastConnectedConnectorHelpers](variables/lastConnectedConnectorHelpers.md)
+- [recentlyConnectedConnectorsListHelpers](variables/recentlyConnectedConnectorsListHelpers.md)
 
 ## Functions
 
 - [delay](functions/delay.md)
 - [filterUniqueByKey](functions/filterUniqueByKey.md)
-- [formatWalletChainId](functions/formatWalletChainId.md)
-- [formatWalletName](functions/formatWalletName.md)
-- [getAdapterFromWalletType](functions/getAdapterFromWalletType.md)
+- [formatConnectorChainId](functions/formatConnectorChainId.md)
+- [formatConnectorName](functions/formatConnectorName.md)
+- [getAdapterFromConnectorType](functions/getAdapterFromConnectorType.md)
+- [getConnectorTypeFromName](functions/getConnectorTypeFromName.md)
 - [getParsedStorageItem](functions/getParsedStorageItem.md)
-- [getWalletTypeFromConnectorName](functions/getWalletTypeFromConnectorName.md)
 - [isSolanaChain](functions/isSolanaChain.md)
 - [selectAdapterByKey](functions/selectAdapterByKey.md)
 - [setChainId](functions/setChainId.md)
