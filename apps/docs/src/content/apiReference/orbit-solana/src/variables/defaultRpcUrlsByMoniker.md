@@ -6,7 +6,7 @@
 
 > `const` **defaultRpcUrlsByMoniker**: `Partial`\<`Record`\<`SolanaClusterMoniker`, `string`\>\>
 
-Defined in: [packages/orbit-solana/src/utils/defaultRpcUrlsByMoniker.ts:8](https://github.com/TuwaIO/orbit/blob/efc1769b5130904fb64cb27e939c2baf445b5e8f/packages/orbit-solana/src/utils/defaultRpcUrlsByMoniker.ts#L8)
+Defined in: [packages/orbit-solana/src/utils/defaultRpcUrlsByMoniker.ts:8](https://github.com/TuwaIO/orbit/blob/dfc2d9753f883b7890b3c7f42a8d51292562e725/packages/orbit-solana/src/utils/defaultRpcUrlsByMoniker.ts#L8)
 
 **`Internal`**
 
