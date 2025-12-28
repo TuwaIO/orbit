@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.2...orbit-evm-v0.2.3) (2025-12-28)
+
+
+### Bug Fixes
+
+* added chains utils and update deps ([#12](https://github.com/TuwaIO/orbit/issues/12)) ([4c97799](https://github.com/TuwaIO/orbit/commit/4c97799ff82f433a987cfeb25e312d49e7f3c979))
+
 ## [0.2.2](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.1...orbit-evm-v0.2.2) (2025-12-15)
 
 
