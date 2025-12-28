@@ -1,4 +1,5 @@
 export * from './types';
+export * from './utils/addressValidation';
 export * from './utils/delay';
 export * from './utils/filterUniqueByKey';
 export * from './utils/formatConnectorChainId';

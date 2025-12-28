@@ -37,6 +37,7 @@
 - [getConnectorTypeFromName](functions/getConnectorTypeFromName.md)
 - [getNetworkData](functions/getNetworkData.md)
 - [getParsedStorageItem](functions/getParsedStorageItem.md)
+- [isAddress](functions/isAddress.md)
 - [isSolanaChain](functions/isSolanaChain.md)
 - [selectAdapterByKey](functions/selectAdapterByKey.md)
 - [setChainId](functions/setChainId.md)
