@@ -1,4 +1,5 @@
 export * from './types';
+export * from './utils/chainsUtils';
 export * from './utils/clusterHelpers';
 export * from './utils/createSolanaClientWithCache';
 export * from './utils/createSolanaRPC';

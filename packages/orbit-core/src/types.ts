@@ -119,3 +119,14 @@ export type BaseAdapter = {
  * @example "evm:metamask" | "solana:phantom"
  */
 export type ConnectorType = `${OrbitAdapter}:${string}`;
+
+/**
+ * Array of chain identifiers (replaces IdentifierArray from @wallet-standard/base)
+ * Can contain strings, numbers, or other primitive types
+ *
+ * @example
+ * ```typescript
+ * const chainIds: ChainIdentifierArray = ['ethereum', 1, 'solana:mainnet-beta'];
+ * ```
+ */
+export type ChainIdentifierArray = readonly (string | number)[];

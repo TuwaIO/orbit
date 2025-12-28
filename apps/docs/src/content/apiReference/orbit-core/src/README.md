@@ -15,6 +15,7 @@
 ## Type Aliases
 
 - [BaseAdapter](type-aliases/BaseAdapter.md)
+- [ChainIdentifierArray](type-aliases/ChainIdentifierArray.md)
 - [ConnectorType](type-aliases/ConnectorType.md)
 - [OrbitGenericAdapter](type-aliases/OrbitGenericAdapter.md)
 - [RecentlyConnectedConnectorsList](type-aliases/RecentlyConnectedConnectorsList.md)
@@ -34,7 +35,9 @@
 - [formatConnectorName](functions/formatConnectorName.md)
 - [getAdapterFromConnectorType](functions/getAdapterFromConnectorType.md)
 - [getConnectorTypeFromName](functions/getConnectorTypeFromName.md)
+- [getNetworkData](functions/getNetworkData.md)
 - [getParsedStorageItem](functions/getParsedStorageItem.md)
+- [isAddress](functions/isAddress.md)
 - [isSolanaChain](functions/isSolanaChain.md)
 - [selectAdapterByKey](functions/selectAdapterByKey.md)
 - [setChainId](functions/setChainId.md)
