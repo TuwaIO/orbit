@@ -5,6 +5,7 @@ export * from './utils/formatConnectorChainId';
 export * from './utils/formatConnectorName';
 export * from './utils/getAdapterFromConnectorType';
 export * from './utils/getConnectorTypeFromName';
+export * from './utils/getNetworkData';
 export * from './utils/getParsedStorageItem';
 export * from './utils/impersonatedHelpers';
 export * from './utils/isSafeApp';

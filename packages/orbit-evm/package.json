@@ -44,9 +44,9 @@
     "viem": "2.x.x"
   },
   "devDependencies": {
-    "@wagmi/core": "^3.0.0",
+    "@wagmi/core": "^3.0.1",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
-    "viem": "^2.42.1"
+    "viem": "^2.43.3"
   }
 }
