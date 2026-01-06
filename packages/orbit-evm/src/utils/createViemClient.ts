@@ -29,6 +29,8 @@ export function createViemClient(chainId: number, chains: readonly [Chain, ...Ch
 
   const chain = chains.find((c) => c.id === chainId);
 
+  console.log('chain rpc URLS', chain?.rpcUrls);
+
   if (chain) {
     const newClient = createPublicClient({
       chain: chain,
