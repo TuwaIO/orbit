@@ -4,7 +4,7 @@
 
 # OrbitAdapter
 
-Defined in: [packages/orbit-core/src/types.ts:33](https://github.com/TuwaIO/orbit/blob/61dbecfca6dae4f0893a5c7e58fd9c435a95a63d/packages/orbit-core/src/types.ts#L33)
+Defined in: [packages/orbit-core/src/types.ts:33](https://github.com/TuwaIO/orbit/blob/cd205dec44d70155803b7a4b2375469eaeca0357/packages/orbit-core/src/types.ts#L33)
 
 Defines the supported blockchain adapters in the Orbit system.
 Each adapter corresponds to a specific blockchain architecture and implements
@@ -31,7 +31,7 @@ if (chainType === OrbitAdapter.SOLANA) {
 
 > **EVM**: `"evm"`
 
-Defined in: [packages/orbit-core/src/types.ts:43](https://github.com/TuwaIO/orbit/blob/61dbecfca6dae4f0893a5c7e58fd9c435a95a63d/packages/orbit-core/src/types.ts#L43)
+Defined in: [packages/orbit-core/src/types.ts:43](https://github.com/TuwaIO/orbit/blob/cd205dec44d70155803b7a4b2375469eaeca0357/packages/orbit-core/src/types.ts#L43)
 
 For Ethereum Virtual Machine (EVM) compatible chains.
 Supports networks like:
@@ -47,7 +47,7 @@ Supports networks like:
 
 > **SOLANA**: `"solana"`
 
-Defined in: [packages/orbit-core/src/types.ts:52](https://github.com/TuwaIO/orbit/blob/61dbecfca6dae4f0893a5c7e58fd9c435a95a63d/packages/orbit-core/src/types.ts#L52)
+Defined in: [packages/orbit-core/src/types.ts:52](https://github.com/TuwaIO/orbit/blob/cd205dec44d70155803b7a4b2375469eaeca0357/packages/orbit-core/src/types.ts#L52)
 
 For the Solana blockchain.
 Supports:
@@ -61,7 +61,7 @@ Supports:
 
 > **Starknet**: `"starknet"`
 
-Defined in: [packages/orbit-core/src/types.ts:61](https://github.com/TuwaIO/orbit/blob/61dbecfca6dae4f0893a5c7e58fd9c435a95a63d/packages/orbit-core/src/types.ts#L61)
+Defined in: [packages/orbit-core/src/types.ts:61](https://github.com/TuwaIO/orbit/blob/cd205dec44d70155803b7a4b2375469eaeca0357/packages/orbit-core/src/types.ts#L61)
 
 For the Starknet L2 network.
 Supports:

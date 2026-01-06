@@ -6,7 +6,7 @@
 
 > **OrbitGenericAdapter**\<`A`\> = `object`
 
-Defined in: [packages/orbit-core/src/types.ts:96](https://github.com/TuwaIO/orbit/blob/61dbecfca6dae4f0893a5c7e58fd9c435a95a63d/packages/orbit-core/src/types.ts#L96)
+Defined in: [packages/orbit-core/src/types.ts:96](https://github.com/TuwaIO/orbit/blob/cd205dec44d70155803b7a4b2375469eaeca0357/packages/orbit-core/src/types.ts#L96)
 
 Generic type for creating blockchain adapters with type safety.
 This type ensures that all adapters implement the required interface
@@ -50,6 +50,6 @@ Type that extends the base adapter interface with a key property
 
 > **adapter**: `A` \| `A`[]
 
-Defined in: [packages/orbit-core/src/types.ts:97](https://github.com/TuwaIO/orbit/blob/61dbecfca6dae4f0893a5c7e58fd9c435a95a63d/packages/orbit-core/src/types.ts#L97)
+Defined in: [packages/orbit-core/src/types.ts:97](https://github.com/TuwaIO/orbit/blob/cd205dec44d70155803b7a4b2375469eaeca0357/packages/orbit-core/src/types.ts#L97)
 
 Single adapter instance or array of adapters

@@ -6,7 +6,7 @@
 
 > **filterUniqueByKey**\<`T`\>(`array`, `key`): `T`[]
 
-Defined in: [packages/orbit-core/src/utils/filterUniqueByKey.ts:13](https://github.com/TuwaIO/orbit/blob/61dbecfca6dae4f0893a5c7e58fd9c435a95a63d/packages/orbit-core/src/utils/filterUniqueByKey.ts#L13)
+Defined in: [packages/orbit-core/src/utils/filterUniqueByKey.ts:13](https://github.com/TuwaIO/orbit/blob/cd205dec44d70155803b7a4b2375469eaeca0357/packages/orbit-core/src/utils/filterUniqueByKey.ts#L13)
 
 Filters an array of objects to keep only the first occurrence of an object
 based on a unique value of a specified key.

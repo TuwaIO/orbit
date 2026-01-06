@@ -22,6 +22,8 @@ const viemClientCache = new Map<number, PublicClient>();
  * It will also log a warning to the console if the chain is not configured.
  */
 export function createViemClient(chainId: number, chains: readonly [Chain, ...Chain[]]): PublicClient | undefined {
+  console.log('create CLIENT CHAINS', chains);
+
   const cachedClient = viemClientCache.get(chainId);
   if (cachedClient) {
     return cachedClient;
@@ -34,7 +36,7 @@ export function createViemClient(chainId: number, chains: readonly [Chain, ...Ch
   if (chain) {
     const newClient = createPublicClient({
       chain: chain,
-      transport: http(chain.rpcUrls.default.http[0]),
+      transport: http(),
     });
     viemClientCache.set(chainId, newClient);
     return newClient;
