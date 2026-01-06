@@ -26,11 +26,8 @@ export function createViemClient(chainId: number, chains: readonly [Chain, ...Ch
 
   const cachedClient = viemClientCache.get(chainId);
   if (cachedClient && cachedClient.chain?.rpcUrls.default.http[0] === chain?.rpcUrls.default.http[0]) {
-    console.log('cached CLIENT CHAINS', cachedClient.chain);
     return cachedClient;
   }
-
-  console.log('chain rpc URLS', chain?.rpcUrls);
 
   if (chain) {
     const newClient = createPublicClient({

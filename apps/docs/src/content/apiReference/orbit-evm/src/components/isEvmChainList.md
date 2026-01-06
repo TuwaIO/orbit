@@ -6,7 +6,7 @@
 
 > **isEvmChainList**(`chains`): `chains is number[]`
 
-Defined in: [packages/orbit-evm/src/utils/chainsUtils.ts:23](https://github.com/TuwaIO/orbit/blob/7b5809f9ba05d5be25674ef8b406879aab694643/packages/orbit-evm/src/utils/chainsUtils.ts#L23)
+Defined in: [packages/orbit-evm/src/utils/chainsUtils.ts:23](https://github.com/TuwaIO/orbit/blob/c96a7798ea5ba9d3a69968eeb5a857cde21abf81/packages/orbit-evm/src/utils/chainsUtils.ts#L23)
 
 Type guard to check if a chain list contains EVM chain IDs
 
