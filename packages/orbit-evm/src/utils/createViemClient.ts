@@ -32,7 +32,7 @@ export function createViemClient(chainId: number, chains: readonly [Chain, ...Ch
   if (chain) {
     const newClient = createPublicClient({
       chain: chain,
-      transport: http(),
+      transport: http(chain.rpcUrls.default.http[0]),
     });
     viemClientCache.set(chainId, newClient);
     return newClient;
