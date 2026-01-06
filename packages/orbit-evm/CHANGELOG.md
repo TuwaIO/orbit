@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.3...orbit-evm-v0.2.4) (2026-01-06)
+
+
+### Bug Fixes
+
+* caching in create viem client (orbit-evm) ([#14](https://github.com/TuwaIO/orbit/issues/14)) ([699c218](https://github.com/TuwaIO/orbit/commit/699c2184f070b3d1ccfde4eeaf810478c6c34bf2))
+
 ## [0.2.3](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.2...orbit-evm-v0.2.3) (2025-12-28)
 
 
