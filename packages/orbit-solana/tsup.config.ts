@@ -1,20 +1,17 @@
 import { defineConfig } from 'tsup';
 
+import pkg from './package.json';
+
 export default defineConfig([
   {
     format: ['cjs', 'esm'],
     entry: ['./src/index.ts'],
+    sourcemap: false,
+    splitting: true,
     treeshake: true,
-    sourcemap: true,
     minify: true,
     clean: true,
     dts: true,
-    external: [
-      '@tuwaio/orbit-core',
-      'gill',
-      '@wallet-standard/app',
-      '@wallet-standard/ui-core',
-      '@wallet-standard/ui-registry',
-    ],
+    external: [...Object.keys(pkg.peerDependencies || {}), ...Object.keys(pkg.devDependencies || {})],
   },
 ]);
