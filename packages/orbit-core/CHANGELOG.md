@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.3...orbit-core-v0.2.4) (2026-01-14)
+
+
+### Bug Fixes
+
+* format connectors names and update packages ([ee3289e](https://github.com/TuwaIO/orbit/commit/ee3289e2f00afbdad5d9b65fb9bd1a2b55d3b039))
+
 ## [0.2.3](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.2...orbit-core-v0.2.3) (2026-01-14)
 
 
