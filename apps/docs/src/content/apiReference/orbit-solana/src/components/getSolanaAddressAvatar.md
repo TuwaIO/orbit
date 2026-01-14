@@ -6,7 +6,7 @@
 
 > **getSolanaAddressAvatar**(`addressOrDomain`): `Promise`\<`string`\>
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts:89](https://github.com/TuwaIO/orbit/blob/545146a037a2e11e27e3dee9a35b2a611f731140/packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts#L89)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts:89](https://github.com/TuwaIO/orbit/blob/ef3cb50bb666621b8a982b514340b0a50fea2c55/packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts#L89)
 
 Searches and returns the avatar URL for a given Solana address or SNS domain.
 Priority order:

@@ -6,7 +6,7 @@
 
 > **getConnectedSolanaConnector**(): `UiWallet`
 
-Defined in: [packages/orbit-solana/src/utils/getConnectedSolanaConnector.ts:5](https://github.com/TuwaIO/orbit/blob/545146a037a2e11e27e3dee9a35b2a611f731140/packages/orbit-solana/src/utils/getConnectedSolanaConnector.ts#L5)
+Defined in: [packages/orbit-solana/src/utils/getConnectedSolanaConnector.ts:5](https://github.com/TuwaIO/orbit/blob/ef3cb50bb666621b8a982b514340b0a50fea2c55/packages/orbit-solana/src/utils/getConnectedSolanaConnector.ts#L5)
 
 ## Returns
 
