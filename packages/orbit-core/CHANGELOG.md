@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.2...orbit-core-v0.2.3) (2026-01-14)
+
+
+### Bug Fixes
+
+* connectors names formatting ([a58394b](https://github.com/TuwaIO/orbit/commit/a58394b750e90044f16e9c31a928dac1ad6e85f4))
+
 ## [0.2.2](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.1...orbit-core-v0.2.2) (2026-01-07)
 
 
