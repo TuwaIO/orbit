@@ -6,7 +6,7 @@
 
 > **isSolanaChain**(`chainId`): `boolean`
 
-Defined in: [packages/orbit-core/src/utils/сhainHelpers.ts:8](https://github.com/TuwaIO/orbit/blob/a60eb355f5e79ce90476362d16e4e5281c7f8c57/packages/orbit-core/src/utils/сhainHelpers.ts#L8)
+Defined in: [packages/orbit-core/src/utils/сhainHelpers.ts:8](https://github.com/TuwaIO/orbit/blob/86e488cd9a400b8bba5f24385eec4ffd5c12bbb2/packages/orbit-core/src/utils/сhainHelpers.ts#L8)
 
 Checks whether the given chain ID belongs to a Solana network.
 Supports common Solana network names: 'devnet', 'testnet', 'mainnet-beta', 'mainnet'.

@@ -6,7 +6,7 @@
 
 > **ChainIdentifierArray** = readonly (`string` \| `number`)[]
 
-Defined in: [packages/orbit-core/src/types.ts:132](https://github.com/TuwaIO/orbit/blob/a60eb355f5e79ce90476362d16e4e5281c7f8c57/packages/orbit-core/src/types.ts#L132)
+Defined in: [packages/orbit-core/src/types.ts:132](https://github.com/TuwaIO/orbit/blob/86e488cd9a400b8bba5f24385eec4ffd5c12bbb2/packages/orbit-core/src/types.ts#L132)
 
 Array of chain identifiers (replaces IdentifierArray from @wallet-standard/base)
 Can contain strings, numbers, or other primitive types
