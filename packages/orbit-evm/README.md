@@ -36,18 +36,12 @@ Built with **TypeScript** and leveraging powerful libraries like **`@wagmi/core`
 
 ### Requirements
 
-- Node.js 20+
+- Node.js 20-24
 - TypeScript 5.9+
 
 ```bash
-# Using pnpm (recommended)
+# Using pnpm (recommended), but you can use npm, yarn or bun as well
 pnpm add @tuwaio/orbit-evm @wagmi/core viem
-
-# Using npm
-npm install @tuwaio/orbit-evm @wagmi/core viem
-
-# Using yarn
-yarn add @tuwaio/orbit-evm @wagmi/core viem
 ````
 
 *Note: `@wagmi/core` and `viem` are **peer dependencies** and must be installed alongside `@tuwaio/orbit-evm`*.

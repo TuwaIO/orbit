@@ -5,7 +5,7 @@
 
 <img src="https://raw.githubusercontent.com/TuwaIO/workflows/refs/heads/main/preview/repos/orbit_utils.png" alt="Orbit Utils" width="400" style="border-radius: 10px; text-align: center; margin-bottom: 20px; margin-top: 20px; margin-left: auto; margin-right: auto; display: block;" />
 
-A powerful, framework-agnostic library for seamless multi-chain blockchain interactions, providing a unified interface for EVM, Solana, and Starknet operations.
+A powerful, framework-agnostic library for seamless multi-chain blockchain interactions, providing a unified interface for EVM, and Solana operations.
 
 ---
 
@@ -24,21 +24,11 @@ A powerful, framework-agnostic library for seamless multi-chain blockchain inter
 ## 💾 Installation
 
 ```bash
-# Using pnpm (recommended)
+# Using pnpm (recommended), but you can use npm, yarn or bun as well
 pnpm add @tuwaio/orbit-core
 # Add chain-specific adapters as needed
 pnpm add @tuwaio/orbit-evm @wagmi/core viem
 pnpm add @tuwaio/orbit-solana gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
-
-# Using npm
-npm install @tuwaio/orbit-core
-npm install @tuwaio/orbit-evm @wagmi/core viem
-npm install @tuwaio/orbit-solana gill @tuwaio/orbit-core @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
-
-# Using yarn
-yarn add @tuwaio/orbit-core
-yarn add @tuwaio/orbit-evm @wagmi/core viem
-yarn add @tuwaio/orbit-solana gill @tuwaio/orbit-core @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
 ````
 
 -----

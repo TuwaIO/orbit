@@ -18,7 +18,7 @@ Built with **TypeScript**, this package utilizes **`gill`** (an improvement laye
 
 ## ✨ Key Features
 
-- **RPC Client Management:** Efficiently creates and caches Solana RPC clients (`SolanaClient` and lower-level `Rpc`) using `gill` (`createSolanaClientWithCache`, `createSolanaRPC`). Supports default and custom RPC URLs.
+- **RPC Client Management:** Efficiently creates and caches Solana RPC clients (`SolanaClient` and lower-level `RPC`) using `gill` (`createSolanaClientWithCache`, `createSolanaRPC`). Supports default and custom RPC URLs.
 - **Wallet Standard Integration:** Discovers available Solana wallets compatible with the Wallet Standard (`getAvailableSolanaConnectors`). Retrieves the currently connected wallet based on stored address (`getConnectedSolanaConnector`).
 - **Account Info Resolution:** Fetches user-set account labels (names) and icons (avatars) directly from the connected wallet's accounts (`getSolanaAddressName`, `getSolanaAddressAvatar`), including caching.
 - **Cluster & RPC URL Helpers:** Utilities to parse cluster names (e.g., 'mainnet', 'devnet') from chain IDs and retrieve corresponding RPC URLs (`getCluster`, `getRpcUrlForCluster`).
@@ -32,19 +32,13 @@ Built with **TypeScript**, this package utilizes **`gill`** (an improvement laye
 
 ### Requirements
 
-- Node.js 20+
+- Node.js 20-24
 - TypeScript 5.9+
 - `@tuwaio/orbit-core` (as a foundational peer dependency)
 
 ```bash
-# Using pnpm (recommended)
+# Using pnpm (recommended), but you can use npm, yarn or bun as well
 pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
-
-# Using npm
-npm install @tuwaio/orbit-solana @tuwaio/orbit-core gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
-
-# Using yarn
-yarn add @tuwaio/orbit-solana @tuwaio/orbit-core gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
 ````
 
 *Note: `@tuwaio/orbit-core`, `gill`, `@wallet-standard/app`, `@wallet-standard/ui-core`, and `@wallet-standard/ui-registry` are **peer dependencies** and must be installed alongside `@tuwaio/orbit-solana`*.
@@ -62,7 +56,7 @@ import { getAvailableWallets } from '@tuwaio/orbit-solana';
 
 const wallets = getAvailableWallets();
 console.log('Available Solana Wallets:', wallets.map(w => w.name));
-// Example Output: ['Phantom', 'Backpack', ...]
+// Example Output: ['Phantom', 'MetaMask', ...]
 ```
 
 ### Create a Cached RPC Client
@@ -142,7 +136,7 @@ console.log(devnetExplorerUrl);
 
 - **Types (`types.ts`)**: Defines Solana-specific types like `SolanaRPCUrls`.
 - **Cluster Helpers (`clusterHelpers.ts`)**: Functions `getCluster` and `getRpcUrlForCluster` for managing Solana network identifiers and RPC endpoints.
-- **Client Creation (`createSolanaClientWithCache.ts`, `createSolanaRPC.ts`)**: Provides cached instances of `gill`'s `SolanaClient` and `Rpc`. Includes default RPC URLs.
+- **Client Creation (`createSolanaClientWithCache.ts`, `createSolanaRPC.ts`)**: Provides cached instances of `gill`'s `SolanaClient` and `RPC`. Includes default RPC URLs.
 - **Wallet Interaction (`getAvailableSolanaConnectors.ts`, `getConnectedSolanaConnector.ts`)**: Leverages `@wallet-standard` to find and identify Solana wallets.
 - **Account Info (`getSolanaAddressAvatar.ts`, `getSolanaAddressName.ts`)**: Retrieves metadata (label, icon) associated with accounts within the connected wallet.
 - **Explorer Links (`getSolanaExplorerLink.ts`)**: Utility for constructing explorer URLs.

@@ -35,14 +35,8 @@ Its primary goal is to establish a **unified interface** for interacting with di
 ## 💾 Installation
 
 ```bash
-# Using pnpm (recommended)
+# Using pnpm (recommended), but you can use npm, yarn or bun as well
 pnpm add @tuwaio/orbit-core
-
-# Using npm
-npm install @tuwaio/orbit-core
-
-# Using yarn
-yarn add @tuwaio/orbit-core
 ````
 
 *Note: `@tuwaio/orbit-core` provides the core logic. You will typically install chain-specific packages like `@tuwaio/orbit-evm` or `@tuwaio/orbit-solana` alongside it.*

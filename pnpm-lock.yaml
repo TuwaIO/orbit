@@ -75,8 +75,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.3)
       '@tuwaio/nova-core':
-        specifier: ^0.2.5
-        version: 0.2.5(@radix-ui/react-dialog@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@web3icons/react@4.1.14(react@19.2.3)(typescript@5.9.3))(clsx@2.1.1)(framer-motion@12.29.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(tailwind-merge@3.4.0)
+        specifier: ^0.2.6
+        version: 0.2.6(@radix-ui/react-dialog@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@web3icons/common@0.11.43(typescript@5.9.3))(@web3icons/react@4.1.14(react@19.2.3)(typescript@5.9.3))(clsx@2.1.1)(framer-motion@12.29.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(tailwind-merge@3.4.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -152,7 +152,7 @@ importers:
     devDependencies:
       '@wagmi/core':
         specifier: ^3.3.1
-        version: 3.3.1(@types/react@19.2.9)(ox@0.11.3(typescript@5.9.3)(zod@4.3.6))(react@19.2.3)(typescript@5.9.3)(use-sync-external-store@1.6.0(react@19.2.3))(viem@2.44.4(typescript@5.9.3)(zod@4.3.6))
+        version: 3.3.1(@types/react@19.2.9)(ox@0.11.3(typescript@5.9.3)(zod@4.3.6))(react@19.2.3)(typescript@5.9.3)(use-sync-external-store@1.6.0(react@19.2.3))(viem@2.45.0(typescript@5.9.3)(zod@4.3.6))
       tsup:
         specifier: ^8.5.1
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.6)(typescript@5.9.3)(yaml@2.8.2)
@@ -160,8 +160,8 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       viem:
-        specifier: ^2.44.4
-        version: 2.44.4(typescript@5.9.3)(zod@4.3.6)
+        specifier: ^2.45.0
+        version: 2.45.0(typescript@5.9.3)(zod@4.3.6)
 
   packages/orbit-solana:
     devDependencies:
@@ -1902,10 +1902,11 @@ packages:
   '@ts-morph/common@0.28.1':
     resolution: {integrity: sha512-W74iWf7ILp1ZKNYXY5qbddNaml7e9Sedv5lvU1V8lftlitkc9Pq1A+jlH23ltDgWYeZFFEqGCD1Ies9hqu3O+g==}
 
-  '@tuwaio/nova-core@0.2.5':
-    resolution: {integrity: sha512-fBpp8Mi4NzkLUCCT2ENVjffWlfZCknY0wF4XqpTTQjzO7u8JPyDRrjzfwPcB1jz/+oABmlYhZNKS5J8FLc7H5g==}
+  '@tuwaio/nova-core@0.2.6':
+    resolution: {integrity: sha512-U2rJD8x4eT115GTZgo+EZyofRs7V3a+aJlBLqEeiL7BR9guqqRSyN8eArBxZuXeNa5zdZEVOM1hHnpaIjplSFA==}
     peerDependencies:
       '@radix-ui/react-dialog': 1.x.x
+      '@web3icons/common': '>=0.11'
       '@web3icons/react': '>=4'
       clsx: 2.x.x
       framer-motion: 12.x.x
@@ -5336,8 +5337,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  viem@2.44.4:
-    resolution: {integrity: sha512-sJDLVl2EsS5Fo7GSWZME5CXEV7QRYkUJPeBw7ac+4XI3D4ydvMw/gjulTsT5pgqcpu70BploFnOAC6DLpan1Yg==}
+  viem@2.45.0:
+    resolution: {integrity: sha512-iVA9qrAgRdtpWa80lCZ6Jri6XzmLOwwA1wagX2HnKejKeliFLpON0KOdyfqvcy+gUpBVP59LBxP2aKiL3aj8fg==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
@@ -7196,9 +7197,10 @@ snapshots:
       path-browserify: 1.0.1
       tinyglobby: 0.2.15
 
-  '@tuwaio/nova-core@0.2.5(@radix-ui/react-dialog@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@web3icons/react@4.1.14(react@19.2.3)(typescript@5.9.3))(clsx@2.1.1)(framer-motion@12.29.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(tailwind-merge@3.4.0)':
+  '@tuwaio/nova-core@0.2.6(@radix-ui/react-dialog@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@web3icons/common@0.11.43(typescript@5.9.3))(@web3icons/react@4.1.14(react@19.2.3)(typescript@5.9.3))(clsx@2.1.1)(framer-motion@12.29.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(tailwind-merge@3.4.0)':
     dependencies:
       '@radix-ui/react-dialog': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@web3icons/common': 0.11.43(typescript@5.9.3)
       '@web3icons/react': 4.1.14(react@19.2.3)(typescript@5.9.3)
       clsx: 2.1.1
       framer-motion: 12.29.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -7491,11 +7493,11 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@wagmi/core@3.3.1(@types/react@19.2.9)(ox@0.11.3(typescript@5.9.3)(zod@4.3.6))(react@19.2.3)(typescript@5.9.3)(use-sync-external-store@1.6.0(react@19.2.3))(viem@2.44.4(typescript@5.9.3)(zod@4.3.6))':
+  '@wagmi/core@3.3.1(@types/react@19.2.9)(ox@0.11.3(typescript@5.9.3)(zod@4.3.6))(react@19.2.3)(typescript@5.9.3)(use-sync-external-store@1.6.0(react@19.2.3))(viem@2.45.0(typescript@5.9.3)(zod@4.3.6))':
     dependencies:
       eventemitter3: 5.0.1
       mipd: 0.0.7(typescript@5.9.3)
-      viem: 2.44.4(typescript@5.9.3)(zod@4.3.6)
+      viem: 2.45.0(typescript@5.9.3)(zod@4.3.6)
       zustand: 5.0.0(@types/react@19.2.9)(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))
     optionalDependencies:
       ox: 0.11.3(typescript@5.9.3)(zod@4.3.6)
@@ -11172,7 +11174,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  viem@2.44.4(typescript@5.9.3)(zod@4.3.6):
+  viem@2.45.0(typescript@5.9.3)(zod@4.3.6):
     dependencies:
       '@noble/curves': 1.9.1
       '@noble/hashes': 1.8.0
