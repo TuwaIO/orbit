@@ -23,13 +23,15 @@
 ## Variables
 
 - [impersonatedHelpers](variables/impersonatedHelpers.md)
-- [isSafeApp](variables/isSafeApp.md)
+- [isInSecureIframe](variables/isInSecureIframe.md)
+- [~~isSafeApp~~](variables/isSafeApp.md)
 - [lastConnectedConnectorHelpers](variables/lastConnectedConnectorHelpers.md)
 - [recentlyConnectedConnectorsListHelpers](variables/recentlyConnectedConnectorsListHelpers.md)
 
 ## Functions
 
 - [delay](functions/delay.md)
+- [detectSafeApp](functions/detectSafeApp.md)
 - [filterUniqueByKey](functions/filterUniqueByKey.md)
 - [formatConnectorChainId](functions/formatConnectorChainId.md)
 - [formatConnectorName](functions/formatConnectorName.md)

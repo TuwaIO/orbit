@@ -6,7 +6,7 @@
 
 > **getAddress**(`name`): `Promise`\<`` `0x${string}` `` \| `null`\>
 
-Defined in: [packages/orbit-evm/src/utils/ensUtils.ts:81](https://github.com/TuwaIO/orbit/blob/6464464e773ec08480eb9be3d42314dc12bd307c/packages/orbit-evm/src/utils/ensUtils.ts#L81)
+Defined in: [packages/orbit-evm/src/utils/ensUtils.ts:81](https://github.com/TuwaIO/orbit/blob/5389ba3a01f0d45fd1a1d56581b07ed17fec33a3/packages/orbit-evm/src/utils/ensUtils.ts#L81)
 
 Fetches the Ethereum address associated with a given ENS name from the Ethereum Mainnet.
 Includes caching for performance.
