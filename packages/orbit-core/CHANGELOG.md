@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.5...orbit-core-v0.2.6) (2026-01-31)
+
+
+### Bug Fixes
+
+* update isSafeApp logic ([68b6012](https://github.com/TuwaIO/orbit/commit/68b6012973ca16eb74925e6078659ecafa34dcee))
+
 ## [0.2.5](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.4...orbit-core-v0.2.5) (2026-01-26)
 
 
