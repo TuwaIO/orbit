@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.6...orbit-core-v0.2.7) (2026-02-02)
+
+
+### Bug Fixes
+
+* added helper to normalize errors | update packages ([#22](https://github.com/TuwaIO/orbit/issues/22)) ([c605e60](https://github.com/TuwaIO/orbit/commit/c605e60e2a330f137686bc80ba9506d0c353fcd9))
+
 ## [0.2.6](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.5...orbit-core-v0.2.6) (2026-01-31)
 
 
