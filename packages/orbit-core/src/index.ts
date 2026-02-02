@@ -15,3 +15,4 @@ export * from './utils/recentlyConnectedConnectorsListHelpers';
 export * from './utils/selectAdapterByKey';
 export * from './utils/waitFor';
 export * from './utils/сhainHelpers';
+export * from './utils/normalizeError';

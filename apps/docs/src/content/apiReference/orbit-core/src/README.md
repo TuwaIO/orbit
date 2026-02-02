@@ -11,6 +11,7 @@
 ## Interfaces
 
 - [RecentlyConnectedConnectorData](interfaces/RecentlyConnectedConnectorData.md)
+- [TuwaErrorState](interfaces/TuwaErrorState.md)
 
 ## Type Aliases
 
@@ -41,6 +42,7 @@
 - [getParsedStorageItem](functions/getParsedStorageItem.md)
 - [isAddress](functions/isAddress.md)
 - [isSolanaChain](functions/isSolanaChain.md)
+- [normalizeError](functions/normalizeError.md)
 - [selectAdapterByKey](functions/selectAdapterByKey.md)
 - [setChainId](functions/setChainId.md)
 - [waitFor](functions/waitFor.md)
