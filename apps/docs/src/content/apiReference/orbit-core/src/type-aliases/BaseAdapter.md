@@ -6,7 +6,7 @@
 
 > **BaseAdapter** = `object`
 
-Defined in: [packages/orbit-core/src/types.ts:100](https://github.com/TuwaIO/orbit/blob/d157b2ce3ef0f62cb8568b5c51090f9492ffa716/packages/orbit-core/src/types.ts#L100)
+Defined in: [packages/orbit-core/src/types.ts:100](https://github.com/TuwaIO/orbit/blob/154d3835d8c15ce8df06853294f8ac9f17586a69/packages/orbit-core/src/types.ts#L100)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [packages/orbit-core/src/types.ts:100](https://github.com/TuwaIO/orb
 
 > `optional` **getAddress**: (`name`) => `Promise`\<`string` \| `null`\>
 
-Defined in: [packages/orbit-core/src/types.ts:114](https://github.com/TuwaIO/orbit/blob/d157b2ce3ef0f62cb8568b5c51090f9492ffa716/packages/orbit-core/src/types.ts#L114)
+Defined in: [packages/orbit-core/src/types.ts:114](https://github.com/TuwaIO/orbit/blob/154d3835d8c15ce8df06853294f8ac9f17586a69/packages/orbit-core/src/types.ts#L114)
 
 Optional method to resolve names to addresses
 
@@ -34,7 +34,7 @@ Optional method to resolve names to addresses
 
 > `optional` **getAvatar**: (`name`) => `Promise`\<`string` \| `null`\>
 
-Defined in: [packages/orbit-core/src/types.ts:111](https://github.com/TuwaIO/orbit/blob/d157b2ce3ef0f62cb8568b5c51090f9492ffa716/packages/orbit-core/src/types.ts#L111)
+Defined in: [packages/orbit-core/src/types.ts:111](https://github.com/TuwaIO/orbit/blob/154d3835d8c15ce8df06853294f8ac9f17586a69/packages/orbit-core/src/types.ts#L111)
 
 Optional method to get avatar for resolved names
 
@@ -54,7 +54,7 @@ Optional method to get avatar for resolved names
 
 > **getExplorerUrl**: (`url?`, `chainId?`) => `string` \| `undefined`
 
-Defined in: [packages/orbit-core/src/types.ts:105](https://github.com/TuwaIO/orbit/blob/d157b2ce3ef0f62cb8568b5c51090f9492ffa716/packages/orbit-core/src/types.ts#L105)
+Defined in: [packages/orbit-core/src/types.ts:105](https://github.com/TuwaIO/orbit/blob/154d3835d8c15ce8df06853294f8ac9f17586a69/packages/orbit-core/src/types.ts#L105)
 
 Generates blockchain explorer URL
 
@@ -80,7 +80,7 @@ Explorer URL or undefined if not available
 
 > `optional` **getName**: (`address`) => `Promise`\<`string` \| `null`\>
 
-Defined in: [packages/orbit-core/src/types.ts:108](https://github.com/TuwaIO/orbit/blob/d157b2ce3ef0f62cb8568b5c51090f9492ffa716/packages/orbit-core/src/types.ts#L108)
+Defined in: [packages/orbit-core/src/types.ts:108](https://github.com/TuwaIO/orbit/blob/154d3835d8c15ce8df06853294f8ac9f17586a69/packages/orbit-core/src/types.ts#L108)
 
 Optional method to resolve ENS-like names
 

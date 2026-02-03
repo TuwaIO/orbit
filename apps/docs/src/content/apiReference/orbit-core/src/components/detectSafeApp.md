@@ -6,7 +6,7 @@
 
 > **detectSafeApp**(`timeout`): `Promise`\<`boolean`\>
 
-Defined in: [packages/orbit-core/src/utils/isSafeApp.ts:7](https://github.com/TuwaIO/orbit/blob/d157b2ce3ef0f62cb8568b5c51090f9492ffa716/packages/orbit-core/src/utils/isSafeApp.ts#L7)
+Defined in: [packages/orbit-core/src/utils/isSafeApp.ts:7](https://github.com/TuwaIO/orbit/blob/154d3835d8c15ce8df06853294f8ac9f17586a69/packages/orbit-core/src/utils/isSafeApp.ts#L7)
 
 Checks if the current window is running inside a Safe App iframe
 by attempting postMessage communication with the parent window.
