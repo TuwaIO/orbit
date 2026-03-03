@@ -4,7 +4,7 @@
 
 ## About This Project
 
-This project houses the official documentation for the entire **Orbit Utils** ecosystem. It's built using **Next.js** with the **Nextra** documentation theme (`nextra-theme-docs`), a powerful framework that allows us to write content in **MDX** (Markdown with JSX) and generate a fast, searchable, and user-friendly static website]/page.jsx].
+This project houses the official documentation for the entire **Orbit Utils** ecosystem. It's built using **Next.js** with the **Nextra** documentation theme (`nextra-theme-docs`), a powerful framework that allows us to write content in **MDX** (Markdown with JSX) and generate a fast, searchable, and user-friendly static website]/page.tsx].
 
 The goal is to provide clear, comprehensive, and easy-to-navigate documentation for all packages within the `@tuwaio/orbit` monorepo, covering `@tuwaio/orbit-core`, `@tuwaio/orbit-evm`, and `@tuwaio/orbit-solana`.
 
@@ -65,9 +65,9 @@ All documentation pages are **MDX files** (`.mdx` or `.jsx` if primarily compone
 
 ### Managing Sidebar Navigation
 
-Sidebar navigation, page titles, and grouping are primarily controlled by `_meta.jsx` files within each content directory. These files export a default object defining the structure.
+Sidebar navigation, page titles, and grouping are primarily controlled by `_meta.tsx` files within each content directory. These files export a default object defining the structure.
 
-**Example: `src/content/_meta.jsx`**
+**Example: `src/content/_meta.tsx`**
 
 ```jsx
 export default {
@@ -79,7 +79,7 @@ export default {
 };
 ```
 
-*(For deeper nesting, like API Reference, `_meta.json` or `_meta.jsx` files are used within those subdirectories as well)*.
+*(For deeper nesting, like API Reference, `_meta.json` or `_meta.tsx` files are used within those subdirectories as well)*.
 
 ### API Reference Generation
 

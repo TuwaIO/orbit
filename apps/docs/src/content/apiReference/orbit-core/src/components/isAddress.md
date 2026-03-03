@@ -4,9 +4,9 @@
 
 # isAddress()
 
-> **isAddress**(`value`, `type`): `boolean`
+> **isAddress**(`value`, `type?`): `boolean`
 
-Defined in: [packages/orbit-core/src/utils/addressValidation.ts:25](https://github.com/TuwaIO/orbit/blob/154d3835d8c15ce8df06853294f8ac9f17586a69/packages/orbit-core/src/utils/addressValidation.ts#L25)
+Defined in: [packages/orbit-core/src/utils/addressValidation.ts:25](https://github.com/TuwaIO/orbit/blob/7ed24908b4b7287d2b14980b3ab2d5786db7a3c5/packages/orbit-core/src/utils/addressValidation.ts#L25)
 
 Universal address validation function that supports multiple blockchain formats
 
@@ -18,7 +18,7 @@ Universal address validation function that supports multiple blockchain formats
 
 Address string to validate
 
-### type
+### type?
 
 Optional blockchain type to validate against ('evm' | 'solana' | 'auto')
 
