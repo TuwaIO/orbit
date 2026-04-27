@@ -6,13 +6,13 @@
 
 > `const` **lastConnectedConnectorHelpers**: `object`
 
-Defined in: [packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts#L13)
+Defined in: [packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/ef209c30202d37873ebdf8182e3fb89848db2037/packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts#L13)
 
 Helper utilities for managing the last connected wallet state
 
 ## Type Declaration
 
-### getLastConnectedConnector()
+### getLastConnectedConnector
 
 > **getLastConnectedConnector**: () => `LastConnectedConnector` \| `undefined`
 
@@ -31,7 +31,7 @@ The LastConnectedConnector object or undefined if not set or in SSR context
 The value of the last connected wallet, initialized when the module loads.
 Returns undefined if not set, invalid, or in an SSR context.
 
-### removeLastConnectedConnector()
+### removeLastConnectedConnector
 
 > **removeLastConnectedConnector**: () => `void`
 
@@ -43,7 +43,7 @@ Removes the last connected wallet data from localStorage.
 
 undefined in SSR context, void in browser
 
-### setLastConnectedConnector()
+### setLastConnectedConnector
 
 > **setLastConnectedConnector**: (`data`) => `void`
 

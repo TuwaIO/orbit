@@ -6,13 +6,13 @@
 
 > `const` **impersonatedHelpers**: `object`
 
-Defined in: [packages/orbit-core/src/utils/impersonatedHelpers.ts:10](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/utils/impersonatedHelpers.ts#L10)
+Defined in: [packages/orbit-core/src/utils/impersonatedHelpers.ts:10](https://github.com/TuwaIO/orbit/blob/ef209c30202d37873ebdf8182e3fb89848db2037/packages/orbit-core/src/utils/impersonatedHelpers.ts#L10)
 
 Helper utilities for managing impersonated wallet addresses
 
 ## Type Declaration
 
-### getImpersonated()
+### getImpersonated
 
 > **getImpersonated**: () => `string` \| `null` \| `undefined`
 
@@ -41,7 +41,7 @@ if (address) {
 Currently impersonated address from localStorage
 Returns empty string if not set or in SSR context
 
-### removeImpersonated()
+### removeImpersonated
 
 > **removeImpersonated**: () => `void`
 
@@ -49,7 +49,7 @@ Returns empty string if not set or in SSR context
 
 `void`
 
-### setImpersonated()
+### setImpersonated
 
 > **setImpersonated**: (`address`) => `void`
 

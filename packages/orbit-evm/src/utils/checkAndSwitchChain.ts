@@ -27,10 +27,10 @@ export async function checkAndSwitchChain(chainId: number, config: Config): Prom
       await switchChain(config, { chainId });
     } catch (error) {
       if ((error as any).cause?.name === 'UserRejectedRequestError') {
-        throw new Error('User rejected the request to switch network.');
+        throw new Error('User rejected the request to switch network.', { cause: error });
       }
       console.error('Failed to switch network:', error);
-      throw new Error('An error occurred while switching the network.');
+      throw new Error('An error occurred while switching the network.', { cause: error });
     }
   }
 }

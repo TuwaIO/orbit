@@ -6,7 +6,7 @@
 
 > **getAdapterFromConnectorType**(`connectorType`): [`OrbitAdapter`](../enumerations/OrbitAdapter.md)
 
-Defined in: [packages/orbit-core/src/utils/getAdapterFromConnectorType.ts:25](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/utils/getAdapterFromConnectorType.ts#L25)
+Defined in: [packages/orbit-core/src/utils/getAdapterFromConnectorType.ts:25](https://github.com/TuwaIO/orbit/blob/ef209c30202d37873ebdf8182e3fb89848db2037/packages/orbit-core/src/utils/getAdapterFromConnectorType.ts#L25)
 
 Extracts the adapter type from a connector type string
 
@@ -14,9 +14,9 @@ Extracts the adapter type from a connector type string
 
 ### connectorType
 
-Connector type in format "orbit-adapter:connector" (e.g. "evm:metamask", "solana:phantom")
+`` `evm:${string}` `` \| `` `solana:${string}` `` \| `` `starknet:${string}` ``
 
-`` `evm:${string}` `` | `` `solana:${string}` `` | `` `starknet:${string}` ``
+Connector type in format "orbit-adapter:connector" (e.g. "evm:metamask", "solana:phantom")
 
 ## Returns
 
