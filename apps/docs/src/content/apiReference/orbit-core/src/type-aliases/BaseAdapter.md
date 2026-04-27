@@ -6,15 +6,15 @@
 
 > **BaseAdapter** = `object`
 
-Defined in: [packages/orbit-core/src/types.ts:100](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/types.ts#L100)
+Defined in: [packages/orbit-core/src/types.ts:100](https://github.com/TuwaIO/orbit/blob/1718028d2a079fba9c0caf6beafc60258775a444/packages/orbit-core/src/types.ts#L100)
 
 ## Properties
 
-### getAddress()?
+### getAddress?
 
-> `optional` **getAddress**: (`name`) => `Promise`\<`string` \| `null`\>
+> `optional` **getAddress?**: (`name`) => `Promise`\<`string` \| `null`\>
 
-Defined in: [packages/orbit-core/src/types.ts:114](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/types.ts#L114)
+Defined in: [packages/orbit-core/src/types.ts:114](https://github.com/TuwaIO/orbit/blob/1718028d2a079fba9c0caf6beafc60258775a444/packages/orbit-core/src/types.ts#L114)
 
 Optional method to resolve names to addresses
 
@@ -30,11 +30,11 @@ Optional method to resolve names to addresses
 
 ***
 
-### getAvatar()?
+### getAvatar?
 
-> `optional` **getAvatar**: (`name`) => `Promise`\<`string` \| `null`\>
+> `optional` **getAvatar?**: (`name`) => `Promise`\<`string` \| `null`\>
 
-Defined in: [packages/orbit-core/src/types.ts:111](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/types.ts#L111)
+Defined in: [packages/orbit-core/src/types.ts:111](https://github.com/TuwaIO/orbit/blob/1718028d2a079fba9c0caf6beafc60258775a444/packages/orbit-core/src/types.ts#L111)
 
 Optional method to get avatar for resolved names
 
@@ -50,11 +50,11 @@ Optional method to get avatar for resolved names
 
 ***
 
-### getExplorerUrl()
+### getExplorerUrl
 
 > **getExplorerUrl**: (`url?`, `chainId?`) => `string` \| `undefined`
 
-Defined in: [packages/orbit-core/src/types.ts:105](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/types.ts#L105)
+Defined in: [packages/orbit-core/src/types.ts:105](https://github.com/TuwaIO/orbit/blob/1718028d2a079fba9c0caf6beafc60258775a444/packages/orbit-core/src/types.ts#L105)
 
 Generates blockchain explorer URL
 
@@ -66,7 +66,7 @@ Generates blockchain explorer URL
 
 ##### chainId?
 
-`string` | `number`
+`string` \| `number`
 
 #### Returns
 
@@ -76,11 +76,11 @@ Explorer URL or undefined if not available
 
 ***
 
-### getName()?
+### getName?
 
-> `optional` **getName**: (`address`) => `Promise`\<`string` \| `null`\>
+> `optional` **getName?**: (`address`) => `Promise`\<`string` \| `null`\>
 
-Defined in: [packages/orbit-core/src/types.ts:108](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/types.ts#L108)
+Defined in: [packages/orbit-core/src/types.ts:108](https://github.com/TuwaIO/orbit/blob/1718028d2a079fba9c0caf6beafc60258775a444/packages/orbit-core/src/types.ts#L108)
 
 Optional method to resolve ENS-like names
 

@@ -6,7 +6,7 @@
 
 > **ConnectorType** = `` `${OrbitAdapter}:${string}` ``
 
-Defined in: [packages/orbit-core/src/types.ts:121](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/types.ts#L121)
+Defined in: [packages/orbit-core/src/types.ts:121](https://github.com/TuwaIO/orbit/blob/1718028d2a079fba9c0caf6beafc60258775a444/packages/orbit-core/src/types.ts#L121)
 
 Type representing a connector identifier in format "OrbitAdapter:connector"
 

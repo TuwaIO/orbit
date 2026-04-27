@@ -6,13 +6,13 @@
 
 > `const` **recentlyConnectedConnectorsListHelpers**: `object`
 
-Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:63](https://github.com/TuwaIO/orbit/blob/ecce1faee9f34ba8b27e24b1ad975f3d3ab376a9/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L63)
+Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:63](https://github.com/TuwaIO/orbit/blob/1718028d2a079fba9c0caf6beafc60258775a444/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L63)
 
 Helper utilities for managing recently connected connectors list with disconnect timestamps
 
 ## Type Declaration
 
-### addConnector()
+### addConnector
 
 > **addConnector**: (`connectorType`, `connectorData`) => `undefined`
 
@@ -23,9 +23,9 @@ Preserves existing connectors and only adds/updates the specified one.
 
 ##### connectorType
 
-The connector type to add/update
+`` `evm:${string}` `` \| `` `solana:${string}` `` \| `` `starknet:${string}` ``
 
-`` `evm:${string}` `` | `` `solana:${string}` `` | `` `starknet:${string}` ``
+The connector type to add/update
 
 ##### connectorData
 
@@ -57,7 +57,7 @@ recentlyConnectedConnectorsListHelpers.addConnector('evm:metamask', {
 });
 ```
 
-### getConnector()
+### getConnector
 
 > **getConnector**: (`connectorType`) => [`RecentlyConnectedConnectorData`](../interfaces/RecentlyConnectedConnectorData.md) \| `undefined`
 
@@ -67,9 +67,9 @@ Gets data for a specific connector from the recently connected connectors list.
 
 ##### connectorType
 
-The connector type to get data for
+`` `evm:${string}` `` \| `` `solana:${string}` `` \| `` `starknet:${string}` ``
 
-`` `evm:${string}` `` | `` `solana:${string}` `` | `` `starknet:${string}` ``
+The connector type to get data for
 
 #### Returns
 
@@ -88,7 +88,7 @@ if (metamaskData) {
 }
 ```
 
-### getConnectorCount()
+### getConnectorCount
 
 > **getConnectorCount**: () => `number`
 
@@ -107,7 +107,7 @@ const count = recentlyConnectedConnectorsListHelpers.getConnectorCount();
 console.log(`${count} connectors recently connected`);
 ```
 
-### getConnectorsSortedByTime()
+### getConnectorsSortedByTime
 
 > **getConnectorsSortedByTime**: () => \[`` `evm:${string}` `` \| `` `solana:${string}` `` \| `` `starknet:${string}` ``, [`RecentlyConnectedConnectorData`](../interfaces/RecentlyConnectedConnectorData.md)\][]
 
@@ -129,7 +129,7 @@ sortedConnectors.forEach(([connectorType, data]) => {
 });
 ```
 
-### getRecentlyConnectedConnectorsList()
+### getRecentlyConnectedConnectorsList
 
 > **getRecentlyConnectedConnectorsList**: () => [`RecentlyConnectedConnectorsList`](../type-aliases/RecentlyConnectedConnectorsList.md) \| `undefined`
 
@@ -153,7 +153,7 @@ if (connectors) {
 }
 ```
 
-### hasConnector()
+### hasConnector
 
 > **hasConnector**: (`connectorType`) => `boolean` \| `undefined`
 
@@ -163,9 +163,9 @@ Checks if a specific connector exists in the recently connected connectors list.
 
 ##### connectorType
 
-The connector type to check
+`` `evm:${string}` `` \| `` `solana:${string}` `` \| `` `starknet:${string}` ``
 
-`` `evm:${string}` `` | `` `solana:${string}` `` | `` `starknet:${string}` ``
+The connector type to check
 
 #### Returns
 
@@ -188,7 +188,7 @@ if (recentlyConnectedConnectorsListHelpers.hasConnector('evm:metamask')) {
 The current recently connected connectors list, initialized when the module loads.
 Returns undefined if not set, invalid, or in an SSR context.
 
-### removeConnector()
+### removeConnector
 
 > **removeConnector**: (`connectorType`) => `undefined`
 
@@ -199,9 +199,9 @@ Preserves all other connectors in the list.
 
 ##### connectorType
 
-The connector type to remove
+`` `evm:${string}` `` \| `` `solana:${string}` `` \| `` `starknet:${string}` ``
 
-`` `evm:${string}` `` | `` `solana:${string}` `` | `` `starknet:${string}` ``
+The connector type to remove
 
 #### Returns
 
@@ -216,7 +216,7 @@ undefined in SSR context, void in browser
 recentlyConnectedConnectorsListHelpers.removeConnector('evm:metamask');
 ```
 
-### removeConnectorsOlderThan()
+### removeConnectorsOlderThan
 
 > **removeConnectorsOlderThan**: (`beforeTimestamp`) => `undefined`
 
@@ -245,7 +245,7 @@ const weekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
 recentlyConnectedConnectorsListHelpers.removeConnectorsOlderThan(weekAgo);
 ```
 
-### removeRecentlyConnectedConnectorsList()
+### removeRecentlyConnectedConnectorsList
 
 > **removeRecentlyConnectedConnectorsList**: () => `void`
 
@@ -264,7 +264,7 @@ undefined in SSR context, void in browser
 recentlyConnectedConnectorsListHelpers.removeRecentlyConnectedConnectorsList();
 ```
 
-### setRecentlyConnectedConnectorsList()
+### setRecentlyConnectedConnectorsList
 
 > **setRecentlyConnectedConnectorsList**: (`connectors`) => `void`
 

@@ -83,13 +83,14 @@ Get the primary ENS name for an Ethereum address.
 
 ```typescript
 import { getName, isEnsName } from '@tuwaio/orbit-evm';
+import { mainnet } from 'viem/chains';
 
 async function displayEnsName(address: `0x${string}`) {
   if (isEnsName(address)) { // Basic check, though getName expects an address
       console.log(`${address} looks like an ENS name, not an address.`);
       return;
   }
-  const name = await getName(address);
+  const name = await getName(address, [mainnet]);
   if (name) {
     console.log(`The ENS name for ${address} is: ${name}`);
   } else {

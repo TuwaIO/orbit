@@ -5,7 +5,7 @@
  */
 
 import { Address, Hex, isAddress } from 'viem';
-import { mainnet } from 'viem/chains';
+import { Chain, mainnet } from 'viem/chains';
 import { getEnsAddress, getEnsAvatar, getEnsName, normalize } from 'viem/ens';
 
 import { createViemClient } from './createViemClient';
@@ -18,16 +18,24 @@ const addressCache = new Map<string, Address | null>();
 
 // A single, shared viem client for all ENS lookups.
 // ENS lookups are always performed against Ethereum Mainnet, regardless of the app's connected chain.
-const ensClient = createViemClient(mainnet.id, [mainnet]);
+const createENSClient = (chains: readonly [Chain, ...Chain[]]) => {
+  const mainnetChain = chains.find((c) => c.id === mainnet.id);
+  if (mainnetChain) {
+    return createViemClient(mainnet.id, [mainnetChain]);
+  }
+  return createViemClient(mainnet.id, [mainnet]);
+};
 
 /**
  * Fetches the primary ENS name for a given Ethereum address from the Ethereum Mainnet.
  * Includes caching for performance.
  *
  * @param {Hex} address - The Ethereum address to look up.
+ * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
  * @returns {Promise<string | null>} The ENS name if found, otherwise null.
  */
-export const getName = async (address: Hex): Promise<string | null> => {
+export const getName = async (address: Hex, chains: readonly [Chain, ...Chain[]]): Promise<string | null> => {
+  const ensClient = createENSClient(chains);
   if (!ensClient) return null;
 
   const cachedName = nameCache.get(address);
@@ -50,9 +58,11 @@ export const getName = async (address: Hex): Promise<string | null> => {
  * Includes caching for performance.
  *
  * @param {string} name - The ENS name (e.g., 'vitalik.eth').
+ * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
  * @returns {Promise<string | null>} The URL of the avatar image if found, otherwise null.
  */
-export const getAvatar = async (name: string): Promise<string | null> => {
+export const getAvatar = async (name: string, chains: readonly [Chain, ...Chain[]]): Promise<string | null> => {
+  const ensClient = createENSClient(chains);
   if (!ensClient) return null;
   const normalizedName = normalize(name);
 
@@ -76,9 +86,11 @@ export const getAvatar = async (name: string): Promise<string | null> => {
  * Includes caching for performance.
  *
  * @param {string} name - The ENS name to resolve (e.g., 'vitalik.eth').
+ * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
  * @returns {Promise<Address | null>} The associated Ethereum address (lowercase) or null if not found.
  */
-export const getAddress = async (name: string): Promise<Address | null> => {
+export const getAddress = async (name: string, chains: readonly [Chain, ...Chain[]]): Promise<Address | null> => {
+  const ensClient = createENSClient(chains);
   if (!ensClient) return null;
   const normalizedName = normalize(name);
 
