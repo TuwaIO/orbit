@@ -31,6 +31,7 @@ const createENSClient = (chains: readonly [Chain, ...Chain[]]) => {
  * Includes caching for performance.
  *
  * @param {Hex} address - The Ethereum address to look up.
+ * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
  * @returns {Promise<string | null>} The ENS name if found, otherwise null.
  */
 export const getName = async (address: Hex, chains: readonly [Chain, ...Chain[]]): Promise<string | null> => {
@@ -57,6 +58,7 @@ export const getName = async (address: Hex, chains: readonly [Chain, ...Chain[]]
  * Includes caching for performance.
  *
  * @param {string} name - The ENS name (e.g., 'vitalik.eth').
+ * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
  * @returns {Promise<string | null>} The URL of the avatar image if found, otherwise null.
  */
 export const getAvatar = async (name: string, chains: readonly [Chain, ...Chain[]]): Promise<string | null> => {
@@ -84,6 +86,7 @@ export const getAvatar = async (name: string, chains: readonly [Chain, ...Chain[
  * Includes caching for performance.
  *
  * @param {string} name - The ENS name to resolve (e.g., 'vitalik.eth').
+ * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
  * @returns {Promise<Address | null>} The associated Ethereum address (lowercase) or null if not found.
  */
 export const getAddress = async (name: string, chains: readonly [Chain, ...Chain[]]): Promise<Address | null> => {
