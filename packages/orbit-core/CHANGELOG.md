@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.8](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.7...orbit-core-v0.2.8) (2026-04-27)
+
+
+### Bug Fixes
+
+* evm ENS work (added chain customization); updated: packages ([#25](https://github.com/TuwaIO/orbit/issues/25)) ([782a2ad](https://github.com/TuwaIO/orbit/commit/782a2ad44ed32181aaef9c17d68f68726e6d4f13))
+
 ## [0.2.7](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.6...orbit-core-v0.2.7) (2026-02-02)
 
 
