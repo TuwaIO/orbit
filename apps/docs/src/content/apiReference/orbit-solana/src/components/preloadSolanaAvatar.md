@@ -6,7 +6,7 @@
 
 > **preloadSolanaAvatar**(`addressOrDomain`): `Promise`\<`void`\>
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts:154](https://github.com/TuwaIO/orbit/blob/dbd48a891d655266bf02a1dde85e978a83466bd2/packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts#L154)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts:154](https://github.com/TuwaIO/orbit/blob/9ebff5664562e1192d3da58ef56d50bba84fae94/packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts#L154)
 
 Preloads avatar for a given address/domain
 

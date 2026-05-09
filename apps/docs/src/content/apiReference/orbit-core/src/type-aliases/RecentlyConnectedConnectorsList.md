@@ -6,6 +6,6 @@
 
 > **RecentlyConnectedConnectorsList** = `Record`\<[`ConnectorType`](ConnectorType.md), [`RecentlyConnectedConnectorData`](../interfaces/RecentlyConnectedConnectorData.md)\>
 
-Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:23](https://github.com/TuwaIO/orbit/blob/dbd48a891d655266bf02a1dde85e978a83466bd2/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L23)
+Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:23](https://github.com/TuwaIO/orbit/blob/9ebff5664562e1192d3da58ef56d50bba84fae94/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L23)
 
 Record mapping connector types to their recently connected data

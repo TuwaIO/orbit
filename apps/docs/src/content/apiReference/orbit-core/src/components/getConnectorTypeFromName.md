@@ -6,7 +6,7 @@
 
 > **getConnectorTypeFromName**(`adapter`, `name`): `string`
 
-Defined in: [packages/orbit-core/src/utils/getConnectorTypeFromName.ts:30](https://github.com/TuwaIO/orbit/blob/dbd48a891d655266bf02a1dde85e978a83466bd2/packages/orbit-core/src/utils/getConnectorTypeFromName.ts#L30)
+Defined in: [packages/orbit-core/src/utils/getConnectorTypeFromName.ts:30](https://github.com/TuwaIO/orbit/blob/9ebff5664562e1192d3da58ef56d50bba84fae94/packages/orbit-core/src/utils/getConnectorTypeFromName.ts#L30)
 
 Generates a standardized connector type identifier from adapter type and connector name
 
