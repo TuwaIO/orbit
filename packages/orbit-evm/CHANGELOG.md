@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.13](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.12...orbit-evm-v0.2.13) (2026-05-28)
+
+
+### Bug Fixes
+
+* updated packages ([60c3741](https://github.com/TuwaIO/orbit/commit/60c374173b3a94cc76bd74935d7bfbccaf11a1f9))
+
 ## [0.2.12](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.11...orbit-evm-v0.2.12) (2026-05-09)
 
 
