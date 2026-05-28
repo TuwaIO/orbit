@@ -6,7 +6,7 @@
 
 > **getAdapterFromConnectorType**(`connectorType`): [`OrbitAdapter`](../enumerations/OrbitAdapter.md)
 
-Defined in: [packages/orbit-core/src/utils/getAdapterFromConnectorType.ts:25](https://github.com/TuwaIO/orbit/blob/9ebff5664562e1192d3da58ef56d50bba84fae94/packages/orbit-core/src/utils/getAdapterFromConnectorType.ts#L25)
+Defined in: [packages/orbit-core/src/utils/getAdapterFromConnectorType.ts:25](https://github.com/TuwaIO/orbit/blob/897070da841a1eae15ac453ae12c61ec90126828/packages/orbit-core/src/utils/getAdapterFromConnectorType.ts#L25)
 
 Extracts the adapter type from a connector type string
 

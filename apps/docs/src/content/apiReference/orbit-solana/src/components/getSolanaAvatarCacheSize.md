@@ -6,7 +6,7 @@
 
 > **getSolanaAvatarCacheSize**(): `number`
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts:145](https://github.com/TuwaIO/orbit/blob/9ebff5664562e1192d3da58ef56d50bba84fae94/packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts#L145)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts:145](https://github.com/TuwaIO/orbit/blob/897070da841a1eae15ac453ae12c61ec90126828/packages/orbit-solana/src/utils/getSolanaAddressAvatar.ts#L145)
 
 Gets the current avatar cache size
 
