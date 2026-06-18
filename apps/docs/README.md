@@ -12,14 +12,14 @@ The goal is to provide clear, comprehensive, and easy-to-navigate documentation 
 
 ## 🛠 Tech Stack
 
--   **Framework**: Next.js 16+
--   **Documentation Theme**: Nextra 4+ (`nextra`, `nextra-theme-docs`)
--   **Styling**: Tailwind CSS 4+ with PostCSS and TUWA's `@tuwaio/nova-core` styles.
--   **UI Components**: React 19+, Headless UI (`@headlessui/react`), Heroicons (`@heroicons/react`).
--   **Code Highlighting**: `react-syntax-highlighter`.
--   **State/Theme Management**: `next-themes` for dark/light mode.
--   **Client-Side Search**: Pagefind (integrated via `postbuild` script).
--   **Deployment**: Vercel.
+- **Framework**: Next.js 16+
+- **Documentation Theme**: Nextra 4+ (`nextra`, `nextra-theme-docs`)
+- **Styling**: Tailwind CSS 4+ with PostCSS and TUWA's `@tuwaio/nova-core` styles.
+- **UI Components**: React 19+, Headless UI (`@headlessui/react`), Heroicons (`@heroicons/react`).
+- **Code Highlighting**: `react-syntax-highlighter`.
+- **State/Theme Management**: `next-themes` for dark/light mode.
+- **Client-Side Search**: Pagefind (integrated via `postbuild` script).
+- **Deployment**: Vercel.
 
 ---
 
@@ -34,7 +34,7 @@ Ensure you have installed all dependencies from the **root of the monorepo** usi
 ```bash
 # Run from the monorepo root (tuwaio/orbit/), not from apps/docs/
 pnpm install
-````
+```
 
 This command installs dependencies for all packages in the workspace, including the necessary build steps (`postinstall` script in root `package.json`).
 
@@ -46,11 +46,11 @@ Run the following command from the **root of the monorepo** to start the Next.js
 pnpm --filter @tuwaio/orbit-docs dev
 ```
 
-*(Note: The filter `@tuwaio/orbit-docs` targets this specific application based on its `name` in `apps/docs/package.json`)*
+_(Note: The filter `@tuwaio/orbit-docs` targets this specific application based on its `name` in `apps/docs/package.json`)_
 
 The documentation site will then be available, typically at **[http://localhost:3000](http://localhost:3000)**. The site uses `nextjs-toploader` for a loading bar during navigation.
 
------
+---
 
 ## ✍️ How to Add and Edit Content
 
@@ -72,14 +72,15 @@ Sidebar navigation, page titles, and grouping are primarily controlled by `_meta
 ```jsx
 export default {
   index: 'Introduction', // Maps index.mdx to 'Introduction' title
-  '--': {               // Creates a visual separator
+  '--': {
+    // Creates a visual separator
     type: 'separator',
   },
   apiReference: 'API reference', // Maps the apiReference folder
 };
 ```
 
-*(For deeper nesting, like API Reference, `_meta.json` or `_meta.tsx` files are used within those subdirectories as well)*.
+_(For deeper nesting, like API Reference, `_meta.json` or `_meta.tsx` files are used within those subdirectories as well)_.
 
 ### API Reference Generation
 
@@ -89,7 +90,7 @@ The API reference content within `src/content/apiReference` is automatically gen
 
 Custom React components enhance the documentation. They are located in `src/components` (e.g., `CodeBlock.tsx`, `PackageInstallationTabs.tsx`) and can be imported directly into MDX files. The site uses `src/mdx-components.ts` to merge Nextra's default components with custom ones. NoSSR component is used to prevent Server-Side Rendering issues for certain components.
 
------
+---
 
 ## 🚀 Deployment
 
@@ -100,16 +101,14 @@ The documentation site is automatically deployed to **Vercel**.
 
 ## 🔗 Quick Links
 
-| Resource                 | Link                                                   |
-| ------------------------ |--------------------------------------------------------|
-| **Live Docs Site** | [**orbit.docs.tuwa.io**](https://orbit.docs.tuwa.io)   |
-| **Nextra Documentation** | [`https://nextra.site/docs`](https://nextra.site/docs) |
-| **Pagefind Documentation**| [`https://pagefind.app/`](https://pagefind.app/)       |
-| **Tailwind CSS Docs** | [`https://tailwindcss.com/docs`](https://tailwindcss.com/docs) |
-| **TypeDoc Docs** | [`https://typedoc.org/`](https://typedoc.org/)           |
-
+| Resource                   | Link                                                           |
+| -------------------------- | -------------------------------------------------------------- |
+| **Live Docs Site**         | [**orbit.docs.tuwa.io**](https://orbit.docs.tuwa.io)           |
+| **Nextra Documentation**   | [`https://nextra.site/docs`](https://nextra.site/docs)         |
+| **Pagefind Documentation** | [`https://pagefind.app/`](https://pagefind.app/)               |
+| **Tailwind CSS Docs**      | [`https://tailwindcss.com/docs`](https://tailwindcss.com/docs) |
+| **TypeDoc Docs**           | [`https://typedoc.org/`](https://typedoc.org/)                 |
 
 ## 📄 License
 
 This project is licensed under the **Apache-2.0 License** - see the [LICENSE](./LICENSE) file for details.
-

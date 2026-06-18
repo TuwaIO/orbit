@@ -6,7 +6,7 @@
 
 > **getName**(`address`, `chains`): `Promise`\<`string` \| `null`\>
 
-Defined in: [packages/orbit-evm/src/utils/ensUtils.ts:37](https://github.com/TuwaIO/orbit/blob/897070da841a1eae15ac453ae12c61ec90126828/packages/orbit-evm/src/utils/ensUtils.ts#L37)
+Defined in: [packages/orbit-evm/src/utils/ensUtils.ts:37](https://github.com/TuwaIO/orbit/blob/efcad7007d75da756b3f3accc40ce651d5e1ce38/packages/orbit-evm/src/utils/ensUtils.ts#L37)
 
 Fetches the primary ENS name for a given Ethereum address from the Ethereum Mainnet.
 Includes caching for performance.

@@ -1,12 +1,15 @@
 import '@/styles/app.css';
 
-import { Footer, Navbar } from '@tuwaio/docs-ui';
+import { Footer, Navbar, RemoteLogo } from '@tuwaio/docs-ui';
 import NextTopLoader from 'nextjs-toploader';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Layout } from 'nextra-theme-docs';
 
 import { navLinks } from '@/constants';
+
+const navbarLogo = <RemoteLogo width={105} height={45} className="tuwadocs:transition-opacity tuwadocs:duration-300" />;
+const footerLogo = <RemoteLogo width={100} height={42} className="tuwadocs:transition-opacity tuwadocs:duration-300" />;
 
 // --- Metadata Configuration ---
 export const metadata = {
@@ -15,7 +18,7 @@ export const metadata = {
     template: '%s – Orbit',
   },
   description:
-    'The official documentation for Orbit Utils, your toolkit for easily building user interfaces for web3 applications.',
+    'Official documentation for Orbit Utils. The modular, headless-first Web3 infrastructure for building self-custodial applications with zero vendor lock-in.',
 
   keywords: [
     'headless',
@@ -36,7 +39,7 @@ export const metadata = {
   openGraph: {
     title: 'Orbit Utils Documentation',
     description:
-      'The official documentation for Orbit Utils, your toolkit for easily building user interfaces for web3 applications.',
+      'Official documentation for Orbit Utils. The modular, headless-first Web3 infrastructure for building self-custodial applications with zero vendor lock-in.',
     url: 'https://orbit.docs.tuwa.io/',
     siteName: 'Orbit Utils Docs',
     images: [
@@ -54,7 +57,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Orbit Utils Documentation',
     description:
-      'The official documentation for Orbit Utils, your toolkit for easily building user interfaces for web3 applications.',
+      'Official documentation for Orbit Utils. The modular, headless-first Web3 infrastructure for building self-custodial applications with zero vendor lock-in.',
     images: ['https://raw.githubusercontent.com/TuwaIO/workflows/refs/heads/main/preview/preview-logo.png'],
   },
 };
@@ -67,8 +70,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </Head>
       <body>
         <Layout
-          navbar={<Navbar key="navbar" links={navLinks} />}
-          footer={<Footer key="footer" />}
+          navbar={<Navbar key="navbar" links={navLinks} logo={navbarLogo} />}
+          footer={<Footer key="footer" logo={footerLogo} />}
           pageMap={await getPageMap()}
           docsRepositoryBase="https://github.com/TuwaIO/orbit/tree/main/apps/docs"
           navigation={{ prev: true, next: true }}

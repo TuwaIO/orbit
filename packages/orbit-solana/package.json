@@ -51,8 +51,8 @@
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
     "gill": "^0.14.0",
-    "@wallet-standard/app": "^1.1.0",
-    "@wallet-standard/ui-core": "^1.0.0",
-    "@wallet-standard/ui-registry": "^1.1.0"
+    "@wallet-standard/app": "^1.1.1",
+    "@wallet-standard/ui-core": "^1.0.1",
+    "@wallet-standard/ui-registry": "^1.1.1"
   }
 }

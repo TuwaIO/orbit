@@ -6,3 +6,7 @@ allowBuilds:
   sharp: false
 minimumReleaseAgeExclude:
   - viem@2.51.3
+  - '@wagmi/core@3.5.1'
+  - '@tuwaio/*'
+overrides:
+  zod: 4.3.6
