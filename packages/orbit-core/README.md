@@ -67,7 +67,7 @@ import { lastConnectedConnectorHelpers } from '@tuwaio/orbit-core';
 lastConnectedConnectorHelpers.setLastConnectedConnector({
   connectorType: 'evm:metamask',
   chainId: 1,
-  address: '0x123...',
+  address: '0x123...321',
 });
 
 // Retrieve connection metadata (returns null in SSR environment)

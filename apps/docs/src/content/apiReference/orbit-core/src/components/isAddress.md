@@ -6,7 +6,7 @@
 
 > **isAddress**(`value`, `type?`): `boolean`
 
-Defined in: [packages/orbit-core/src/utils/addressValidation.ts:25](https://github.com/TuwaIO/orbit/blob/97ad3152993b411f5933536778bc34aa8d08cee8/packages/orbit-core/src/utils/addressValidation.ts#L25)
+Defined in: [packages/orbit-core/src/utils/addressValidation.ts:25](https://github.com/TuwaIO/orbit/blob/b52dc368b4ffdf4a4f47985e51b04080b789eb45/packages/orbit-core/src/utils/addressValidation.ts#L25)
 
 Universal address validation function that supports multiple blockchain formats
 
