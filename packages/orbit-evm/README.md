@@ -63,7 +63,7 @@ async function alignNetwork() {
   try {
     const mainnetChainId = 1;
     await checkAndSwitchChain(mainnetChainId, wagmiConfig);
-    console.log('Wallet aligned to Ethereum mainnet');
+    console.log('Wallet aligned to Ethereum Mainnet');
   } catch (error) {
     console.error('Failed to align network:', error);
   }

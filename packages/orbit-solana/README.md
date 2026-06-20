@@ -41,7 +41,7 @@ const wallets = getAvailableSolanaConnectors();
 console.log(
   'Detected Wallets:',
   wallets.map((w) => w.name),
-); // ['Phantom', 'Solflare', 'Metamask', ...]
+); // ['Phantom', 'Solflare', ...]
 ```
 
 ### Cached RPC Operations
