@@ -4,7 +4,7 @@
   "private": false,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "The core, with web3 Solana utilities and helpers for TUWA projects.",
+  "description": "Tier 2 of the TUWA Ecosystem. Low-level Solana-specific communication primitives and RPC caching utilities powered strictly by gill.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

@@ -1,10 +1,10 @@
-[**@tuwaio/orbit-monorepo**](../../../README.md)
+[**API Reference for TUWA Orbit framework-agnostic multi-chain primitives**](../../../README.md)
 
 ***
 
 # TuwaErrorState
 
-Defined in: [packages/orbit-core/src/utils/normalizeError.ts:11](https://github.com/TuwaIO/orbit/blob/1ad75fa440e5fad6e46561ff2605f7443104f383/packages/orbit-core/src/utils/normalizeError.ts#L11)
+Defined in: [packages/orbit-core/src/utils/normalizeError.ts:11](https://github.com/TuwaIO/orbit/blob/8b1f0b845177b762a689cc8b4d989ba47e6f3eba/packages/orbit-core/src/utils/normalizeError.ts#L11)
 
 Normalized error state that is safe for Zustand persistence.
 - `message`: User-friendly error message for display
@@ -16,7 +16,7 @@ Normalized error state that is safe for Zustand persistence.
 
 > **message**: `string`
 
-Defined in: [packages/orbit-core/src/utils/normalizeError.ts:12](https://github.com/TuwaIO/orbit/blob/1ad75fa440e5fad6e46561ff2605f7443104f383/packages/orbit-core/src/utils/normalizeError.ts#L12)
+Defined in: [packages/orbit-core/src/utils/normalizeError.ts:12](https://github.com/TuwaIO/orbit/blob/8b1f0b845177b762a689cc8b4d989ba47e6f3eba/packages/orbit-core/src/utils/normalizeError.ts#L12)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [packages/orbit-core/src/utils/normalizeError.ts:12](https://github.
 
 > **raw**: `Record`\<`string`, `unknown`\>
 
-Defined in: [packages/orbit-core/src/utils/normalizeError.ts:13](https://github.com/TuwaIO/orbit/blob/1ad75fa440e5fad6e46561ff2605f7443104f383/packages/orbit-core/src/utils/normalizeError.ts#L13)
+Defined in: [packages/orbit-core/src/utils/normalizeError.ts:13](https://github.com/TuwaIO/orbit/blob/8b1f0b845177b762a689cc8b4d989ba47e6f3eba/packages/orbit-core/src/utils/normalizeError.ts#L13)

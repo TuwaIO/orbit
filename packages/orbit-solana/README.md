@@ -3,17 +3,16 @@
 [![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-solana.svg)](https://www.npmjs.com/package/@tuwaio/orbit-solana)
 [![License](https://img.shields.io/npm/l/@tuwaio/orbit-solana.svg)](./LICENSE)
 
-`@tuwaio/orbit-solana` provides concrete implementations and utilities tailored specifically for the Solana blockchain. Built entirely in **TypeScript** and powered by **`gill`** (the modern improvement layer over `@solana/kit`), it acts as the Solana adapter for the Orbit Utils ecosystem, simplifying wallet discovery via standard specifications and optimizing RPC client performance.
+`@tuwaio/orbit-solana` provides concrete implementations of low-level Solana-specific communication primitives for Tier 2 of the TUWA Orbit stack. Engineered strictly on top of **`gill`** (the modern high-performance alternative to legacy Solana web3.js classes), this package integrates Wallet Standard capabilities for discovery and persistent caching of RPC connections.
 
 ---
 
 ## 🏛️ Core Capabilities
 
-- **Gill RPC Caching:** Creates and caches high-performance Solana RPC clients (`createSolanaClientWithCache`, `createSolanaRPC`) to eliminate instantiation overhead.
-- **Wallet Standard Support:** Dynamic wallet discovery (`getAvailableSolanaConnectors`) and active wallet retrieval (`getConnectedSolanaConnector`) conforming to the official `@wallet-standard` specifications.
-- **Account Metadata Lookups:** Retrieves user-defined account labels (names) and icons (avatars) directly from connected Wallet Standard accounts with cache persistence.
-- **Cluster Moniker Helpers:** Utilities to resolve Solana cluster parameters (mainnet, devnet, testnet) and fetch matching RPC nodes.
-- **Explorer Link Factory:** Generates explorer URLs (e.g. Solscan) automatically handling the active cluster parameters.
+- **Gill RPC Caching:** Creates and caches high-performance Solana RPC connections (`createSolanaClientWithCache`, `createSolanaRPC`) to optimize transaction dispatching and query pipelines.
+- **Wallet Standard Integration:** Low-level discovery routines (`getAvailableSolanaConnectors`, `getConnectedSolanaConnector`) that strictly align with the `@wallet-standard/app` specifications.
+- **Profile Metadata Engine:** Resolves user-defined account descriptors (names, avatars) directly from Wallet Standard providers.
+- **Cluster Parameter Resolution:** Maps Solana RPC clusters (mainnet, devnet, testnet) to explorer endpoints and RPC configurations.
 
 ---
 
@@ -28,53 +27,46 @@ pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core gill @wallet-standard/app @wall
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Technical Integration
 
-### Wallet Discovery
+### Cached RPC Connection
 
-Locate installed wallets supporting the modern Wallet Standard:
-
-```typescript
-import { getAvailableSolanaConnectors } from '@tuwaio/orbit-solana';
-
-const wallets = getAvailableSolanaConnectors();
-console.log(
-  'Detected Wallets:',
-  wallets.map((w) => w.name),
-); // ['Phantom', 'Solflare', ...]
-```
-
-### Cached RPC Operations
-
-Obtain a cached public Solana client for network requests:
+Establish cached RPC endpoints dynamically:
 
 ```typescript
 import { createSolanaClientWithCache } from '@tuwaio/orbit-solana';
 
-// Obtain cached mainnet client
+// Obtain cached connection primitive
 const client = createSolanaClientWithCache({ rpcUrlOrMoniker: 'mainnet' });
+```
 
-// Perform RPC actions
-// const balance = await client.rpc.getBalance(address).send();
+### Wallet Standard Discovery
+
+Query the browser runtime for installed Wallet Standard adapters:
+
+```typescript
+import { getAvailableSolanaConnectors } from '@tuwaio/orbit-solana';
+
+const connectors = getAvailableSolanaConnectors();
+console.log(
+  'Available Standard Adapters:',
+  connectors.map((c) => c.name),
+);
 ```
 
 ---
 
 ## 🔧 API & Module Architecture
 
-`@tuwaio/orbit-solana` exports the following modules:
+`@tuwaio/orbit-solana` exposes the following modules:
 
-- **RPC Client Factory:** `createSolanaClientWithCache`, `createSolanaRPC`.
-- **Wallet Discoverer:** `getAvailableSolanaConnectors`, `getConnectedSolanaConnector`.
-- **Account Info Resolvers:** `getSolanaAddressName`, `getSolanaAddressAvatar`.
+- **RPC Factory:** `createSolanaClientWithCache`, `createSolanaRPC`.
+- **Connector Discovery:** `getAvailableSolanaConnectors`, `getConnectedSolanaConnector`.
+- **Account Resolvers:** `getSolanaAddressName`, `getSolanaAddressAvatar`.
 - **Network Helpers:** `getCluster`, `getRpcUrlForCluster`.
-- **URL Builder:** `getSolanaExplorerLink`.
+- **Explorer Helpers:** `getSolanaExplorerLink`.
 
 ---
-
-## 🤝 Contributing
-
-Please read our main **[Contribution Guidelines](https://github.com/TuwaIO/workflows/blob/main/CONTRIBUTING.md)** before submitting pull requests.
 
 ## 📄 License
 

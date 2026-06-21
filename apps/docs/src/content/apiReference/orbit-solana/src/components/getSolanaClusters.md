@@ -1,4 +1,4 @@
-[**@tuwaio/orbit-monorepo**](../../../README.md)
+[**API Reference for TUWA Orbit framework-agnostic multi-chain primitives**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 > **getSolanaClusters**(`solanaRPCUrls?`, `chains?`): `string`[]
 
-Defined in: [packages/orbit-solana/src/utils/chainsUtils.ts:65](https://github.com/TuwaIO/orbit/blob/1ad75fa440e5fad6e46561ff2605f7443104f383/packages/orbit-solana/src/utils/chainsUtils.ts#L65)
+Defined in: [packages/orbit-solana/src/utils/chainsUtils.ts:65](https://github.com/TuwaIO/orbit/blob/8b1f0b845177b762a689cc8b4d989ba47e6f3eba/packages/orbit-solana/src/utils/chainsUtils.ts#L65)
 
 Get Solana clusters from configuration
 

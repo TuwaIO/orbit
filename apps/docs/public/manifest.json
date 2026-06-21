@@ -1,7 +1,7 @@
 {
-  "name": "Orbit Utils Documentation",
-  "short_name": "Orbit Utils Documentation",
-  "description": "The official documentation for Orbit Utils, your toolkit for easily building user interfaces for web3 applications.",
+  "name": "TUWA Orbit Documentation",
+  "short_name": "TUWA Orbit",
+  "description": "Technical documentation for TUWA Orbit: The framework-agnostic low-level Web3 communication primitives.",
   "iconPath": "icon0.svg",
   "icons": [
     {

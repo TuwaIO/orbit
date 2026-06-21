@@ -1,5 +1,6 @@
 {
   "$schema": "https://typedoc.org/schema.json",
+  "name": "API Reference for TUWA Orbit framework-agnostic multi-chain primitives",
   "entryPoints": [
     "packages/orbit-core/src/index.ts",
     "packages/orbit-evm/src/index.ts",

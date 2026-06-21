@@ -5,7 +5,7 @@
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
   "packageManager": "pnpm@11.8.0",
-  "description": "Monorepo for the Orbit Utils, the set of utils for multichain dapps.",
+  "description": "Monorepo for Orbit: Framework-agnostic low-level multi-chain communication primitives for the TUWA Ecosystem.",
   "scripts": {
     "build": "pnpm --filter \"./packages/**\" build",
     "postinstall": "pnpm build",

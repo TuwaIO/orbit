@@ -2,24 +2,21 @@
 
 ## [0.2.11](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.10...orbit-core-v0.2.11) (2026-06-20)
 
-
 ### Bug Fixes
 
-* build ([db1d00f](https://github.com/TuwaIO/orbit/commit/db1d00f79859dd4af165cfca1132c0fe4c5a21dd))
+- build ([db1d00f](https://github.com/TuwaIO/orbit/commit/db1d00f79859dd4af165cfca1132c0fe4c5a21dd))
 
 ## [0.2.10](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.9...orbit-core-v0.2.10) (2026-06-20)
 
-
 ### Bug Fixes
 
-* build ([491087d](https://github.com/TuwaIO/orbit/commit/491087d189c80450531934d387d2561f19f84165))
+- build ([491087d](https://github.com/TuwaIO/orbit/commit/491087d189c80450531934d387d2561f19f84165))
 
 ## [0.2.9](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.8...orbit-core-v0.2.9) (2026-06-18)
 
-
 ### Bug Fixes
 
-* updated packages ([5fe5732](https://github.com/TuwaIO/orbit/commit/5fe5732ca1d7cea2e05cb35be17cf6c43483bbc2))
+- updated packages ([5fe5732](https://github.com/TuwaIO/orbit/commit/5fe5732ca1d7cea2e05cb35be17cf6c43483bbc2))
 
 ## [0.2.8](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.7...orbit-core-v0.2.8) (2026-04-27)
 

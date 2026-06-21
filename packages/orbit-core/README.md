@@ -3,16 +3,16 @@
 [![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-core.svg)](https://www.npmjs.com/package/@tuwaio/orbit-core)
 [![License](https://img.shields.io/npm/l/@tuwaio/orbit-core.svg)](./LICENSE)
 
-`@tuwaio/orbit-core` serves as the core logic and connector layer for the Orbit Utils ecosystem. It is completely **headless** and **framework-agnostic**, ensuring compatibility across React, Vue, Svelte, or vanilla JS applications. It abstracts the underlying blockchain architectures into a unified interface, simplifying state handling in complex multi-chain UIs.
+`@tuwaio/orbit-core` is the Tier 1 core logic and foundational state wrapper layer of the TUWA Orbit multi-chain framework. It is completely **headless** and **framework-agnostic**, engineered to decouple raw blockchain connection interfaces from visual frontend layers. By establishing a unified type-safe interface, it enables consistent cross-chain connection management and persistent user account tracking.
 
 ---
 
 ## 🏛️ Core Capabilities
 
-- **Unified Multi-Chain Adapters:** Establishes the standard `BaseAdapter` interface and the `OrbitAdapter` enum (EVM, Solana, Starknet) to enable cross-chain UI layers.
-- **Connection State Persistence:** Includes SSR-safe storage helpers (`lastConnectedConnectorHelpers`, `recentConnectedConnectorHelpers`) to track and resume wallet connection history.
-- **autonomy-focused Utilities:** Native handlers for formatting chain IDs, parsing connector names, and managing async task execution (`waitFor`, `delay`).
-- **Impersonation Engine:** Built-in `impersonatedHelpers` to support testing and debugging in different account contexts.
+- **Unified Multi-Chain Primitives:** Establishes the structural `BaseAdapter` interface and the `OrbitAdapter` enum (EVM, Solana, Starknet) to serve as the abstract layer for multi-chain communication.
+- **Connection State Persistence:** Implements SSR-safe storage helpers (`lastConnectedConnectorHelpers`, `recentConnectedConnectorHelpers`) to track and resume wallet connection history via `localStorage`.
+- **Autonomy-Focused Utilities:** Technical utility helpers for formatting chain IDs, parsing connector names, and executing asynchronous operations (`waitFor`, `delay`).
+- **Account Impersonation Engine:** Built-in `impersonatedHelpers` for sandboxed testing and account auditing.
 
 ---
 
@@ -24,16 +24,16 @@ pnpm add @tuwaio/orbit-core
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Architectural Integration
 
-### Runtime Adapter Selection
+### Runtime Adapter Resolution
 
-Configure chain adapters dynamically and retrieve them at runtime using standard selectors:
+Register and resolve chain-specific primitive adapters dynamically:
 
 ```typescript
 import { OrbitAdapter, selectAdapterByKey, BaseAdapter } from '@tuwaio/orbit-core';
 
-// Configure adapters (mocked here, use @tuwaio/orbit-evm / @tuwaio/orbit-solana in production)
+// Configure primitive adapter mapping
 const adapters: BaseAdapter[] = [
   {
     key: OrbitAdapter.EVM,
@@ -45,32 +45,32 @@ const adapters: BaseAdapter[] = [
   },
 ];
 
-// Select adapter dynamically
+// Dynamically select target execution adapter
 const activeAdapter = selectAdapterByKey({
   adapterKey: OrbitAdapter.SOLANA,
   adapter: adapters,
 });
 
 if (activeAdapter) {
-  console.log('Selected:', activeAdapter.getExplorerUrl('tx/0x...', 'mainnet-beta'));
+  console.log(activeAdapter.getExplorerUrl('tx/0x...', 'mainnet-beta'));
 }
 ```
 
-### Connection State Persistence
+### Connection State Storage
 
-Persist last connected connector state in localStorage safely:
+Read and write connected connector metadata securely with `localStorage` fallback checks:
 
 ```typescript
 import { lastConnectedConnectorHelpers } from '@tuwaio/orbit-core';
 
-// Save connection metadata
+// Persist metadata
 lastConnectedConnectorHelpers.setLastConnectedConnector({
   connectorType: 'evm:metamask',
   chainId: 1,
   address: '0x123...',
 });
 
-// Retrieve connection metadata (returns null in SSR environment)
+// Retrieve connection metadata safely during client-side hydration
 const lastConnected = lastConnectedConnectorHelpers.getLastConnectedConnector();
 console.log(lastConnected?.address); // "0x123..."
 ```
@@ -79,19 +79,15 @@ console.log(lastConnected?.address); // "0x123..."
 
 ## 🔧 API & Module Architecture
 
-`@tuwaio/orbit-core` exports the following structures:
+`@tuwaio/orbit-core` exposes the following modules:
 
-- **Core Types:** `OrbitAdapter`, `BaseAdapter`, `ConnectorType`, `RecentlyConnectedConnectorData`.
-- **Registry Utilities:** `selectAdapterByKey`, `getAdapterFromConnectorType`, `getConnectorTypeFromName`.
+- **Core Primitives:** `OrbitAdapter`, `BaseAdapter`, `ConnectorType`, `RecentlyConnectedConnectorData`.
+- **Registry Resolvers:** `selectAdapterByKey`, `getAdapterFromConnectorType`, `getConnectorTypeFromName`.
 - **Formatters:** `formatConnectorName`, `formatConnectorChainId`.
-- **Storage Persisters:** `lastConnectedConnectorHelpers`, `recentConnectedConnectorHelpers`, `impersonatedHelpers`.
-- **General Utilities:** `isSafeApp`, `delay`, `waitFor`, `filterUniqueByKey`.
+- **Storage Helpers:** `lastConnectedConnectorHelpers`, `recentConnectedConnectorHelpers`, `impersonatedHelpers`.
+- **Core Primitives:** `isSafeApp`, `delay`, `waitFor`, `filterUniqueByKey`.
 
 ---
-
-## 🤝 Contributing
-
-Please read our main **[Contribution Guidelines](https://github.com/TuwaIO/workflows/blob/main/CONTRIBUTING.md)** before submitting pull requests.
 
 ## 📄 License
 

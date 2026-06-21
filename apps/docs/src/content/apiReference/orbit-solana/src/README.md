@@ -1,4 +1,4 @@
-[**@tuwaio/orbit-monorepo**](../../README.md)
+[**API Reference for TUWA Orbit framework-agnostic multi-chain primitives**](../../README.md)
 
 ***
 

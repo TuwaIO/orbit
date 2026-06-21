@@ -1,4 +1,4 @@
-[**@tuwaio/orbit-monorepo**](../../../README.md)
+[**API Reference for TUWA Orbit framework-agnostic multi-chain primitives**](../../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 > **clearSolanaNameCache**(): `void`
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:105](https://github.com/TuwaIO/orbit/blob/1ad75fa440e5fad6e46561ff2605f7443104f383/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L105)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:105](https://github.com/TuwaIO/orbit/blob/8b1f0b845177b762a689cc8b4d989ba47e6f3eba/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L105)
 
 Clears the Solana name cache
 

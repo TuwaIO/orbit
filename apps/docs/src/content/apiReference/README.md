@@ -1,8 +1,8 @@
-**@tuwaio/orbit-monorepo**
+**API Reference for TUWA Orbit framework-agnostic multi-chain primitives**
 
 ***
 
-# @tuwaio/orbit-monorepo
+# API Reference for TUWA Orbit framework-agnostic multi-chain primitives
 
 ## Modules
 

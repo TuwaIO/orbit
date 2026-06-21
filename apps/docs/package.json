@@ -4,7 +4,7 @@
   "private": true,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "Source code for the official documentation site for the Orbit Utils, the some utils for web3 build by TUWA. Built with Next.js and Nextra.",
+  "description": "Developer portal and technical documentation for the TUWA Orbit multi-chain architecture.",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build && pnpm postbuild",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@tuwaio/docs-ui": "^0.0.20",
+    "@tuwaio/docs-ui": "^0.0.22",
     "next": "16.2.9",
     "next-themes": "^0.4.6",
     "next-images": "^1.8.5",
