@@ -2,10 +2,9 @@
 
 ## [0.2.10](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.9...orbit-solana-v0.2.10) (2026-06-21)
 
-
 ### Bug Fixes
 
-* updated docs ([221b296](https://github.com/TuwaIO/orbit/commit/221b2966e8edacd5f0587cf1c2f7eb9eae0914fe))
+- updated docs ([221b296](https://github.com/TuwaIO/orbit/commit/221b2966e8edacd5f0587cf1c2f7eb9eae0914fe))
 
 ## [0.2.9](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.8...orbit-solana-v0.2.9) (2026-06-20)
 
