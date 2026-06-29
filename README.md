@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/TuwaIO/orbit/release.yml?branch=main)](https://github.com/TuwaIO/orbit/actions)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/TuwaIO/workflows/refs/heads/main/preview/repos/orbit_utils.png" alt="Orbit" width="450" style="border-radius: 12px; margin: 24px auto;" />
+  <img src="https://cdn.jsdelivr.net/gh/TuwaIO/workflows@main/preview/repos/orbit_utils.png" alt="Orbit" width="450" style="border-radius: 12px; margin: 24px auto;" />
 </p>
 
 TUWA Orbit is the foundational baseline layer of the TUWA Web3 frontend stack, providing framework-agnostic modules for low-level multi-chain communication. It acts as the headless, logic-only connector layer that sits below any visual kits (such as Nova UI Kit) or transaction lifecycle tracking engines (such as Pulsar / Quasar), granting developers complete architectural control and absolute application sovereignty.

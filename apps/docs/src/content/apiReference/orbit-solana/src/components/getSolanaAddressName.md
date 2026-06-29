@@ -6,7 +6,7 @@
 
 > **getSolanaAddressName**(`address`): `Promise`\<`string`\>
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:66](https://github.com/TuwaIO/orbit/blob/12a30fdc504e493db19e2812b9ac63871ff38607/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L66)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:66](https://github.com/TuwaIO/orbit/blob/5f1ccbcb82c624b80f26ed4f0e0857cee2b3844f/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L66)
 
 Searches and returns the account name (label) for a given Solana address.
 Priority order:
