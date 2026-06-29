@@ -6,7 +6,7 @@
 
 > **selectAdapterByKey**\<`A`\>(`options`): `A` \| `undefined`
 
-Defined in: [packages/orbit-core/src/utils/selectAdapterByKey.ts:46](https://github.com/TuwaIO/orbit/blob/5f1ccbcb82c624b80f26ed4f0e0857cee2b3844f/packages/orbit-core/src/utils/selectAdapterByKey.ts#L46)
+Defined in: [packages/orbit-core/src/utils/selectAdapterByKey.ts:46](https://github.com/TuwaIO/orbit/blob/6547ce13d40063a1eef6bd43aa523b45df1b5783/packages/orbit-core/src/utils/selectAdapterByKey.ts#L46)
 
 Selects an appropriate adapter based on the provided key from either a single adapter
 or an array of adapters.
