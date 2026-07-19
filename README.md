@@ -13,15 +13,15 @@ Orbit enforces a strict multi-chain abstraction through type-safe primitives, en
 
 ---
 
-## 🏛️ Monorepo Tier Architecture
+## 🏛️ Ecosystem Layer Architecture
 
 The monorepo structure segregates core cross-chain logic from concrete blockchain execution environments:
 
-### Tier 1: Foundational Core
+### Layer 1: Foundational Core (L1)
 
 - **`@tuwaio/orbit-core`**: The brain of the connector layer. Contains shared interfaces, common enums (`OrbitAdapter`, `BaseAdapter`), and type-safe primitives for connection persistence and `localStorage` state helper utilities.
 
-### Tier 2: Chain Platforms
+### Layer 2: Chain Platforms (L2)
 
 - **`@tuwaio/orbit-evm`**: Concrete implementation of low-level EVM-specific communication primitives. Built strictly on top of `viem` and `@wagmi/core`.
 - **`@tuwaio/orbit-solana`**: Concrete implementation of low-level Solana-specific communication primitives and RPC client caching. Powered strictly by `gill` and standard `@wallet-standard` specifications.
@@ -35,25 +35,25 @@ orbit/
 ├── apps/
 │   └── docs/                   # Nextra-based technical documentation & portal
 ├── packages/
-│   ├── orbit-core/             # Tier 1: Shared types, validations, and storage helpers
-│   ├── orbit-evm/              # Tier 2: Viem & Wagmi provider wrappers
-│   └── orbit-solana/           # Tier 2: Gill & Wallet-Standard adapters
+│   ├── orbit-core/             # L1: Shared types, validations, and storage helpers
+│   ├── orbit-evm/              # L2: Viem & Wagmi provider wrappers
+│   └── orbit-solana/           # L2: Gill & Wallet-Standard adapters
 ```
 
 ---
 
 ## 💾 Installation
 
-Orbit is modular. Install the Tier 1 core package and layer the Tier 2 chain platforms depending on target networks:
+Orbit is modular. Install the L1 core package and layer the L2 chain platforms depending on target networks:
 
 ```bash
-# Tier 1 Core
+# L1 Core
 pnpm add @tuwaio/orbit-core
 
-# Tier 2 EVM Platform
+# L2 EVM Platform
 pnpm add @tuwaio/orbit-evm @wagmi/core viem
 
-# Tier 2 Solana Platform
+# L2 Solana Platform
 pnpm add @tuwaio/orbit-solana gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
 ```
 

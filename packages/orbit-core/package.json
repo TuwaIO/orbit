@@ -4,7 +4,7 @@
   "private": false,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "Tier 1 of the TUWA Ecosystem. Framework-agnostic library for abstracting core multi-chain types, errors, and localStorage helper utilities.",
+  "description": "Layer 1 (L1) of the TUWA Ecosystem. Framework-agnostic library for abstracting core multi-chain types, errors, and localStorage helper utilities.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

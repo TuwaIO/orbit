@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-solana.svg)](https://www.npmjs.com/package/@tuwaio/orbit-solana)
 [![License](https://img.shields.io/npm/l/@tuwaio/orbit-solana.svg)](./LICENSE)
 
-`@tuwaio/orbit-solana` provides concrete implementations of low-level Solana-specific communication primitives for Tier 2 of the TUWA Orbit stack. Engineered strictly on top of **`gill`** (the modern high-performance alternative to legacy Solana web3.js classes), this package integrates Wallet Standard capabilities for discovery and persistent caching of RPC connections.
+`@tuwaio/orbit-solana` provides concrete implementations of low-level Solana-specific communication primitives for Layer 2 (L2) of the TUWA Orbit stack. Engineered strictly on top of **`gill`** (the modern high-performance alternative to legacy Solana web3.js classes), this package integrates Wallet Standard capabilities for discovery and persistent caching of RPC connections.
 
 ---
 

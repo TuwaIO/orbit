@@ -6,7 +6,7 @@
 
 > **normalizeError**(`error`): [`TuwaErrorState`](../interfaces/TuwaErrorState.md)
 
-Defined in: [packages/orbit-core/src/utils/normalizeError.ts:145](https://github.com/TuwaIO/orbit/blob/6547ce13d40063a1eef6bd43aa523b45df1b5783/packages/orbit-core/src/utils/normalizeError.ts#L145)
+Defined in: [packages/orbit-core/src/utils/normalizeError.ts:145](https://github.com/TuwaIO/orbit/blob/0eb2d9ff6342b8a1d76d7fbd96c07bafe99cc64a/packages/orbit-core/src/utils/normalizeError.ts#L145)
 
 Normalizes any error into a persistence-safe TuwaErrorState.
 

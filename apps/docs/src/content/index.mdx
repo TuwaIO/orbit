@@ -24,7 +24,7 @@ In high-reliability Web3 frontends, mixing user interface layouts with blockchai
 1. **Low-Level Communication Primitives:** Define cross-chain operations through the common `BaseAdapter` interface. Resolving ENS addresses, Solana signatures, and network state returns consistent models.
 2. **Headless Execution:** Contains zero CSS rules, UI layouts, or framework bindings. Integrates with React, Vue, Svelte, Solid, or vanilla JavaScript.
 3. **Application Sovereignty:** Restores developer control over network connections. Restricts wallet handling to self-custodial protocols and rejects SaaS dependency lock-ins.
-4. **Decoupled Architecture:** Serves as the Tier 1/2 layer beneath state lifecycle trackers (Pulsar) or CSS design frameworks (Nova), preventing circular dependencies and side effects.
+4. **Decoupled Architecture:** Serves as the Layer 1 and Layer 2 (L1/L2) foundational layer beneath state lifecycle trackers (Pulsar) or CSS design frameworks (Nova), preventing circular dependencies and side effects.
 
 ---
 
@@ -32,9 +32,9 @@ In high-reliability Web3 frontends, mixing user interface layouts with blockchai
 
 The Orbit monorepo is split into distinct, lightweight packages:
 
-- **`@tuwaio/orbit-core` (Tier 1)**: Defines common types, error definitions, and provides `localStorage` connection persistence helpers.
-- **`@tuwaio/orbit-evm` (Tier 2)**: Resolves EVM-specific communication primitives, public client caching, and ENS resolution powered by `viem` and `@wagmi/core`.
-- **`@tuwaio/orbit-solana` (Tier 2)**: Implements Solana RPC client caches, Wallet Standard connector discovery, and metadata lookups powered by `gill`.
+- **`@tuwaio/orbit-core` (L1)**: Defines common types, error definitions, and provides `localStorage` connection persistence helpers.
+- **`@tuwaio/orbit-evm` (L2)**: Resolves EVM-specific communication primitives, public client caching, and ENS resolution powered by `viem` and `@wagmi/core`.
+- **`@tuwaio/orbit-solana` (L2)**: Implements Solana RPC client caches, Wallet Standard connector discovery, and metadata lookups powered by `gill`.
 
 ---
 
@@ -43,13 +43,13 @@ The Orbit monorepo is split into distinct, lightweight packages:
 Install Orbit depending on target networks:
 
 ```bash
-# Tier 1 Core
+# L1 Core
 pnpm add @tuwaio/orbit-core
 
-# Tier 2 EVM Platform
+# L2 EVM Platform
 pnpm add @tuwaio/orbit-evm @wagmi/core viem
 
-# Tier 2 Solana Platform
+# L2 Solana Platform
 pnpm add @tuwaio/orbit-solana gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
 ```
 

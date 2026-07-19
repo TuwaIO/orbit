@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-evm.svg)](https://www.npmjs.com/package/@tuwaio/orbit-evm)
 [![License](https://img.shields.io/npm/l/@tuwaio/orbit-evm.svg)](./LICENSE)
 
-`@tuwaio/orbit-evm` provides concrete implementations of low-level EVM-specific communication primitives for Tier 2 of the TUWA Orbit stack. Engineered strictly on top of **`@wagmi/core`** and **`viem`**, this package provides deterministic chain switching, custom Viem client generation, and cached ENS metadata resolution, while enforcing a complete exclusion of legacy libraries like `ethers.js` or `web3.js`.
+`@tuwaio/orbit-evm` provides concrete implementations of low-level EVM-specific communication primitives for Layer 2 (L2) of the TUWA Orbit stack. Engineered strictly on top of **`@wagmi/core`** and **`viem`**, this package provides deterministic chain switching, custom Viem client generation, and cached ENS metadata resolution, while enforcing a complete exclusion of legacy libraries like `ethers.js` or `web3.js`.
 
 ---
 

@@ -6,7 +6,7 @@
 
 > **isValidSolanaCluster**(`cluster`): `boolean`
 
-Defined in: [packages/orbit-solana/src/utils/chainsUtils.ts:95](https://github.com/TuwaIO/orbit/blob/6547ce13d40063a1eef6bd43aa523b45df1b5783/packages/orbit-solana/src/utils/chainsUtils.ts#L95)
+Defined in: [packages/orbit-solana/src/utils/chainsUtils.ts:95](https://github.com/TuwaIO/orbit/blob/0eb2d9ff6342b8a1d76d7fbd96c07bafe99cc64a/packages/orbit-solana/src/utils/chainsUtils.ts#L95)
 
 Validates if a string is a valid Solana cluster moniker
 

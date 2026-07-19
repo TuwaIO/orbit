@@ -20,8 +20,10 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const navbarLogo = <RemoteLogo width={105} height={45} className="tuwadocs:transition-opacity tuwadocs:duration-300" />;
-const footerLogo = <RemoteLogo width={100} height={42} className="tuwadocs:transition-opacity tuwadocs:duration-300" />;
+const LOGO_URL = 'https://cdn.jsdelivr.net/gh/TuwaIO/workflows@main/preview/logo_v2.svg';
+const logo = (
+  <RemoteLogo url={LOGO_URL} width={126} height={40} className="tuwadocs:transition-opacity tuwadocs:duration-300" />
+);
 
 // --- Metadata Configuration ---
 export const metadata: Metadata = {
@@ -87,8 +89,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
         <Layout
-          navbar={<Navbar key="navbar" links={navLinks} logo={navbarLogo} />}
-          footer={<Footer key="footer" logo={footerLogo} />}
+          navbar={<Navbar key="navbar" links={navLinks} logo={logo} />}
+          footer={<Footer key="footer" logo={logo} />}
           pageMap={await getPageMap()}
           docsRepositoryBase="https://github.com/TuwaIO/orbit/tree/main/apps/docs"
           navigation={{ prev: true, next: true }}

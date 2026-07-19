@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-core.svg)](https://www.npmjs.com/package/@tuwaio/orbit-core)
 [![License](https://img.shields.io/npm/l/@tuwaio/orbit-core.svg)](./LICENSE)
 
-`@tuwaio/orbit-core` is the Tier 1 core logic and foundational state wrapper layer of the TUWA Orbit multi-chain framework. It is completely **headless** and **framework-agnostic**, engineered to decouple raw blockchain connection interfaces from visual frontend layers. By establishing a unified type-safe interface, it enables consistent cross-chain connection management and persistent user account tracking.
+`@tuwaio/orbit-core` is the Layer 1 (L1) core logic and foundational state wrapper layer of the TUWA Orbit multi-chain framework. It is completely **headless** and **framework-agnostic**, engineered to decouple raw blockchain connection interfaces from visual frontend layers. By establishing a unified type-safe interface, it enables consistent cross-chain connection management and persistent user account tracking.
 
 ---
 
