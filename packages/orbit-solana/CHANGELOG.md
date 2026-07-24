@@ -2,11 +2,10 @@
 
 ## [0.2.11](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.10...orbit-solana-v0.2.11) (2026-07-19)
 
-
 ### Bug Fixes
 
-* docs meta ([12a30fd](https://github.com/TuwaIO/orbit/commit/12a30fdc504e493db19e2812b9ac63871ff38607))
-* updated packages ([0121a86](https://github.com/TuwaIO/orbit/commit/0121a86e7e652134f2cc78c50d53c59b4aeee9ca))
+- docs meta ([12a30fd](https://github.com/TuwaIO/orbit/commit/12a30fdc504e493db19e2812b9ac63871ff38607))
+- updated packages ([0121a86](https://github.com/TuwaIO/orbit/commit/0121a86e7e652134f2cc78c50d53c59b4aeee9ca))
 
 ## [0.2.10](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.9...orbit-solana-v0.2.10) (2026-06-21)
 

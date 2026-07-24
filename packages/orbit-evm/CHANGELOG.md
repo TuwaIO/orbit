@@ -2,11 +2,10 @@
 
 ## [0.2.18](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.17...orbit-evm-v0.2.18) (2026-07-19)
 
-
 ### Bug Fixes
 
-* docs meta ([12a30fd](https://github.com/TuwaIO/orbit/commit/12a30fdc504e493db19e2812b9ac63871ff38607))
-* updated packages ([0121a86](https://github.com/TuwaIO/orbit/commit/0121a86e7e652134f2cc78c50d53c59b4aeee9ca))
+- docs meta ([12a30fd](https://github.com/TuwaIO/orbit/commit/12a30fdc504e493db19e2812b9ac63871ff38607))
+- updated packages ([0121a86](https://github.com/TuwaIO/orbit/commit/0121a86e7e652134f2cc78c50d53c59b4aeee9ca))
 
 ## [0.2.17](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.16...orbit-evm-v0.2.17) (2026-06-21)
 
