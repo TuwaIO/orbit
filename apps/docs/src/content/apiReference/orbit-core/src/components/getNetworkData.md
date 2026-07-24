@@ -6,7 +6,7 @@
 
 > **getNetworkData**(`adapter`): \{ `chain`: \{ `chainId`: `number`; `name`: `string`; \}; `links`: \{ `about`: `string`; `aboutNetwork`: `string`; `choseWallet`: `string`; \}; \} \| \{ `chain`: \{ `chainId`: `string`; `name`: `string`; \}; `links`: \{ `about`: `string`; `aboutNetwork`: `string`; `choseWallet`: `string`; \}; \} \| `undefined`
 
-Defined in: [packages/orbit-core/src/utils/getNetworkData.ts:3](https://github.com/TuwaIO/orbit/blob/7b8c7a9a9c1b5cf079d2b649fc6ed0eaef1d6bb8/packages/orbit-core/src/utils/getNetworkData.ts#L3)
+Defined in: [packages/orbit-core/src/utils/getNetworkData.ts:3](https://github.com/TuwaIO/orbit/blob/6b2cdfdef54a8983daa6b9b59f66467811772b3b/packages/orbit-core/src/utils/getNetworkData.ts#L3)
 
 ## Parameters
 

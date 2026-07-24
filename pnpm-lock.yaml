@@ -78,8 +78,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.8)
       '@tuwaio/docs-ui':
-        specifier: ^0.0.33
-        version: 0.0.33(f7e25915e54e5b589c8e6e63446119db)
+        specifier: ^0.0.34
+        version: 0.0.34(f7e25915e54e5b589c8e6e63446119db)
       next:
         specifier: 16.2.11
         version: 16.2.11(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -1915,8 +1915,8 @@ packages:
   '@ts-morph/common@0.28.1':
     resolution: {integrity: sha512-W74iWf7ILp1ZKNYXY5qbddNaml7e9Sedv5lvU1V8lftlitkc9Pq1A+jlH23ltDgWYeZFFEqGCD1Ies9hqu3O+g==}
 
-  '@tuwaio/docs-ui@0.0.33':
-    resolution: {integrity: sha512-wPVHvr8J/dymntPt3yCoLCjzq08fieGvuI55fvgg9nHzJLtnQ9CCgmOQZlqEkIGypS8PLZdyqlPCMfU4kxOabA==}
+  '@tuwaio/docs-ui@0.0.34':
+    resolution: {integrity: sha512-xk7GR9Zf1Ve9f7+jKYptAQHO4rmrpDVmnAiIZ1pY9xY8qJOAwt8QuHD94U0ZCD2B0V1bIyFFYBpALs3Bset7EQ==}
     peerDependencies:
       '@heroicons/react': '>=2'
       next: '>=16.1'
@@ -7183,7 +7183,7 @@ snapshots:
       path-browserify: 1.0.1
       tinyglobby: 0.2.17
 
-  '@tuwaio/docs-ui@0.0.33(f7e25915e54e5b589c8e6e63446119db)':
+  '@tuwaio/docs-ui@0.0.34(f7e25915e54e5b589c8e6e63446119db)':
     dependencies:
       '@heroicons/react': 2.2.0(react@19.2.8)
       '@tuwaio/nova-core': 0.4.5(@radix-ui/react-dialog@1.1.17(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(@web3icons/common@0.11.46(typescript@6.0.3))(@web3icons/react@4.1.17(react@19.2.8)(typescript@6.0.3))(clsx@2.1.1)(framer-motion@12.40.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(tailwind-merge@3.6.0)

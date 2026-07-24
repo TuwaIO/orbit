@@ -6,7 +6,7 @@
 
 > **clearSolanaNameCache**(): `void`
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:105](https://github.com/TuwaIO/orbit/blob/7b8c7a9a9c1b5cf079d2b649fc6ed0eaef1d6bb8/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L105)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:105](https://github.com/TuwaIO/orbit/blob/6b2cdfdef54a8983daa6b9b59f66467811772b3b/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L105)
 
 Clears the Solana name cache
 
