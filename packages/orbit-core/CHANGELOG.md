@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.14](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.13...orbit-core-v0.2.14) (2026-07-24)
+
+
+### Bug Fixes
+
+* updated packages and rules for socket.io ([8ec2331](https://github.com/TuwaIO/orbit/commit/8ec233146b62789dea4760ee3a5c2fa417c0e9cc))
+
 ## [0.2.13](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.12...orbit-core-v0.2.13) (2026-07-19)
 
 ### Bug Fixes
