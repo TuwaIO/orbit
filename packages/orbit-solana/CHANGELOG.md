@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.13](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.12...orbit-solana-v0.2.13) (2026-07-24)
+
+
+### Bug Fixes
+
+* socket.io ([6ac685b](https://github.com/TuwaIO/orbit/commit/6ac685bae731e6d40fc4cf3ed6b951a57ad228f7))
+
 ## [0.2.12](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.11...orbit-solana-v0.2.12) (2026-07-24)
 
 
