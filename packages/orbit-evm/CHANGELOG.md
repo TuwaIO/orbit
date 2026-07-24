@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.19](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.18...orbit-evm-v0.2.19) (2026-07-24)
+
+
+### Bug Fixes
+
+* updated packages and rules for socket.io ([8ec2331](https://github.com/TuwaIO/orbit/commit/8ec233146b62789dea4760ee3a5c2fa417c0e9cc))
+
 ## [0.2.18](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.17...orbit-evm-v0.2.18) (2026-07-19)
 
 ### Bug Fixes
