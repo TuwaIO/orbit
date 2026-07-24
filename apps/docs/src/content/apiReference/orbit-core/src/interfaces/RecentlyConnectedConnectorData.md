@@ -4,7 +4,7 @@
 
 # RecentlyConnectedConnectorData
 
-Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:12](https://github.com/TuwaIO/orbit/blob/8ec233146b62789dea4760ee3a5c2fa417c0e9cc/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L12)
+Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:12](https://github.com/TuwaIO/orbit/blob/7b8c7a9a9c1b5cf079d2b649fc6ed0eaef1d6bb8/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L12)
 
 Data structure for a recently connected connector
 
@@ -16,7 +16,7 @@ Data structure for a recently connected connector
 
 > **address**: `string`
 
-Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/8ec233146b62789dea4760ee3a5c2fa417c0e9cc/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L13)
+Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/7b8c7a9a9c1b5cf079d2b649fc6ed0eaef1d6bb8/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L13)
 
 The wallet address that was connected
 
@@ -26,7 +26,7 @@ The wallet address that was connected
 
 > **disconnectedTimestamp**: `number`
 
-Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:14](https://github.com/TuwaIO/orbit/blob/8ec233146b62789dea4760ee3a5c2fa417c0e9cc/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L14)
+Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:14](https://github.com/TuwaIO/orbit/blob/7b8c7a9a9c1b5cf079d2b649fc6ed0eaef1d6bb8/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L14)
 
 Unix timestamp in milliseconds when the connector was disconnected
 
@@ -36,6 +36,6 @@ Unix timestamp in milliseconds when the connector was disconnected
 
 > `optional` **icon?**: `string`
 
-Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:15](https://github.com/TuwaIO/orbit/blob/8ec233146b62789dea4760ee3a5c2fa417c0e9cc/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L15)
+Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:15](https://github.com/TuwaIO/orbit/blob/7b8c7a9a9c1b5cf079d2b649fc6ed0eaef1d6bb8/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L15)
 
 Optional icon URL or identifier for the connector
