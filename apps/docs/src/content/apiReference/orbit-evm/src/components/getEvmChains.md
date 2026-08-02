@@ -6,7 +6,7 @@
 
 > **getEvmChains**(`appChains?`): `number`[]
 
-Defined in: [packages/orbit-evm/src/utils/chainsUtils.ts:13](https://github.com/TuwaIO/orbit/blob/6b2cdfdef54a8983daa6b9b59f66467811772b3b/packages/orbit-evm/src/utils/chainsUtils.ts#L13)
+Defined in: [packages/orbit-evm/src/utils/chainsUtils.ts:13](https://github.com/TuwaIO/orbit/blob/5566d48ebd189bd1fbcec4fbad1fd43f5b8d09be/packages/orbit-evm/src/utils/chainsUtils.ts#L13)
 
 Get EVM chain IDs from app chains configuration
 

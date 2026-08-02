@@ -6,7 +6,7 @@
 
 > **getSolanaClusters**(`solanaRPCUrls?`, `chains?`): `string`[]
 
-Defined in: [packages/orbit-solana/src/utils/chainsUtils.ts:65](https://github.com/TuwaIO/orbit/blob/6b2cdfdef54a8983daa6b9b59f66467811772b3b/packages/orbit-solana/src/utils/chainsUtils.ts#L65)
+Defined in: [packages/orbit-solana/src/utils/chainsUtils.ts:65](https://github.com/TuwaIO/orbit/blob/5566d48ebd189bd1fbcec4fbad1fd43f5b8d09be/packages/orbit-solana/src/utils/chainsUtils.ts#L65)
 
 Get Solana clusters from configuration
 

@@ -6,7 +6,7 @@
 
 > **getSolanaNameCacheSize**(): `number`
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:112](https://github.com/TuwaIO/orbit/blob/6b2cdfdef54a8983daa6b9b59f66467811772b3b/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L112)
+Defined in: [packages/orbit-solana/src/utils/getSolanaAddressName.ts:112](https://github.com/TuwaIO/orbit/blob/5566d48ebd189bd1fbcec4fbad1fd43f5b8d09be/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L112)
 
 Gets the current cache size
 
