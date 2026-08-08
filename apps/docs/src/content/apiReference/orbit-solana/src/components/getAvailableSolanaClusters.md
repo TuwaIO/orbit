@@ -6,7 +6,7 @@
 
 > **getAvailableSolanaClusters**(): `SolanaClusterMoniker`[]
 
-Defined in: [packages/orbit-solana/src/utils/chainsUtils.ts:88](https://github.com/TuwaIO/orbit/blob/a2c10973571f66a4245e6bd4a8ace765b0c1ff8e/packages/orbit-solana/src/utils/chainsUtils.ts#L88)
+Defined in: [packages/orbit-solana/src/utils/chainsUtils.ts:88](https://github.com/TuwaIO/orbit/blob/397255305dfbcce27b213dc2552485e4603e7f2e/packages/orbit-solana/src/utils/chainsUtils.ts#L88)
 
 Gets available Solana clusters from the default configuration
 

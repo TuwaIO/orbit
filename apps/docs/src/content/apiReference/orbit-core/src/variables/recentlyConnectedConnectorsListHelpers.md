@@ -6,7 +6,7 @@
 
 > `const` **recentlyConnectedConnectorsListHelpers**: `object`
 
-Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:63](https://github.com/TuwaIO/orbit/blob/a2c10973571f66a4245e6bd4a8ace765b0c1ff8e/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L63)
+Defined in: [packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts:63](https://github.com/TuwaIO/orbit/blob/397255305dfbcce27b213dc2552485e4603e7f2e/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L63)
 
 Helper utilities for managing recently connected connectors list with disconnect timestamps
 
