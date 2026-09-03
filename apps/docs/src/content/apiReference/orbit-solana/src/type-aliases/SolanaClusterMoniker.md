@@ -6,6 +6,6 @@
 
 > **SolanaClusterMoniker** = `MainnetUrl` \| `DevnetUrl` \| `TestnetUrl`\[`"~cluster"`\] \| `"localnet"`
 
-Defined in: [packages/orbit-solana/src/types.ts:14](https://github.com/TuwaIO/orbit/blob/967f8c4c132091d95a14fb41253f2d23d0d4a06b/packages/orbit-solana/src/types.ts#L14)
+Defined in: [packages/orbit-solana/src/types.ts:14](https://github.com/TuwaIO/orbit/blob/75d5bc54ffcf9e4fe60ff5ab68ee7b2168c933e2/packages/orbit-solana/src/types.ts#L14)
 
 Solana cluster moniker type inferred directly from @solana/kit branded cluster URLs plus localnet.

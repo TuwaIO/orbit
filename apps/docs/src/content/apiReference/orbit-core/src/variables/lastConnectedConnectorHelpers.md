@@ -6,7 +6,7 @@
 
 > `const` **lastConnectedConnectorHelpers**: `object`
 
-Defined in: [packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/967f8c4c132091d95a14fb41253f2d23d0d4a06b/packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts#L13)
+Defined in: [packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/75d5bc54ffcf9e4fe60ff5ab68ee7b2168c933e2/packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts#L13)
 
 Helper utilities for managing the last connected wallet state
 

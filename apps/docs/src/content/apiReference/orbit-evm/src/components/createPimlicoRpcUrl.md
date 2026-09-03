@@ -6,7 +6,7 @@
 
 > **createPimlicoRpcUrl**(`config`): `string`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:58](https://github.com/TuwaIO/orbit/blob/967f8c4c132091d95a14fb41253f2d23d0d4a06b/packages/orbit-evm/src/utils/bundlerUtils.ts#L58)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:58](https://github.com/TuwaIO/orbit/blob/75d5bc54ffcf9e4fe60ff5ab68ee7b2168c933e2/packages/orbit-evm/src/utils/bundlerUtils.ts#L58)
 
 Creates and caches a Pimlico RPC URL based on provided configuration.
 
