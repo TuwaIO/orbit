@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     'transaction tracking',
     'web3 utils',
     'solana',
-    'gill',
+    '@solana/kit',
     'solanakit',
     'web3',
     'zustand',

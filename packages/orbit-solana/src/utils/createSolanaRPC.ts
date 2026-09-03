@@ -1,7 +1,8 @@
 // --- RPC Client Caching ---
 
-import { createSolanaRpc, Rpc, SolanaClusterMoniker, SolanaRpcApi } from 'gill';
+import { createSolanaRpc, type Rpc, type SolanaRpcApi } from '@solana/kit';
 
+import type { SolanaClusterMoniker } from '../types';
 import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
 
 /**
@@ -28,9 +29,10 @@ const rpcCache = new Map<string, Rpc<SolanaRpcApi>>();
  * Retrieves a cached RPC client for a given URL or cluster moniker.
  * If no cached client exists, it creates a new instance.
  *
- * @param rpcUrlOrMoniker - Either a full RPC URL or a cluster moniker like 'mainnet'.
+ * @param params - Object containing rpcUrlOrMoniker and optional rpcUrls map.
+ * @param params.rpcUrlOrMoniker - Either a full RPC URL or a cluster moniker like 'mainnet'.
+ * @param params.rpcUrls - Optional custom mapping of cluster monikers to RPC endpoints.
  * @returns The RPC client instance.
- * @internal
  */
 export const createSolanaRPC = ({
   rpcUrlOrMoniker,
@@ -51,7 +53,7 @@ export const createSolanaRPC = ({
         defaultRpcUrlsByMoniker[rpcUrlOrMoniker as SolanaClusterMoniker])
       : defaultRpcUrlsByMoniker[rpcUrlOrMoniker as SolanaClusterMoniker];
 
-  // If no valid RPC URL could be resolved, default to the mainnet URL.
+  // If no valid RPC URL could be resolved, throw descriptive error.
   if (!rpcUrl) {
     throw new Error(
       `Unable to resolve RPC URL for input: "${rpcUrlOrMoniker}". Ensure it's a valid URL or known moniker.`,
@@ -64,4 +66,12 @@ export const createSolanaRPC = ({
   // Cache the new instance and return it.
   rpcCache.set(rpcUrlOrMoniker, newRpc);
   return newRpc;
+};
+
+/**
+ * Clears the Solana RPC client cache.
+ * @internal
+ */
+export const clearSolanaRpcCache = (): void => {
+  rpcCache.clear();
 };

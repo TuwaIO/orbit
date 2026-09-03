@@ -13,7 +13,14 @@ function isAssetOrInternal(mdxPath?: string[]): boolean {
   return false;
 }
 
-export async function generateMetadata(props: any) {
+type PageProps = {
+  params: Promise<{
+    mdxPath?: string[];
+  }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export async function generateMetadata(props: PageProps) {
   const params = await props.params;
   const mdxPath = params.mdxPath;
 
@@ -31,7 +38,7 @@ export async function generateMetadata(props: any) {
 
 const Wrapper = getMDXComponents().wrapper;
 
-export default async function Page(props: any) {
+export default async function Page(props: PageProps) {
   const params = await props.params;
   const mdxPath = params.mdxPath;
 

@@ -6,9 +6,9 @@
 
 > **getSolanaExplorerLink**(`url?`, `chainId?`): `string`
 
-Defined in: [packages/orbit-solana/src/utils/getSolanaExplorerLink.ts:16](https://github.com/TuwaIO/orbit/blob/397255305dfbcce27b213dc2552485e4603e7f2e/packages/orbit-solana/src/utils/getSolanaExplorerLink.ts#L16)
+Defined in: [packages/orbit-solana/src/utils/getSolanaExplorerLink.ts:19](https://github.com/TuwaIO/orbit/blob/967f8c4c132091d95a14fb41253f2d23d0d4a06b/packages/orbit-solana/src/utils/getSolanaExplorerLink.ts#L19)
 
-Generates a full URL to a transaction on a Solana explorer like Solscan.
+Generates a full URL to an account, transaction, or block on the Solana explorer.
 
 ## Parameters
 
@@ -16,14 +16,16 @@ Generates a full URL to a transaction on a Solana explorer like Solscan.
 
 `string`
 
-The url after baseUrl.
+The path after baseUrl (e.g. '/tx/...' or '/address/...').
 
 ### chainId?
 
 `string` \| `number`
 
+Chain ID or cluster name.
+
 ## Returns
 
 `string`
 
-The full URL to the transaction on the explorer.
+The full URL on the Solana explorer.

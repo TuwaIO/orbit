@@ -2,17 +2,15 @@
 
 ## [0.2.13](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.12...orbit-solana-v0.2.13) (2026-07-24)
 
-
 ### Bug Fixes
 
-* socket.io ([6ac685b](https://github.com/TuwaIO/orbit/commit/6ac685bae731e6d40fc4cf3ed6b951a57ad228f7))
+- socket.io ([6ac685b](https://github.com/TuwaIO/orbit/commit/6ac685bae731e6d40fc4cf3ed6b951a57ad228f7))
 
 ## [0.2.12](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.11...orbit-solana-v0.2.12) (2026-07-24)
 
-
 ### Bug Fixes
 
-* updated packages and rules for socket.io ([8ec2331](https://github.com/TuwaIO/orbit/commit/8ec233146b62789dea4760ee3a5c2fa417c0e9cc))
+- updated packages and rules for socket.io ([8ec2331](https://github.com/TuwaIO/orbit/commit/8ec233146b62789dea4760ee3a5c2fa417c0e9cc))
 
 ## [0.2.11](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.2.10...orbit-solana-v0.2.11) (2026-07-19)
 

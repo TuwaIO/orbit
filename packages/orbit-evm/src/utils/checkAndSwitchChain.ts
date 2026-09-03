@@ -26,7 +26,7 @@ export async function checkAndSwitchChain(chainId: number, config: Config): Prom
       // Pause execution and wait for the user to confirm the chain switch in their wallet.
       await switchChain(config, { chainId });
     } catch (error) {
-      if ((error as any).cause?.name === 'UserRejectedRequestError') {
+      if ((error as { cause?: { name?: string } })?.cause?.name === 'UserRejectedRequestError') {
         throw new Error('User rejected the request to switch network.', { cause: error });
       }
       console.error('Failed to switch network:', error);

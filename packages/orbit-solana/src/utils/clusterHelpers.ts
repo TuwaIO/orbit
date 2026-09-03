@@ -1,6 +1,4 @@
-import type { SolanaClusterMoniker } from 'gill';
-
-import { SolanaRPCUrls } from '../types';
+import type { SolanaClusterMoniker, SolanaRPCUrls } from '../types';
 
 /**
  * Safely extracts the cluster moniker from a chain identifier.

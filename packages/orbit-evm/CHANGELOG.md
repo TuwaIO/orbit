@@ -2,31 +2,27 @@
 
 ## [0.2.22](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.21...orbit-evm-v0.2.22) (2026-08-08)
 
-
 ### Bug Fixes
 
-* updated packages ([f7e6bdb](https://github.com/TuwaIO/orbit/commit/f7e6bdb915d7ec5c290f80e04dbac2c8dafc4fb5))
+- updated packages ([f7e6bdb](https://github.com/TuwaIO/orbit/commit/f7e6bdb915d7ec5c290f80e04dbac2c8dafc4fb5))
 
 ## [0.2.21](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.20...orbit-evm-v0.2.21) (2026-08-02)
 
-
 ### Bug Fixes
 
-* updated packages ([01190f6](https://github.com/TuwaIO/orbit/commit/01190f6fc6e49305985646aee06fdb56a674e9bc))
+- updated packages ([01190f6](https://github.com/TuwaIO/orbit/commit/01190f6fc6e49305985646aee06fdb56a674e9bc))
 
 ## [0.2.20](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.19...orbit-evm-v0.2.20) (2026-07-24)
 
-
 ### Bug Fixes
 
-* socket.io ([6ac685b](https://github.com/TuwaIO/orbit/commit/6ac685bae731e6d40fc4cf3ed6b951a57ad228f7))
+- socket.io ([6ac685b](https://github.com/TuwaIO/orbit/commit/6ac685bae731e6d40fc4cf3ed6b951a57ad228f7))
 
 ## [0.2.19](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.18...orbit-evm-v0.2.19) (2026-07-24)
 
-
 ### Bug Fixes
 
-* updated packages and rules for socket.io ([8ec2331](https://github.com/TuwaIO/orbit/commit/8ec233146b62789dea4760ee3a5c2fa417c0e9cc))
+- updated packages and rules for socket.io ([8ec2331](https://github.com/TuwaIO/orbit/commit/8ec233146b62789dea4760ee3a5c2fa417c0e9cc))
 
 ## [0.2.18](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.2.17...orbit-evm-v0.2.18) (2026-07-19)
 

@@ -61,6 +61,26 @@ async function switchNetwork(targetChainId: number) {
 }
 ```
 
+### ERC-4337 Pimlico Bundler Client
+
+Instantiate and cache Viem Bundler clients with automated Pimlico URL resolution:
+
+```typescript
+import { createBundlerRpcClient, createPimlicoRpcUrl } from '@tuwaio/orbit-evm';
+
+// Generate or retrieve cached Pimlico RPC endpoint
+const rpcUrl = createPimlicoRpcUrl({
+  chainId: 11155111,
+  apiKey: 'pim_test_key_123',
+});
+
+// Retrieve cached or new Viem Bundler Client (with in-memory cache)
+const bundlerClient = createBundlerRpcClient({
+  chainId: 11155111,
+  apiKey: 'pim_test_key_123',
+});
+```
+
 ---
 
 ## 🔧 API & Module Architecture
@@ -70,6 +90,7 @@ async function switchNetwork(targetChainId: number) {
 - **Chain Alignment:** `checkAndSwitchChain`.
 - **Client Factory:** `createViemClient`.
 - **ENS Resolvers:** `getAddress`, `getAvatar`, `getName`, `isEnsName`.
+- **ERC-4337 Account Abstraction:** `createPimlicoRpcUrl`, `createBundlerRpcClient`, `clearBundlerCache`.
 
 ---
 

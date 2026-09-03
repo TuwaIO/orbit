@@ -4,8 +4,14 @@
 
 # orbit-solana/src
 
+## Interfaces
+
+- [SolanaClient](interfaces/SolanaClient.md)
+
 ## Type Aliases
 
+- [SolanaClusterMoniker](type-aliases/SolanaClusterMoniker.md)
+- [SolanaRpcMethods](type-aliases/SolanaRpcMethods.md)
 - [SolanaRPCUrls](type-aliases/SolanaRPCUrls.md)
 
 ## Variables
@@ -15,7 +21,9 @@
 ## Functions
 
 - [clearSolanaAvatarCache](functions/clearSolanaAvatarCache.md)
+- [clearSolanaClientCache](functions/clearSolanaClientCache.md)
 - [clearSolanaNameCache](functions/clearSolanaNameCache.md)
+- [clearSolanaRpcCache](functions/clearSolanaRpcCache.md)
 - [createSolanaClientWithCache](functions/createSolanaClientWithCache.md)
 - [createSolanaRPC](functions/createSolanaRPC.md)
 - [getAvailableSolanaClusters](functions/getAvailableSolanaClusters.md)

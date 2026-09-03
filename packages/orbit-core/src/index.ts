@@ -1,5 +1,6 @@
 export * from './types';
 export * from './utils/addressValidation';
+export * from './utils/chainHelpers';
 export * from './utils/delay';
 export * from './utils/filterUniqueByKey';
 export * from './utils/formatConnectorChainId';
@@ -15,4 +16,3 @@ export * from './utils/normalizeError';
 export * from './utils/recentlyConnectedConnectorsListHelpers';
 export * from './utils/selectAdapterByKey';
 export * from './utils/waitFor';
-export * from './utils/сhainHelpers';

@@ -4,7 +4,7 @@
   "private": false,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "Layer 2 (L2) of the TUWA Ecosystem. Low-level Solana-specific communication primitives and RPC caching utilities powered strictly by gill.",
+  "description": "Layer 2 (L2) of the TUWA Ecosystem. Low-level Solana-specific communication primitives and RPC caching utilities powered strictly by @solana/kit.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "start": "tsup src/index.ts --watch",
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest run"
   },
   "keywords": [
     "web3",
@@ -42,7 +43,7 @@
   ],
   "peerDependencies": {
     "@tuwaio/orbit-core": ">=0.2",
-    "gill": ">=0.14",
+    "@solana/kit": ">=8.2",
     "@wallet-standard/app": "1.x.x",
     "@wallet-standard/ui-core": "1.x.x",
     "@wallet-standard/ui-registry": "1.x.x"
@@ -51,7 +52,7 @@
     "@tuwaio/orbit-core": "workspace:^",
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
-    "gill": "^0.14.0",
+    "@solana/kit": "^8.2.0",
     "@wallet-standard/app": "^1.1.1",
     "@wallet-standard/ui-core": "^1.0.1",
     "@wallet-standard/ui-registry": "^1.1.1"
