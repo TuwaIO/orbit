@@ -4,7 +4,7 @@
 
 # SolanaClient
 
-Defined in: [packages/orbit-solana/src/types.ts:31](https://github.com/TuwaIO/orbit/blob/75d5bc54ffcf9e4fe60ff5ab68ee7b2168c933e2/packages/orbit-solana/src/types.ts#L31)
+Defined in: [packages/orbit-solana/src/types.ts:31](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-solana/src/types.ts#L31)
 
 Lightweight Solana client wrapper holding RPC and optional subscriptions clients.
 
@@ -14,7 +14,7 @@ Lightweight Solana client wrapper holding RPC and optional subscriptions clients
 
 > **rpc**: `Rpc`\<`SolanaRpcApi`\>
 
-Defined in: [packages/orbit-solana/src/types.ts:32](https://github.com/TuwaIO/orbit/blob/75d5bc54ffcf9e4fe60ff5ab68ee7b2168c933e2/packages/orbit-solana/src/types.ts#L32)
+Defined in: [packages/orbit-solana/src/types.ts:32](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-solana/src/types.ts#L32)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [packages/orbit-solana/src/types.ts:32](https://github.com/TuwaIO/or
 
 > `optional` **rpcSubscriptions?**: `RpcSubscriptions`\<`SolanaRpcSubscriptionsApi`\>
 
-Defined in: [packages/orbit-solana/src/types.ts:33](https://github.com/TuwaIO/orbit/blob/75d5bc54ffcf9e4fe60ff5ab68ee7b2168c933e2/packages/orbit-solana/src/types.ts#L33)
+Defined in: [packages/orbit-solana/src/types.ts:33](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-solana/src/types.ts#L33)

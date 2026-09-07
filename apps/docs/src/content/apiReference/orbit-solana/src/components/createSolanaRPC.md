@@ -6,7 +6,7 @@
 
 > **createSolanaRPC**(`params`): `Rpc`\<`SolanaRpcApi`\>
 
-Defined in: [packages/orbit-solana/src/utils/createSolanaRPC.ts:37](https://github.com/TuwaIO/orbit/blob/75d5bc54ffcf9e4fe60ff5ab68ee7b2168c933e2/packages/orbit-solana/src/utils/createSolanaRPC.ts#L37)
+Defined in: [packages/orbit-solana/src/utils/createSolanaRPC.ts:37](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-solana/src/utils/createSolanaRPC.ts#L37)
 
 Retrieves a cached RPC client for a given URL or cluster moniker.
 If no cached client exists, it creates a new instance.

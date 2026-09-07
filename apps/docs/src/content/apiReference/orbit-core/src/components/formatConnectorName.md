@@ -6,7 +6,7 @@
 
 > **formatConnectorName**(`connectorName`): `string`
 
-Defined in: [packages/orbit-core/src/utils/formatConnectorName.ts:11](https://github.com/TuwaIO/orbit/blob/75d5bc54ffcf9e4fe60ff5ab68ee7b2168c933e2/packages/orbit-core/src/utils/formatConnectorName.ts#L11)
+Defined in: [packages/orbit-core/src/utils/formatConnectorName.ts:11](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-core/src/utils/formatConnectorName.ts#L11)
 
 ## Parameters
 
