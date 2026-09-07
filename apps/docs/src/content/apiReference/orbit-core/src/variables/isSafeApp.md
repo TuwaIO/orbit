@@ -6,7 +6,7 @@
 
 > `const` **isSafeApp**: `boolean` = `isInSecureIframe`
 
-Defined in: [packages/orbit-core/src/utils/isSafeApp.ts:66](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-core/src/utils/isSafeApp.ts#L66)
+Defined in: [packages/orbit-core/src/utils/isSafeApp.ts:66](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-core/src/utils/isSafeApp.ts#L66)
 
 ## Deprecated
 

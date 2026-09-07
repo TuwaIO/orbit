@@ -1,6 +1,26 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { type Config } from '@wagmi/core';
+import { createPublicClient, custom, type WalletClient } from 'viem';
+import { sepolia } from 'viem/chains';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { clearBundlerCache, createBundlerRpcClient, createPimlicoRpcUrl } from './bundlerUtils';
+const mockGetWalletClient = vi.fn();
+
+vi.mock('@wagmi/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@wagmi/core')>();
+  return {
+    ...actual,
+    getWalletClient: (...args: unknown[]) => mockGetWalletClient(...args),
+  };
+});
+
+import {
+  clearBundlerCache,
+  createBundlerRpcClient,
+  createPimlicoPaymasterClient,
+  createPimlicoRpcUrl,
+  createPimlicoSmartAccountClient,
+  createSoladySmartAccount,
+} from './bundlerUtils';
 
 describe('bundlerUtils', () => {
   beforeEach(() => {
@@ -85,6 +105,163 @@ describe('bundlerUtils', () => {
       const client2 = createBundlerRpcClient(config);
 
       expect(client1).not.toBe(client2);
+    });
+  });
+
+  describe('createPimlicoPaymasterClient', () => {
+    it('instantiates a valid Viem paymaster client with resolved Pimlico URL', () => {
+      const paymaster = createPimlicoPaymasterClient({
+        chainId: 11155111,
+        apiKey: 'test_paymaster_key',
+      });
+
+      expect(paymaster).toBeDefined();
+      expect(typeof paymaster.getPaymasterData).toBe('function');
+      expect(typeof paymaster.getPaymasterStubData).toBe('function');
+    });
+  });
+
+  describe('createSoladySmartAccount', () => {
+    it('throws if wallet client does not have an active account', async () => {
+      const client = createPublicClient({
+        chain: sepolia,
+        transport: custom({
+          request: async () => null,
+        }),
+      });
+      const invalidWallet = {} as unknown as WalletClient;
+
+      await expect(
+        createSoladySmartAccount({
+          client,
+          walletClient: invalidWallet,
+        }),
+      ).rejects.toThrow('WalletClient must have an active account.');
+    });
+
+    it('instantiates a Solady smart account with right-padded salt', async () => {
+      const mockAddress = '0x1234567890123456789012345678901234567890' as const;
+      const mockWalletClient = {
+        account: {
+          address: mockAddress,
+          type: 'json-rpc',
+        },
+        signMessage: vi.fn().mockResolvedValue('0xmockSignature'),
+        signTransaction: vi.fn().mockResolvedValue('0xmockSignedTx'),
+        signTypedData: vi.fn().mockResolvedValue('0xmockSignedTypedData'),
+      } as unknown as WalletClient;
+
+      const client = createPublicClient({
+        chain: sepolia,
+        transport: custom({
+          request: async ({ method }) => {
+            if (method === 'eth_call') {
+              return '0x0000000000000000000000001234567890123456789012345678901234567890';
+            }
+            return null;
+          },
+        }),
+      });
+
+      const smartAccount = await createSoladySmartAccount({
+        client,
+        walletClient: mockWalletClient,
+      });
+
+      expect(smartAccount).toBeDefined();
+      expect(smartAccount.address).toMatch(/^0x[a-fA-F0-9]{40}$/);
+      expect(typeof smartAccount.signMessage).toBe('function');
+      expect(typeof smartAccount.signUserOperation).toBe('function');
+    });
+  });
+
+  describe('createPimlicoSmartAccountClient', () => {
+    it('throws when neither walletClient nor wagmiConfig is provided', async () => {
+      await expect(
+        createPimlicoSmartAccountClient({
+          chain: sepolia,
+        }),
+      ).rejects.toThrow('Active wallet connection with account is required');
+    });
+
+    it('orchestrates smart account, bundler, and paymaster when walletClient is provided', async () => {
+      const mockAddress = '0x1234567890123456789012345678901234567890' as const;
+      const mockWalletClient = {
+        account: {
+          address: mockAddress,
+          type: 'json-rpc',
+        },
+        signMessage: vi.fn().mockResolvedValue('0xmockSignature'),
+        signTransaction: vi.fn().mockResolvedValue('0xmockSignedTx'),
+        signTypedData: vi.fn().mockResolvedValue('0xmockSignedTypedData'),
+      } as unknown as WalletClient;
+
+      const client = createPublicClient({
+        chain: sepolia,
+        transport: custom({
+          request: async ({ method }) => {
+            if (method === 'eth_call') {
+              return '0x0000000000000000000000001234567890123456789012345678901234567890';
+            }
+            return null;
+          },
+        }),
+      });
+
+      const result = await createPimlicoSmartAccountClient({
+        chain: sepolia,
+        walletClient: mockWalletClient,
+        client,
+        apiKey: 'test_pimlico_key',
+      });
+
+      expect(result.account).toBeDefined();
+      expect(result.account.address).toMatch(/^0x[a-fA-F0-9]{40}$/);
+      expect(result.bundlerClient).toBeDefined();
+      expect(typeof result.bundlerClient.sendUserOperation).toBe('function');
+      expect(result.publicClient).toBeDefined();
+      expect(result.paymasterClient).toBeDefined();
+    });
+
+    it('resolves walletClient from wagmiConfig when wagmiConfig is provided', async () => {
+      const mockAddress = '0x1234567890123456789012345678901234567890' as const;
+      const mockWalletClient = {
+        account: {
+          address: mockAddress,
+          type: 'json-rpc',
+        },
+        signMessage: vi.fn().mockResolvedValue('0xmockSignature'),
+        signTransaction: vi.fn().mockResolvedValue('0xmockSignedTx'),
+        signTypedData: vi.fn().mockResolvedValue('0xmockSignedTypedData'),
+      } as unknown as WalletClient;
+
+      mockGetWalletClient.mockResolvedValue(mockWalletClient);
+
+      const client = createPublicClient({
+        chain: sepolia,
+        transport: custom({
+          request: async ({ method }) => {
+            if (method === 'eth_call') {
+              return '0x0000000000000000000000001234567890123456789012345678901234567890';
+            }
+            return null;
+          },
+        }),
+      });
+
+      const dummyConfig = {} as Config;
+
+      const result = await createPimlicoSmartAccountClient({
+        chain: sepolia,
+        wagmiConfig: dummyConfig,
+        client,
+        apiKey: 'test_pimlico_key',
+      });
+
+      expect(mockGetWalletClient).toHaveBeenCalledWith(dummyConfig, { chainId: sepolia.id });
+      expect(result.account).toBeDefined();
+      expect(result.bundlerClient).toBeDefined();
+      expect(result.publicClient).toBeDefined();
     });
   });
 });

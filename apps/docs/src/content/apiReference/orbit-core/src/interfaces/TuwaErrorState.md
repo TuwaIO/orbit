@@ -4,7 +4,7 @@
 
 # TuwaErrorState
 
-Defined in: [packages/orbit-core/src/utils/normalizeError.ts:11](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-core/src/utils/normalizeError.ts#L11)
+Defined in: [packages/orbit-core/src/utils/normalizeError.ts:11](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-core/src/utils/normalizeError.ts#L11)
 
 Normalized error state that is safe for Zustand persistence.
 - `message`: User-friendly error message for display
@@ -16,7 +16,7 @@ Normalized error state that is safe for Zustand persistence.
 
 > **message**: `string`
 
-Defined in: [packages/orbit-core/src/utils/normalizeError.ts:12](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-core/src/utils/normalizeError.ts#L12)
+Defined in: [packages/orbit-core/src/utils/normalizeError.ts:12](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-core/src/utils/normalizeError.ts#L12)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [packages/orbit-core/src/utils/normalizeError.ts:12](https://github.
 
 > **raw**: `Record`\<`string`, `unknown`\>
 
-Defined in: [packages/orbit-core/src/utils/normalizeError.ts:13](https://github.com/TuwaIO/orbit/blob/addd21d0aafe36dd9a1d1b63d9124eaa719ba670/packages/orbit-core/src/utils/normalizeError.ts#L13)
+Defined in: [packages/orbit-core/src/utils/normalizeError.ts:13](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-core/src/utils/normalizeError.ts#L13)
