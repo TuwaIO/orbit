@@ -6,7 +6,7 @@
 
 > **createSolanaClientWithCache**(`params`): [`SolanaClient`](../interfaces/SolanaClient.md)
 
-Defined in: [packages/orbit-solana/src/utils/createSolanaClientWithCache.ts:62](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-solana/src/utils/createSolanaClientWithCache.ts#L62)
+Defined in: [packages/orbit-solana/src/utils/createSolanaClientWithCache.ts:62](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-solana/src/utils/createSolanaClientWithCache.ts#L62)
 
 Creates or retrieves a cached Solana RPC client instance
 

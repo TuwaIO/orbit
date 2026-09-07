@@ -6,7 +6,7 @@
 
 > **createSoladySmartAccount**(`params`): `Promise`\<[`SoladySmartAccount`](../type-aliases/SoladySmartAccount.md)\>
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:220](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L220)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:220](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L220)
 
 Instantiates a Solady ERC-4337 smart account with automatic wallet signing delegation
 and Solady factory-compliant deterministic salt.

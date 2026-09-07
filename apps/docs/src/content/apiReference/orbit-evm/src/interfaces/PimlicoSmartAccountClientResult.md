@@ -4,7 +4,7 @@
 
 # PimlicoSmartAccountClientResult
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:99](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L99)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:99](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L99)
 
 Result object returned by `createPimlicoSmartAccountClient`.
 
@@ -14,7 +14,7 @@ Result object returned by `createPimlicoSmartAccountClient`.
 
 > **account**: [`SoladySmartAccount`](../type-aliases/SoladySmartAccount.md)
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:101](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L101)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:101](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L101)
 
 The instantiated Solady smart account instance.
 
@@ -24,7 +24,7 @@ The instantiated Solady smart account instance.
 
 > **bundlerClient**: `BundlerClient`\<`HttpTransport`\>
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:103](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L103)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:103](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L103)
 
 The configured Viem Bundler client.
 
@@ -34,7 +34,7 @@ The configured Viem Bundler client.
 
 > `optional` **paymasterClient?**: `object`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:107](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L107)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:107](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L107)
 
 The Pimlico paymaster client if gas sponsorship is enabled.
 
@@ -312,7 +312,7 @@ A unique ID for the client.
 
 > **publicClient**: `object`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:105](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L105)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:105](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L105)
 
 The public client used for chain state reads and fee estimation.
 

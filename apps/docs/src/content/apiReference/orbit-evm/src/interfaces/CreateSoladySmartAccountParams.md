@@ -4,7 +4,7 @@
 
 # CreateSoladySmartAccountParams
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:57](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L57)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:57](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L57)
 
 Parameters for creating a Solady ERC-4337 Smart Account.
 
@@ -14,7 +14,7 @@ Parameters for creating a Solady ERC-4337 Smart Account.
 
 > **client**: `Client`\<`Transport`, `Chain` \| `undefined`, \{ `address`: `` `0x${string}` ``; `nonceManager?`: `NonceManager`; `publicKey`: `` `0x${string}` ``; `sign?`: (`parameters`) => `Promise`\<`` `0x${string}` ``\>; `signAuthorization?`: (`parameters`) => `Promise`\<`SignAuthorizationReturnType`\>; `signMessage`: (`__namedParameters`) => `Promise`\<`` `0x${string}` ``\>; `signTransaction`: \<`serializer`, `transaction`\>(`transaction`, `options?`) => `Promise`\<`` `0x${string}` ``\>; `signTypedData`: \<`typedData`, `primaryType`\>(`parameters`) => `Promise`\<`` `0x${string}` ``\>; `source`: `string`; `type`: `"local"`; \} \| `JsonRpcAccount` \| `undefined`\>
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:59](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L59)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:59](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L59)
 
 The client used to interact with the blockchain.
 
@@ -24,7 +24,7 @@ The client used to interact with the blockchain.
 
 > `optional` **salt?**: `` `0x${string}` ``
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:66](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L66)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:66](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L66)
 
 Optional 32-byte salt for deterministic counterfactual deployment.
 Defaults to right-padded EOA address to satisfy Solady factory owner-prefix verification.
@@ -35,7 +35,7 @@ Defaults to right-padded EOA address to satisfy Solady factory owner-prefix veri
 
 > **walletClient**: `object`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:61](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L61)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:61](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L61)
 
 The connected WalletClient (e.g. from Wagmi or browser provider) representing the EOA owner.
 

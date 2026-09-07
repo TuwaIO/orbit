@@ -6,7 +6,7 @@
 
 > **createPimlicoPaymasterClient**(`config`): `object`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:206](https://github.com/TuwaIO/orbit/blob/d6b82d7622d466a80528d456740a10576d03cc15/packages/orbit-evm/src/utils/bundlerUtils.ts#L206)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:206](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-evm/src/utils/bundlerUtils.ts#L206)
 
 Creates a Viem Paymaster Client configured with the resolved Pimlico RPC endpoint.
 
