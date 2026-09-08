@@ -1,3 +1,5 @@
+import { isAddress } from '@solana/kit';
+
 /**
  * Cache for Solana address lookup results.
  * Key: normalized address (lowercase string), Value: Account name/label (string).
@@ -44,16 +46,6 @@ const getSNSName = async (address: string): Promise<string | null> => {
 };
 
 /**
- * Validates if the provided string is a valid Solana address
- *
- * @param address The string to validate
- * @returns boolean indicating if the address is valid
- */
-const isValidSolanaAddress = (address: string): boolean => {
-  return /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address);
-};
-
-/**
  * Searches and returns the account name (label) for a given Solana address.
  * Priority order:
  * 1. Check cache
@@ -68,12 +60,14 @@ export const getSolanaAddressName = async (address: string): Promise<string> => 
     return address || '';
   }
 
-  if (!isValidSolanaAddress(address.trim())) {
+  const trimmedAddress = address.trim();
+
+  if (!isAddress(trimmedAddress)) {
     return address;
   }
 
   // Normalize the address to use as a cache key, ensuring case-insensitivity.
-  const normalizedAddress = address.toLowerCase().trim();
+  const normalizedAddress = trimmedAddress.toLowerCase();
 
   // Check the cache: if the result exists, return it immediately.
   const cachedName = solanaNameCache.get(normalizedAddress);
@@ -84,13 +78,13 @@ export const getSolanaAddressName = async (address: string): Promise<string> => 
   let resultName = address; // Default fallback
 
   try {
-    const snsName = await getSNSName(address);
+    const snsName = await getSNSName(trimmedAddress);
     if (snsName) {
       resultName = snsName;
     }
   } catch (error) {
     console.warn('Error resolving address name:', error);
-    // resultName остается как оригинальный адрес
+    // resultName remains as original address fallback
   }
 
   // Store the result in the cache

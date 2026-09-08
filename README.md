@@ -9,7 +9,7 @@
 
 TUWA Orbit is the foundational baseline layer of the TUWA Web3 frontend stack, providing framework-agnostic modules for low-level multi-chain communication. It acts as the headless, logic-only connector layer that sits below any visual kits (such as Nova UI Kit) or transaction lifecycle tracking engines (such as Pulsar / Quasar), granting developers complete architectural control and absolute application sovereignty.
 
-Orbit enforces a strict multi-chain abstraction through type-safe primitives, ensuring zero vendor lock-in and a complete rejection of legacy dependencies like `ethers.js` or `web3.js` in favor of high-performance modern libraries: `viem`, `wagmi`, and `gill`.
+Orbit enforces a strict multi-chain abstraction through type-safe primitives, ensuring zero vendor lock-in and a complete rejection of legacy dependencies like `ethers.js` or `web3.js` in favor of high-performance modern libraries: `viem`, `wagmi`, and `@solana/kit`.
 
 ---
 
@@ -19,12 +19,12 @@ The monorepo structure segregates core cross-chain logic from concrete blockchai
 
 ### Layer 1: Foundational Core (L1)
 
-- **`@tuwaio/orbit-core`**: The brain of the connector layer. Contains shared interfaces, common enums (`OrbitAdapter`, `BaseAdapter`), and type-safe primitives for connection persistence and `localStorage` state helper utilities.
+- **`@tuwaio/orbit-core`**: The brain of the connector layer. Contains shared interfaces, common enums (`OrbitAdapter`, `BaseAdapter`), and type-safe primitives for connection persistence and `localStorage` state helper utilities. Pure native implementation with zero external web3 dependencies.
 
 ### Layer 2: Chain Platforms (L2)
 
-- **`@tuwaio/orbit-evm`**: Concrete implementation of low-level EVM-specific communication primitives. Built strictly on top of `viem` and `@wagmi/core`.
-- **`@tuwaio/orbit-solana`**: Concrete implementation of low-level Solana-specific communication primitives and RPC client caching. Powered strictly by `gill` and standard `@wallet-standard` specifications.
+- **`@tuwaio/orbit-evm`**: Concrete implementation of low-level EVM-specific communication primitives. Built strictly on top of `viem` and `@wagmi/core`. Features native ERC-4337 Pimlico Bundler utilities (`createPimlicoRpcUrl`, `createBundlerRpcClient`) with in-memory caching.
+- **`@tuwaio/orbit-solana`**: Concrete implementation of low-level Solana-specific communication primitives and RPC client caching. Powered strictly by `@solana/kit` and standard `@wallet-standard` specifications.
 
 ---
 
@@ -36,8 +36,8 @@ orbit/
 │   └── docs/                   # Nextra-based technical documentation & portal
 ├── packages/
 │   ├── orbit-core/             # L1: Shared types, validations, and storage helpers
-│   ├── orbit-evm/              # L2: Viem & Wagmi provider wrappers
-│   └── orbit-solana/           # L2: Gill & Wallet-Standard adapters
+│   ├── orbit-evm/              # L2: Viem & Wagmi provider wrappers, ERC-4337 Pimlico Bundler
+│   └── orbit-solana/           # L2: @solana/kit & Wallet-Standard adapters
 ```
 
 ---
@@ -54,7 +54,7 @@ pnpm add @tuwaio/orbit-core
 pnpm add @tuwaio/orbit-evm @wagmi/core viem
 
 # L2 Solana Platform
-pnpm add @tuwaio/orbit-solana gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
+pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
 ```
 
 ---

@@ -1,6 +1,6 @@
 import type { ChainIdentifierArray } from '@tuwaio/orbit-core';
-import type { SolanaClusterMoniker } from 'gill';
 
+import type { SolanaClusterMoniker } from '../types';
 import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
 
 // Use a local type definition to avoid direct imports

@@ -33,8 +33,8 @@ In high-reliability Web3 frontends, mixing user interface layouts with blockchai
 The Orbit monorepo is split into distinct, lightweight packages:
 
 - **`@tuwaio/orbit-core` (L1)**: Defines common types, error definitions, and provides `localStorage` connection persistence helpers.
-- **`@tuwaio/orbit-evm` (L2)**: Resolves EVM-specific communication primitives, public client caching, and ENS resolution powered by `viem` and `@wagmi/core`.
-- **`@tuwaio/orbit-solana` (L2)**: Implements Solana RPC client caches, Wallet Standard connector discovery, and metadata lookups powered by `gill`.
+- **`@tuwaio/orbit-evm` (L2)**: Resolves EVM-specific communication primitives, public client caching, native ERC-4337 Pimlico Bundler utilities, and ENS resolution powered by `viem` and `@wagmi/core`.
+- **`@tuwaio/orbit-solana` (L2)**: Implements Solana RPC client caches, Wallet Standard connector discovery, and metadata lookups powered strictly by `@solana/kit`.
 
 ---
 
@@ -50,7 +50,7 @@ pnpm add @tuwaio/orbit-core
 pnpm add @tuwaio/orbit-evm @wagmi/core viem
 
 # L2 Solana Platform
-pnpm add @tuwaio/orbit-solana gill @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
+pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
 ```
 
 ---

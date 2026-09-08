@@ -6,7 +6,7 @@
 
 > **getParsedStorageItem**\<`ReturnType`\>(`key`): `ReturnType` \| `undefined`
 
-Defined in: [packages/orbit-core/src/utils/getParsedStorageItem.ts:7](https://github.com/TuwaIO/orbit/blob/397255305dfbcce27b213dc2552485e4603e7f2e/packages/orbit-core/src/utils/getParsedStorageItem.ts#L7)
+Defined in: [packages/orbit-core/src/utils/getParsedStorageItem.ts:7](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-core/src/utils/getParsedStorageItem.ts#L7)
 
 Internal function for safely retrieving and parsing data from localStorage.
 

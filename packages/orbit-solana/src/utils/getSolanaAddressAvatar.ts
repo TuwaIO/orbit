@@ -1,3 +1,5 @@
+import { isAddress } from '@solana/kit';
+
 /**
  * Cache for Solana avatar lookup results.
  * Key: normalized address/domain (lowercase string), Value: Avatar URL (string).
@@ -15,16 +17,6 @@ const SNS_API_BASE_URL = 'https://image-api.bonfida.com';
 interface SNSImageApiResponse {
   result: { domain: string; image: string }[];
 }
-
-/**
- * Validates if the provided string is a valid Solana address
- *
- * @param address The string to validate
- * @returns boolean indicating if the address is valid
- */
-const isValidSolanaAddress = (address: string): boolean => {
-  return /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address);
-};
 
 /**
  * Validates if the provided string is a valid SNS domain
@@ -116,7 +108,7 @@ export const getSolanaAddressAvatar = async (addressOrDomain: string): Promise<s
       } else {
         resultAvatar = getDefaultAvatar(trimmedInput);
       }
-    } else if (isValidSolanaAddress(trimmedInput)) {
+    } else if (isAddress(trimmedInput)) {
       resultAvatar = getDefaultAvatar(trimmedInput);
     } else {
       resultAvatar = getDefaultAvatar(trimmedInput);

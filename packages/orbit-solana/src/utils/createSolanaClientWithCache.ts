@@ -7,8 +7,9 @@
  * @module RpcClientCache
  */
 
-import { createSolanaClient, SolanaClient, SolanaClusterMoniker } from 'gill';
+import { createSolanaRpc, createSolanaRpcSubscriptions } from '@solana/kit';
 
+import type { SolanaClient, SolanaClusterMoniker } from '../types';
 import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
 
 /**
@@ -16,12 +17,6 @@ import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
  *
  * @param str - String to validate as URL
  * @returns Boolean indicating if the string is a valid URL
- *
- * @example
- * ```typescript
- * isValidUrl('https://api.mainnet-beta.solana.com') // returns true
- * isValidUrl('not-a-url') // returns false
- * ```
  */
 function isValidUrl(str: string): boolean {
   try {
@@ -30,6 +25,16 @@ function isValidUrl(str: string): boolean {
   } catch {
     return false;
   }
+}
+
+/**
+ * Converts an HTTP/HTTPS URL to a WS/WSS URL for subscriptions.
+ *
+ * @param httpUrl - The HTTP URL to convert.
+ * @returns The converted WebSocket URL.
+ */
+function toWebSocketUrl(httpUrl: string): string {
+  return httpUrl.replace(/^http/, 'ws');
 }
 
 /**
@@ -48,18 +53,11 @@ const clientsCache = new Map<string, SolanaClient>();
  * - Optimize memory usage
  * - Maintain consistent client instances throughout the application
  *
- * @param rpcUrlOrMoniker - RPC endpoint URL or cluster moniker (e.g., 'mainnet', 'devnet')
+ * @param params - Object containing rpcUrlOrMoniker and optional rpcUrls
+ * @param params.rpcUrlOrMoniker - RPC endpoint URL or cluster moniker (e.g., 'mainnet', 'devnet')
+ * @param params.rpcUrls - Optional custom mapping of cluster monikers to RPC endpoints
  * @returns Cached or newly created Solana RPC client instance
  * @throws Error if unable to resolve a valid RPC URL
- *
- * @example
- * ```typescript
- * // Using cluster moniker
- * const mainnetClient = createSolanaClientWithCache('mainnet');
- *
- * // Using custom RPC URL
- * const customClient = createSolanaClientWithCache('https://my-rpc.example.com');
- * ```
  */
 export const createSolanaClientWithCache = ({
   rpcUrlOrMoniker,
@@ -89,9 +87,28 @@ export const createSolanaClientWithCache = ({
   }
 
   // Create new client instance with resolved URL
-  const newClient = createSolanaClient({ urlOrMoniker: rpcUrl });
+  const rpc = createSolanaRpc(rpcUrl);
+  let rpcSubscriptions;
+  try {
+    rpcSubscriptions = createSolanaRpcSubscriptions(toWebSocketUrl(rpcUrl));
+  } catch {
+    // If WebSocket transport cannot be initialized, omit rpcSubscriptions
+  }
+
+  const newClient: SolanaClient = {
+    rpc,
+    ...(rpcSubscriptions ? { rpcSubscriptions } : {}),
+  };
 
   // Cache and return the new instance
   clientsCache.set(rpcUrlOrMoniker, newClient);
   return newClient;
+};
+
+/**
+ * Clears the Solana client cache.
+ * @internal
+ */
+export const clearSolanaClientCache = (): void => {
+  clientsCache.clear();
 };

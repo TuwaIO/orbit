@@ -1,4 +1,4 @@
-import { SolanaClusterMoniker } from 'gill';
+import type { SolanaClusterMoniker } from '../types';
 
 /**
  * The default RPC URLs for each Solana cluster.

@@ -4,9 +4,9 @@
 
 # createSolanaClientWithCache()
 
-> **createSolanaClientWithCache**(`rpcUrlOrMoniker`): `SolanaClient`
+> **createSolanaClientWithCache**(`params`): [`SolanaClient`](../interfaces/SolanaClient.md)
 
-Defined in: [packages/orbit-solana/src/utils/createSolanaClientWithCache.ts:64](https://github.com/TuwaIO/orbit/blob/397255305dfbcce27b213dc2552485e4603e7f2e/packages/orbit-solana/src/utils/createSolanaClientWithCache.ts#L64)
+Defined in: [packages/orbit-solana/src/utils/createSolanaClientWithCache.ts:62](https://github.com/TuwaIO/orbit/blob/d4110954ce16280c0b562c8d9e6ad0f6c0a602f2/packages/orbit-solana/src/utils/createSolanaClientWithCache.ts#L62)
 
 Creates or retrieves a cached Solana RPC client instance
 
@@ -17,34 +17,28 @@ This function implements a caching mechanism for Solana RPC clients to:
 
 ## Parameters
 
-### rpcUrlOrMoniker
+### params
 
-RPC endpoint URL or cluster moniker (e.g., 'mainnet', 'devnet')
+Object containing rpcUrlOrMoniker and optional rpcUrls
 
 #### rpcUrlOrMoniker
 
 `string`
 
+RPC endpoint URL or cluster moniker (e.g., 'mainnet', 'devnet')
+
 #### rpcUrls?
 
-`Partial`\<`Record`\<`SolanaClusterMoniker`, `string`\>\>
+`Partial`\<`Record`\<[`SolanaClusterMoniker`](../type-aliases/SolanaClusterMoniker.md), `string`\>\>
+
+Optional custom mapping of cluster monikers to RPC endpoints
 
 ## Returns
 
-`SolanaClient`
+[`SolanaClient`](../interfaces/SolanaClient.md)
 
 Cached or newly created Solana RPC client instance
 
 ## Throws
 
 Error if unable to resolve a valid RPC URL
-
-## Example
-
-```typescript
-// Using cluster moniker
-const mainnetClient = createSolanaClientWithCache('mainnet');
-
-// Using custom RPC URL
-const customClient = createSolanaClientWithCache('https://my-rpc.example.com');
-```
