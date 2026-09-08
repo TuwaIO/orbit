@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.15...orbit-core-v0.3.0) (2026-09-08)
+
+
+### Features
+
+* update ([#39](https://github.com/TuwaIO/orbit/issues/39)) ([8a58cff](https://github.com/TuwaIO/orbit/commit/8a58cfffb191d72d9775a922e26c68d1775a7460))
+
 ## [0.2.15](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.2.14...orbit-core-v0.2.15) (2026-07-24)
 
 ### Bug Fixes
