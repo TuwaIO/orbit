@@ -1,5 +1,13 @@
 import { OrbitAdapter } from '../types';
 
+/**
+ * Returns the default network and educational links for an adapter, e.g. to render a
+ * "What is a wallet?" section in a connect modal.
+ *
+ * @param adapter - The adapter to describe.
+ * @returns Default chain (`chainId`, `name`) and `links` (`aboutNetwork`, `choseWallet`, `about`) for EVM and Solana,
+ * or `undefined` for adapters without network data (e.g. Starknet).
+ */
 export const getNetworkData = (adapter: OrbitAdapter) => {
   switch (adapter) {
     case OrbitAdapter.EVM:

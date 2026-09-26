@@ -18,6 +18,16 @@ describe('getSolanaExplorerLink', () => {
     expect(link).toBe('https://explorer.solana.com/address/7xyz?cluster=testnet');
   });
 
+  it('defaults to mainnet without cluster query parameter when chainId is omitted', () => {
+    const link = getSolanaExplorerLink('tx/abc');
+    expect(link).toBe('https://explorer.solana.com/tx/abc');
+  });
+
+  it('treats mainnet-beta as the explorer default', () => {
+    expect(getSolanaExplorerLink('tx/abc', 'mainnet-beta')).toBe('https://explorer.solana.com/tx/abc');
+    expect(getSolanaExplorerLink('tx/abc', 'solana:mainnet-beta')).toBe('https://explorer.solana.com/tx/abc');
+  });
+
   it('handles empty path by falling back to root slash', () => {
     const link = getSolanaExplorerLink(undefined, 'mainnet');
     expect(link).toBe('https://explorer.solana.com/');

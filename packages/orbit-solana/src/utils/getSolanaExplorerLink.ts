@@ -10,17 +10,23 @@ import { getCluster } from './clusterHelpers';
 const SOLANA_EXPLORER_BASE_URL = 'https://explorer.solana.com';
 
 /**
+ * Cluster monikers the explorer shows by default, so they need no `cluster` query parameter.
+ */
+const DEFAULT_EXPLORER_CLUSTERS = new Set(['mainnet', 'mainnet-beta']);
+
+/**
  * Generates a full URL to an account, transaction, or block on the Solana explorer.
  *
  * @param url - The path after baseUrl (e.g. '/tx/...' or '/address/...').
- * @param chainId - Chain ID or cluster name.
+ * @param chainId - Chain ID or cluster name (e.g. 'devnet' or 'solana:devnet').
+ * Mainnet ('mainnet', 'mainnet-beta') or an omitted value produces a link without a `cluster` query parameter.
  * @returns The full URL on the Solana explorer.
  */
 export const getSolanaExplorerLink = (url?: string, chainId?: string | number | undefined): string => {
-  const cluster = getCluster({ cluster: String(chainId) }) ?? 'mainnet';
+  const cluster = getCluster({ cluster: chainId === undefined ? undefined : String(chainId) });
   const sanitizedBaseUrl = SOLANA_EXPLORER_BASE_URL;
-  // Build the cluster query parameter if provided.
-  const clusterParam = cluster && cluster !== 'mainnet' ? `?cluster=${cluster}` : '';
+  // Only non-mainnet clusters need an explicit query parameter.
+  const clusterParam = DEFAULT_EXPLORER_CLUSTERS.has(cluster) ? '' : `?cluster=${cluster}`;
 
   const path = url ? (url.startsWith('/') ? url : `/${url}`) : '/';
   return `${sanitizedBaseUrl}${path}${clusterParam}`;

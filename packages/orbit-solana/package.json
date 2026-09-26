@@ -4,7 +4,7 @@
   "private": false,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "Layer 2 (L2) of the TUWA Ecosystem. Low-level Solana-specific communication primitives and RPC caching utilities powered strictly by @solana/kit.",
+  "description": "L2 Solana package of Orbit Utils (TUWA): cached @solana/kit RPC clients, Wallet Standard discovery, cluster and explorer helpers, and SNS name/avatar lookups.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -21,9 +21,14 @@
     "test": "vitest run"
   },
   "keywords": [
+    "tuwa",
+    "orbit",
     "web3",
-    "typescript",
     "solana",
+    "@solana/kit",
+    "wallet-standard",
+    "sns",
+    "typescript",
     "headless"
   ],
   "repository": {
@@ -51,8 +56,8 @@
   "devDependencies": {
     "@tuwaio/orbit-core": "workspace:^",
     "tsup": "^8.5.1",
-    "typescript": "^6.0.3",
-    "@solana/kit": "^8.2.0",
+    "typescript": "6.0.3",
+    "@solana/kit": "^8.3.0",
     "@wallet-standard/app": "^1.1.1",
     "@wallet-standard/ui-core": "^1.0.1",
     "@wallet-standard/ui-registry": "^1.1.1"

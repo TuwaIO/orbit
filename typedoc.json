@@ -1,23 +1,31 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "name": "API Reference for TUWA Orbit framework-agnostic multi-chain primitives",
-  "entryPoints": [
-    "packages/orbit-core/src/index.ts",
-    "packages/orbit-evm/src/index.ts",
-    "packages/orbit-solana/src/index.ts"
+  "name": "Packages",
+  "entryPointStrategy": "packages",
+  "entryPoints": ["packages/*"],
+  "packageOptions": {
+    "entryPoints": ["src/index.ts"],
+    "exclude": ["**/*.test.ts", "**/*.spec.ts", "**/tests/**"],
+    "excludeInternal": true,
+    "gitRevision": "main"
+  },
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "./apps/docs/typedoc/preserveTypeAnnotations.mjs",
+    "./apps/docs/typedoc/nextraRoutes.mjs"
   ],
-  "entryPointStrategy": "expand",
-  "exclude": ["**/*.test.ts", "**/*.spec.ts", "**/tests/**"],
-  "tsconfig": "tsconfig.json",
-  "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-react"],
-  "out": "apps/docs/src/content/apiReference",
-  "readme": "none",
-  "githubPages": false,
-  "hideGenerator": true,
-  "cleanOutputDir": true,
-  "categorizeByGroup": true,
-  "hideBreadcrumbs": true,
+  "out": "apps/docs/src/content/packages",
+  "publicPath": "/packages/",
+  "readme": "apps/docs/typedoc/packages-overview.md",
+  "mergeReadme": true,
+  "entryFileName": "index",
+  "excludeScopesInPaths": true,
   "pageTitleTemplates": {
     "member": "{name}"
-  }
+  },
+  "githubPages": false,
+  "hideGenerator": true,
+  "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "cleanOutputDir": true
 }

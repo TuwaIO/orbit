@@ -119,6 +119,31 @@ describe('bundlerUtils', () => {
       expect(typeof paymaster.getPaymasterData).toBe('function');
       expect(typeof paymaster.getPaymasterStubData).toBe('function');
     });
+
+    it('returns cached paymaster client for identical endpoints', () => {
+      const config = { chainId: 11155111, apiKey: 'test_paymaster_key' };
+      const paymaster1 = createPimlicoPaymasterClient(config);
+      const paymaster2 = createPimlicoPaymasterClient({ ...config });
+
+      expect(paymaster1).toBe(paymaster2);
+    });
+
+    it('creates separate paymaster clients for different endpoints', () => {
+      const sepoliaPaymaster = createPimlicoPaymasterClient({ chainId: 11155111, apiKey: 'test_paymaster_key' });
+      const mainnetPaymaster = createPimlicoPaymasterClient({ chainId: 1, apiKey: 'test_paymaster_key' });
+
+      expect(sepoliaPaymaster).not.toBe(mainnetPaymaster);
+    });
+
+    it('clears paymaster client cache with clearBundlerCache', () => {
+      const config = { chainId: 11155111, apiKey: 'test_paymaster_key' };
+      const paymaster1 = createPimlicoPaymasterClient(config);
+
+      clearBundlerCache();
+
+      const paymaster2 = createPimlicoPaymasterClient(config);
+      expect(paymaster1).not.toBe(paymaster2);
+    });
   });
 
   describe('createSoladySmartAccount', () => {

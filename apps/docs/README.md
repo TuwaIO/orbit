@@ -1,113 +1,97 @@
-# Orbit Utils - Documentation Site
+# Orbit Utils — Documentation Site
 
-> 🔴 **Private Repository:** This repository contains the source code for the official Orbit Utils documentation website, available at **[orbit.docs.tuwa.io](https://orbit.docs.tuwa.io)**.
+Source of the official Orbit Utils documentation at **[orbit.docs.tuwa.io](https://orbit.docs.tuwa.io)**. It covers `@tuwaio/orbit-core`, `@tuwaio/orbit-evm` and `@tuwaio/orbit-solana`.
 
-## About This Project
-
-This project houses the official documentation for the entire **Orbit Utils** ecosystem. It's built using **Next.js** with the **Nextra** documentation theme (`nextra-theme-docs`), a powerful framework that allows us to write content in **MDX** (Markdown with JSX) and generate a fast, searchable, and user-friendly static website]/page.tsx].
-
-The goal is to provide clear, comprehensive, and easy-to-navigate documentation for all packages within the `@tuwaio/orbit` monorepo, covering `@tuwaio/orbit-core`, `@tuwaio/orbit-evm`, and `@tuwaio/orbit-solana`.
+The site is the first TUWA docs site on the **Packages** layout: hand-written concept pages plus one page per npm package, where the package README is followed by a reference of every export generated from the source. Other TUWA documentation sites are expected to follow the same structure.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 16+
-- **Documentation Theme**: Nextra 4+ (`nextra`, `nextra-theme-docs`)
-- **Styling**: Tailwind CSS 4+ with PostCSS and TUWA's `@tuwaio/nova-core` styles.
-- **UI Components**: React 19+, Headless UI (`@headlessui/react`), Heroicons (`@heroicons/react`).
-- **Code Highlighting**: `react-syntax-highlighter`.
-- **State/Theme Management**: `next-themes` for dark/light mode.
-- **Client-Side Search**: Pagefind (integrated via `postbuild` script).
-- **Deployment**: Vercel.
+- **Framework:** Next.js 16 (App Router)
+- **Docs theme:** Nextra 4 (`nextra`, `nextra-theme-docs`)
+- **Shared TUWA UI:** `@tuwaio/docs-ui` (navbar, footer, logo, design tokens)
+- **Styling:** Tailwind CSS 4
+- **Search:** Pagefind (built in the `postbuild` step)
+- **Reference generation:** TypeDoc + `typedoc-plugin-markdown`, plus two local plugins in [`typedoc/`](./typedoc)
+- **Deployment:** Vercel
 
 ---
 
 ## 🚀 Getting Started
 
-To run the documentation website locally, follow these steps.
-
-### 1. Prerequisites
-
-Ensure you have installed all dependencies from the **root of the monorepo** using `pnpm`:
+Install dependencies from the **monorepo root** (this also builds all packages through the root `postinstall` script):
 
 ```bash
-# Run from the monorepo root (tuwaio/orbit/), not from apps/docs/
 pnpm install
 ```
 
-This command installs dependencies for all packages in the workspace, including the necessary build steps (`postinstall` script in root `package.json`).
-
-### 2. Running the Dev Server
-
-Run the following command from the **root of the monorepo** to start the Next.js development server for the docs site using Turbopack:
+Start the dev server from the monorepo root:
 
 ```bash
 pnpm --filter @tuwaio/orbit-docs dev
 ```
 
-_(Note: The filter `@tuwaio/orbit-docs` targets this specific application based on its `name` in `apps/docs/package.json`)_
-
-The documentation site will then be available, typically at **[http://localhost:3000](http://localhost:3000)**. The site uses `nextjs-toploader` for a loading bar during navigation.
+The site runs at **[http://localhost:3000](http://localhost:3000)**.
 
 ---
 
-## ✍️ How to Add and Edit Content
+## 🗂 Content Structure
 
-Content creation leverages Nextra's file-based routing and MDX capabilities.
-
-### Creating Pages
-
-All documentation pages are **MDX files** (`.mdx` or `.jsx` if primarily components) located within the `src/content` directory. The structure of files and folders here directly maps to the URL paths on the site.
-
-- `src/content/index.mdx` → `/`
-- `src/content/apiReference/orbit-core/src/index.md` → `/apiReference/orbit-core/src/` (Note: `.md` files from TypeDoc are also used here)
-
-### Managing Sidebar Navigation
-
-Sidebar navigation, page titles, and grouping are primarily controlled by `_meta.tsx` files within each content directory. These files export a default object defining the structure.
-
-**Example: `src/content/_meta.tsx`**
-
-```jsx
-export default {
-  index: 'Introduction', // Maps index.mdx to 'Introduction' title
-  '--': {
-    // Creates a visual separator
-    type: 'separator',
-  },
-  apiReference: 'API reference', // Maps the apiReference folder
-};
+```
+apps/docs/
+├── src/content/
+│   ├── _meta.tsx              # Sidebar: Introduction, Packages, Guides (link to docs.tuwa.io/guides)
+│   ├── index.mdx              # Introduction (hand-written)
+│   └── packages/              # GENERATED — do not edit by hand
+│       ├── _meta.tsx          # Copied from typedoc/packages-meta.tsx
+│       ├── index.md           # Packages overview (typedoc/packages-overview.md + package list)
+│       └── orbit-core/        # One folder per package
+│           ├── index.md       # Package README + list of exports
+│           ├── functions/     # One page per exported function
+│           ├── interfaces/
+│           ├── type-aliases/
+│           ├── enumerations/
+│           └── variables/
+└── typedoc/
+    ├── packages-meta.tsx          # Sidebar labels for the Packages section
+    ├── packages-overview.md       # Intro text of the /packages page
+    ├── preserveTypeAnnotations.mjs # Keeps named library types (e.g. viem's PublicClient) from being inlined
+    └── nextraRoutes.mjs           # Rewrites `.../index.md` links to Nextra folder routes
 ```
 
-_(For deeper nesting, like API Reference, `_meta.json` or `_meta.tsx` files are used within those subdirectories as well)_.
+Hand-written pages are MDX files in `src/content`; the folder structure maps to URLs, and `_meta.tsx` files control sidebar titles and order.
 
-### API Reference Generation
+---
 
-The API reference content within `src/content/apiReference` is automatically generated using **TypeDoc** with `typedoc-plugin-markdown`. The generation is triggered by the `docs:gen` script in the root `package.json` and runs automatically on pre-commit via Husky. Manual regeneration can be done by running `pnpm docs:gen` from the monorepo root.
+## 📦 Packages Reference
 
-### Using Custom Components
+Everything under `src/content/packages` is generated by TypeDoc from the root [`typedoc.json`](../../typedoc.json):
 
-Custom React components enhance the documentation. They are located in `src/components` (e.g., `CodeBlock.tsx`, `PackageInstallationTabs.tsx`) and can be imported directly into MDX files. The site uses `src/mdx-components.ts` to merge Nextra's default components with custom ones. NoSSR component is used to prevent Server-Side Rendering issues for certain components.
+```bash
+pnpm docs:gen   # run from the monorepo root; also runs in the pre-commit hook
+```
+
+- **Source of truth:** each package's `src/index.ts` exports, their JSDoc, and the package `README.md` (which becomes the package overview page). To change a package page, edit the package README or the JSDoc in the source, never the generated Markdown.
+- **README rules:** use absolute URLs for links (TypeDoc copies relative link targets into the output, and Nextra cannot render them), and do not hand-write lists of exports; the generated reference lists them.
+- **Stable output:** source links point to `main` instead of a commit hash, so a regeneration only changes pages whose source changed.
+- **Excluded symbols:** exports marked `@internal` are left out of the reference.
 
 ---
 
 ## 🚀 Deployment
 
-The documentation site is automatically deployed to **Vercel**.
-
-- **Production URL:** [**https://orbit.docs.tuwa.io**](https://orbit.docs.tuwa.io)
-- The client-side search index is generated by **Pagefind** during the `postbuild` step defined in `apps/docs/package.json` and requires no extra configuration on Vercel.
+The site is deployed to **Vercel**. The Pagefind search index is generated in the `postbuild` step of `apps/docs/package.json` and needs no extra configuration.
 
 ## 🔗 Quick Links
 
-| Resource                   | Link                                                           |
-| -------------------------- | -------------------------------------------------------------- |
-| **Live Docs Site**         | [**orbit.docs.tuwa.io**](https://orbit.docs.tuwa.io)           |
-| **Nextra Documentation**   | [`https://nextra.site/docs`](https://nextra.site/docs)         |
-| **Pagefind Documentation** | [`https://pagefind.app/`](https://pagefind.app/)               |
-| **Tailwind CSS Docs**      | [`https://tailwindcss.com/docs`](https://tailwindcss.com/docs) |
-| **TypeDoc Docs**           | [`https://typedoc.org/`](https://typedoc.org/)                 |
+| Resource                         | Link                                                               |
+| -------------------------------- | ------------------------------------------------------------------ |
+| **Live Docs Site**               | [orbit.docs.tuwa.io](https://orbit.docs.tuwa.io)                   |
+| **TUWA Guides**                  | [docs.tuwa.io/guides](https://docs.tuwa.io/guides)                 |
+| **Nextra Documentation**         | [nextra.site/docs](https://nextra.site/docs)                       |
+| **TypeDoc Markdown Plugin Docs** | [typedoc-plugin-markdown.org](https://typedoc-plugin-markdown.org) |
+| **Pagefind Documentation**       | [pagefind.app](https://pagefind.app/)                              |
 
 ## 📄 License
 

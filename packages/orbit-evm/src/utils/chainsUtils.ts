@@ -8,7 +8,10 @@ function isValidEvmChainId(id: unknown): id is number {
 }
 
 /**
- * Get EVM chain IDs from app chains configuration
+ * Gets the EVM chain IDs from an app's viem chain configuration.
+ *
+ * @param appChains - The viem chains configured in the app.
+ * @returns The positive numeric chain IDs, or an empty array if no chains are provided.
  */
 export function getEvmChains(appChains?: readonly [Chain, ...Chain[]]): number[] {
   if (!appChains || appChains.length === 0) {
@@ -18,7 +21,10 @@ export function getEvmChains(appChains?: readonly [Chain, ...Chain[]]): number[]
 }
 
 /**
- * Type guard to check if a chain list contains EVM chain IDs
+ * Type guard to check if a chain list contains EVM chain IDs.
+ *
+ * @param chains - Mixed list of chain identifiers.
+ * @returns `true` if the list is non-empty and contains only numbers.
  */
 export function isEvmChainList(chains: (string | number)[]): chains is number[] {
   return chains.length > 0 && chains.every((chain) => typeof chain === 'number');

@@ -120,6 +120,12 @@ const pimlicoUrlCache = new Map<string, string>();
 const bundlerClientCache = new Map<string, BundlerClient<HttpTransport>>();
 
 /**
+ * In-memory cache for Paymaster Client instances, keyed by resolved RPC URL.
+ * @internal
+ */
+const paymasterClientCache = new Map<string, PaymasterClient>();
+
+/**
  * Computes a unique cache key for a PimlicoUrlConfig.
  */
 function getPimlicoCacheKey(config: PimlicoUrlConfig): string {
@@ -198,16 +204,25 @@ export function createBundlerRpcClient(config: BundlerRpcClientConfig): BundlerC
 }
 
 /**
- * Creates a Viem Paymaster Client configured with the resolved Pimlico RPC endpoint.
+ * Creates or retrieves a cached Viem Paymaster Client configured with the resolved Pimlico RPC endpoint.
+ * Side effect: stores the client in an in-memory cache keyed by the resolved RPC URL (see `clearBundlerCache`).
  *
  * @param config - Pimlico URL configuration.
- * @returns PaymasterClient instance configured for Pimlico gas sponsorship.
+ * @returns Cached or newly instantiated PaymasterClient configured for Pimlico gas sponsorship.
  */
 export function createPimlicoPaymasterClient(config: PimlicoUrlConfig): PaymasterClient {
   const rpcUrl = createPimlicoRpcUrl(config);
-  return createPaymasterClient({
+  const cachedClient = paymasterClientCache.get(rpcUrl);
+  if (cachedClient) {
+    return cachedClient;
+  }
+
+  const client = createPaymasterClient({
     transport: http(rpcUrl),
   });
+
+  paymasterClientCache.set(rpcUrl, client);
+  return client;
 }
 
 /**
@@ -321,10 +336,11 @@ export async function createPimlicoSmartAccountClient(
 }
 
 /**
- * Clears the in-memory cache of Pimlico URLs and Bundler clients.
- * Useful for testing and resetting runtime state.
+ * Clears the in-memory caches of Pimlico URLs, Bundler clients and Paymaster clients.
+ * Useful for testing and resetting runtime state (e.g. after rotating an API key).
  */
 export function clearBundlerCache(): void {
   pimlicoUrlCache.clear();
   bundlerClientCache.clear();
+  paymasterClientCache.clear();
 }

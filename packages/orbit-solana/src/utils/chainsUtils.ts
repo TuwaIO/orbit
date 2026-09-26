@@ -60,7 +60,12 @@ function buildSolanaRpcUrls(
 }
 
 /**
- * Get Solana clusters from configuration
+ * Resolves the Solana clusters an app can use.
+ *
+ * @param solanaRPCUrls - Optional mapping of cluster monikers to RPC URLs. When provided, only these clusters are allowed.
+ * @param chains - Optional chain identifiers (e.g. `'solana:devnet'`, `'solana:mainnet-beta'`); when provided, only
+ * clusters present in this list (and allowed by `solanaRPCUrls`) are returned.
+ * @returns Cluster monikers, e.g. `['mainnet', 'devnet']`. Defaults to every cluster with a default RPC URL.
  */
 export function getSolanaClusters(
   solanaRPCUrls?: Partial<Record<SolanaClusterMoniker, string>>,
@@ -76,21 +81,29 @@ export function getSolanaClusters(
 }
 
 /**
- * Type guard to check if a chain list contains Solana cluster names
+ * Type guard to check if a chain list contains Solana cluster names.
+ *
+ * @param chains - Mixed list of chain identifiers.
+ * @returns `true` if the list is non-empty and contains only strings.
  */
 export function isSolanaChainList(chains: (string | number)[]): chains is string[] {
   return chains.length > 0 && chains.every((chain) => typeof chain === 'string');
 }
 
 /**
- * Gets available Solana clusters from the default configuration
+ * Gets the Solana clusters that have a default public RPC URL.
+ *
+ * @returns `['mainnet', 'devnet', 'testnet']`.
  */
 export function getAvailableSolanaClusters(): SolanaClusterMoniker[] {
   return Object.keys(defaultRpcUrlsByMoniker) as SolanaClusterMoniker[];
 }
 
 /**
- * Validates if a string is a valid Solana cluster moniker
+ * Validates if a string is a Solana cluster moniker with a default RPC URL.
+ *
+ * @param cluster - Value to check.
+ * @returns `true` for `'mainnet'`, `'devnet'` and `'testnet'`.
  */
 export function isValidSolanaCluster(cluster: string): boolean {
   return cluster in defaultRpcUrlsByMoniker;

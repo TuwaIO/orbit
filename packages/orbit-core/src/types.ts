@@ -55,8 +55,10 @@ export enum OrbitAdapter {
    * For the Starknet L2 network.
    * Supports:
    * - Starknet Mainnet
-   * - Testnet (Goerli)
+   * - Starknet Sepolia testnet
    * - Other Starknet deployments
+   *
+   * Reserved for future use: no Orbit chain package implements Starknet yet.
    */
   Starknet = 'starknet',
 }
@@ -97,6 +99,10 @@ export type OrbitGenericAdapter<A extends { key: OrbitAdapter }> = {
   adapter: A | A[];
 };
 
+/**
+ * Minimal contract shared by chain adapters: explorer links plus optional name-service lookups.
+ * Combine it with a `key: OrbitAdapter` property to register an adapter for {@link selectAdapterByKey}.
+ */
 export type BaseAdapter = {
   /**
    * Generates blockchain explorer URL

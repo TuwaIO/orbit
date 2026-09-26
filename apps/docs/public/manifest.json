@@ -1,7 +1,7 @@
 {
-  "name": "TUWA Orbit Documentation",
-  "short_name": "TUWA Orbit",
-  "description": "Technical documentation for TUWA Orbit: The framework-agnostic low-level Web3 communication primitives.",
+  "name": "Orbit Utils Documentation",
+  "short_name": "Orbit Utils",
+  "description": "Documentation for Orbit Utils, the Stage 1 primitives layer of the TUWA ecosystem: headless, framework-agnostic helpers for EVM and Solana.",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",

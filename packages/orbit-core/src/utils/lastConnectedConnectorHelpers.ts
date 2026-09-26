@@ -1,7 +1,17 @@
 import { ConnectorType } from '../types';
 import { getParsedStorageItem } from './getParsedStorageItem';
 
-type LastConnectedConnector = { connectorType: ConnectorType; chainId: number | string; address?: string };
+/**
+ * Connection data persisted by {@link lastConnectedConnectorHelpers}.
+ */
+export type LastConnectedConnector = {
+  /** Connector identifier, e.g. "evm:metamask". */
+  connectorType: ConnectorType;
+  /** Chain the wallet was connected to (numeric EVM chain ID or Solana chain identifier). */
+  chainId: number | string;
+  /** Connected wallet address, if known. */
+  address?: string;
+};
 
 /**
  * Helper utilities for managing the last connected wallet state
@@ -23,7 +33,7 @@ export const lastConnectedConnectorHelpers = {
   /**
    * Stores the last connected wallet data in localStorage.
    *
-   * @param data - Object containing the wallet type and chain ID.
+   * @param data - Connector type, chain ID and optional address of the connected wallet.
    * @returns undefined in SSR context, void in browser
    */
   setLastConnectedConnector: ({ connectorType, chainId, address }: LastConnectedConnector) =>

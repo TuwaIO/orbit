@@ -4,7 +4,7 @@
   "private": false,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "Layer 1 (L1) of the TUWA Ecosystem. Framework-agnostic library for abstracting core multi-chain types, errors, and localStorage helper utilities.",
+  "description": "L1 core of Orbit Utils (TUWA): zero-dependency, framework-agnostic multi-chain types, connector and address helpers, error normalization and SSR-safe connection persistence.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -21,9 +21,14 @@
     "test": "vitest run"
   },
   "keywords": [
+    "tuwa",
+    "orbit",
     "web3",
+    "multi-chain",
+    "evm",
+    "solana",
     "typescript",
-    "core",
+    "framework-agnostic",
     "headless"
   ],
   "repository": {
@@ -43,6 +48,6 @@
   ],
   "devDependencies": {
     "tsup": "^8.5.1",
-    "typescript": "^6.0.3"
+    "typescript": "6.0.3"
   }
 }

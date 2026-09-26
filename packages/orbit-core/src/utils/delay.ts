@@ -1,6 +1,4 @@
 /**
- * @name delay
- *
  * Ensures the global 'window' object is available (if running in a browser-like environment),
  * then pauses execution for a specified duration, and finally resolves the Promise with the given value.
  *

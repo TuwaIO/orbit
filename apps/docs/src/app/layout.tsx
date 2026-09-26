@@ -28,11 +28,11 @@ const logo = (
 // --- Metadata Configuration ---
 export const metadata: Metadata = {
   title: {
-    default: 'TUWA Orbit Documentation',
-    template: '%s – Orbit',
+    default: 'Orbit Utils Documentation',
+    template: '%s – Orbit Utils',
   },
   description:
-    'Technical documentation for TUWA Orbit: The framework-agnostic low-level Web3 communication primitives.',
+    'Documentation for Orbit Utils, the Stage 1 primitives layer of the TUWA ecosystem: headless, framework-agnostic helpers for EVM and Solana.',
   manifest: '/manifest.json',
   icons: {
     icon: 'https://cdn.jsdelivr.net/gh/TuwaIO/workflows@main/favicon/icon0.svg',
@@ -40,25 +40,30 @@ export const metadata: Metadata = {
     apple: 'https://cdn.jsdelivr.net/gh/TuwaIO/workflows@main/favicon/web-app-manifest-512x512.png',
   },
   keywords: [
-    'headless',
-    'state management',
-    'transaction tracking',
+    'orbit utils',
+    'tuwa',
     'web3 utils',
+    'multi-chain',
+    'headless',
+    'framework-agnostic',
+    'evm',
+    'viem',
+    'wagmi',
+    'ens',
+    'erc-4337',
+    'account abstraction',
     'solana',
     '@solana/kit',
-    'solanakit',
-    'web3',
-    'zustand',
-    'wagmi',
-    'viem',
+    'wallet standard',
+    'sns',
     'typescript',
   ],
   authors: [{ name: 'TUWA', url: 'https://github.com/TuwaIO' }],
 
   openGraph: {
-    title: 'TUWA Orbit Documentation',
+    title: 'Orbit Utils Documentation',
     description:
-      'Technical documentation for TUWA Orbit: The framework-agnostic low-level Web3 communication primitives.',
+      'Documentation for Orbit Utils, the Stage 1 primitives layer of the TUWA ecosystem: headless, framework-agnostic helpers for EVM and Solana.',
     url: 'https://orbit.docs.tuwa.io/',
     siteName: 'Orbit Utils Docs',
     images: [
@@ -74,9 +79,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'TUWA Orbit Documentation',
+    title: 'Orbit Utils Documentation',
     description:
-      'Technical documentation for TUWA Orbit: The framework-agnostic low-level Web3 communication primitives.',
+      'Documentation for Orbit Utils, the Stage 1 primitives layer of the TUWA ecosystem: headless, framework-agnostic helpers for EVM and Solana.',
     images: ['https://cdn.jsdelivr.net/gh/TuwaIO/workflows@main/preview/preview-logo.png'],
   },
 };

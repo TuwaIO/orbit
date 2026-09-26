@@ -2,6 +2,16 @@ import { filterUniqueByKey } from '@tuwaio/orbit-core';
 import { getWallets } from '@wallet-standard/app';
 import { getOrCreateUiWalletForStandardWallet } from '@wallet-standard/ui-registry';
 
+/**
+ * Lists the Solana wallets registered through the Wallet Standard that Orbit can work with.
+ *
+ * A wallet is included only if it supports `standard:connect`, `standard:disconnect`, `standard:events`,
+ * `solana:signAndSendTransaction`, `solana:signTransaction` and `solana:signMessage`, and every chain it
+ * declares is a `solana:*` chain. Wallets registered more than once are deduplicated by name.
+ *
+ * @returns The matching wallets as `UiWallet` objects from `@wallet-standard/ui-registry`
+ * (empty on the server, where no wallets are registered).
+ */
 export function getAvailableSolanaConnectors() {
   return filterUniqueByKey(getWallets().get().map(getOrCreateUiWalletForStandardWallet), 'name').filter((wallet) => {
     try {

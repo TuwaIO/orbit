@@ -3,62 +3,73 @@
 <p align="center">
   <img
     src="https://cdn.jsdelivr.net/gh/TuwaIO/workflows@main/preview/repos/orbit_utils.png"
-    alt="TUWA Orbit"
+    alt="Orbit Utils"
     width="450"
     style={{ borderRadius: '12px', margin: '24px auto', display: 'block' }}
   />
 </p>
 
-TUWA Orbit provides modular, headless-first Web3 frontend primitives engineered for absolute application sovereignty, performance, and self-custody.
-
-As a framework-agnostic primitive layer, Orbit manages low-level multi-chain communication while remaining completely decoupled from higher-level visual layers (such as Nova UI Kit) or transaction tracking engines (such as Pulsar / Quasar).
+**Orbit Utils** is the Stage 1 primitives layer of the TUWA ecosystem: headless, framework-agnostic helpers for talking to EVM and Solana networks. It provides cached RPC clients, wallet discovery, connection persistence, name resolution and ERC-4337 smart accounts as plain functions and types, with no UI, state management or framework bindings.
 
 ---
 
-## 🏛️ Ecosystem Alignment & Architecture
+## 🏛️ Where Orbit Fits in TUWA
 
-In high-reliability Web3 frontends, mixing user interface layouts with blockchain communication primitives causes codebase fragmentation, dependency bloat, and maintenance overhead. Orbit provides a unified, logic-only integration boundary.
+TUWA is built in stages. Each stage builds on the ones below it, and Orbit sits at the bottom:
 
-### Core Architectural Advantages
+| Stage                          | Projects                                                                                                                                     | Role                                                     |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| **1 — Core Auth & Primitives** | [SIWX](https://siwx.docs.tuwa.io/), **Orbit Utils**                                                                                          | CAIP-122 authentication and multi-chain primitives       |
+| **2 — State & Connection**     | [Satellite Connect](https://satellite.docs.tuwa.io/), [Pulsar](https://pulsar.docs.tuwa.io/)                                                 | Wallet connection state machine and transaction tracking |
+| **3 — Backend & Sync**         | [Quasar Cloud](https://sdk.docs.tuwa.io/quasar-cloud/overview) or self-hosted [Quasar Community](https://github.com/TuwaIO/quasar-community) | Transaction indexing and cross-device sync               |
+| **4 — User Interface**         | [Nova UI Kit](https://stories.tuwa.io/)                                                                                                      | React design system and components                       |
 
-1. **Low-Level Communication Primitives:** Define cross-chain operations through the common `BaseAdapter` interface. Resolving ENS addresses, Solana signatures, and network state returns consistent models.
-2. **Headless Execution:** Contains zero CSS rules, UI layouts, or framework bindings. Integrates with React, Vue, Svelte, Solid, or vanilla JavaScript.
-3. **Application Sovereignty:** Restores developer control over network connections. Restricts wallet handling to self-custodial protocols and rejects SaaS dependency lock-ins.
-4. **Decoupled Architecture:** Serves as the Layer 1 and Layer 2 (L1/L2) foundational layer beneath state lifecycle trackers (Pulsar) or CSS design frameworks (Nova), preventing circular dependencies and side effects.
+Orbit depends on nothing else in TUWA. Higher layers import its types and helpers (for example, `OrbitAdapter` identifies the chain family in Satellite Connect and Pulsar), never the other way around. You can also use Orbit on its own in any app.
 
 ---
 
-## 🧩 Monorepo Modules
+## 🧭 Principles
 
-The Orbit monorepo is split into distinct, lightweight packages:
+1. **Headless and framework-agnostic:** no CSS, components, hooks or framework bindings. Everything is a plain function or type, usable from React, Vue, Svelte, Solid, Node.js or vanilla JavaScript.
+2. **Modern Web3 libraries only:** `viem` and `@wagmi/core` for EVM, `@solana/kit` and the Wallet Standard for Solana. No `ethers.js`, `web3.js`, `@solana/web3.js` or `gill`.
+3. **Self-custody, no Wallet-as-a-Service:** wallets stay with the user. Account abstraction uses open ERC-4337 infrastructure (Solady smart accounts, any Pimlico-compatible bundler) instead of proprietary wallet platforms.
+4. **Peer dependencies, not bundled SDKs:** chain libraries are peer dependencies, so your app controls their versions and keeps a single copy.
+5. **Transparent side effects:** helpers document when they write to `localStorage`, cache in memory or call an external service. The Solana package lists every third-party host it contacts.
 
-- **`@tuwaio/orbit-core` (L1)**: Defines common types, error definitions, and provides `localStorage` connection persistence helpers.
-- **`@tuwaio/orbit-evm` (L2)**: Resolves EVM-specific communication primitives, public client caching, native ERC-4337 Pimlico Bundler utilities, and ENS resolution powered by `viem` and `@wagmi/core`.
-- **`@tuwaio/orbit-solana` (L2)**: Implements Solana RPC client caches, Wallet Standard connector discovery, and metadata lookups powered strictly by `@solana/kit`.
+---
+
+## 🧩 Packages
+
+| Package                                          | Layer | Provides                                                                                               | Peer dependencies                                                   |
+| ------------------------------------------------ | ----- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| [`@tuwaio/orbit-core`](/packages/orbit-core)     | L1    | Multi-chain types, connector and address helpers, error normalization, SSR-safe connection storage     | —                                                                   |
+| [`@tuwaio/orbit-evm`](/packages/orbit-evm)       | L2    | Cached viem clients, chain switching, ENS resolution, ERC-4337 smart accounts (Solady + Pimlico)       | `viem` 2.x, `@wagmi/core` 3.x                                       |
+| [`@tuwaio/orbit-solana`](/packages/orbit-solana) | L2    | Cached `@solana/kit` RPC clients, Wallet Standard discovery, cluster and explorer helpers, SNS lookups | `@tuwaio/orbit-core`, `@solana/kit` ≥ 8.2, `@wallet-standard/*` 1.x |
+
+Each package page shows the package README followed by a reference of every export, generated from the TypeScript source.
 
 ---
 
 ## 💾 Installation
 
-Install Orbit depending on target networks:
+Install the core package and the chain packages your app targets:
 
 ```bash
-# L1 Core
+# L1 core
 pnpm add @tuwaio/orbit-core
 
-# L2 EVM Platform
+# L2 EVM
 pnpm add @tuwaio/orbit-evm @wagmi/core viem
 
-# L2 Solana Platform
+# L2 Solana
 pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
 ```
 
 ---
 
-## 📚 Technical Reference
+## 📚 Next Steps
 
-- Refer to the **[API Reference](./apiReference/README/)** to explore generated definitions for exported adapter interfaces, classes, and types.
-- Read package README specifications:
-  - [`@tuwaio/orbit-core` Reference](https://github.com/TuwaIO/orbit/tree/main/packages/orbit-core)
-  - [`@tuwaio/orbit-evm` Reference](https://github.com/TuwaIO/orbit/tree/main/packages/orbit-evm)
-  - [`@tuwaio/orbit-solana` Reference](https://github.com/TuwaIO/orbit/tree/main/packages/orbit-solana)
+- Browse the **[Packages](/packages)** section for usage examples and the full reference of each package.
+- Follow the **[ERC-4337 guide](https://docs.tuwa.io/guides/erc-4337-sovereign-account-abstraction)** for an end-to-end smart account flow with Orbit EVM, Pulsar and Quasar.
+- Find more ecosystem guides at **[docs.tuwa.io/guides](https://docs.tuwa.io/guides)**.
+- Read the source on **[GitHub](https://github.com/TuwaIO/orbit)**.

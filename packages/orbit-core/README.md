@@ -1,18 +1,21 @@
 # @tuwaio/orbit-core
 
 [![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-core.svg)](https://www.npmjs.com/package/@tuwaio/orbit-core)
-[![License](https://img.shields.io/npm/l/@tuwaio/orbit-core.svg)](./LICENSE)
+[![License](https://img.shields.io/npm/l/@tuwaio/orbit-core.svg)](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/LICENSE)
 
-`@tuwaio/orbit-core` is the Layer 1 (L1) core logic and foundational state wrapper layer of the TUWA Orbit multi-chain framework. It is completely **headless** and **framework-agnostic**, engineered to decouple raw blockchain connection interfaces from visual frontend layers. By establishing a unified type-safe interface, it enables consistent cross-chain connection management and persistent user account tracking.
+`@tuwaio/orbit-core` is the Layer 1 (L1) package of **Orbit Utils**, the Stage 1 primitives layer of the TUWA ecosystem. It defines the chain-agnostic types that the Orbit chain packages and the higher TUWA layers (Satellite Connect, Pulsar) share, and ships small helpers for connector naming, address validation, error normalization and SSR-safe connection persistence.
+
+The package has **zero runtime dependencies** and imports no Web3 SDK, so it runs in any framework, in the browser and on the server.
 
 ---
 
 ## 🏛️ Core Capabilities
 
-- **Unified Multi-Chain Primitives:** Establishes the structural `BaseAdapter` interface and the `OrbitAdapter` enum (EVM, Solana, Starknet) to serve as the abstract layer for multi-chain communication.
-- **Connection State Persistence:** Implements SSR-safe storage helpers (`lastConnectedConnectorHelpers`, `recentConnectedConnectorHelpers`) to track and resume wallet connection history via `localStorage`.
-- **Autonomy-Focused Utilities:** Technical utility helpers for formatting chain IDs, parsing connector names, and executing asynchronous operations (`waitFor`, `delay`).
-- **Account Impersonation Engine:** Built-in `impersonatedHelpers` for sandboxed testing and account auditing.
+- **Multi-chain primitives:** the `OrbitAdapter` enum (`evm`, `solana`, `starknet`), the `BaseAdapter` contract, `ConnectorType` identifiers such as `"evm:metamask"` or `"solana:phantom"`, and `selectAdapterByKey` to pick the adapter of the active chain.
+- **Connector helpers:** `getConnectorTypeFromName`, `getAdapterFromConnectorType`, `formatConnectorName`, `formatConnectorChainId`, `isSolanaChain`, `setChainId` and `getNetworkData`.
+- **Validation and errors:** `isAddress` validates EVM (hex) and Solana (Base58) addresses. `normalizeError` turns any wallet, viem or RPC error into a JSON-serializable `TuwaErrorState` that is safe to persist.
+- **Connection persistence:** `lastConnectedConnectorHelpers` and `recentlyConnectedConnectorsListHelpers` keep connection history in `localStorage` and do nothing during SSR.
+- **Runtime utilities:** `detectSafeApp` (Safe{Wallet} iframe detection), `waitFor`, `delay`, `filterUniqueByKey`, and `impersonatedHelpers` for development and testing.
 
 ---
 
@@ -24,71 +27,87 @@ pnpm add @tuwaio/orbit-core
 
 ---
 
-## 🚀 Architectural Integration
+## 🚀 Usage
 
-### Runtime Adapter Resolution
+### Resolving the active adapter
 
-Register and resolve chain-specific primitive adapters dynamically:
+`BaseAdapter` describes what an adapter can do; add a `key` to register it for a chain family:
 
 ```typescript
-import { OrbitAdapter, selectAdapterByKey, BaseAdapter } from '@tuwaio/orbit-core';
+import { type BaseAdapter, OrbitAdapter, selectAdapterByKey } from '@tuwaio/orbit-core';
 
-// Configure primitive adapter mapping
-const adapters: BaseAdapter[] = [
-  {
-    key: OrbitAdapter.EVM,
-    getExplorerUrl: (url) => `https://etherscan.io/${url}`,
-  },
-  {
-    key: OrbitAdapter.SOLANA,
-    getExplorerUrl: (url, cluster) => `https://solscan.io/${url}?cluster=${cluster}`,
-  },
+type ExplorerAdapter = BaseAdapter & { key: OrbitAdapter };
+
+const adapters: ExplorerAdapter[] = [
+  { key: OrbitAdapter.EVM, getExplorerUrl: (path) => `https://etherscan.io/${path ?? ''}` },
+  { key: OrbitAdapter.SOLANA, getExplorerUrl: (path) => `https://explorer.solana.com/${path ?? ''}` },
 ];
 
-// Dynamically select target execution adapter
-const activeAdapter = selectAdapterByKey({
-  adapterKey: OrbitAdapter.SOLANA,
-  adapter: adapters,
-});
-
-if (activeAdapter) {
-  console.log(activeAdapter.getExplorerUrl('tx/0x...', 'mainnet-beta'));
-}
+const solanaAdapter = selectAdapterByKey({ adapterKey: OrbitAdapter.SOLANA, adapter: adapters });
+solanaAdapter?.getExplorerUrl('tx/<signature>'); // "https://explorer.solana.com/tx/<signature>"
 ```
 
-### Connection State Storage
+If no adapter matches the key, `selectAdapterByKey` falls back to the first adapter in the array and logs a warning.
 
-Read and write connected connector metadata securely with `localStorage` fallback checks:
+### Persisting the last connection
 
 ```typescript
 import { lastConnectedConnectorHelpers } from '@tuwaio/orbit-core';
 
-// Persist metadata
 lastConnectedConnectorHelpers.setLastConnectedConnector({
   connectorType: 'evm:metamask',
   chainId: 1,
-  address: '0x123...',
+  address: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045',
 });
 
-// Retrieve connection metadata safely during client-side hydration
+// Returns undefined on the server and when nothing is stored.
 const lastConnected = lastConnectedConnectorHelpers.getLastConnectedConnector();
-console.log(lastConnected?.address); // "0x123..."
 ```
 
+### Normalizing errors
+
+```typescript
+import { normalizeError } from '@tuwaio/orbit-core';
+
+declare function sendTransaction(): Promise<void>;
+
+try {
+  await sendTransaction();
+} catch (error) {
+  // `message` prefers viem's `shortMessage`; `raw` is a JSON-safe copy of the error details.
+  const { message, raw } = normalizeError(error);
+}
+```
+
+### Validating addresses
+
+```typescript
+import { isAddress } from '@tuwaio/orbit-core';
+
+isAddress('0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'); // true (auto-detected as EVM)
+isAddress('So11111111111111111111111111111111111111112', 'solana'); // true
+```
+
+`isAddress` checks the address format only (hex length or Base58 alphabet); it does not verify EVM checksums.
+
 ---
 
-## 🔧 API & Module Architecture
+## 🗄️ Browser Storage
 
-`@tuwaio/orbit-core` exposes the following modules:
+The storage helpers write the following `localStorage` keys. Clear them to reset the connection state of a user:
 
-- **Core Primitives:** `OrbitAdapter`, `BaseAdapter`, `ConnectorType`, `RecentlyConnectedConnectorData`.
-- **Registry Resolvers:** `selectAdapterByKey`, `getAdapterFromConnectorType`, `getConnectorTypeFromName`.
-- **Formatters:** `formatConnectorName`, `formatConnectorChainId`.
-- **Storage Helpers:** `lastConnectedConnectorHelpers`, `recentConnectedConnectorHelpers`, `impersonatedHelpers`.
-- **Core Primitives:** `isSafeApp`, `delay`, `waitFor`, `filterUniqueByKey`.
+| Key                                                 | Written by                               |
+| --------------------------------------------------- | ---------------------------------------- |
+| `orbit-core:lastConnectedConnector`                 | `lastConnectedConnectorHelpers`          |
+| `orbit-core:recentlyConnectedConnectorsListHelpers` | `recentlyConnectedConnectorsListHelpers` |
+| `satellite-connect:impersonatedAddress`             | `impersonatedHelpers`                    |
 
 ---
+
+## 📚 API Reference
+
+Every export, with signatures and types generated from the source, is documented at **[orbit.docs.tuwa.io/packages/orbit-core](https://orbit.docs.tuwa.io/packages/orbit-core)**.
 
 ## 📄 License
 
-Licensed under the **Apache-2.0 License**. See the [LICENSE](./LICENSE) file for details.
+Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/LICENSE) file for details.

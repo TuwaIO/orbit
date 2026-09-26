@@ -48,6 +48,11 @@ export const impersonatedHelpers = {
   getImpersonated: () =>
     typeof window !== 'undefined' ? window.localStorage.getItem('satellite-connect:impersonatedAddress') : undefined,
 
+  /**
+   * Removes the impersonated address from localStorage.
+   *
+   * @returns undefined in SSR context, void in browser
+   */
   removeImpersonated: () =>
     typeof window !== 'undefined' ? window.localStorage.removeItem('satellite-connect:impersonatedAddress') : undefined,
 };
