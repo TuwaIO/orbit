@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.3.1...orbit-solana-v0.3.2) (2026-09-27)
+
+
+### Bug Fixes
+
+* updated default claster for solana ([b523968](https://github.com/TuwaIO/orbit/commit/b523968e9c1c9ace9bbb771c4ca1744327662971))
+
 ## [0.3.1](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.3.0...orbit-solana-v0.3.1) (2026-09-26)
 
 
