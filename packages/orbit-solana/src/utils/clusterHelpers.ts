@@ -1,4 +1,5 @@
 import type { SolanaClusterMoniker, SolanaRPCUrls } from '../types';
+import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
 
 /**
  * Safely extracts the cluster moniker from a chain identifier.
@@ -24,7 +25,9 @@ export const getCluster = ({ cluster, walletCluster }: { cluster?: string; walle
  * @param params.cluster - The target cluster, used when `walletCluster` is not provided.
  * @param params.walletCluster - The cluster of the connected wallet. Takes precedence over `cluster`.
  * @param params.rpcUrls - Mapping of cluster monikers to RPC URLs.
- * @returns The configured RPC URL, or the public mainnet-beta endpoint if the cluster has no URL configured.
+ * @returns The configured RPC URL. When the cluster has no URL configured, the public endpoint of the same cluster
+ * (`https://api.mainnet-beta.solana.com`, `https://api.devnet.solana.com` or `https://api.testnet.solana.com`); for
+ * `localnet`, which has no public endpoint, `https://api.mainnet-beta.solana.com/`.
  */
 export const getRpcUrlForCluster = ({
   cluster,
@@ -32,5 +35,5 @@ export const getRpcUrlForCluster = ({
   rpcUrls,
 }: { cluster: SolanaClusterMoniker; walletCluster?: SolanaClusterMoniker } & SolanaRPCUrls) => {
   const targetCluster = walletCluster ?? cluster;
-  return rpcUrls[targetCluster] ?? 'https://api.mainnet-beta.solana.com/';
+  return rpcUrls[targetCluster] ?? defaultRpcUrlsByMoniker[targetCluster] ?? 'https://api.mainnet-beta.solana.com/';
 };

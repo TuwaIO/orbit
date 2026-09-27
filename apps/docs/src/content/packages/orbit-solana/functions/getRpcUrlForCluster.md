@@ -2,7 +2,7 @@
 
 > **getRpcUrlForCluster**(`params`): `string`
 
-Defined in: [utils/clusterHelpers.ts:29](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/clusterHelpers.ts#L29)
+Defined in: [utils/clusterHelpers.ts:32](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/clusterHelpers.ts#L32)
 
 Retrieves the configured RPC URL for a given cluster moniker.
 
@@ -18,4 +18,6 @@ Cluster selection and the configured RPC URLs.
 
 `string`
 
-The configured RPC URL, or the public mainnet-beta endpoint if the cluster has no URL configured.
+The configured RPC URL. When the cluster has no URL configured, the public endpoint of the same cluster
+(`https://api.mainnet-beta.solana.com`, `https://api.devnet.solana.com` or `https://api.testnet.solana.com`); for
+`localnet`, which has no public endpoint, `https://api.mainnet-beta.solana.com/`.

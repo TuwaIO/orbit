@@ -30,7 +30,17 @@ describe('clusterHelpers', () => {
       expect(url).toBe('https://custom-devnet.solana.com');
     });
 
-    it('falls back to default mainnet URL if not specified in rpcUrls', () => {
+    it('falls back to the public endpoint of the same cluster if not specified in rpcUrls', () => {
+      expect(getRpcUrlForCluster({ cluster: 'devnet', rpcUrls: {} })).toBe('https://api.devnet.solana.com');
+      expect(getRpcUrlForCluster({ cluster: 'testnet', rpcUrls: { devnet: 'https://custom-devnet.solana.com' } })).toBe(
+        'https://api.testnet.solana.com',
+      );
+      expect(getRpcUrlForCluster({ cluster: 'mainnet', walletCluster: 'devnet', rpcUrls: {} })).toBe(
+        'https://api.devnet.solana.com',
+      );
+    });
+
+    it('falls back to default mainnet URL for localnet if not specified in rpcUrls', () => {
       const url = getRpcUrlForCluster({
         cluster: 'localnet',
         rpcUrls: {},

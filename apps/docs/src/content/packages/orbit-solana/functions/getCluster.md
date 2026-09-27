@@ -2,7 +2,7 @@
 
 > **getCluster**(`params`): `string`
 
-Defined in: [utils/clusterHelpers.ts:12](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/clusterHelpers.ts#L12)
+Defined in: [utils/clusterHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/clusterHelpers.ts#L13)
 
 Safely extracts the cluster moniker from a chain identifier.
 Handles both full chain IDs ('solana:mainnet-beta') and simple monikers ('mainnet-beta').
