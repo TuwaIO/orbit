@@ -17,7 +17,7 @@ Orbit is built only on modern Web3 libraries: `viem` and `@wagmi/core` for EVM, 
 
 ## 🏛️ Ecosystem Layer Architecture
 
-TUWA is built in stages. Orbit sits in **Stage 1 (Core Auth & Primitives)** next to [SIWX](https://siwx.docs.tuwa.io/), below [Satellite Connect](https://satellite.docs.tuwa.io/) and [Pulsar](https://pulsar.docs.tuwa.io/) (Stage 2), [Quasar](https://sdk.docs.tuwa.io/quasar-cloud/overview) (Stage 3) and [Nova UI Kit](https://stories.tuwa.io/) (Stage 4). Higher layers import Orbit's types and helpers; Orbit depends on nothing else in TUWA and can be used on its own.
+TUWA is built in stages. Orbit sits in **Stage 1 (Core Auth & Primitives)** next to [SIWX](https://siwx.docs.tuwa.io/), below [Satellite Connect](https://satellite.docs.tuwa.io/) and [Pulsar](https://pulsar.docs.tuwa.io/) (Stage 2), [Quasar](https://docs.tuwa.io/quasar) (Stage 3) and [Nova UI Kit](https://stories.tuwa.io/) (Stage 4). Higher layers import Orbit's types and helpers; Orbit depends on nothing else in TUWA and can be used on its own.
 
 Inside the monorepo, packages are split into two layers:
 

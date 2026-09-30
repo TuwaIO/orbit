@@ -17,12 +17,12 @@
 
 TUWA is built in stages. Each stage builds on the ones below it, and Orbit sits at the bottom:
 
-| Stage                          | Projects                                                                                                                                     | Role                                                     |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| **1 — Core Auth & Primitives** | [SIWX](https://siwx.docs.tuwa.io/), **Orbit Utils**                                                                                          | CAIP-122 authentication and multi-chain primitives       |
-| **2 — State & Connection**     | [Satellite Connect](https://satellite.docs.tuwa.io/), [Pulsar](https://pulsar.docs.tuwa.io/)                                                 | Wallet connection state machine and transaction tracking |
-| **3 — Backend & Sync**         | [Quasar Cloud](https://sdk.docs.tuwa.io/quasar-cloud/overview) or self-hosted [Quasar Community](https://github.com/TuwaIO/quasar-community) | Transaction indexing and cross-device sync               |
-| **4 — User Interface**         | [Nova UI Kit](https://stories.tuwa.io/)                                                                                                      | React design system and components                       |
+| Stage                          | Projects                                                                                                                  | Role                                                     |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| **1 — Core Auth & Primitives** | [SIWX](https://siwx.docs.tuwa.io/), **Orbit Utils**                                                                       | CAIP-122 authentication and multi-chain primitives       |
+| **2 — State & Connection**     | [Satellite Connect](https://satellite.docs.tuwa.io/), [Pulsar](https://pulsar.docs.tuwa.io/)                              | Wallet connection state machine and transaction tracking |
+| **3 — Backend & Sync**         | [Quasar Cloud](https://docs.tuwa.io/quasar) or self-hosted [Quasar Community](https://github.com/TuwaIO/quasar-community) | Transaction indexing and cross-device sync               |
+| **4 — User Interface**         | [Nova UI Kit](https://stories.tuwa.io/)                                                                                   | React design system and components                       |
 
 Orbit depends on nothing else in TUWA. Higher layers import its types and helpers (for example, `OrbitAdapter` identifies the chain family in Satellite Connect and Pulsar), never the other way around. You can also use Orbit on its own in any app.
 

@@ -4,7 +4,7 @@
   "private": true,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "packageManager": "pnpm@12.6.0",
+  "packageManager": "pnpm@12.8.1",
   "description": "Monorepo for Orbit Utils, the Stage 1 primitives layer of the TUWA ecosystem: framework-agnostic, headless multi-chain utilities for EVM and Solana (L1 core + L2 chain packages).",
   "scripts": {
     "build": "pnpm --filter \"./packages/**\" build",
@@ -50,7 +50,7 @@
     "typedoc": "^0.28.20",
     "typedoc-plugin-markdown": "^4.13.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "^8.70.1",
+    "typescript-eslint": "^8.71.0",
     "vitest": "^5.0.2"
   }
 }

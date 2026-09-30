@@ -57,7 +57,7 @@
     "@tuwaio/orbit-core": "workspace:^",
     "tsup": "^8.5.1",
     "typescript": "6.0.3",
-    "@solana/kit": "^8.3.0",
+    "@solana/kit": "^8.4.0",
     "@wallet-standard/app": "^1.1.1",
     "@wallet-standard/ui-core": "^1.0.1",
     "@wallet-standard/ui-registry": "^1.1.1"
