@@ -48,7 +48,7 @@ orbit/
 
 ### Module Breakdown
 
-- **`orbit-core`**: The brain. Contains the `OrbitAdapter` enum (`EVM`, `SOLANA`, `Starknet`). Strictly native with zero external web3 dependencies.
+- **`orbit-core`**: The brain. Contains the `OrbitAdapter` enum (`EVM`, `SOLANA`, `Starknet`). Strictly native with zero external web3 dependencies. Owns the Solana chain IDs: `SOLANA_CHAIN_IDS` (CAIP-2 with the genesis hash, as CAIP-30 requires), `getSolanaChainId` and `getSolanaCluster`, which read every form in use (`devnet`, `solana:devnet`, `solana:mainnet-beta`, the genesis-hash ID, the testnet ID from before its genesis reset). `setChainId` and `formatConnectorChainId` return the genesis-hash ID for Solana.
 - **`orbit-evm`**: The muscle for Ethereum. Depends on `viem` and `@wagmi/core`. Handles provider creation, ERC-4337 Pimlico Bundler client instantiation with caching, Solady smart accounts, and ENS resolution.
 - **`orbit-solana`**: The muscle for Solana. Depends strictly on `@solana/kit` and the Wallet Standard. Handles clusters, RPC connections, wallet discovery and SNS lookups (via the Bonfida HTTP API, with DiceBear identicon fallbacks).
 
@@ -96,5 +96,6 @@ orbit/
   - Do **NOT** import `gill` (Eradicated; we use `@solana/kit`).
   - Do **NOT** import legacy `@solana/web3.js` methods.
   - Do **NOT** assume `orbit-starknet` exists yet.
+  - Do **NOT** build Solana chain IDs as `solana:${cluster}`: identify chains with `getSolanaChainId` (genesis hash). The moniker form `solana:devnet` belongs only in Wallet Standard calls; RPC helpers take the moniker `devnet`.
   - Do **NOT** invent generic "hooks" (This is a utils library, not a UI kit).
   - Do **NOT** use `typedoc-plugin-react` (it files functions under `components/` and breaks reference links).

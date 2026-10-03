@@ -2,7 +2,7 @@
 
 > **getRpcUrlForCluster**(`params`): `string`
 
-Defined in: [utils/clusterHelpers.ts:32](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/clusterHelpers.ts#L32)
+Defined in: [utils/clusterHelpers.ts:38](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/clusterHelpers.ts#L38)
 
 Retrieves the configured RPC URL for a given cluster moniker.
 

@@ -41,5 +41,14 @@ describe('chainsUtils', () => {
       const clusters = getSolanaClusters({ devnet: 'https://api.devnet.solana.com' }, ['solana:devnet']);
       expect(clusters).toEqual(['devnet']);
     });
+
+    it('reads CAIP-2 chain IDs with the genesis hash in the chain array', () => {
+      const clusters = getSolanaClusters(undefined, [
+        'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
+        'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1',
+        1,
+      ]);
+      expect(clusters).toEqual(['mainnet', 'devnet']);
+    });
   });
 });

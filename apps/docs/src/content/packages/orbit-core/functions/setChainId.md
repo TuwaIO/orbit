@@ -2,9 +2,11 @@
 
 > **setChainId**(`chainId`): `string` \| `number`
 
-Defined in: [utils/chainHelpers.ts:21](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/chainHelpers.ts#L21)
+Defined in: [utils/chainHelpers.ts:23](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/chainHelpers.ts#L23)
 
-Sets the chain ID to a Solana-specific format if the chain is a Solana network.
+Turns a Solana chain, in any form accepted by [isSolanaChain](/packages/orbit-core/functions/isSolanaChain.md), into its CAIP-2 chain ID with the genesis hash
+(see [getSolanaChainId](/packages/orbit-core/functions/getSolanaChainId.md)): `devnet` and `solana:devnet` become `solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1`. Other
+chain IDs are returned unchanged.
 
 ## Parameters
 
@@ -18,4 +20,4 @@ The original chain ID or name.
 
 `string` \| `number`
 
-- The formatted chain ID prefixed with 'solana:' if Solana, otherwise the original.
+The CAIP-2 chain ID for Solana networks, otherwise the original value.

@@ -25,7 +25,7 @@ pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit @wallet-standard/ap
 ```
 
 > [!IMPORTANT]
-> `@tuwaio/orbit-core` (>=0.2), `@solana/kit` (>=8.2) and the `@wallet-standard` packages (1.x) are peer dependencies and must be installed alongside `@tuwaio/orbit-solana`.
+> `@tuwaio/orbit-core` (>=0.4), `@solana/kit` (>=8.2) and the `@wallet-standard` packages (1.x) are peer dependencies and must be installed alongside `@tuwaio/orbit-solana`.
 
 ---
 
@@ -66,8 +66,10 @@ const owner = 'So11111111111111111111111111111111111111112';
 const name = await getSolanaAddressName(owner); // "name.sol", or the address itself if no SNS domain is set
 const avatarUrl = await getSolanaAddressAvatar(name);
 
-getSolanaExplorerLink(`/address/${owner}`, 'solana:devnet'); // "https://explorer.solana.com/address/…?cluster=devnet"
+getSolanaExplorerLink(`/address/${owner}`, 'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1'); // "https://explorer.solana.com/address/…?cluster=devnet"
 ```
+
+The cluster helpers (`getCluster`, `getSolanaClusters`, `getSolanaExplorerLink`) accept a cluster in any form: the CAIP-2 chain ID with the genesis hash, as in `SOLANA_CHAIN_IDS` of `@tuwaio/orbit-core`, a Wallet Standard chain such as `solana:devnet`, or the moniker `devnet`.
 
 ---
 

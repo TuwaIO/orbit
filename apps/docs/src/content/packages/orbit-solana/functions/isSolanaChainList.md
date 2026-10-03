@@ -2,7 +2,7 @@
 
 > **isSolanaChainList**(`chains`): `chains is string[]`
 
-Defined in: [utils/chainsUtils.ts:89](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/chainsUtils.ts#L89)
+Defined in: [utils/chainsUtils.ts:83](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/chainsUtils.ts#L83)
 
 Type guard to check if a chain list contains Solana cluster names.
 

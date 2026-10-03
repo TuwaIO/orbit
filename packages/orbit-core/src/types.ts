@@ -132,7 +132,7 @@ export type ConnectorType = `${OrbitAdapter}:${string}`;
  *
  * @example
  * ```typescript
- * const chainIds: ChainIdentifierArray = ['ethereum', 1, 'solana:mainnet-beta'];
+ * const chainIds: ChainIdentifierArray = ['ethereum', 1, 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp'];
  * ```
  */
 export type ChainIdentifierArray = readonly (string | number)[];

@@ -13,6 +13,7 @@ The package has **zero runtime dependencies** and imports no Web3 SDK, so it run
 
 - **Multi-chain primitives:** the `OrbitAdapter` enum (`evm`, `solana`, `starknet`), the `BaseAdapter` contract, `ConnectorType` identifiers such as `"evm:metamask"` or `"solana:phantom"`, and `selectAdapterByKey` to pick the adapter of the active chain.
 - **Connector helpers:** `getConnectorTypeFromName`, `getAdapterFromConnectorType`, `formatConnectorName`, `formatConnectorChainId`, `isSolanaChain`, `setChainId` and `getNetworkData`.
+- **Solana chain IDs:** `SOLANA_CHAIN_IDS` holds the CAIP-2 chain IDs of mainnet, devnet and testnet, made of the genesis hash as CAIP-30 requires. `getSolanaChainId` and `getSolanaCluster` convert between these IDs and cluster monikers and read every form in use (`devnet`, `solana:devnet`, `solana:mainnet-beta`, the testnet ID from before the testnet genesis reset). `setChainId` and `formatConnectorChainId` return these IDs for Solana.
 - **Validation and errors:** `isAddress` validates EVM (hex) and Solana (Base58) addresses. `normalizeError` turns any wallet, viem or RPC error into a JSON-serializable `TuwaErrorState` that is safe to persist.
 - **Connection persistence:** `lastConnectedConnectorHelpers` and `recentlyConnectedConnectorsListHelpers` keep connection history in `localStorage` and do nothing during SSR.
 - **Runtime utilities:** `detectSafeApp` (Safe{Wallet} iframe detection), `waitFor`, `delay`, `filterUniqueByKey`, and `impersonatedHelpers` for development and testing.
@@ -63,6 +64,18 @@ lastConnectedConnectorHelpers.setLastConnectedConnector({
 // Returns undefined on the server and when nothing is stored.
 const lastConnected = lastConnectedConnectorHelpers.getLastConnectedConnector();
 ```
+
+### Identifying Solana clusters
+
+```typescript
+import { getSolanaChainId, getSolanaCluster } from '@tuwaio/orbit-core';
+
+getSolanaChainId('devnet'); // "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1"
+getSolanaChainId('solana:mainnet-beta'); // "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+getSolanaCluster('solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1'); // "devnet"
+```
+
+Use the CAIP-2 ID wherever a chain is identified: SIWX messages, transaction records, APIs. Use the cluster moniker for RPC URLs and for Wallet Standard calls, which name the cluster `solana:devnet`.
 
 ### Normalizing errors
 
@@ -129,6 +142,7 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [LastConnectedConnector](/packages/orbit-core/type-aliases/LastConnectedConnector.md)
 - [OrbitGenericAdapter](/packages/orbit-core/type-aliases/OrbitGenericAdapter.md)
 - [RecentlyConnectedConnectorsList](/packages/orbit-core/type-aliases/RecentlyConnectedConnectorsList.md)
+- [SolanaCluster](/packages/orbit-core/type-aliases/SolanaCluster.md)
 
 ## Variables
 
@@ -137,6 +151,7 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [~~isSafeApp~~](/packages/orbit-core/variables/isSafeApp.md)
 - [lastConnectedConnectorHelpers](/packages/orbit-core/variables/lastConnectedConnectorHelpers.md)
 - [recentlyConnectedConnectorsListHelpers](/packages/orbit-core/variables/recentlyConnectedConnectorsListHelpers.md)
+- [SOLANA\_CHAIN\_IDS](/packages/orbit-core/variables/SOLANA_CHAIN_IDS.md)
 
 ## Functions
 
@@ -149,6 +164,8 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [getConnectorTypeFromName](/packages/orbit-core/functions/getConnectorTypeFromName.md)
 - [getNetworkData](/packages/orbit-core/functions/getNetworkData.md)
 - [getParsedStorageItem](/packages/orbit-core/functions/getParsedStorageItem.md)
+- [getSolanaChainId](/packages/orbit-core/functions/getSolanaChainId.md)
+- [getSolanaCluster](/packages/orbit-core/functions/getSolanaCluster.md)
 - [isAddress](/packages/orbit-core/functions/isAddress.md)
 - [isSolanaChain](/packages/orbit-core/functions/isSolanaChain.md)
 - [normalizeError](/packages/orbit-core/functions/normalizeError.md)

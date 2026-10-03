@@ -23,9 +23,21 @@ describe('connectorHelpers', () => {
   });
 
   describe('formatConnectorChainId', () => {
-    it('prefixes string chainIds with connected adapter', () => {
-      expect(formatConnectorChainId('mainnet', OrbitAdapter.SOLANA)).toBe('solana:mainnet');
-      expect(formatConnectorChainId('devnet', OrbitAdapter.SOLANA)).toBe('solana:devnet');
+    it('turns Solana clusters into genesis-hash chain IDs', () => {
+      expect(formatConnectorChainId('mainnet', OrbitAdapter.SOLANA)).toBe('solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp');
+      expect(formatConnectorChainId('devnet', OrbitAdapter.SOLANA)).toBe('solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1');
+      expect(formatConnectorChainId('solana:devnet', OrbitAdapter.SOLANA)).toBe(
+        'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1',
+      );
+      expect(formatConnectorChainId('solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1', OrbitAdapter.SOLANA)).toBe(
+        'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1',
+      );
+    });
+
+    it('prefixes other string chainIds with the adapter once', () => {
+      expect(formatConnectorChainId('custom', OrbitAdapter.SOLANA)).toBe('solana:custom');
+      expect(formatConnectorChainId('solana:custom', OrbitAdapter.SOLANA)).toBe('solana:custom');
+      expect(formatConnectorChainId('mainnet', OrbitAdapter.Starknet)).toBe('starknet:mainnet');
     });
 
     it('returns numeric chainId untouched', () => {

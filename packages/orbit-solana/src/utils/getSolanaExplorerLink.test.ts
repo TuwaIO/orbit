@@ -18,6 +18,15 @@ describe('getSolanaExplorerLink', () => {
     expect(link).toBe('https://explorer.solana.com/address/7xyz?cluster=testnet');
   });
 
+  it('reads CAIP-2 chain IDs with the genesis hash', () => {
+    expect(getSolanaExplorerLink('tx/abc', 'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1')).toBe(
+      'https://explorer.solana.com/tx/abc?cluster=devnet',
+    );
+    expect(getSolanaExplorerLink('tx/abc', 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp')).toBe(
+      'https://explorer.solana.com/tx/abc',
+    );
+  });
+
   it('defaults to mainnet without cluster query parameter when chainId is omitted', () => {
     const link = getSolanaExplorerLink('tx/abc');
     expect(link).toBe('https://explorer.solana.com/tx/abc');

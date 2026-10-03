@@ -13,6 +13,22 @@ describe('clusterHelpers', () => {
       expect(getCluster({ cluster: 'mainnet' })).toBe('mainnet');
     });
 
+    it('reads CAIP-2 chain IDs with the genesis hash', () => {
+      expect(getCluster({ cluster: 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp' })).toBe('mainnet');
+      expect(getCluster({ cluster: 'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1' })).toBe('devnet');
+      expect(getCluster({ cluster: 'solana:4uhcVJyU9pJkvQyS88uRDiswHXSCkY3z' })).toBe('testnet');
+      expect(getCluster({ cluster: 'solana:4uhcVJyU9pJkvQyS88uRfhDSfZSm8DoR' })).toBe('testnet');
+    });
+
+    it('reports mainnet-beta as mainnet, the key of rpcUrls', () => {
+      expect(getCluster({ cluster: 'solana:mainnet-beta' })).toBe('mainnet');
+      expect(getCluster({ cluster: 'mainnet-beta' })).toBe('mainnet');
+    });
+
+    it('keeps the reference of an unknown cluster', () => {
+      expect(getCluster({ cluster: 'solana:custom' })).toBe('custom');
+    });
+
     it('falls back to walletCluster or mainnet default', () => {
       expect(getCluster({ walletCluster: 'devnet' })).toBe('devnet');
       expect(getCluster({})).toBe('mainnet');

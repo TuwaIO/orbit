@@ -15,4 +15,5 @@ export * from './utils/lastConnectedConnectorHelpers';
 export * from './utils/normalizeError';
 export * from './utils/recentlyConnectedConnectorsListHelpers';
 export * from './utils/selectAdapterByKey';
+export * from './utils/solanaChainIds';
 export * from './utils/waitFor';

@@ -1,4 +1,4 @@
-import type { ChainIdentifierArray } from '@tuwaio/orbit-core';
+import { type ChainIdentifierArray, getSolanaCluster } from '@tuwaio/orbit-core';
 
 import type { SolanaClusterMoniker } from '../types';
 import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
@@ -9,21 +9,14 @@ type SolanaRPCUrlsType = {
 };
 
 /**
- * Extracts Solana cluster from chain identifier
+ * Extracts the Solana cluster from a `solana:` chain identifier (Wallet Standard chain or CAIP-2 chain ID)
  */
 function extractSolanaCluster(chainId: string): SolanaClusterMoniker | null {
-  const parts = chainId.split(':');
-  if (parts.length < 2) return null;
+  if (!chainId.startsWith('solana:')) return null;
 
-  let cluster = parts[1];
-  // Map mainnet-beta to mainnet to match orbit-solana keys
-  if (cluster === 'mainnet-beta') {
-    cluster = 'mainnet';
-  }
-
-  const moniker = cluster as SolanaClusterMoniker;
-  // Validate that it's a known cluster
-  return moniker in defaultRpcUrlsByMoniker ? moniker : null;
+  const cluster = getSolanaCluster(chainId);
+  // Only clusters with a default RPC URL (localnet has none)
+  return cluster && cluster in defaultRpcUrlsByMoniker ? cluster : null;
 }
 
 /**
@@ -63,8 +56,9 @@ function buildSolanaRpcUrls(
  * Resolves the Solana clusters an app can use.
  *
  * @param solanaRPCUrls - Optional mapping of cluster monikers to RPC URLs. When provided, only these clusters are allowed.
- * @param chains - Optional chain identifiers (e.g. `'solana:devnet'`, `'solana:mainnet-beta'`); when provided, only
- * clusters present in this list (and allowed by `solanaRPCUrls`) are returned.
+ * @param chains - Optional chain identifiers (e.g. `'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1'`, `'solana:devnet'`,
+ * `'solana:mainnet-beta'`); when provided, only clusters present in this list (and allowed by `solanaRPCUrls`) are
+ * returned.
  * @returns Cluster monikers, e.g. `['mainnet', 'devnet']`. Defaults to every cluster with a default RPC URL.
  */
 export function getSolanaClusters(

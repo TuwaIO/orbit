@@ -1,21 +1,27 @@
+import { getSolanaCluster } from '@tuwaio/orbit-core';
+
 import type { SolanaClusterMoniker, SolanaRPCUrls } from '../types';
 import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
 
 /**
  * Safely extracts the cluster moniker from a chain identifier.
- * Handles both full chain IDs ('solana:mainnet-beta') and simple monikers ('mainnet-beta').
+ * Handles CAIP-2 chain IDs with the genesis hash (`'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1'`), Wallet Standard chains
+ * (`'solana:devnet'`) and simple monikers (`'devnet'`), through `getSolanaCluster` from `@tuwaio/orbit-core`.
+ * `mainnet-beta` becomes `mainnet`, the key of `rpcUrls`.
  *
  * @param params - Cluster sources.
  * @param params.cluster - Chain identifier or cluster moniker. Takes precedence when provided.
  * @param params.walletCluster - Cluster of the connected wallet, used when `cluster` is omitted.
- * @returns The extracted cluster moniker, falling back to `walletCluster` and then to `'mainnet'`.
+ * @returns The extracted cluster moniker (the part after `solana:` for an unknown cluster), falling back to
+ * `walletCluster` and then to `'mainnet'`.
  */
 export const getCluster = ({ cluster, walletCluster }: { cluster?: string; walletCluster?: string }) => {
   const defaultCluster: SolanaClusterMoniker = 'mainnet';
   if (!cluster) {
     return walletCluster ?? defaultCluster;
   }
-  return (cluster.includes(':') ? cluster.split(':')[1] : cluster) as SolanaClusterMoniker;
+  return (getSolanaCluster(cluster) ??
+    (cluster.includes(':') ? cluster.split(':')[1] : cluster)) as SolanaClusterMoniker;
 };
 
 /**

@@ -18,8 +18,9 @@ const DEFAULT_EXPLORER_CLUSTERS = new Set(['mainnet', 'mainnet-beta']);
  * Generates a full URL to an account, transaction, or block on the Solana explorer.
  *
  * @param url - The path after baseUrl (e.g. '/tx/...' or '/address/...').
- * @param chainId - Chain ID or cluster name (e.g. 'devnet' or 'solana:devnet').
- * Mainnet ('mainnet', 'mainnet-beta') or an omitted value produces a link without a `cluster` query parameter.
+ * @param chainId - Chain ID or cluster name in any form read by {@link getCluster} (e.g.
+ * `'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1'`, `'solana:devnet'` or `'devnet'`). Mainnet (its chain ID, `'mainnet'`,
+ * `'mainnet-beta'`) or an omitted value produces a link without a `cluster` query parameter.
  * @returns The full URL on the Solana explorer.
  */
 export const getSolanaExplorerLink = (url?: string, chainId?: string | number | undefined): string => {

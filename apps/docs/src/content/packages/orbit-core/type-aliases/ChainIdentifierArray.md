@@ -10,5 +10,5 @@ Can contain strings, numbers, or other primitive types
 ## Example
 
 ```typescript
-const chainIds: ChainIdentifierArray = ['ethereum', 1, 'solana:mainnet-beta'];
+const chainIds: ChainIdentifierArray = ['ethereum', 1, 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp'];
 ```

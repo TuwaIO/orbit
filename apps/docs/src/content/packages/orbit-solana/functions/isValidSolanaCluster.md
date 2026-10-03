@@ -2,7 +2,7 @@
 
 > **isValidSolanaCluster**(`cluster`): `boolean`
 
-Defined in: [utils/chainsUtils.ts:108](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/chainsUtils.ts#L108)
+Defined in: [utils/chainsUtils.ts:102](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/chainsUtils.ts#L102)
 
 Validates if a string is a Solana cluster moniker with a default RPC URL.
 
