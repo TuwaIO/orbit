@@ -8,6 +8,9 @@ minimumReleaseAgeExclude:
   - viem@2.51.3 || 2.57.1
   - '@wagmi/core@3.5.1'
   - '@tuwaio/*'
+  - framer-motion@14.0.0
+  - motion-dom@14.0.0
+  - motion-utils@14.0.0
   - eslint@10.8.1
   - eslint-plugin-react-refresh@0.5.6
   - '@next/env@16.3.7'
