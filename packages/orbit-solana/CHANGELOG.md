@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.3.3...orbit-solana-v0.4.0) (2026-10-03)
+
+
+### Features
+
+* updated solana chain id logic ([f1d9843](https://github.com/TuwaIO/orbit/commit/f1d98439e41ccaf2a6bb2af60125f5a1706ef41e))
+
 ## [0.3.3](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.3.2...orbit-solana-v0.3.3) (2026-09-30)
 
 
