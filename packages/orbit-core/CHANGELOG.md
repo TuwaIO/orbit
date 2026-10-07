@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.4.0...orbit-core-v0.5.0) (2026-10-07)
+
+
+### Features
+
+* caip helpers ([#45](https://github.com/TuwaIO/orbit/issues/45)) ([68a9e16](https://github.com/TuwaIO/orbit/commit/68a9e1678caba36fab5b4ef84ca6ba69f181cf01))
+
 ## [0.4.0](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.3.1...orbit-core-v0.4.0) (2026-10-03)
 
 
