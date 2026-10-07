@@ -14,6 +14,7 @@ The package has **zero runtime dependencies** and imports no Web3 SDK, so it run
 - **Multi-chain primitives:** the `OrbitAdapter` enum (`evm`, `solana`, `starknet`), the `BaseAdapter` contract, `ConnectorType` identifiers such as `"evm:metamask"` or `"solana:phantom"`, and `selectAdapterByKey` to pick the adapter of the active chain.
 - **Connector helpers:** `getConnectorTypeFromName`, `getAdapterFromConnectorType`, `formatConnectorName`, `formatConnectorChainId`, `isSolanaChain`, `setChainId` and `getNetworkData`.
 - **Solana chain IDs:** `SOLANA_CHAIN_IDS` holds the CAIP-2 chain IDs of mainnet, devnet and testnet, made of the genesis hash as CAIP-30 requires. `getSolanaChainId` and `getSolanaCluster` convert between these IDs and cluster monikers and read every form in use (`devnet`, `solana:devnet`, `solana:mainnet-beta`, the testnet ID from before the testnet genesis reset). `setChainId` and `formatConnectorChainId` return these IDs for Solana.
+- **CAIP identifiers:** `toCaip2ChainId` turns EVM chain numbers into `eip155:<number>` and every Solana form into its genesis-hash ID, and `toEvmChainId` reads the number back; `formatCaip10AccountId` and `formatCaip19AssetId` build account and asset IDs (`eip155:8453/erc20:0x…`, `solana:…/token:…`, `…/slip44:501`), and the `parse…` functions read and validate them.
 - **Validation and errors:** `isAddress` validates EVM (hex) and Solana (Base58) addresses. `normalizeError` turns any wallet, viem or RPC error into a JSON-serializable `TuwaErrorState` that is safe to persist.
 - **Connection persistence:** `lastConnectedConnectorHelpers` and `recentlyConnectedConnectorsListHelpers` keep connection history in `localStorage` and do nothing during SSR.
 - **Runtime utilities:** `detectSafeApp` (Safe{Wallet} iframe detection), `waitFor`, `delay`, `filterUniqueByKey`, and `impersonatedHelpers` for development and testing.
@@ -137,6 +138,9 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 ## Type Aliases
 
 - [BaseAdapter](/packages/orbit-core/type-aliases/BaseAdapter.md)
+- [Caip10AccountId](/packages/orbit-core/type-aliases/Caip10AccountId.md)
+- [Caip19AssetId](/packages/orbit-core/type-aliases/Caip19AssetId.md)
+- [Caip2ChainId](/packages/orbit-core/type-aliases/Caip2ChainId.md)
 - [ChainIdentifierArray](/packages/orbit-core/type-aliases/ChainIdentifierArray.md)
 - [ConnectorType](/packages/orbit-core/type-aliases/ConnectorType.md)
 - [LastConnectedConnector](/packages/orbit-core/type-aliases/LastConnectedConnector.md)
@@ -158,6 +162,8 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [delay](/packages/orbit-core/functions/delay.md)
 - [detectSafeApp](/packages/orbit-core/functions/detectSafeApp.md)
 - [filterUniqueByKey](/packages/orbit-core/functions/filterUniqueByKey.md)
+- [formatCaip10AccountId](/packages/orbit-core/functions/formatCaip10AccountId.md)
+- [formatCaip19AssetId](/packages/orbit-core/functions/formatCaip19AssetId.md)
 - [formatConnectorChainId](/packages/orbit-core/functions/formatConnectorChainId.md)
 - [formatConnectorName](/packages/orbit-core/functions/formatConnectorName.md)
 - [getAdapterFromConnectorType](/packages/orbit-core/functions/getAdapterFromConnectorType.md)
@@ -169,6 +175,11 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [isAddress](/packages/orbit-core/functions/isAddress.md)
 - [isSolanaChain](/packages/orbit-core/functions/isSolanaChain.md)
 - [normalizeError](/packages/orbit-core/functions/normalizeError.md)
+- [parseCaip10AccountId](/packages/orbit-core/functions/parseCaip10AccountId.md)
+- [parseCaip19AssetId](/packages/orbit-core/functions/parseCaip19AssetId.md)
+- [parseCaip2ChainId](/packages/orbit-core/functions/parseCaip2ChainId.md)
 - [selectAdapterByKey](/packages/orbit-core/functions/selectAdapterByKey.md)
 - [setChainId](/packages/orbit-core/functions/setChainId.md)
+- [toCaip2ChainId](/packages/orbit-core/functions/toCaip2ChainId.md)
+- [toEvmChainId](/packages/orbit-core/functions/toEvmChainId.md)
 - [waitFor](/packages/orbit-core/functions/waitFor.md)
