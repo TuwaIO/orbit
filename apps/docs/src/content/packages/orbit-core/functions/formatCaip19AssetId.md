@@ -2,7 +2,7 @@
 
 > **formatCaip19AssetId**(`chainId`, `assetNamespace`, `assetReference`): `` `${string}:${string}/${string}:${string}` `` \| `undefined`
 
-Defined in: [utils/caip.ts:146](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L146)
+Defined in: [utils/caip.ts:166](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L166)
 
 Builds a CAIP-19 asset type ID from a chain, an asset namespace (`erc20`, `token`, `slip44`, …) and an asset
 reference (a token contract, an SPL mint, a SLIP-44 coin type).

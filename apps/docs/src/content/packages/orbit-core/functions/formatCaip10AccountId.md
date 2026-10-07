@@ -2,7 +2,7 @@
 
 > **formatCaip10AccountId**(`chainId`, `address`): `` `${string}:${string}:${string}` `` \| `undefined`
 
-Defined in: [utils/caip.ts:92](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L92)
+Defined in: [utils/caip.ts:112](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L112)
 
 Builds a CAIP-10 account ID. The chain is normalized with [toCaip2ChainId](/packages/orbit-core/functions/toCaip2ChainId.md); the address is trimmed, checked
 against its chain (`0x` and 40 hex characters for EVM, base58 for Solana) and keeps its case.

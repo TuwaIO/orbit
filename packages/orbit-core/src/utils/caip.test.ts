@@ -7,6 +7,7 @@ import {
   parseCaip10AccountId,
   parseCaip19AssetId,
   toCaip2ChainId,
+  toEvmChainId,
 } from './caip';
 
 const SOL_MAINNET = 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp';
@@ -46,6 +47,43 @@ describe('caip', () => {
       expect(toCaip2ChainId(0)).toBeUndefined();
       expect(toCaip2ChainId(1.5)).toBeUndefined();
       expect(toCaip2ChainId('base')).toBeUndefined();
+    });
+  });
+
+  describe('toEvmChainId', () => {
+    it('reads the chain number from eip155 IDs, decimal strings and numbers', () => {
+      expect(toEvmChainId('eip155:8453')).toBe(8453);
+      expect(toEvmChainId('8453')).toBe(8453);
+      expect(toEvmChainId(1)).toBe(1);
+    });
+
+    it('reverses toCaip2ChainId for EVM chains', () => {
+      for (const chain of [1, 10, 8453, 42161, 11155111]) {
+        expect(toEvmChainId(toCaip2ChainId(chain)!)).toBe(chain);
+      }
+    });
+
+    it('rejects other namespaces and malformed or unsafe chain numbers', () => {
+      const bad = [
+        SOL_MAINNET,
+        'solana:devnet',
+        'devnet',
+        'cosmos:cosmoshub-4',
+        'EIP155:1',
+        'eip155:',
+        'eip155:0',
+        'eip155:08453',
+        'eip155:1 ',
+        '0',
+        '08453',
+        '9007199254740993',
+        0,
+        -1,
+        1.5,
+        Number.NaN,
+        Number.MAX_SAFE_INTEGER + 1,
+      ];
+      for (const value of bad) expect(toEvmChainId(value)).toBeUndefined();
     });
   });
 

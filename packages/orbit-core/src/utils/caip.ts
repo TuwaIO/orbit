@@ -21,6 +21,7 @@ const NAMESPACE = /^[-a-z0-9]{3,8}$/;
 const REFERENCE = /^[-_a-zA-Z0-9]{1,32}$/;
 const ACCOUNT_ADDRESS = /^[-.%a-zA-Z0-9]{1,128}$/;
 const ASSET_REFERENCE = /^[-.%a-zA-Z0-9]{1,128}$/;
+const EVM_CHAIN_ID = /^(?:eip155:)?([1-9][0-9]{0,15})$/;
 
 /**
  * Splits a CAIP-2 chain ID into its namespace and reference, validating both against the CAIP-2 grammar.
@@ -65,6 +66,25 @@ export function toCaip2ChainId(chainId: string | number): Caip2ChainId | undefin
   if (solana) return solana as Caip2ChainId;
   if (/^[1-9][0-9]{0,15}$/.test(chainId)) return `eip155:${chainId}`;
   return parseCaip2ChainId(chainId) ? (chainId as Caip2ChainId) : undefined;
+}
+
+/**
+ * Reads the EVM chain number from an `eip155` CAIP-2 chain ID, a decimal string or a number: the reverse of
+ * {@link toCaip2ChainId} for EVM chains.
+ *
+ * @example
+ * ```typescript
+ * toEvmChainId('eip155:8453'); // 8453
+ * toEvmChainId('8453'); // 8453
+ * toEvmChainId('solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp'); // undefined
+ * ```
+ *
+ * @param chainId - An `eip155` CAIP-2 chain ID, an EVM chain number or its decimal string.
+ * @returns The chain number, or `undefined` when the value names no EVM chain or the number is not a safe integer.
+ */
+export function toEvmChainId(chainId: string | number): number | undefined {
+  const value = typeof chainId === 'number' ? chainId : Number(EVM_CHAIN_ID.exec(chainId)?.[1]);
+  return Number.isSafeInteger(value) && value > 0 ? value : undefined;
 }
 
 // EVM and Solana addresses are checked by their own rules; other namespaces only by the CAIP-10 grammar

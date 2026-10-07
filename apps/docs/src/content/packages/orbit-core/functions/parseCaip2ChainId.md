@@ -2,7 +2,7 @@
 
 > **parseCaip2ChainId**(`chainId`): \{ `namespace`: `string`; `reference`: `string`; \} \| `undefined`
 
-Defined in: [utils/caip.ts:37](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L37)
+Defined in: [utils/caip.ts:38](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L38)
 
 Splits a CAIP-2 chain ID into its namespace and reference, validating both against the CAIP-2 grammar.
 

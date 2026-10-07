@@ -2,7 +2,7 @@
 
 > **toCaip2ChainId**(`chainId`): `` `${string}:${string}` `` \| `undefined`
 
-Defined in: [utils/caip.ts:60](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L60)
+Defined in: [utils/caip.ts:61](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L61)
 
 Turns a chain identifier into a CAIP-2 chain ID: EVM chain numbers and their decimal strings become
 `eip155:<number>`, every Solana form accepted by [getSolanaChainId](/packages/orbit-core/functions/getSolanaChainId.md) becomes its genesis-hash ID, and a valid

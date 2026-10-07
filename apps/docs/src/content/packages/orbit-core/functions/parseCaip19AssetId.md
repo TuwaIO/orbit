@@ -2,7 +2,7 @@
 
 > **parseCaip19AssetId**(`assetId`): \{ `assetNamespace`: `string`; `assetReference`: `string`; `chainId`: `` `${string}:${string}` ``; \} \| `undefined`
 
-Defined in: [utils/caip.ts:169](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L169)
+Defined in: [utils/caip.ts:189](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L189)
 
 Splits a CAIP-19 asset type ID into its chain, asset namespace and asset reference. IDs of single tokens
 (`eip155:1/erc721:0x…/1`) are not asset types and are rejected.

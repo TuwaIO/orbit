@@ -2,7 +2,7 @@
 
 > **parseCaip10AccountId**(`accountId`): \{ `address`: `string`; `chainId`: `` `${string}:${string}` ``; `namespace`: `string`; `reference`: `string`; \} \| `undefined`
 
-Defined in: [utils/caip.ts:114](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L114)
+Defined in: [utils/caip.ts:134](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/caip.ts#L134)
 
 Splits a CAIP-10 account ID into its chain and address, validating both.
 
