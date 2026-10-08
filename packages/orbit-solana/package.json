@@ -4,7 +4,7 @@
   "private": false,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "L2 Solana package of Orbit Utils (TUWA): cached @solana/kit RPC clients, Wallet Standard discovery, cluster and explorer helpers, and SNS name/avatar lookups.",
+  "description": "L2 Solana package of Orbit Utils (TUWA): cached @solana/kit RPC clients, Wallet Standard discovery, cluster and explorer helpers, and SNS name and avatar lookups.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

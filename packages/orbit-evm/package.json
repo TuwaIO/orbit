@@ -4,7 +4,7 @@
   "private": false,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "L2 EVM package of Orbit Utils (TUWA): cached viem clients, chain switching, ENS resolution and ERC-4337 smart accounts (Solady + Pimlico bundler/paymaster), built on viem and @wagmi/core.",
+  "description": "L2 EVM package of Orbit Utils (TUWA): cached viem clients, chain switching, ENS resolution and ERC-4337 smart accounts (Solady with a Pimlico bundler and paymaster), built on viem and @wagmi/core.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

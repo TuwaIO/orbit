@@ -4,7 +4,7 @@
   "private": false,
   "author": "Oleksandr Tkach",
   "license": "Apache-2.0",
-  "description": "L1 core of Orbit Utils (TUWA): zero-dependency, framework-agnostic multi-chain types, connector and address helpers, error normalization and SSR-safe connection persistence.",
+  "description": "L1 core of Orbit Utils (TUWA): zero-dependency, framework-agnostic multi-chain types, CAIP-2, CAIP-10 and CAIP-19 helpers, connector and address helpers, error normalization and SSR-safe connection persistence.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
