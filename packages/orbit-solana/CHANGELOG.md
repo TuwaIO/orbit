@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.4.0...orbit-solana-v0.4.1) (2026-10-08)
+
+
+### Bug Fixes
+
+* packages description ([f6b8dee](https://github.com/TuwaIO/orbit/commit/f6b8dee1ca37f5e407d0c00d45ceac1135d3cacd))
+
 ## [0.4.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.3.3...orbit-solana-v0.4.0) (2026-10-03)
 
 
