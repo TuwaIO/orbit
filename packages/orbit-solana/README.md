@@ -11,6 +11,7 @@
 
 - **RPC clients:** `createSolanaClientWithCache` returns a cached `{ rpc, rpcSubscriptions }` pair (the WebSocket URL is derived from the HTTP URL); `createSolanaRPC` returns a cached `rpc` only. Both accept a full URL or a cluster moniker (`mainnet`, `devnet`, `testnet`, `localnet`).
 - **Wallet Standard discovery:** `getAvailableSolanaConnectors` lists installed wallets that support every feature Orbit relies on (`standard:connect`, `standard:disconnect`, `standard:events`, `solana:signAndSendTransaction`, `solana:signTransaction`, `solana:signMessage`) and only Solana chains. `getConnectedSolanaConnector` finds the wallet that holds the last connected address stored by `@tuwaio/orbit-core`.
+- **Transaction sending signer:** `createSolanaTransactionSendingSigner` turns a Wallet Standard account (`UiWalletAccount`) into an `@solana/kit` `TransactionSendingSigner` that asks the wallet to sign and send with `solana:signAndSendTransaction`. It needs no UI framework and does what `useWalletAccountTransactionSendingSigner` of `@solana/react` does in React.
 - **Clusters and explorer links:** `getCluster`, `getRpcUrlForCluster`, `getSolanaClusters`, `getAvailableSolanaClusters`, `isValidSolanaCluster`, `isSolanaChainList`, and `getSolanaExplorerLink` for [Solana Explorer](https://explorer.solana.com) URLs.
 - **Names and avatars:** `getSolanaAddressName` resolves an address to its favorite SNS (`.sol`) domain; `getSolanaAddressAvatar` returns the SNS profile image or a generated identicon. Both cache results in memory (`clear…Cache`, `get…CacheSize`, `preloadSolanaAvatar`).
 
@@ -55,6 +56,39 @@ import { getAvailableSolanaConnectors } from '@tuwaio/orbit-solana';
 const wallets = getAvailableSolanaConnectors(); // UiWallet[] from @wallet-standard/ui-registry
 console.log(wallets.map((wallet) => wallet.name));
 ```
+
+### Signing and sending a transaction
+
+```typescript
+import {
+  appendTransactionMessageInstruction,
+  createTransactionMessage,
+  type Instruction,
+  pipe,
+  setTransactionMessageFeePayerSigner,
+  setTransactionMessageLifetimeUsingBlockhash,
+  signAndSendTransactionMessageWithSigners,
+} from '@solana/kit';
+import { createSolanaClientWithCache, createSolanaTransactionSendingSigner } from '@tuwaio/orbit-solana';
+import type { UiWalletAccount } from '@wallet-standard/ui-core';
+
+declare const account: UiWalletAccount; // for example `connectedAccount` of a Satellite Connect connection
+declare const instruction: Instruction; // for example from a Codama-generated program client
+
+const signer = createSolanaTransactionSendingSigner(account, 'devnet'); // or 'solana:devnet', or the CAIP-2 chain ID
+const { rpc } = createSolanaClientWithCache({ rpcUrlOrMoniker: 'devnet' });
+const { value: latestBlockhash } = await rpc.getLatestBlockhash().send();
+
+const message = pipe(
+  createTransactionMessage({ version: 0 }),
+  (m) => setTransactionMessageFeePayerSigner(signer, m),
+  (m) => setTransactionMessageLifetimeUsingBlockhash(latestBlockhash, m),
+  (m) => appendTransactionMessageInstruction(instruction, m),
+);
+const signature = await signAndSendTransactionMessageWithSigners(message); // opens the wallet prompt
+```
+
+The account must list the chain of the cluster and the `solana:signAndSendTransaction` feature, otherwise the function throws. Several transactions are sent in one wallet request; an `abortSignal` in the call config rejects the call, but the wallet prompt itself cannot be cancelled. `signAndSendSolanaTx` of `@tuwaio/pulsar-solana` takes the same signer.
 
 ### Names, avatars and explorer links
 

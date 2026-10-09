@@ -3,6 +3,7 @@ export * from './utils/chainsUtils';
 export * from './utils/clusterHelpers';
 export * from './utils/createSolanaClientWithCache';
 export * from './utils/createSolanaRPC';
+export * from './utils/createSolanaTransactionSendingSigner';
 export * from './utils/defaultRpcUrlsByMoniker';
 export * from './utils/getAvailableSolanaConnectors';
 export * from './utils/getConnectedSolanaConnector';
