@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.4.1...orbit-solana-v0.5.0) (2026-10-09)
+
+
+### Features
+
+* add createSolanaTransactionSendingSigner, a Kit sending signer for Wallet Standard accounts without React ([50f8c46](https://github.com/TuwaIO/orbit/commit/50f8c46c01e3a78e3dcec7ba51dc3e3b82f6717e))
+
 ## [0.4.1](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.4.0...orbit-solana-v0.4.1) (2026-10-08)
 
 
