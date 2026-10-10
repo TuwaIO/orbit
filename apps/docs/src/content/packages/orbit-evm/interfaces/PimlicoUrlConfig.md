@@ -1,6 +1,6 @@
 # PimlicoUrlConfig
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:36](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L36)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:38](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L38)
 
 Configuration options for generating Pimlico Bundler RPC URLs.
 
@@ -10,7 +10,7 @@ Configuration options for generating Pimlico Bundler RPC URLs.
 
 > `optional` **apiKey?**: `string`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:40](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L40)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:42](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L42)
 
 Optional Pimlico API key. If omitted, falls back to public RPC or bundlerUrl.
 
@@ -20,7 +20,7 @@ Optional Pimlico API key. If omitted, falls back to public RPC or bundlerUrl.
 
 > `optional` **bundlerUrl?**: `string`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:42](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L42)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:44](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L44)
 
 Optional explicit custom bundler RPC URL that takes precedence.
 
@@ -30,6 +30,6 @@ Optional explicit custom bundler RPC URL that takes precedence.
 
 > **chainId**: `number`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:38](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L38)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:40](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L40)
 
 Target EVM chain ID (e.g. 1 for Ethereum Mainnet, 11155111 for Sepolia).

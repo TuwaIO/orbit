@@ -2,7 +2,7 @@
 
 > **createPimlicoPaymasterClient**(`config`): `PaymasterClient`
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:213](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L213)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:255](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L255)
 
 Creates or retrieves a cached Viem Paymaster Client configured with the resolved Pimlico RPC endpoint.
 Side effect: stores the client in an in-memory cache keyed by the resolved RPC URL (see `clearBundlerCache`).

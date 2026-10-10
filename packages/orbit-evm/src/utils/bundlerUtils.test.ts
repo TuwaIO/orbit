@@ -1,7 +1,7 @@
 import { type Config } from '@wagmi/core';
 import { createPublicClient, custom, type WalletClient } from 'viem';
 import { sepolia } from 'viem/chains';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockGetWalletClient = vi.fn();
 
@@ -105,6 +105,64 @@ describe('bundlerUtils', () => {
       const client2 = createBundlerRpcClient(config);
 
       expect(client1).not.toBe(client2);
+    });
+
+    describe('user operation fees', () => {
+      afterEach(() => vi.unstubAllGlobals());
+
+      /** Answers JSON-RPC calls sent with fetch by method; records the methods asked. */
+      const stubRpc = (answers: Record<string, unknown>) => {
+        const methods: string[] = [];
+        vi.stubGlobal(
+          'fetch',
+          vi.fn(async (_url: string, init: { body: string }) => {
+            const { id, method } = JSON.parse(init.body);
+            methods.push(method);
+            const result = answers[method];
+            const body =
+              result === undefined
+                ? { jsonrpc: '2.0', id, error: { code: -32601, message: `Method ${method} not found` } }
+                : { jsonrpc: '2.0', id, result };
+            return new Response(JSON.stringify(body), { headers: { 'content-type': 'application/json' } });
+          }),
+        );
+        return methods;
+      };
+      const feesOf = (client: ReturnType<typeof createBundlerRpcClient>) =>
+        client.userOperation!.estimateFeesPerGas!({ bundlerClient: client } as never);
+
+      it('prices a user operation at the fast gas price Pimlico asks for', async () => {
+        const methods = stubRpc({
+          pimlico_getUserOperationGasPrice: {
+            slow: { maxFeePerGas: '0x1', maxPriorityFeePerGas: '0x1' },
+            standard: { maxFeePerGas: '0x2', maxPriorityFeePerGas: '0x2' },
+            fast: { maxFeePerGas: '0x41909ae2', maxPriorityFeePerGas: '0x3b9aca00' },
+          },
+        });
+        const client = createBundlerRpcClient({ chainId: 11155111, apiKey: 'test_key' });
+
+        expect(await feesOf(client)).toEqual({ maxFeePerGas: 1099995874n, maxPriorityFeePerGas: 1000000000n });
+        expect(methods).toEqual(['pimlico_getUserOperationGasPrice']);
+      });
+
+      it('falls back to the fees of the chain for a bundler without the Pimlico method', async () => {
+        stubRpc({});
+        const request = vi.fn(async ({ method }: { method: string }) => {
+          if (method === 'eth_getBlockByNumber') return { baseFeePerGas: '0x64', number: '0x1', timestamp: '0x1' };
+          if (method === 'eth_maxPriorityFeePerGas') return '0xa';
+          throw new Error(`unexpected ${method}`);
+        });
+        const publicClient = createPublicClient({ chain: sepolia, transport: custom({ request }) });
+        const client = createBundlerRpcClient({
+          chainId: 11155111,
+          bundlerUrl: 'https://bundler.example/rpc',
+          client: publicClient,
+        });
+
+        const fees = await feesOf(client);
+        expect(fees.maxPriorityFeePerGas).toBe(10n);
+        expect(fees.maxFeePerGas).toBeGreaterThan(100n);
+      });
     });
   });
 

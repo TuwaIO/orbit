@@ -2,10 +2,11 @@
 
 > **createPimlicoSmartAccountClient**(`config`): `Promise`\<[`PimlicoSmartAccountClientResult`](/packages/orbit-evm/interfaces/PimlicoSmartAccountClientResult.md)\>
 
-Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:284](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L284)
+Defined in: [packages/orbit-evm/src/utils/bundlerUtils.ts:327](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/bundlerUtils.ts#L327)
 
 High-level orchestration utility that instantiates a Solady smart account,
-configures a Pimlico paymaster (sponsorship), and binds them to a Pimlico Bundler client.
+configures a Pimlico paymaster (sponsorship), and binds them to a Pimlico Bundler client. The bundler client prices
+user operations at Pimlico's gas price (see [createBundlerRpcClient](/packages/orbit-evm/functions/createBundlerRpcClient.md)).
 
 ## Parameters
 

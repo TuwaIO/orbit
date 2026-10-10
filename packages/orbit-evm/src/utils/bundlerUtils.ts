@@ -8,6 +8,7 @@ import {
   type Client,
   createPublicClient,
   type Hex,
+  hexToBigInt,
   http,
   type HttpTransport,
   pad,
@@ -24,6 +25,7 @@ import {
   type ToSoladySmartAccountReturnType,
 } from 'viem/account-abstraction';
 import { toAccount } from 'viem/accounts';
+import { estimateFeesPerGas } from 'viem/actions';
 
 /**
  * Exported alias for Solady Smart Account type.
@@ -176,8 +178,41 @@ export function createPimlicoRpcUrl(config: PimlicoUrlConfig): string {
   return resolvedUrl;
 }
 
+/** The fee pairs `pimlico_getUserOperationGasPrice` answers with, by speed. */
+type PimlicoGasPrice = Record<'slow' | 'standard' | 'fast', { maxFeePerGas: Hex; maxPriorityFeePerGas: Hex }>;
+
+/** JSON-RPC codes of a bundler that does not have a method. */
+const METHOD_MISSING_CODES = new Set([-32601, -32004]);
+
+/**
+ * The fees of a user operation: the `fast` price of `pimlico_getUserOperationGasPrice`, below which Pimlico refuses
+ * an operation, or, from a bundler without that method, the fees of the chain estimated through `client`.
+ */
+async function userOperationFees(bundlerClient: Client, client?: Client | PublicClient) {
+  try {
+    const price = (await bundlerClient.request({
+      method: 'pimlico_getUserOperationGasPrice',
+    } as never)) as PimlicoGasPrice;
+    return {
+      maxFeePerGas: hexToBigInt(price.fast.maxFeePerGas),
+      maxPriorityFeePerGas: hexToBigInt(price.fast.maxPriorityFeePerGas),
+    };
+  } catch (error) {
+    const code = (error as { code?: number }).code;
+    if (!client || code === undefined || !METHOD_MISSING_CODES.has(code)) throw error;
+    return estimateFeesPerGas(client);
+  }
+}
+
 /**
  * Creates or retrieves a cached Viem Bundler Client configured for the resolved Pimlico endpoint.
+ *
+ * User operations sent with it are priced at the `fast` gas price of `pimlico_getUserOperationGasPrice` (Pimlico
+ * refuses operations priced below it); a bundler without that method gets the fees of the chain, estimated through
+ * `config.client`. Pass `userOperation.estimateFeesPerGas` to price them yourself.
+ *
+ * Side effects: caches the client in memory by its URL; each user operation sent with it requests the gas price from
+ * the bundler.
  *
  * @param config - Bundler URL and optional client configuration parameters.
  * @returns Cached or newly instantiated BundlerClient.
@@ -197,6 +232,13 @@ export function createBundlerRpcClient(config: BundlerRpcClientConfig): BundlerC
   const client = createBundlerClient({
     ...bundlerOptions,
     transport: http(rpcUrl),
+    userOperation: {
+      ...bundlerOptions.userOperation,
+      // The fees of the chain are too low for Pimlico, which prices user operations itself
+      estimateFeesPerGas:
+        bundlerOptions.userOperation?.estimateFeesPerGas ??
+        (({ bundlerClient }) => userOperationFees(bundlerClient, config.client)),
+    },
   });
 
   bundlerClientCache.set(cacheKey, client);
@@ -276,7 +318,8 @@ export async function createSoladySmartAccount({
 
 /**
  * High-level orchestration utility that instantiates a Solady smart account,
- * configures a Pimlico paymaster (sponsorship), and binds them to a Pimlico Bundler client.
+ * configures a Pimlico paymaster (sponsorship), and binds them to a Pimlico Bundler client. The bundler client prices
+ * user operations at Pimlico's gas price (see {@link createBundlerRpcClient}).
  *
  * @param config - Configuration options including chain, wallet/wagmi, and Pimlico credentials.
  * @returns Promise resolving to { account, bundlerClient, publicClient, paymasterClient }.
