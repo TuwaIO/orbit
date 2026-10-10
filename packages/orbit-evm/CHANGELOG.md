@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.3.3...orbit-evm-v0.3.4) (2026-10-10)
+
+
+### Bug Fixes
+
+* price user operations at Pimlico's gas price ([38fb949](https://github.com/TuwaIO/orbit/commit/38fb94971bc2ad036ed080fbe78f92b90f4aaab1))
+
 ## [0.3.3](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.3.2...orbit-evm-v0.3.3) (2026-10-08)
 
 
