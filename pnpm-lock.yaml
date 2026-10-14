@@ -236,8 +236,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(react@19.3.0)
       '@tuwaio/docs-ui':
-        specifier: ^0.3.1
-        version: 0.3.1(352f233a6dea2b1047cc26eb482f51b7)
+        specifier: ^0.3.2
+        version: 0.3.2(352f233a6dea2b1047cc26eb482f51b7)
       framer-motion:
         specifier: ^14.0.0
         version: 14.0.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -2210,16 +2210,16 @@ packages:
   '@ts-morph/common@0.28.1':
     resolution: {integrity: sha512-W74iWf7ILp1ZKNYXY5qbddNaml7e9Sedv5lvU1V8lftlitkc9Pq1A+jlH23ltDgWYeZFFEqGCD1Ies9hqu3O+g==}
 
-  '@tuwaio/docs-ui@0.3.1':
-    resolution: {integrity: sha512-RlRODrTcDf/QtWDTCYQG6753OL9Bmd4wau6vP0bugvTTRDcAbEmdA43BwJltQEuUml0cOtFZQWi3msDFHvJ61A==}
+  '@tuwaio/docs-ui@0.3.2':
+    resolution: {integrity: sha512-Geux13U2BxqwnYcq7V9iTW3fOq65/LEq8qm9C2jsFAMHawbYfxI8Td0xN26Udt2FgiyTFSbr5deKHPnBPB5pBg==}
     peerDependencies:
       '@heroicons/react': '>=2'
       next: '>=16.1'
       nextra-theme-docs: '>=4.6'
       react: '>=19.2.3'
 
-  '@tuwaio/nova-core@0.9.0':
-    resolution: {integrity: sha512-rwdcuajmyPW9LHOSjYe8HpPiirPIS5GgYkaNBWbrPg3RGxh0puzoFw3qaKGJ9wF9mWMUJ5uVAWwW+EhTB4P0Aw==}
+  '@tuwaio/nova-core@0.9.1':
+    resolution: {integrity: sha512-VfDZeg95UoPBwIFx30hy/H5wSDddZuMC5tQ2SHJCXLtI0i5/nCbtPNfwoRlD+5M4EBM8TzooPAlrZitfSCkqQw==}
     peerDependencies:
       '@radix-ui/react-dialog': 1.x.x
       '@tuwaio/orbit-core': '>=0.4'
@@ -4438,11 +4438,6 @@ packages:
 
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
-
-  nanoid@3.3.12:
-    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
 
   nanoid@3.3.17:
     resolution: {integrity: sha512-xQLf0A3HOMlgHq0n247/LRuAOYmB7dXJ/DvAxGvsSBij45XtBSmQycu+F8ODbHwns/XyFZagyL1+J0Offw1E0g==}
@@ -7827,10 +7822,10 @@ snapshots:
       path-browserify: 1.0.1
       tinyglobby: 0.2.17
 
-  '@tuwaio/docs-ui@0.3.1(352f233a6dea2b1047cc26eb482f51b7)':
+  '@tuwaio/docs-ui@0.3.2(352f233a6dea2b1047cc26eb482f51b7)':
     dependencies:
       '@heroicons/react': 2.2.0(react@19.3.0)
-      '@tuwaio/nova-core': 0.9.0(@radix-ui/react-dialog@1.1.17(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@tuwaio/orbit-core@0.5.1)(@web3icons/common@0.11.46(typescript@6.0.3))(@web3icons/react@4.1.17(react@19.3.0)(typescript@6.0.3))(clsx@2.1.1)(framer-motion@14.0.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(tailwind-merge@3.7.0)
+      '@tuwaio/nova-core': 0.9.1(@radix-ui/react-dialog@1.1.17(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@tuwaio/orbit-core@0.5.1)(@web3icons/common@0.11.46(typescript@6.0.3))(@web3icons/react@4.1.17(react@19.3.0)(typescript@6.0.3))(clsx@2.1.1)(framer-motion@14.0.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(tailwind-merge@3.7.0)
       clsx: 2.1.1
       html-react-parser: 6.1.8(@types/react@19.2.17)(react@19.3.0)
       next: 16.3.7(@babel/core@7.29.7(supports-color@8.1.1))(@types/node@26.1.1)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -7845,7 +7840,7 @@ snapshots:
       - '@web3icons/react'
       - framer-motion
 
-  '@tuwaio/nova-core@0.9.0(@radix-ui/react-dialog@1.1.17(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@tuwaio/orbit-core@0.5.1)(@web3icons/common@0.11.46(typescript@6.0.3))(@web3icons/react@4.1.17(react@19.3.0)(typescript@6.0.3))(clsx@2.1.1)(framer-motion@14.0.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(tailwind-merge@3.7.0)':
+  '@tuwaio/nova-core@0.9.1(@radix-ui/react-dialog@1.1.17(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@tuwaio/orbit-core@0.5.1)(@web3icons/common@0.11.46(typescript@6.0.3))(@web3icons/react@4.1.17(react@19.3.0)(typescript@6.0.3))(clsx@2.1.1)(framer-motion@14.0.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(tailwind-merge@3.7.0)':
     dependencies:
       '@radix-ui/react-dialog': 1.1.17(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@tuwaio/orbit-core': 0.5.1
@@ -10449,8 +10444,6 @@ snapshots:
       object-assign: 4.1.1
       thenify-all: 1.6.0
 
-  nanoid@3.3.12: {}
-
   nanoid@3.3.17: {}
 
   natural-compare@1.4.0: {}
@@ -10836,7 +10829,7 @@ snapshots:
 
   postcss@8.5.19:
     dependencies:
-      nanoid: 3.3.12
+      nanoid: 3.3.17
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
