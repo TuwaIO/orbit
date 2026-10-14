@@ -1,8 +1,5 @@
 # @tuwaio/orbit-evm
 
-[![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-evm.svg)](https://www.npmjs.com/package/@tuwaio/orbit-evm)
-[![License](https://img.shields.io/npm/l/@tuwaio/orbit-evm.svg)](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/LICENSE)
-
 `@tuwaio/orbit-evm` is the EVM Layer 2 (L2) package of **Orbit Utils**, the Stage 1 primitives layer of the TUWA ecosystem. It wraps **`viem`** and **`@wagmi/core`** into small, framework-agnostic helpers: cached public clients, chain switching, ENS resolution, and ERC-4337 smart accounts built on Solady with a Pimlico bundler and paymaster. It does not use `ethers.js` or `web3.js`.
 
 ---

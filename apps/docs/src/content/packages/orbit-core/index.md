@@ -1,8 +1,5 @@
 # @tuwaio/orbit-core
 
-[![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-core.svg)](https://www.npmjs.com/package/@tuwaio/orbit-core)
-[![License](https://img.shields.io/npm/l/@tuwaio/orbit-core.svg)](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/LICENSE)
-
 `@tuwaio/orbit-core` is the Layer 1 (L1) package of **Orbit Utils**, the Stage 1 primitives layer of the TUWA ecosystem. It defines the chain-agnostic types that the Orbit chain packages and the higher TUWA layers (Satellite Connect, Pulsar) share, and ships small helpers for connector naming, address validation, error normalization and SSR-safe connection persistence.
 
 The package has **zero runtime dependencies** and imports no Web3 SDK, so it runs in any framework, in the browser and on the server.

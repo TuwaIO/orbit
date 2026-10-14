@@ -1,8 +1,5 @@
 # @tuwaio/orbit-solana
 
-[![NPM Version](https://img.shields.io/npm/v/@tuwaio/orbit-solana.svg)](https://www.npmjs.com/package/@tuwaio/orbit-solana)
-[![License](https://img.shields.io/npm/l/@tuwaio/orbit-solana.svg)](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/LICENSE)
-
 `@tuwaio/orbit-solana` is the Solana Layer 2 (L2) package of **Orbit Utils**, the Stage 1 primitives layer of the TUWA ecosystem. It is built on **`@solana/kit`** and the **Wallet Standard** (`@wallet-standard/*`), and provides cached RPC clients, wallet discovery, cluster and explorer helpers, and SNS name and avatar lookups. It does not use the legacy `@solana/web3.js` or `gill`.
 
 ---
