@@ -10,11 +10,11 @@
     "build": "next build && pnpm postbuild",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind"
+    "postbuild": "tuwa-docs-search-index"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@tuwaio/docs-ui": "^0.3.3",
+    "@tuwaio/docs-ui": "^0.4.0",
     "framer-motion": "^14.3.0",
     "next": "16.4.1",
     "next-themes": "^0.4.6",
