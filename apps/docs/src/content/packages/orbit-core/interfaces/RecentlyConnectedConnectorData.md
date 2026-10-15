@@ -1,6 +1,6 @@
 # RecentlyConnectedConnectorData
 
-Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:12](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L12)
+Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L13)
 
 Data structure for a recently connected connector
 
@@ -12,7 +12,7 @@ Data structure for a recently connected connector
 
 > **address**: `string`
 
-Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:13](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L13)
+Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:14](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L14)
 
 The wallet address that was connected
 
@@ -22,7 +22,7 @@ The wallet address that was connected
 
 > **disconnectedTimestamp**: `number`
 
-Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:14](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L14)
+Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:15](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L15)
 
 Unix timestamp in milliseconds when the connector was disconnected
 
@@ -32,6 +32,6 @@ Unix timestamp in milliseconds when the connector was disconnected
 
 > `optional` **icon?**: `string`
 
-Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:15](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L15)
+Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:16](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L16)
 
 Optional icon URL or identifier for the connector

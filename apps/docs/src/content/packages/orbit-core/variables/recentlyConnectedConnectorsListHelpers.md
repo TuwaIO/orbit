@@ -2,7 +2,7 @@
 
 > `const` **recentlyConnectedConnectorsListHelpers**: `object`
 
-Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:63](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L63)
+Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:79](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L79)
 
 Helper utilities for managing recently connected connectors list with disconnect timestamps
 
@@ -10,7 +10,7 @@ Helper utilities for managing recently connected connectors list with disconnect
 
 ### addConnector
 
-> **addConnector**: (`connectorType`, `connectorData`) => `undefined`
+> **addConnector**: (`connectorType`, `connectorData`, `options`) => `undefined`
 
 Adds or updates a single connector in the recently connected connectors list.
 Preserves existing connectors and only adds/updates the specified one.
@@ -28,6 +28,10 @@ The connector type to add/update
 [`RecentlyConnectedConnectorData`](/packages/orbit-core/interfaces/RecentlyConnectedConnectorData.md)
 
 The connector data (address, disconnectedTimestamp, and optional icon)
+
+##### options?
+
+[`WalletMemoryOptions`](/packages/orbit-core/type-aliases/WalletMemoryOptions.md) = `{}`
 
 #### Returns
 
@@ -299,14 +303,15 @@ recentlyConnectedConnectorsListHelpers.setRecentlyConnectedConnectorsList({
 
 ### STORAGE\_KEY
 
-> **STORAGE\_KEY**: `string` = `'orbit-core:recentlyConnectedConnectorsListHelpers'`
+> **STORAGE\_KEY**: `string` = `LIST_KEY`
 
 Key used for localStorage storage
 
 ## Remarks
 
-All data is stored in localStorage with the 'orbit-core:recentlyConnectedConnectorsListHelpers' key.
-Functions are safe to use in both browser and SSR environments.
+The list is stored under the 'orbit-core:recentlyConnectedConnectorsListHelpers' key: wallets that are remembered in
+localStorage, wallets kept only until the tab closes in sessionStorage ([WalletMemoryOptions](/packages/orbit-core/type-aliases/WalletMemoryOptions.md)); reading
+merges both, the sessionStorage entry winning. Functions are safe to use in both browser and SSR environments.
 
 The storage contains a record where each key is a ConnectorType and value contains
 address, disconnectedTimestamp (Unix timestamp in milliseconds), and optional icon for that connector.

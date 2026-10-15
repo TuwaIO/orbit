@@ -16,7 +16,7 @@ The package has **zero runtime dependencies** and imports no Web3 SDK, so it run
 - **Solana chain IDs:** `SOLANA_CHAIN_IDS` holds the CAIP-2 chain IDs of mainnet, devnet and testnet, made of the genesis hash as CAIP-30 requires. `getSolanaChainId` and `getSolanaCluster` convert between these IDs and cluster monikers and read every form in use (`devnet`, `solana:devnet`, `solana:mainnet-beta`, the testnet ID from before the testnet genesis reset). `setChainId` and `formatConnectorChainId` return these IDs for Solana.
 - **CAIP identifiers:** `toCaip2ChainId` turns EVM chain numbers into `eip155:<number>` and every Solana form into its genesis-hash ID, and `toEvmChainId` reads the number back; `formatCaip10AccountId` and `formatCaip19AssetId` build account and asset IDs (`eip155:8453/erc20:0x…`, `solana:…/token:…`, `…/slip44:501`), and the `parse…` functions read and validate them.
 - **Validation and errors:** `isAddress` validates EVM (hex) and Solana (Base58) addresses. `normalizeError` turns any wallet, viem or RPC error into a JSON-serializable `TuwaErrorState` that is safe to persist.
-- **Connection persistence:** `lastConnectedConnectorHelpers` and `recentlyConnectedConnectorsListHelpers` keep connection history in `localStorage` and do nothing during SSR.
+- **Connection persistence:** `lastConnectedConnectorHelpers` and `recentlyConnectedConnectorsListHelpers` keep connection history in `localStorage`, or in `sessionStorage` until the tab closes for a wallet the user did not ask to remember (`{ remember: false }`), and do nothing during SSR.
 - **Runtime utilities:** `detectSafeApp` (Safe{Wallet} iframe detection), `waitFor`, `delay`, `filterUniqueByKey`, and `impersonatedHelpers` for development and testing.
 
 ---
@@ -108,13 +108,13 @@ isAddress('So11111111111111111111111111111111111111112', 'solana'); // true
 
 ## 🗄️ Browser Storage
 
-The storage helpers write the following `localStorage` keys. Clear them to reset the connection state of a user:
+The storage helpers write the following keys. Clear them to reset the connection state of a user:
 
-| Key                                                 | Written by                               |
-| --------------------------------------------------- | ---------------------------------------- |
-| `orbit-core:lastConnectedConnector`                 | `lastConnectedConnectorHelpers`          |
-| `orbit-core:recentlyConnectedConnectorsListHelpers` | `recentlyConnectedConnectorsListHelpers` |
-| `satellite-connect:impersonatedAddress`             | `impersonatedHelpers`                    |
+| Key                                                 | Written by                               | Where                                                                                                                  |
+| --------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `orbit-core:lastConnectedConnector`                 | `lastConnectedConnectorHelpers`          | `localStorage` for a remembered wallet (the default); `sessionStorage` until the tab closes with `{ remember: false }` |
+| `orbit-core:recentlyConnectedConnectorsListHelpers` | `recentlyConnectedConnectorsListHelpers` | `localStorage` for remembered wallets; `sessionStorage` for the others; reading merges both                            |
+| `satellite-connect:impersonatedAddress`             | `impersonatedHelpers`                    | `localStorage`                                                                                                         |
 
 ---
 

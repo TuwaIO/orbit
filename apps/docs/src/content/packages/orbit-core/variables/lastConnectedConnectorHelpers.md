@@ -2,7 +2,7 @@
 
 > `const` **lastConnectedConnectorHelpers**: `object`
 
-Defined in: [utils/lastConnectedConnectorHelpers.ts:23](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts#L23)
+Defined in: [utils/lastConnectedConnectorHelpers.ts:40](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/lastConnectedConnectorHelpers.ts#L40)
 
 Helper utilities for managing the last connected wallet state
 
@@ -12,13 +12,25 @@ Helper utilities for managing the last connected wallet state
 
 > **getLastConnectedConnector**: () => [`LastConnectedConnector`](/packages/orbit-core/type-aliases/LastConnectedConnector.md) \| `undefined`
 
-Retrieves the current last connected wallet data from localStorage.
+Retrieves the current last connected wallet data, from sessionStorage first, then from localStorage.
 
 #### Returns
 
 [`LastConnectedConnector`](/packages/orbit-core/type-aliases/LastConnectedConnector.md) \| `undefined`
 
 The LastConnectedConnector object or undefined if not set or in SSR context
+
+### isLastConnectedConnectorRemembered
+
+> **isLastConnectedConnectorRemembered**: () => `boolean` \| `undefined`
+
+Whether the last connection is remembered after the tab closes.
+
+#### Returns
+
+`boolean` \| `undefined`
+
+`true` when it is in localStorage, `false` when it is in sessionStorage, undefined when there is none
 
 ### lastConnectedConnector
 
@@ -29,21 +41,22 @@ Returns undefined if not set, invalid, or in an SSR context.
 
 ### removeLastConnectedConnector
 
-> **removeLastConnectedConnector**: () => `void`
+> **removeLastConnectedConnector**: () => `undefined`
 
-Removes the last connected wallet data from localStorage.
+Removes the last connected wallet data from localStorage and sessionStorage.
 
 #### Returns
 
-`void`
+`undefined`
 
 undefined in SSR context, void in browser
 
 ### setLastConnectedConnector
 
-> **setLastConnectedConnector**: (`data`) => `void`
+> **setLastConnectedConnector**: (`data`, `options`) => `undefined`
 
-Stores the last connected wallet data in localStorage.
+Stores the last connected wallet data: in localStorage when it is remembered (the default), otherwise in
+sessionStorage; the copy in the other storage is removed.
 
 #### Parameters
 
@@ -53,17 +66,24 @@ Stores the last connected wallet data in localStorage.
 
 Connector type, chain ID and optional address of the connected wallet.
 
+##### options?
+
+[`WalletMemoryOptions`](/packages/orbit-core/type-aliases/WalletMemoryOptions.md) = `{}`
+
+Whether the wallet is remembered after the tab closes.
+
 #### Returns
 
-`void`
+`undefined`
 
 undefined in SSR context, void in browser
 
 ### STORAGE\_KEY
 
-> **STORAGE\_KEY**: `string` = `'orbit-core:lastConnectedConnector'`
+> **STORAGE\_KEY**: `string` = `KEY`
 
 ## Remarks
 
-All data is stored in localStorage with the 'orbit-core:lastConnectedConnector' key.
-Functions are safe to use in both browser and SSR environments.
+The data is stored under the 'orbit-core:lastConnectedConnector' key: in localStorage for a remembered wallet, in
+sessionStorage for one that is kept only until the tab closes ([WalletMemoryOptions](/packages/orbit-core/type-aliases/WalletMemoryOptions.md)). A value in
+sessionStorage takes precedence when reading. Functions are safe to use in both browser and SSR environments.

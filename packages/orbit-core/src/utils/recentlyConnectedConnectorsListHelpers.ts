@@ -1,5 +1,6 @@
 import { ConnectorType } from '../types';
 import { getParsedStorageItem } from './getParsedStorageItem';
+import type { WalletMemoryOptions } from './lastConnectedConnectorHelpers';
 
 /**
  * Data structure for a recently connected connector
@@ -22,12 +23,27 @@ export type RecentlyConnectedConnectorData = {
  */
 export type RecentlyConnectedConnectorsList = Record<ConnectorType, RecentlyConnectedConnectorData>;
 
+const LIST_KEY = 'orbit-core:recentlyConnectedConnectorsListHelpers';
+
+const readList = (area: 'localStorage' | 'sessionStorage') =>
+  getParsedStorageItem<RecentlyConnectedConnectorsList>(LIST_KEY, area) ?? ({} as RecentlyConnectedConnectorsList);
+
+const writeList = (area: 'localStorage' | 'sessionStorage', list: RecentlyConnectedConnectorsList) =>
+  window[area]?.setItem(LIST_KEY, JSON.stringify(list));
+
+const without = (list: RecentlyConnectedConnectorsList, connectorType: ConnectorType) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { [connectorType]: _, ...rest } = list;
+  return rest as RecentlyConnectedConnectorsList;
+};
+
 /**
  * Helper utilities for managing recently connected connectors list with disconnect timestamps
  *
  * @remarks
- * All data is stored in localStorage with the 'orbit-core:recentlyConnectedConnectorsListHelpers' key.
- * Functions are safe to use in both browser and SSR environments.
+ * The list is stored under the 'orbit-core:recentlyConnectedConnectorsListHelpers' key: wallets that are remembered in
+ * localStorage, wallets kept only until the tab closes in sessionStorage ({@link WalletMemoryOptions}); reading
+ * merges both, the sessionStorage entry winning. Functions are safe to use in both browser and SSR environments.
  *
  * The storage contains a record where each key is a ConnectorType and value contains
  * address, disconnectedTimestamp (Unix timestamp in milliseconds), and optional icon for that connector.
@@ -62,7 +78,7 @@ export type RecentlyConnectedConnectorsList = Record<ConnectorType, RecentlyConn
  */
 export const recentlyConnectedConnectorsListHelpers = {
   /** Key used for localStorage storage */
-  STORAGE_KEY: 'orbit-core:recentlyConnectedConnectorsListHelpers',
+  STORAGE_KEY: LIST_KEY,
 
   /**
    * The current recently connected connectors list, initialized when the module loads.
@@ -70,9 +86,7 @@ export const recentlyConnectedConnectorsListHelpers = {
    *
    * @readonly
    */
-  recentlyConnectedConnectorsList: getParsedStorageItem<RecentlyConnectedConnectorsList>(
-    'orbit-core:recentlyConnectedConnectorsListHelpers',
-  ),
+  recentlyConnectedConnectorsList: getParsedStorageItem<RecentlyConnectedConnectorsList>(LIST_KEY),
 
   /**
    * Stores the complete recently connected connectors list in localStorage.
@@ -117,8 +131,12 @@ export const recentlyConnectedConnectorsListHelpers = {
    * }
    * ```
    */
-  getRecentlyConnectedConnectorsList: () =>
-    getParsedStorageItem<RecentlyConnectedConnectorsList>(recentlyConnectedConnectorsListHelpers.STORAGE_KEY),
+  getRecentlyConnectedConnectorsList: (): RecentlyConnectedConnectorsList | undefined => {
+    const remembered = getParsedStorageItem<RecentlyConnectedConnectorsList>(LIST_KEY);
+    const session = getParsedStorageItem<RecentlyConnectedConnectorsList>(LIST_KEY, 'sessionStorage');
+    if (!remembered && !session) return undefined;
+    return { ...remembered, ...session } as RecentlyConnectedConnectorsList;
+  },
 
   /**
    * Adds or updates a single connector in the recently connected connectors list.
@@ -145,18 +163,23 @@ export const recentlyConnectedConnectorsListHelpers = {
    * });
    * ```
    */
-  addConnector: (connectorType: ConnectorType, connectorData: RecentlyConnectedConnectorData) => {
+  addConnector: (
+    connectorType: ConnectorType,
+    connectorData: RecentlyConnectedConnectorData,
+    options: WalletMemoryOptions = {},
+  ) => {
     if (typeof window === 'undefined') {
       return undefined;
     }
 
-    const currentList = recentlyConnectedConnectorsListHelpers.getRecentlyConnectedConnectorsList() || {};
-    const updatedList = {
-      ...currentList,
-      [connectorType]: connectorData,
-    };
-
-    window.localStorage.setItem(recentlyConnectedConnectorsListHelpers.STORAGE_KEY, JSON.stringify(updatedList));
+    // A remembered wallet goes to localStorage, another one to sessionStorage; it leaves the other list
+    const [target, other] =
+      (options.remember ?? true)
+        ? (['localStorage', 'sessionStorage'] as const)
+        : (['sessionStorage', 'localStorage'] as const);
+    writeList(target, { ...readList(target), [connectorType]: connectorData });
+    const otherList = readList(other);
+    if (connectorType in otherList) writeList(other, without(otherList, connectorType));
   },
 
   /**
@@ -177,17 +200,10 @@ export const recentlyConnectedConnectorsListHelpers = {
       return undefined;
     }
 
-    const currentList = recentlyConnectedConnectorsListHelpers.getRecentlyConnectedConnectorsList();
-    if (!currentList || !(connectorType in currentList)) {
-      return;
+    for (const area of ['localStorage', 'sessionStorage'] as const) {
+      const list = readList(area);
+      if (connectorType in list) writeList(area, without(list, connectorType));
     }
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { [connectorType]: _, ...remainingConnectors } = currentList;
-    window.localStorage.setItem(
-      recentlyConnectedConnectorsListHelpers.STORAGE_KEY,
-      JSON.stringify(remainingConnectors),
-    );
   },
 
   /**
@@ -306,16 +322,14 @@ export const recentlyConnectedConnectorsListHelpers = {
       return undefined;
     }
 
-    const currentList = recentlyConnectedConnectorsListHelpers.getRecentlyConnectedConnectorsList();
-    if (!currentList) {
-      return;
+    for (const area of ['localStorage', 'sessionStorage'] as const) {
+      const list = getParsedStorageItem<RecentlyConnectedConnectorsList>(LIST_KEY, area);
+      if (!list) continue;
+      const filteredList = Object.fromEntries(
+        Object.entries(list).filter(([, data]) => data.disconnectedTimestamp >= beforeTimestamp),
+      ) as RecentlyConnectedConnectorsList;
+      writeList(area, filteredList);
     }
-
-    const filteredList = Object.fromEntries(
-      Object.entries(currentList).filter(([, data]) => data.disconnectedTimestamp >= beforeTimestamp),
-    ) as RecentlyConnectedConnectorsList;
-
-    window.localStorage.setItem(recentlyConnectedConnectorsListHelpers.STORAGE_KEY, JSON.stringify(filteredList));
   },
 
   /**

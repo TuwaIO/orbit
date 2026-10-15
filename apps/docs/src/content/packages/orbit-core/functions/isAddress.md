@@ -16,7 +16,7 @@ Address string to validate
 
 ### type?
 
-`"evm"` \| `"solana"` \| `"auto"`
+`"evm"` \| `"solana"` \| `"auto"` = `'auto'`
 
 Optional blockchain type to validate against ('evm' | 'solana' | 'auto')
 
