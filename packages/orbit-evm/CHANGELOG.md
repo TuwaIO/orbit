@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.3.4...orbit-evm-v0.4.0) (2026-10-15)
+
+
+### Features
+
+* updated packages and recent connectors utils ([3ffd01d](https://github.com/TuwaIO/orbit/commit/3ffd01d7234f1a4b4aeab95067767c93ea8478b4))
+
 ## [0.3.4](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.3.3...orbit-evm-v0.3.4) (2026-10-10)
 
 

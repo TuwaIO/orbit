@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.5.1...orbit-core-v0.6.0) (2026-10-15)
+
+
+### Features
+
+* updated packages and recent connectors utils ([3ffd01d](https://github.com/TuwaIO/orbit/commit/3ffd01d7234f1a4b4aeab95067767c93ea8478b4))
+
 ## [0.5.1](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.5.0...orbit-core-v0.5.1) (2026-10-08)
 
 
