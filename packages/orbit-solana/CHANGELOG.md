@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.7.0...orbit-solana-v0.7.1) (2026-10-20)
+
+
+### Bug Fixes
+
+* orbit solana solana/kit deps version ([64b52ca](https://github.com/TuwaIO/orbit/commit/64b52ca7f118deaba4c2b15086b80c90413d2552))
+
 ## [0.7.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.6.0...orbit-solana-v0.7.0) (2026-10-20)
 
 
