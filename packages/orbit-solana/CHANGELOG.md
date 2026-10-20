@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.6.0...orbit-solana-v0.7.0) (2026-10-20)
+
+
+### Features
+
+* shared Solana message signer with a /signer entry that loads only @solana/kit ([84b45fb](https://github.com/TuwaIO/orbit/commit/84b45fbd190308da71571fa1a316bdc0b742e46c))
+
 ## [0.6.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.5.0...orbit-solana-v0.6.0) (2026-10-15)
 
 
