@@ -27,7 +27,7 @@ pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit @wallet-standard/ap
 ```
 
 > [!IMPORTANT]
-> `@tuwaio/orbit-core` (>=0.4), `@solana/kit` (>=8.2) and the `@wallet-standard` packages (1.x) are peer dependencies and must be installed alongside `@tuwaio/orbit-solana`. The `@wallet-standard` packages are optional for code that imports only `@tuwaio/orbit-solana/signer`: `pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit` is enough there.
+> `@tuwaio/orbit-core` (>=0.4), `@solana/kit` (>=6) and the `@wallet-standard` packages (1.x) are peer dependencies and must be installed alongside `@tuwaio/orbit-solana`. The `@wallet-standard` packages are optional for code that imports only `@tuwaio/orbit-solana/signer`: `pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit` is enough there.
 
 ---
 

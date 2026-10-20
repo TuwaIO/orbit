@@ -11,7 +11,7 @@
 - **Core:** TypeScript 6.0.3 (pinned exactly in every `package.json`), Node.js (v20-v24), pnpm v12+ (Workspace).
 - **Testing:** `vitest` v5.x (run per package via `pnpm test`).
 - **Web3 (EVM):** `viem` v2.x (incl. `viem/account-abstraction`), `@wagmi/core` v3.x — peer dependencies of `orbit-evm`.
-- **Web3 (Solana):** `@solana/kit` v8.x (peer `>=8.2`), `@wallet-standard/*` v1.x — peer dependencies of `orbit-solana` (the `@wallet-standard/*` peers are optional: the `/signer` entry imports only `@solana/kit`).
+- **Web3 (Solana):** `@solana/kit` v8.x (peer `>=6`, checked against 6.0.0 so that apps on Kit 6 and 7 can use the signer of `siwx-solana`), `@wallet-standard/*` v1.x — peer dependencies of `orbit-solana` (the `@wallet-standard/*` peers are optional: the `/signer` entry imports only `@solana/kit`).
 - **Frameworks:**
   - `apps/docs`: Next.js v16, Nextra v4, Tailwind CSS v4, `@tuwaio/docs-ui`, Pagefind.
   - `packages/*`: Framework Agnostic (React/Vue/Svelte compatible).

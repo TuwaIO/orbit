@@ -71,7 +71,7 @@
   ],
   "peerDependencies": {
     "@tuwaio/orbit-core": ">=0.4",
-    "@solana/kit": ">=8.2",
+    "@solana/kit": ">=6",
     "@wallet-standard/app": "1.x.x",
     "@wallet-standard/ui-core": "1.x.x",
     "@wallet-standard/ui-registry": "1.x.x"
