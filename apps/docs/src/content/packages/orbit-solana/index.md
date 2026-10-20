@@ -9,6 +9,7 @@
 - **RPC clients:** `createSolanaClientWithCache` returns a cached `{ rpc, rpcSubscriptions }` pair (the WebSocket URL is derived from the HTTP URL); `createSolanaRPC` returns a cached `rpc` only. Both accept a full URL or a cluster moniker (`mainnet`, `devnet`, `testnet`, `localnet`).
 - **Wallet Standard discovery:** `getAvailableSolanaConnectors` lists installed wallets that support every feature Orbit relies on (`standard:connect`, `standard:disconnect`, `standard:events`, `solana:signAndSendTransaction`, `solana:signTransaction`, `solana:signMessage`) and only Solana chains. `getConnectedSolanaConnector` finds the wallet that holds the last connected address stored by `@tuwaio/orbit-core`.
 - **Transaction sending signer:** `createSolanaTransactionSendingSigner` turns a Wallet Standard account (`UiWalletAccount`) into an `@solana/kit` `TransactionSendingSigner` that asks the wallet to sign and send with `solana:signAndSendTransaction`. It needs no UI framework and does what `useWalletAccountTransactionSendingSigner` of `@solana/react` does in React.
+- **Message signer:** `createSolanaMessageSigner` signs a text message with a Wallet Standard wallet, a wallet adapter or `useWallet()` of `@solana/wallet-adapter` (v1 and v3) and returns the base58 signature. It signs the UTF-8 bytes, or the version 1 off-chain message that hardware wallets can show (checked against the envelope built with `@solana/kit`). `@tuwaio/siwx-solana` and `@tuwaio/satellite-solana` sign with it. The `@tuwaio/orbit-solana/signer` entry loads only `@solana/kit`, so a server can import it without the Wallet Standard packages.
 - **Clusters and explorer links:** `getCluster`, `getRpcUrlForCluster`, `getSolanaClusters`, `getAvailableSolanaClusters`, `isValidSolanaCluster`, `isSolanaChainList`, and `getSolanaExplorerLink` for [Solana Explorer](https://explorer.solana.com) URLs.
 - **Names and avatars:** `getSolanaAddressName` resolves an address to its favorite SNS (`.sol`) domain; `getSolanaAddressAvatar` returns the SNS profile image or a generated identicon. Both cache results in memory (`clear…Cache`, `get…CacheSize`, `preloadSolanaAvatar`).
 
@@ -23,7 +24,7 @@ pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit @wallet-standard/ap
 ```
 
 > [!IMPORTANT]
-> `@tuwaio/orbit-core` (>=0.4), `@solana/kit` (>=8.2) and the `@wallet-standard` packages (1.x) are peer dependencies and must be installed alongside `@tuwaio/orbit-solana`.
+> `@tuwaio/orbit-core` (>=0.4), `@solana/kit` (>=8.2) and the `@wallet-standard` packages (1.x) are peer dependencies and must be installed alongside `@tuwaio/orbit-solana`. The `@wallet-standard` packages are optional for code that imports only `@tuwaio/orbit-solana/signer`: `pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit` is enough there.
 
 ---
 
@@ -87,6 +88,21 @@ const signature = await signAndSendTransactionMessageWithSigners(message); // op
 
 The account must list the chain of the cluster and the `solana:signAndSendTransaction` feature, otherwise the function throws. Several transactions are sent in one wallet request; an `abortSignal` in the call config rejects the call, but the wallet prompt itself cannot be cancelled. `signAndSendSolanaTx` of `@tuwaio/pulsar-solana` takes the same signer.
 
+### Signing a message
+
+```typescript
+import { createSolanaMessageSigner } from '@tuwaio/orbit-solana/signer';
+import type { Wallet, WalletAccount } from '@wallet-standard/base';
+
+declare const wallet: Wallet; // or a wallet adapter, or useWallet() of @solana/wallet-adapter as the whole target
+declare const account: WalletAccount; // one of wallet.accounts
+
+const signMessage = createSolanaMessageSigner({ wallet, account });
+const signature = await signMessage('Hello from my app'); // opens the wallet prompt; base58 signature
+```
+
+The signer uses the first capability it finds: the `solana:signMessage` feature, a `signMessages` method, then a `signMessage` method of the wallet, its adapter, the account or the target itself. An account that lists `solana:signOffchainMessage` but not `solana:signMessage` signs the version 1 off-chain message instead; `messageFormat: 'message'` or `'offchainMessage'` forces one format. The wallet's own error is passed through when the user rejects.
+
 ### Names, avatars and explorer links
 
 ```typescript
@@ -128,10 +144,13 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 ## Interfaces
 
 - [SolanaClient](/packages/orbit-solana/interfaces/SolanaClient.md)
+- [SolanaMessageSignerOptions](/packages/orbit-solana/interfaces/SolanaMessageSignerOptions.md)
+- [SolanaMessageSignerTarget](/packages/orbit-solana/interfaces/SolanaMessageSignerTarget.md)
 
 ## Type Aliases
 
 - [SolanaClusterMoniker](/packages/orbit-solana/type-aliases/SolanaClusterMoniker.md)
+- [SolanaMessageFormat](/packages/orbit-solana/type-aliases/SolanaMessageFormat.md)
 - [SolanaRpcMethods](/packages/orbit-solana/type-aliases/SolanaRpcMethods.md)
 - [SolanaRPCUrls](/packages/orbit-solana/type-aliases/SolanaRPCUrls.md)
 
@@ -140,6 +159,7 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [clearSolanaAvatarCache](/packages/orbit-solana/functions/clearSolanaAvatarCache.md)
 - [clearSolanaNameCache](/packages/orbit-solana/functions/clearSolanaNameCache.md)
 - [createSolanaClientWithCache](/packages/orbit-solana/functions/createSolanaClientWithCache.md)
+- [createSolanaMessageSigner](/packages/orbit-solana/functions/createSolanaMessageSigner.md)
 - [createSolanaRPC](/packages/orbit-solana/functions/createSolanaRPC.md)
 - [createSolanaTransactionSendingSigner](/packages/orbit-solana/functions/createSolanaTransactionSendingSigner.md)
 - [getAvailableSolanaClusters](/packages/orbit-solana/functions/getAvailableSolanaClusters.md)

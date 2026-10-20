@@ -5,7 +5,7 @@ import pkg from './package.json';
 export default defineConfig([
   {
     format: ['cjs', 'esm'],
-    entry: ['./src/index.ts'],
+    entry: ['./src/index.ts', './src/signer.ts'],
     sourcemap: false,
     splitting: true,
     treeshake: true,

@@ -40,11 +40,11 @@ Orbit depends on nothing else in TUWA. Higher layers import its types and helper
 
 ## 🧩 Packages
 
-| Package                                          | Layer | Provides                                                                                               | Peer dependencies                                                   |
-| ------------------------------------------------ | ----- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
-| [`@tuwaio/orbit-core`](/packages/orbit-core)     | L1    | Multi-chain types, connector and address helpers, error normalization, SSR-safe connection storage     | —                                                                   |
-| [`@tuwaio/orbit-evm`](/packages/orbit-evm)       | L2    | Cached viem clients, chain switching, ENS resolution, ERC-4337 smart accounts (Solady + Pimlico)       | `viem` 2.x, `@wagmi/core` 3.x                                       |
-| [`@tuwaio/orbit-solana`](/packages/orbit-solana) | L2    | Cached `@solana/kit` RPC clients, Wallet Standard discovery, cluster and explorer helpers, SNS lookups | `@tuwaio/orbit-core`, `@solana/kit` ≥ 8.2, `@wallet-standard/*` 1.x |
+| Package                                          | Layer | Provides                                                                                                                                | Peer dependencies                                                   |
+| ------------------------------------------------ | ----- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [`@tuwaio/orbit-core`](/packages/orbit-core)     | L1    | Multi-chain types, connector and address helpers, error normalization, SSR-safe connection storage                                      | —                                                                   |
+| [`@tuwaio/orbit-evm`](/packages/orbit-evm)       | L2    | Cached viem clients, chain switching, ENS resolution, ERC-4337 smart accounts (Solady + Pimlico)                                        | `viem` 2.x, `@wagmi/core` 3.x                                       |
+| [`@tuwaio/orbit-solana`](/packages/orbit-solana) | L2    | Cached `@solana/kit` RPC clients, Wallet Standard discovery, transaction and message signers, cluster and explorer helpers, SNS lookups | `@tuwaio/orbit-core`, `@solana/kit` ≥ 8.2, `@wallet-standard/*` 1.x |
 
 Each package page shows the package README followed by a reference of every export, generated from the TypeScript source.
 

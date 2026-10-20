@@ -28,7 +28,7 @@ Inside the monorepo, packages are split into two layers:
 ### Layer 2: Chain Platforms (L2)
 
 - **[`@tuwaio/orbit-evm`](./packages/orbit-evm)**: cached `viem` public clients, chain switching, ENS resolution and ERC-4337 smart accounts (Solady accounts with a Pimlico bundler and paymaster). Peer dependencies: `viem`, `@wagmi/core`.
-- **[`@tuwaio/orbit-solana`](./packages/orbit-solana)**: cached `@solana/kit` RPC clients, Wallet Standard wallet discovery, cluster and explorer helpers, and SNS name and avatar lookups. Peer dependencies: `@tuwaio/orbit-core`, `@solana/kit`, `@wallet-standard/*`.
+- **[`@tuwaio/orbit-solana`](./packages/orbit-solana)**: cached `@solana/kit` RPC clients, Wallet Standard wallet discovery, transaction and message signers, cluster and explorer helpers, and SNS name and avatar lookups. Peer dependencies: `@tuwaio/orbit-core`, `@solana/kit`, `@wallet-standard/*` (not needed by the `/signer` entry).
 
 ---
 

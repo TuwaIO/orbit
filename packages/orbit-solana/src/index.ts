@@ -2,6 +2,7 @@ export * from './types';
 export * from './utils/chainsUtils';
 export * from './utils/clusterHelpers';
 export * from './utils/createSolanaClientWithCache';
+export * from './utils/createSolanaMessageSigner';
 export * from './utils/createSolanaRPC';
 export * from './utils/createSolanaTransactionSendingSigner';
 export * from './utils/defaultRpcUrlsByMoniker';

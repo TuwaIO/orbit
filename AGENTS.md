@@ -11,7 +11,7 @@
 - **Core:** TypeScript 6.0.3 (pinned exactly in every `package.json`), Node.js (v20-v24), pnpm v12+ (Workspace).
 - **Testing:** `vitest` v5.x (run per package via `pnpm test`).
 - **Web3 (EVM):** `viem` v2.x (incl. `viem/account-abstraction`), `@wagmi/core` v3.x — peer dependencies of `orbit-evm`.
-- **Web3 (Solana):** `@solana/kit` v8.x (peer `>=8.2`), `@wallet-standard/*` v1.x — peer dependencies of `orbit-solana`.
+- **Web3 (Solana):** `@solana/kit` v8.x (peer `>=8.2`), `@wallet-standard/*` v1.x — peer dependencies of `orbit-solana` (the `@wallet-standard/*` peers are optional: the `/signer` entry imports only `@solana/kit`).
 - **Frameworks:**
   - `apps/docs`: Next.js v16, Nextra v4, Tailwind CSS v4, `@tuwaio/docs-ui`, Pagefind.
   - `packages/*`: Framework Agnostic (React/Vue/Svelte compatible).
@@ -50,7 +50,7 @@ orbit/
 
 - **`orbit-core`**: The brain. Contains the `OrbitAdapter` enum (`EVM`, `SOLANA`, `Starknet`). Strictly native with zero external web3 dependencies. Owns the Solana chain IDs: `SOLANA_CHAIN_IDS` (CAIP-2 with the genesis hash, as CAIP-30 requires), `getSolanaChainId` and `getSolanaCluster`, which read every form in use (`devnet`, `solana:devnet`, `solana:mainnet-beta`, the genesis-hash ID, the testnet ID from before its genesis reset). `setChainId` and `formatConnectorChainId` return the genesis-hash ID for Solana. Owns the CAIP helpers (`utils/caip.ts`): `toCaip2ChainId` and its reverse for EVM, `toEvmChainId`; `formatCaip10AccountId`/`formatCaip19AssetId` and the `parseCaip2ChainId`/`parseCaip10AccountId`/`parseCaip19AssetId` readers, which validate against the CAIP grammars (EVM and Solana addresses by their own rules).
 - **`orbit-evm`**: The muscle for Ethereum. Depends on `viem` and `@wagmi/core`. Handles provider creation, ERC-4337 Pimlico Bundler client instantiation with caching, Solady smart accounts, and ENS resolution.
-- **`orbit-solana`**: The muscle for Solana. Depends strictly on `@solana/kit` and the Wallet Standard. Handles clusters, RPC connections, wallet discovery, a framework-free Kit `TransactionSendingSigner` for Wallet Standard accounts (`createSolanaTransactionSendingSigner`, the replacement for the `@solana/react` hook) and SNS lookups (via the Bonfida HTTP API, with DiceBear identicon fallbacks).
+- **`orbit-solana`**: The muscle for Solana. Depends strictly on `@solana/kit` and the Wallet Standard. Handles clusters, RPC connections, wallet discovery, a framework-free Kit `TransactionSendingSigner` for Wallet Standard accounts (`createSolanaTransactionSendingSigner`, the replacement for the `@solana/react` hook), the message signer shared by `siwx-solana` and `satellite-solana` (`createSolanaMessageSigner`, also from the `@tuwaio/orbit-solana/signer` entry, which loads only `@solana/kit` for servers) and SNS lookups (via the Bonfida HTTP API, with DiceBear identicon fallbacks).
 
 ### Documentation Model
 
