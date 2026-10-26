@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/TuwaIO/orbit/release.yml?branch=main)](https://github.com/TuwaIO/orbit/actions)
 
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/TuwaIO/workflows@main/preview/repos/orbit_utils.png" alt="Orbit Utils" width="450" style="border-radius: 12px; margin: 24px auto;" />
+  <img src="https://tuwa.io/brand/orbit_utils.png" alt="Orbit Utils" width="450" style="border-radius: 12px; margin: 24px auto;" />
 </p>
 
 **Orbit Utils** is the Stage 1 primitives layer of the TUWA ecosystem: headless, framework-agnostic helpers for talking to EVM and Solana networks. It provides cached RPC clients, wallet discovery, connection persistence, name resolution and ERC-4337 smart accounts as plain functions and types, with no UI, state management or framework bindings.
