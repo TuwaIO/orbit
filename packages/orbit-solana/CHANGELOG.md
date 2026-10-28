@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.2](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.7.1...orbit-solana-v0.7.2) (2026-10-28)
+
+
+### Bug Fixes
+
+* **orbit-solana:** watchAvailableSolanaConnectors calls back when a Wallet Standard wallet registers or unregisters ([1c8cdbd](https://github.com/TuwaIO/orbit/commit/1c8cdbd24e631a43a69cd67799b2af2bd0ad9827))
+
 ## [0.7.1](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.7.0...orbit-solana-v0.7.1) (2026-10-20)
 
 
