@@ -1,0 +1,75 @@
+# 简介
+
+<p align="center">
+  <img
+    src="https://tuwa.io/brand/orbit_utils.png"
+    alt="Orbit Utils"
+    width="450"
+    style={{ borderRadius: '12px', margin: '24px auto', display: 'block' }}
+  />
+</p>
+
+**Orbit Utils** 是 TUWA 生态第 1 阶段的底层原语层：一组用于与 EVM 和 Solana 网络交互的无头、框架无关辅助函数。它以普通函数与类型的形式提供带缓存的 RPC 客户端、钱包发现、连接持久化、名称解析以及 ERC-4337 智能账户，不包含 UI、状态管理或框架绑定。
+
+---
+
+## 🏛️ Orbit 在 TUWA 中的位置 [#️-where-orbit-fits-in-tuwa]
+
+TUWA 按阶段构建，每个阶段都建立在之前的阶段之上，而 Orbit 位于最底层：
+
+| 阶段                       | 项目                                                                                                                  | 作用                        |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| **1 — 核心认证与底层原语** | [SIWX](https://siwx.docs.tuwa.io/)、**Orbit Utils**                                                                   | CAIP-122 身份认证与多链原语 |
+| **2 — 状态机与连接层**     | [Satellite Connect](https://satellite.docs.tuwa.io/)、[Pulsar](https://pulsar.docs.tuwa.io/)                          | 钱包连接状态机与交易追踪    |
+| **3 — 服务端与状态同步**   | [Quasar Cloud](https://docs.tuwa.io/quasar) 或自部署的 [Quasar Community](https://github.com/TuwaIO/quasar-community) | 交易索引与跨设备同步        |
+| **4 — 用户界面组件**       | [Nova UI Kit](https://stories.tuwa.io/)                                                                               | React 设计系统与组件        |
+
+Orbit 不依赖 TUWA 中的任何其他项目。上层项目导入它的类型与辅助函数（例如 `OrbitAdapter` 在 Satellite Connect 与 Pulsar 中标识链家族），反之则不然。您也可以在任何应用中单独使用 Orbit。
+
+---
+
+## 🧭 设计原则 [#-principles]
+
+1. **无头且框架无关：** 不包含 CSS、组件、Hook 或框架绑定。一切都是普通的函数或类型，可在 React、Vue、Svelte、Solid、Node.js 或原生 JavaScript 中使用。
+2. **只使用现代 Web3 库：** EVM 使用 `viem` 与 `@wagmi/core`，Solana 使用 `@solana/kit` 与 Wallet Standard。不使用 `ethers.js`、`web3.js`、`@solana/web3.js` 或 `gill`。
+3. **自托管，不使用钱包即服务 (Wallet-as-a-Service)：** 钱包始终由用户掌控。账户抽象基于开放的 ERC-4337 基础设施（Solady 智能账户、任何兼容 Pimlico 的 Bundler），而不是专有的钱包平台。
+4. **对等依赖，而非内置 SDK：** 链相关库均为对等依赖 (peer dependencies)，因此由您的应用控制它们的版本，并且只保留一份副本。
+5. **透明的副作用：** 辅助函数会注明何时写入 `localStorage`、在内存中缓存或调用外部服务。Solana 包列出了它会访问的每个第三方主机。
+
+---
+
+## 🧩 软件包 [#-packages]
+
+| 软件包                                           | 层级 | 提供的功能                                                                                                        | 对等依赖                                                          |
+| ------------------------------------------------ | ---- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [`@tuwaio/orbit-core`](/packages/orbit-core)     | L1   | 多链类型、连接器与地址辅助函数、错误标准化、SSR 安全的连接持久化                                                  | —                                                                 |
+| [`@tuwaio/orbit-evm`](/packages/orbit-evm)       | L2   | 带缓存的 viem 客户端、切换网络、ENS 解析、ERC-4337 智能账户（Solady + Pimlico）                                   | `viem` 2.x, `@wagmi/core` 3.x                                     |
+| [`@tuwaio/orbit-solana`](/packages/orbit-solana) | L2   | 带缓存的 `@solana/kit` RPC 客户端、Wallet Standard 钱包发现、交易与消息签名器、集群与区块浏览器辅助函数、SNS 查询 | `@tuwaio/orbit-core`, `@solana/kit` ≥ 6, `@wallet-standard/*` 1.x |
+
+每个包页面先展示该包的 README，然后是根据 TypeScript 源码生成的全部导出的参考文档。
+
+---
+
+## 💾 安装 [#-installation]
+
+安装核心包，以及应用所面向的链对应的包：
+
+```bash
+# L1 core
+pnpm add @tuwaio/orbit-core
+
+# L2 EVM
+pnpm add @tuwaio/orbit-evm @wagmi/core viem
+
+# L2 Solana
+pnpm add @tuwaio/orbit-solana @tuwaio/orbit-core @solana/kit @wallet-standard/app @wallet-standard/ui-core @wallet-standard/ui-registry
+```
+
+---
+
+## 📚 后续步骤 [#-next-steps]
+
+- 浏览 **[软件包](/packages)** 部分，查看使用示例以及每个包的完整参考。
+- 阅读 **[ERC-4337 指南](https://docs.tuwa.io/guides/erc-4337-sovereign-account-abstraction)**，了解结合 Orbit EVM、Pulsar 与 Quasar 的端到端智能账户流程。
+- 在 **[docs.tuwa.io/guides](https://docs.tuwa.io/guides)** 查看更多生态指南。
+- 在 **[GitHub](https://github.com/TuwaIO/orbit)** 阅读源代码。
