@@ -11,3 +11,4 @@ export * from './utils/getConnectedSolanaConnector';
 export * from './utils/getSolanaAddressAvatar';
 export * from './utils/getSolanaAddressName';
 export * from './utils/getSolanaExplorerLink';
+export * from './utils/watchAvailableSolanaConnectors';
