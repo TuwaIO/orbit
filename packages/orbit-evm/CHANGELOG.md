@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.4.0...orbit-evm-v0.4.1) (2026-11-05)
+
+
+### Bug Fixes
+
+* **orbit-evm:** ENS helpers no longer bundle every viem public action and load the normalization tables on demand ([c2129b6](https://github.com/TuwaIO/orbit/commit/c2129b633f0bef0561ebe37e6cb01230d941094d))
+
 ## [0.4.0](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.3.4...orbit-evm-v0.4.0) (2026-10-15)
 
 
