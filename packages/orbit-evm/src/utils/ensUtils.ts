@@ -4,27 +4,32 @@
  * all specifically targeting the Ethereum Mainnet where ENS is deployed.
  */
 
-import { Address, Hex, isAddress } from 'viem';
+import { Address, Client, createClient, Hex, http, isAddress, Transport } from 'viem';
+import { getEnsAddress, getEnsAvatar, getEnsName } from 'viem/actions';
 import { Chain, mainnet } from 'viem/chains';
-import { getEnsAddress, getEnsAvatar, getEnsName, normalize } from 'viem/ens';
-
-import { createViemClient } from './createViemClient';
 
 const nameCache = new Map<Hex, string | null>();
 const avatarCache = new Map<string, string | null>();
 const addressCache = new Map<string, Address | null>();
 
+let ensClient: Client<Transport, Chain> | undefined;
+
 // -------------------
 
 // A single, shared viem client for all ENS lookups.
 // ENS lookups are always performed against Ethereum Mainnet, regardless of the app's connected chain.
+// It is a bare client: the ENS actions take it as an argument, so an app does not bundle every public action of viem.
 const createENSClient = (chains: readonly [Chain, ...Chain[]]) => {
-  const mainnetChain = chains.find((c) => c.id === mainnet.id);
-  if (mainnetChain) {
-    return createViemClient(mainnet.id, [mainnetChain]);
+  const chain = chains.find((c) => c.id === mainnet.id) ?? mainnet;
+  if (ensClient?.chain.rpcUrls.default.http[0] !== chain.rpcUrls.default.http[0]) {
+    ensClient = createClient({ chain, transport: http() });
   }
-  return createViemClient(mainnet.id, [mainnet]);
+  return ensClient;
 };
+
+// Loaded on demand: the ENS normalization tables are large and only needed once there is a name to look up.
+// `viem/ens` must stay out of the static imports of this file, or bundlers keep the tables in the main chunk.
+const normalizeName = async (name: string) => (await import('viem/ens')).normalize(name);
 
 /**
  * Fetches the primary ENS name for a given Ethereum address from the Ethereum Mainnet.
@@ -35,8 +40,7 @@ const createENSClient = (chains: readonly [Chain, ...Chain[]]) => {
  * @returns {Promise<string | null>} The ENS name if found, otherwise null.
  */
 export const getName = async (address: Hex, chains: readonly [Chain, ...Chain[]]): Promise<string | null> => {
-  const ensClient = createENSClient(chains);
-  if (!ensClient) return null;
+  const client = createENSClient(chains);
 
   const cachedName = nameCache.get(address);
   if (cachedName !== undefined) {
@@ -44,7 +48,7 @@ export const getName = async (address: Hex, chains: readonly [Chain, ...Chain[]]
   }
 
   try {
-    const name = await getEnsName(ensClient, { address });
+    const name = await getEnsName(client, { address });
     nameCache.set(address, name);
     return name;
   } catch (error) {
@@ -55,16 +59,17 @@ export const getName = async (address: Hex, chains: readonly [Chain, ...Chain[]]
 
 /**
  * Fetches the avatar URL for a given ENS name from the Ethereum Mainnet.
- * Includes caching for performance.
+ * Includes caching for performance. The first call loads the ENS normalization tables with a dynamic import of
+ * `viem/ens`.
  *
  * @param {string} name - The ENS name (e.g., 'vitalik.eth').
  * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
  * @returns {Promise<string | null>} The URL of the avatar image if found, otherwise null.
+ * @throws {Error} When the name cannot be normalized or the normalization tables fail to load.
  */
 export const getAvatar = async (name: string, chains: readonly [Chain, ...Chain[]]): Promise<string | null> => {
-  const ensClient = createENSClient(chains);
-  if (!ensClient) return null;
-  const normalizedName = normalize(name);
+  const client = createENSClient(chains);
+  const normalizedName = await normalizeName(name);
 
   const cachedAvatar = avatarCache.get(normalizedName);
   if (cachedAvatar !== undefined) {
@@ -72,7 +77,7 @@ export const getAvatar = async (name: string, chains: readonly [Chain, ...Chain[
   }
 
   try {
-    const avatarUrl = await getEnsAvatar(ensClient, { name: normalizedName });
+    const avatarUrl = await getEnsAvatar(client, { name: normalizedName });
     avatarCache.set(normalizedName, avatarUrl);
     return avatarUrl;
   } catch (error) {
@@ -83,16 +88,17 @@ export const getAvatar = async (name: string, chains: readonly [Chain, ...Chain[
 
 /**
  * Fetches the Ethereum address associated with a given ENS name from the Ethereum Mainnet.
- * Includes caching for performance.
+ * Includes caching for performance. The first call loads the ENS normalization tables with a dynamic import of
+ * `viem/ens`.
  *
  * @param {string} name - The ENS name to resolve (e.g., 'vitalik.eth').
  * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
  * @returns {Promise<Address | null>} The associated Ethereum address (lowercase) or null if not found.
+ * @throws {Error} When the name cannot be normalized or the normalization tables fail to load.
  */
 export const getAddress = async (name: string, chains: readonly [Chain, ...Chain[]]): Promise<Address | null> => {
-  const ensClient = createENSClient(chains);
-  if (!ensClient) return null;
-  const normalizedName = normalize(name);
+  const client = createENSClient(chains);
+  const normalizedName = await normalizeName(name);
 
   const cachedAddress = addressCache.get(normalizedName);
   if (cachedAddress !== undefined) {
@@ -100,7 +106,7 @@ export const getAddress = async (name: string, chains: readonly [Chain, ...Chain
   }
 
   try {
-    const address = await getEnsAddress(ensClient, { name: normalizedName });
+    const address = await getEnsAddress(client, { name: normalizedName });
     const lowercasedAddress = address ? (address.toLowerCase() as Address) : null;
     addressCache.set(normalizedName, lowercasedAddress);
     return lowercasedAddress;

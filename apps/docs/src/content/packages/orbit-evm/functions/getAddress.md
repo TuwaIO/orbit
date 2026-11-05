@@ -2,10 +2,11 @@
 
 > **getAddress**(`name`, `chains`): `Promise`\<`` `0x${string}` `` \| `null`\>
 
-Defined in: [packages/orbit-evm/src/utils/ensUtils.ts:92](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/ensUtils.ts#L92)
+Defined in: [packages/orbit-evm/src/utils/ensUtils.ts:99](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-evm/src/utils/ensUtils.ts#L99)
 
 Fetches the Ethereum address associated with a given ENS name from the Ethereum Mainnet.
-Includes caching for performance.
+Includes caching for performance. The first call loads the ENS normalization tables with a dynamic import of
+`viem/ens`.
 
 ## Parameters
 
@@ -26,3 +27,7 @@ The list of chains to use for client creation.
 `Promise`\<`` `0x${string}` `` \| `null`\>
 
 The associated Ethereum address (lowercase) or null if not found.
+
+## Throws
+
+When the name cannot be normalized or the normalization tables fail to load.

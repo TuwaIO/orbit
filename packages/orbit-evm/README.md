@@ -11,7 +11,7 @@
 
 - **Public clients:** `createViemClient` returns a cached `viem` public client per chain, so repeated reads do not create new clients.
 - **Chain alignment:** `checkAndSwitchChain` asks the connected wallet to switch networks only when it is on a different chain, and throws a readable error when the user rejects.
-- **ENS resolution:** `getName`, `getAvatar` and `getAddress` always resolve against Ethereum Mainnet and cache results in memory; `isEnsName` tells names and addresses apart.
+- **ENS resolution:** `getName`, `getAvatar` and `getAddress` always resolve against Ethereum Mainnet and cache results in memory; `isEnsName` tells names and addresses apart. They use a bare `viem` client, so they do not bundle every public action, and `getAvatar` and `getAddress` load the ENS normalization tables with a dynamic import on their first call.
 - **ERC-4337 smart accounts:** `createPimlicoSmartAccountClient` sets up a Solady smart account (EntryPoint v0.7), a bundler client and an optional gas-sponsoring paymaster in one call. Bundler and paymaster clients are cached in memory per endpoint. The building blocks (`createSoladySmartAccount`, `createBundlerRpcClient`, `createPimlicoPaymasterClient`, `createPimlicoRpcUrl`, `clearBundlerCache`) are exported for custom setups.
 - **Chain lists:** `getEvmChains` and `isEvmChainList` extract and detect EVM chain IDs in mixed multi-chain configurations.
 
