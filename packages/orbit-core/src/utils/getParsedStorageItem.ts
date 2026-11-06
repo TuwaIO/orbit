@@ -1,19 +1,18 @@
+import { readBrowserStorage } from './browserStorage';
+
 /**
  * Internal function for safely retrieving and parsing data from localStorage or sessionStorage.
  *
  * @param key - The storage key
  * @param area - The storage to read: `localStorage` (default) or `sessionStorage`
- * @returns The parsed value or undefined if data is not found/invalid, or in an SSR context
+ * @returns The parsed value or undefined if data is not found/invalid, in an SSR context, or when the browser refuses
+ * the storage
  */
 export function getParsedStorageItem<ReturnType>(
   key: string,
   area: 'localStorage' | 'sessionStorage' = 'localStorage',
 ): ReturnType | undefined {
-  if (typeof window === 'undefined' || !window[area]) {
-    return undefined;
-  }
-
-  const item = window[area].getItem(key);
+  const item = readBrowserStorage(key, area);
 
   // If the item is null (not set) or an empty string, return undefined
   if (!item) {

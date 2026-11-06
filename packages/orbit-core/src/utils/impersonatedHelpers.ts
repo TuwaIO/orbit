@@ -1,3 +1,7 @@
+import { getBrowserStorage, readBrowserStorage } from './browserStorage';
+
+const KEY = 'satellite-connect:impersonatedAddress';
+
 /**
  * Helper utilities for managing impersonated wallet addresses
  *
@@ -12,8 +16,7 @@ export const impersonatedHelpers = {
    * Currently impersonated address from localStorage
    * Returns empty string if not set or in SSR context
    */
-  impersonatedAddress:
-    typeof window !== 'undefined' ? (window.localStorage.getItem('satellite-connect:impersonatedAddress') ?? '') : '',
+  impersonatedAddress: readBrowserStorage(KEY) ?? '',
 
   /**
    * Stores an impersonated address in localStorage
@@ -27,10 +30,7 @@ export const impersonatedHelpers = {
    * @param address - Ethereum or Solana address to impersonate
    * @returns undefined in SSR context, void in browser
    */
-  setImpersonated: (address: string) =>
-    typeof window !== 'undefined'
-      ? window.localStorage.setItem('satellite-connect:impersonatedAddress', address)
-      : undefined,
+  setImpersonated: (address: string) => getBrowserStorage()?.setItem(KEY, address),
 
   /**
    * Retrieves the current impersonated address from localStorage
@@ -45,14 +45,12 @@ export const impersonatedHelpers = {
    * ```
    * @returns The impersonated address or undefined if not set or in SSR context
    */
-  getImpersonated: () =>
-    typeof window !== 'undefined' ? window.localStorage.getItem('satellite-connect:impersonatedAddress') : undefined,
+  getImpersonated: () => (typeof window !== 'undefined' ? readBrowserStorage(KEY) : undefined),
 
   /**
    * Removes the impersonated address from localStorage.
    *
    * @returns undefined in SSR context, void in browser
    */
-  removeImpersonated: () =>
-    typeof window !== 'undefined' ? window.localStorage.removeItem('satellite-connect:impersonatedAddress') : undefined,
+  removeImpersonated: () => getBrowserStorage()?.removeItem(KEY),
 };

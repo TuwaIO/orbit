@@ -2,7 +2,7 @@
 
 > `const` **recentlyConnectedConnectorsListHelpers**: `object`
 
-Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:79](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L79)
+Defined in: [utils/recentlyConnectedConnectorsListHelpers.ts:80](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/recentlyConnectedConnectorsListHelpers.ts#L80)
 
 Helper utilities for managing recently connected connectors list with disconnect timestamps
 
@@ -247,13 +247,13 @@ recentlyConnectedConnectorsListHelpers.removeConnectorsOlderThan(weekAgo);
 
 ### removeRecentlyConnectedConnectorsList
 
-> **removeRecentlyConnectedConnectorsList**: () => `void`
+> **removeRecentlyConnectedConnectorsList**: () => `void` \| `undefined`
 
 Removes all recently connected connectors from localStorage.
 
 #### Returns
 
-`void`
+`void` \| `undefined`
 
 undefined in SSR context, void in browser
 
@@ -266,7 +266,7 @@ recentlyConnectedConnectorsListHelpers.removeRecentlyConnectedConnectorsList();
 
 ### setRecentlyConnectedConnectorsList
 
-> **setRecentlyConnectedConnectorsList**: (`connectors`) => `void`
+> **setRecentlyConnectedConnectorsList**: (`connectors`) => `void` \| `undefined`
 
 Stores the complete recently connected connectors list in localStorage.
 This will overwrite the entire existing list.
@@ -281,7 +281,7 @@ Complete RecentlyConnectedConnectorsList object
 
 #### Returns
 
-`void`
+`void` \| `undefined`
 
 undefined in SSR context, void in browser
 

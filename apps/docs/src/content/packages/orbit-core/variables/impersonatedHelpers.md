@@ -2,7 +2,7 @@
 
 > `const` **impersonatedHelpers**: `object`
 
-Defined in: [utils/impersonatedHelpers.ts:10](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/impersonatedHelpers.ts#L10)
+Defined in: [utils/impersonatedHelpers.ts:14](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/impersonatedHelpers.ts#L14)
 
 Helper utilities for managing impersonated wallet addresses
 
@@ -39,19 +39,19 @@ Returns empty string if not set or in SSR context
 
 ### removeImpersonated
 
-> **removeImpersonated**: () => `void`
+> **removeImpersonated**: () => `void` \| `undefined`
 
 Removes the impersonated address from localStorage.
 
 #### Returns
 
-`void`
+`void` \| `undefined`
 
 undefined in SSR context, void in browser
 
 ### setImpersonated
 
-> **setImpersonated**: (`address`) => `void`
+> **setImpersonated**: (`address`) => `void` \| `undefined`
 
 Stores an impersonated address in localStorage
 
@@ -65,7 +65,7 @@ Ethereum or Solana address to impersonate
 
 #### Returns
 
-`void`
+`void` \| `undefined`
 
 undefined in SSR context, void in browser
 

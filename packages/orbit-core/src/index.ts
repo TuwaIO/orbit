@@ -1,5 +1,6 @@
 export * from './types';
 export * from './utils/addressValidation';
+export * from './utils/browserStorage';
 export * from './utils/caip';
 export * from './utils/chainHelpers';
 export * from './utils/delay';

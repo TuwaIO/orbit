@@ -105,7 +105,7 @@ isAddress('So11111111111111111111111111111111111111112', 'solana'); // true
 
 ## 🗄️ Browser Storage
 
-The storage helpers write the following keys. Clear them to reset the connection state of a user:
+The storage helpers write the following keys. Clear them to reset the connection state of a user. In a browser that blocks site data they find nothing saved and write nothing, and a full storage still throws from a write:
 
 | Key                                                 | Written by                               | Where                                                                                                                  |
 | --------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -148,15 +148,18 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 
 ## Variables
 
+- [IMPERSONATED\_CONNECTOR\_ID](/packages/orbit-core/variables/IMPERSONATED_CONNECTOR_ID.md)
 - [impersonatedHelpers](/packages/orbit-core/variables/impersonatedHelpers.md)
 - [isInSecureIframe](/packages/orbit-core/variables/isInSecureIframe.md)
 - [~~isSafeApp~~](/packages/orbit-core/variables/isSafeApp.md)
 - [lastConnectedConnectorHelpers](/packages/orbit-core/variables/lastConnectedConnectorHelpers.md)
 - [recentlyConnectedConnectorsListHelpers](/packages/orbit-core/variables/recentlyConnectedConnectorsListHelpers.md)
+- [SAFE\_CONNECTOR\_ID](/packages/orbit-core/variables/SAFE_CONNECTOR_ID.md)
 - [SOLANA\_CHAIN\_IDS](/packages/orbit-core/variables/SOLANA_CHAIN_IDS.md)
 
 ## Functions
 
+- [connectorTypeOf](/packages/orbit-core/functions/connectorTypeOf.md)
 - [delay](/packages/orbit-core/functions/delay.md)
 - [detectSafeApp](/packages/orbit-core/functions/detectSafeApp.md)
 - [filterUniqueByKey](/packages/orbit-core/functions/filterUniqueByKey.md)
@@ -165,6 +168,7 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [formatConnectorChainId](/packages/orbit-core/functions/formatConnectorChainId.md)
 - [formatConnectorName](/packages/orbit-core/functions/formatConnectorName.md)
 - [getAdapterFromConnectorType](/packages/orbit-core/functions/getAdapterFromConnectorType.md)
+- [getBrowserStorage](/packages/orbit-core/functions/getBrowserStorage.md)
 - [getConnectorTypeFromName](/packages/orbit-core/functions/getConnectorTypeFromName.md)
 - [getNetworkData](/packages/orbit-core/functions/getNetworkData.md)
 - [getParsedStorageItem](/packages/orbit-core/functions/getParsedStorageItem.md)
@@ -176,6 +180,7 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [parseCaip10AccountId](/packages/orbit-core/functions/parseCaip10AccountId.md)
 - [parseCaip19AssetId](/packages/orbit-core/functions/parseCaip19AssetId.md)
 - [parseCaip2ChainId](/packages/orbit-core/functions/parseCaip2ChainId.md)
+- [readBrowserStorage](/packages/orbit-core/functions/readBrowserStorage.md)
 - [selectAdapterByKey](/packages/orbit-core/functions/selectAdapterByKey.md)
 - [setChainId](/packages/orbit-core/functions/setChainId.md)
 - [toCaip2ChainId](/packages/orbit-core/functions/toCaip2ChainId.md)

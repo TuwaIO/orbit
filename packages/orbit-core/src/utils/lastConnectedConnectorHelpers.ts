@@ -1,4 +1,5 @@
 import { ConnectorType } from '../types';
+import { getBrowserStorage } from './browserStorage';
 import { getParsedStorageItem } from './getParsedStorageItem';
 
 /**
@@ -59,11 +60,10 @@ export const lastConnectedConnectorHelpers = {
     { connectorType, chainId, address }: LastConnectedConnector,
     options: WalletMemoryOptions = {},
   ) => {
-    if (typeof window === 'undefined') return undefined;
     const remember = options.remember ?? true;
     const [target, other] = remember
-      ? [window.localStorage, window.sessionStorage]
-      : [window.sessionStorage, window.localStorage];
+      ? [getBrowserStorage('localStorage'), getBrowserStorage('sessionStorage')]
+      : [getBrowserStorage('sessionStorage'), getBrowserStorage('localStorage')];
     target?.setItem(KEY, JSON.stringify({ connectorType, chainId, address }));
     other?.removeItem(KEY);
   },
@@ -92,8 +92,7 @@ export const lastConnectedConnectorHelpers = {
    * @returns undefined in SSR context, void in browser
    */
   removeLastConnectedConnector: () => {
-    if (typeof window === 'undefined') return undefined;
-    window.localStorage.removeItem(KEY);
-    window.sessionStorage?.removeItem(KEY);
+    getBrowserStorage('localStorage')?.removeItem(KEY);
+    getBrowserStorage('sessionStorage')?.removeItem(KEY);
   },
 };

@@ -2,7 +2,7 @@
 
 > **getParsedStorageItem**\<`ReturnType`\>(`key`, `area?`): `ReturnType` \| `undefined`
 
-Defined in: [utils/getParsedStorageItem.ts:8](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/getParsedStorageItem.ts#L8)
+Defined in: [utils/getParsedStorageItem.ts:11](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/getParsedStorageItem.ts#L11)
 
 Internal function for safely retrieving and parsing data from localStorage or sessionStorage.
 
@@ -30,4 +30,5 @@ The storage to read: `localStorage` (default) or `sessionStorage`
 
 `ReturnType` \| `undefined`
 
-The parsed value or undefined if data is not found/invalid, or in an SSR context
+The parsed value or undefined if data is not found/invalid, in an SSR context, or when the browser refuses
+the storage
