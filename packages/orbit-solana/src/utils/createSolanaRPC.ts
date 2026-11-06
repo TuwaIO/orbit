@@ -3,21 +3,7 @@
 import { createSolanaRpc, type Rpc, type SolanaRpcApi } from '@solana/kit';
 
 import type { SolanaClusterMoniker } from '../types';
-import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
-
-/**
- * Validates whether a string is a properly formatted URL.
- * @param str - The string to validate.
- * @returns True if the string is a valid URL, otherwise false.
- */
-function isValidUrl(str: string): boolean {
-  try {
-    new URL(str);
-    return true;
-  } catch {
-    return false;
-  }
-}
+import { resolveSolanaRpcUrl } from './resolveSolanaRpcUrl';
 
 /**
  * An in-memory cache for RPC clients to avoid redundant instance creation.
@@ -45,20 +31,7 @@ export const createSolanaRPC = ({
   if (rpcCache.has(rpcUrlOrMoniker)) {
     return rpcCache.get(rpcUrlOrMoniker)!;
   }
-  // Determine the RPC URL: validate if it's a full URL or fall back to default list.
-  const rpcUrl = isValidUrl(rpcUrlOrMoniker)
-    ? rpcUrlOrMoniker
-    : rpcUrls
-      ? (rpcUrls[rpcUrlOrMoniker as SolanaClusterMoniker] ??
-        defaultRpcUrlsByMoniker[rpcUrlOrMoniker as SolanaClusterMoniker])
-      : defaultRpcUrlsByMoniker[rpcUrlOrMoniker as SolanaClusterMoniker];
-
-  // If no valid RPC URL could be resolved, throw descriptive error.
-  if (!rpcUrl) {
-    throw new Error(
-      `Unable to resolve RPC URL for input: "${rpcUrlOrMoniker}". Ensure it's a valid URL or known moniker.`,
-    );
-  }
+  const rpcUrl = resolveSolanaRpcUrl(rpcUrlOrMoniker, rpcUrls);
 
   // Create a new RPC client instance.
   const newRpc = createSolanaRpc(rpcUrl);
