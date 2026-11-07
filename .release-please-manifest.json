@@ -1,5 +1,5 @@
 {
-  "packages/orbit-core": "0.6.1",
+  "packages/orbit-core": "0.6.2",
   "packages/orbit-evm": "0.4.2",
-  "packages/orbit-solana": "0.7.3"
+  "packages/orbit-solana": "0.7.4"
 }

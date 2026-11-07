@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.6.1...orbit-core-v0.6.2) (2026-11-07)
+
+
+### Bug Fixes
+
+* **orbit-solana:** the connected Solana wallet is found by its exact address ([#57](https://github.com/TuwaIO/orbit/issues/57)) ([47bf1e8](https://github.com/TuwaIO/orbit/commit/47bf1e84932c7659fe4a23f4c2330261efb100cf))
+
 ## [0.6.1](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.6.0...orbit-core-v0.6.1) (2026-11-07)
 
 
