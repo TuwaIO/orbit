@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.3](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.7.2...orbit-solana-v0.7.3) (2026-11-07)
+
+
+### Bug Fixes
+
+* **orbit-core:** importing no longer fails with blocked storage, one connector type per wallet, and the base helpers ([#55](https://github.com/TuwaIO/orbit/issues/55)) ([50dfabc](https://github.com/TuwaIO/orbit/commit/50dfabcf095b8b118b29122eb4b7ca11991fecdc))
+
 ## [0.7.2](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.7.1...orbit-solana-v0.7.2) (2026-10-28)
 
 
