@@ -4,12 +4,7 @@ import { OrbitAdapter } from '../types';
 import { isSameAddress, normalizeAccountAddress } from './accountAddress';
 import { errorChain } from './errorChain';
 import { formatBaseUnits } from './formatBaseUnits';
-import {
-  connectorTypeOf,
-  formatConnectorName,
-  IMPERSONATED_CONNECTOR_ID,
-  SAFE_CONNECTOR_ID,
-} from './formatConnectorName';
+import { formatConnectorName, IMPERSONATED_CONNECTOR_ID, SAFE_CONNECTOR_ID } from './formatConnectorName';
 import { getConnectorTypeFromName } from './getConnectorTypeFromName';
 import { getWalletFromConnectorType } from './getWalletFromConnectorType';
 import { globalSingleton } from './globalSingleton';
@@ -17,21 +12,31 @@ import { isRecord } from './isRecord';
 import { joinUrlPath, trimTrailingSlashes } from './joinUrlPath';
 import { shortAddress } from './shortAddress';
 
-describe('connectorTypeOf', () => {
-  it('goes through the name mapping, unlike getConnectorTypeFromName', () => {
-    expect(connectorTypeOf(OrbitAdapter.EVM, 'Base Account')).toBe('evm:coinbase');
-    expect(connectorTypeOf(OrbitAdapter.EVM, 'Trust Wallet')).toBe('evm:trust');
-    expect(connectorTypeOf(OrbitAdapter.EVM, 'Safe')).toBe(`evm:${SAFE_CONNECTOR_ID}`);
-    expect(connectorTypeOf(OrbitAdapter.EVM, 'Impersonated Connector')).toBe(`evm:${IMPERSONATED_CONNECTOR_ID}`);
-    expect(connectorTypeOf(OrbitAdapter.SOLANA, 'Phantom')).toBe('solana:phantom');
-    expect(getConnectorTypeFromName(OrbitAdapter.EVM, 'Base Account')).toBe('evm:baseaccount');
+describe('getConnectorTypeFromName', () => {
+  // Pulsar passed the display name and Satellite the mapped one, so one wallet had two types: Base Account was
+  // `evm:baseaccount` on its transactions and `evm:coinbase` on its connection
+  it('gives one wallet one type, from its display name or from its ID', () => {
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, 'Base Account')).toBe('evm:coinbase');
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, formatConnectorName('Base Account'))).toBe('evm:coinbase');
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, 'Trust Wallet')).toBe('evm:trust');
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, 'Brave Wallet')).toBe('evm:brave');
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, 'Safe')).toBe(`evm:${SAFE_CONNECTOR_ID}`);
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, 'Impersonated Connector')).toBe(
+      `evm:${IMPERSONATED_CONNECTOR_ID}`,
+    );
+    expect(getConnectorTypeFromName(OrbitAdapter.SOLANA, 'Phantom')).toBe('solana:phantom');
   });
 
-  it('gives what the sites built by hand, for any name', () => {
-    for (const name of ['MetaMask', 'Rabby Wallet', 'Brave Wallet', '  Odd  Name ', 'OKX Wallet']) {
-      expect(connectorTypeOf(OrbitAdapter.EVM, name)).toBe(
-        getConnectorTypeFromName(OrbitAdapter.EVM, formatConnectorName(name)),
-      );
+  it('keeps its result for a name with no mapping', () => {
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, 'MetaMask')).toBe('evm:metamask');
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, 'Coinbase Wallet')).toBe('evm:coinbasewallet');
+    expect(getConnectorTypeFromName(OrbitAdapter.EVM, '  Rabby  Wallet ')).toBe('evm:rabbywallet');
+  });
+
+  // Saved in the last connection and read by Satellite, so an ID that has been through the mapping must not move
+  it('leaves an ID that went through the mapping as it is', () => {
+    for (const id of ['coinbase', 'trust', 'brave', 'safe', 'impersonatedwallet']) {
+      expect(getConnectorTypeFromName(OrbitAdapter.EVM, id)).toBe(`evm:${id}`);
     }
   });
 });

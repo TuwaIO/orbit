@@ -1,4 +1,5 @@
-import { OrbitAdapter } from '../types';
+import { ConnectorType, OrbitAdapter } from '../types';
+import { formatConnectorName } from './formatConnectorName';
 
 /**
  * Generates a standardized connector type identifier from adapter type and connector name
@@ -13,20 +14,20 @@ import { OrbitAdapter } from '../types';
  *
  * // Returns "evm:coinbasewallet" (removes spaces)
  * getConnectorTypeFromName(OrbitAdapter.EVM, "Coinbase Wallet");
+ *
+ * // Returns "evm:coinbase" (a known name, by formatConnectorName)
+ * getConnectorTypeFromName(OrbitAdapter.EVM, "Base Account");
  * ```
  *
  * @param adapter - The blockchain adapter type (e.g. EVM, SOLANA)
- * @param name - The connector name (e.g. "MetaMask", "Phantom")
+ * @param name - The connector name (e.g. "MetaMask", "Phantom"), as the wallet reports it or as {@link formatConnectorName} gave it
  * @returns A formatted connector type string in format "orbit-adapter:connector"
  *
  * @remarks
- * The function:
- * 1. Combines adapter type with connector name using ":" as separator
- * 2. Removes all whitespace from connector name
- * 3. Converts connector name to lowercase
- * This ensures consistent connector type identifiers across the application
- * and normalizes connector names for better UX/consistency.
+ * The function goes through {@link formatConnectorName}: known names are mapped, any other has its whitespace removed
+ * and is lowercased. So one wallet has one type wherever it is read, on its connection and on its transactions, and a
+ * value that already went through the mapping stays as it is.
  */
-export function getConnectorTypeFromName(adapter: OrbitAdapter, name: string): string {
-  return `${adapter}:${name.replace(/\s+/g, '').toLowerCase()}`;
+export function getConnectorTypeFromName(adapter: OrbitAdapter, name: string): ConnectorType {
+  return `${adapter}:${formatConnectorName(name)}`;
 }

@@ -1,5 +1,3 @@
-import type { ConnectorType, OrbitAdapter } from '../types';
-
 /** The connector ID of the impersonated wallet. It is saved in the last connection, so it can never change. */
 export const IMPERSONATED_CONNECTOR_ID = 'impersonatedwallet';
 
@@ -33,19 +31,3 @@ const CONNECTOR_MAPPINGS = new Map([
 export const formatConnectorName = (connectorName: string): string => {
   return CONNECTOR_MAPPINGS.get(connectorName) ?? connectorName.replace(/\s+/g, '').toLowerCase();
 };
-
-/**
- * The connector type of a wallet by its display name, with the known names mapped by {@link formatConnectorName}.
- *
- * @example
- * ```typescript
- * connectorTypeOf(OrbitAdapter.EVM, 'Base Account'); // "evm:coinbase"
- * connectorTypeOf(OrbitAdapter.SOLANA, 'Phantom'); // "solana:phantom"
- * ```
- *
- * @param adapter - The blockchain adapter type.
- * @param connectorName - Display name reported by the wallet connector.
- * @returns The connector type, in the format "orbit-adapter:connector".
- */
-export const connectorTypeOf = (adapter: OrbitAdapter, connectorName: string): ConnectorType =>
-  `${adapter}:${formatConnectorName(connectorName)}`;

@@ -159,7 +159,6 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 
 ## Functions
 
-- [connectorTypeOf](/packages/orbit-core/functions/connectorTypeOf.md)
 - [delay](/packages/orbit-core/functions/delay.md)
 - [detectSafeApp](/packages/orbit-core/functions/detectSafeApp.md)
 - [errorChain](/packages/orbit-core/functions/errorChain.md)
