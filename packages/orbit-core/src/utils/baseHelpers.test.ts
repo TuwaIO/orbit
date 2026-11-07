@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { OrbitAdapter } from '../types';
-import { isSameAddress, normalizeAccountAddress } from './accountAddress';
+import { isSameAdapterAddress, isSameAddress, normalizeAccountAddress } from './accountAddress';
 import { errorChain } from './errorChain';
 import { formatBaseUnits } from './formatBaseUnits';
 import { formatConnectorName, IMPERSONATED_CONNECTOR_ID, SAFE_CONNECTOR_ID } from './formatConnectorName';
@@ -119,6 +119,9 @@ describe('the account address rule', () => {
     expect(isSameAddress('eip155', '0xAbC', '0xabd')).toBe(false);
     expect(isSameAddress('solana', 'AbC', 'abc')).toBe(false);
     expect(isSameAddress('solana', 'AbC', 'AbC')).toBe(true);
+    expect(isSameAdapterAddress(OrbitAdapter.EVM, '0xAbC', '0xaBc')).toBe(true);
+    expect(isSameAdapterAddress(OrbitAdapter.SOLANA, 'AbC', 'abc')).toBe(false);
+    expect(isSameAdapterAddress(OrbitAdapter.SOLANA, 'AbC', 'AbC')).toBe(true);
   });
 });
 

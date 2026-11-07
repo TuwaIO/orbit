@@ -2,7 +2,7 @@
 
 > **isSameAddress**(`namespace`, `left`, `right`): `boolean`
 
-Defined in: [utils/accountAddress.ts:21](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/accountAddress.ts#L21)
+Defined in: [utils/accountAddress.ts:23](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-core/src/utils/accountAddress.ts#L23)
 
 Whether two addresses of one namespace are the same account, by [normalizeAccountAddress](/packages/orbit-core/functions/normalizeAccountAddress.md).
 
