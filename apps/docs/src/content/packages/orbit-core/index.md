@@ -105,7 +105,7 @@ isAddress('So11111111111111111111111111111111111111112', 'solana'); // true
 
 ## 🗄️ Browser Storage
 
-The storage helpers write the following keys. Clear them to reset the connection state of a user:
+The storage helpers write the following keys. Clear them to reset the connection state of a user. In a browser that blocks site data they find nothing saved and write nothing, and a full storage still throws from a write:
 
 | Key                                                 | Written by                               | Where                                                                                                                  |
 | --------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -148,36 +148,50 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 
 ## Variables
 
+- [IMPERSONATED\_CONNECTOR\_ID](/packages/orbit-core/variables/IMPERSONATED_CONNECTOR_ID.md)
 - [impersonatedHelpers](/packages/orbit-core/variables/impersonatedHelpers.md)
 - [isInSecureIframe](/packages/orbit-core/variables/isInSecureIframe.md)
 - [~~isSafeApp~~](/packages/orbit-core/variables/isSafeApp.md)
 - [lastConnectedConnectorHelpers](/packages/orbit-core/variables/lastConnectedConnectorHelpers.md)
 - [recentlyConnectedConnectorsListHelpers](/packages/orbit-core/variables/recentlyConnectedConnectorsListHelpers.md)
+- [SAFE\_CONNECTOR\_ID](/packages/orbit-core/variables/SAFE_CONNECTOR_ID.md)
 - [SOLANA\_CHAIN\_IDS](/packages/orbit-core/variables/SOLANA_CHAIN_IDS.md)
 
 ## Functions
 
 - [delay](/packages/orbit-core/functions/delay.md)
 - [detectSafeApp](/packages/orbit-core/functions/detectSafeApp.md)
+- [errorChain](/packages/orbit-core/functions/errorChain.md)
 - [filterUniqueByKey](/packages/orbit-core/functions/filterUniqueByKey.md)
+- [formatBaseUnits](/packages/orbit-core/functions/formatBaseUnits.md)
 - [formatCaip10AccountId](/packages/orbit-core/functions/formatCaip10AccountId.md)
 - [formatCaip19AssetId](/packages/orbit-core/functions/formatCaip19AssetId.md)
 - [formatConnectorChainId](/packages/orbit-core/functions/formatConnectorChainId.md)
 - [formatConnectorName](/packages/orbit-core/functions/formatConnectorName.md)
 - [getAdapterFromConnectorType](/packages/orbit-core/functions/getAdapterFromConnectorType.md)
+- [getBrowserStorage](/packages/orbit-core/functions/getBrowserStorage.md)
 - [getConnectorTypeFromName](/packages/orbit-core/functions/getConnectorTypeFromName.md)
 - [getNetworkData](/packages/orbit-core/functions/getNetworkData.md)
 - [getParsedStorageItem](/packages/orbit-core/functions/getParsedStorageItem.md)
 - [getSolanaChainId](/packages/orbit-core/functions/getSolanaChainId.md)
 - [getSolanaCluster](/packages/orbit-core/functions/getSolanaCluster.md)
+- [getWalletFromConnectorType](/packages/orbit-core/functions/getWalletFromConnectorType.md)
+- [globalSingleton](/packages/orbit-core/functions/globalSingleton.md)
 - [isAddress](/packages/orbit-core/functions/isAddress.md)
+- [isRecord](/packages/orbit-core/functions/isRecord.md)
+- [isSameAddress](/packages/orbit-core/functions/isSameAddress.md)
 - [isSolanaChain](/packages/orbit-core/functions/isSolanaChain.md)
+- [joinUrlPath](/packages/orbit-core/functions/joinUrlPath.md)
+- [normalizeAccountAddress](/packages/orbit-core/functions/normalizeAccountAddress.md)
 - [normalizeError](/packages/orbit-core/functions/normalizeError.md)
 - [parseCaip10AccountId](/packages/orbit-core/functions/parseCaip10AccountId.md)
 - [parseCaip19AssetId](/packages/orbit-core/functions/parseCaip19AssetId.md)
 - [parseCaip2ChainId](/packages/orbit-core/functions/parseCaip2ChainId.md)
+- [readBrowserStorage](/packages/orbit-core/functions/readBrowserStorage.md)
 - [selectAdapterByKey](/packages/orbit-core/functions/selectAdapterByKey.md)
 - [setChainId](/packages/orbit-core/functions/setChainId.md)
+- [shortAddress](/packages/orbit-core/functions/shortAddress.md)
 - [toCaip2ChainId](/packages/orbit-core/functions/toCaip2ChainId.md)
 - [toEvmChainId](/packages/orbit-core/functions/toEvmChainId.md)
+- [trimTrailingSlashes](/packages/orbit-core/functions/trimTrailingSlashes.md)
 - [waitFor](/packages/orbit-core/functions/waitFor.md)

@@ -1,6 +1,12 @@
+/** The connector ID of the impersonated wallet. It is saved in the last connection, so it can never change. */
+export const IMPERSONATED_CONNECTOR_ID = 'impersonatedwallet';
+
+/** The connector ID of Safe{Wallet}. It is saved in the last connection, so it can never change. */
+export const SAFE_CONNECTOR_ID = 'safe';
+
 const CONNECTOR_MAPPINGS = new Map([
-  ['Impersonated Connector', 'impersonatedwallet'],
-  ['Safe', 'safe'],
+  ['Impersonated Connector', IMPERSONATED_CONNECTOR_ID],
+  ['Safe', SAFE_CONNECTOR_ID],
   ['Trust', 'trust'],
   ['Trust Wallet', 'trust'],
   ['Brave Кошелек', 'brave'],

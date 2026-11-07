@@ -108,7 +108,7 @@ isAddress('So11111111111111111111111111111111111111112', 'solana'); // true
 
 ## 🗄️ Browser Storage
 
-The storage helpers write the following keys. Clear them to reset the connection state of a user:
+The storage helpers write the following keys. Clear them to reset the connection state of a user. In a browser that blocks site data they find nothing saved and write nothing, and a full storage still throws from a write:
 
 | Key                                                 | Written by                               | Where                                                                                                                  |
 | --------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |

@@ -1,4 +1,5 @@
 import { ConnectorType } from '../types';
+import { getBrowserStorage } from './browserStorage';
 import { getParsedStorageItem } from './getParsedStorageItem';
 import type { WalletMemoryOptions } from './lastConnectedConnectorHelpers';
 
@@ -29,7 +30,7 @@ const readList = (area: 'localStorage' | 'sessionStorage') =>
   getParsedStorageItem<RecentlyConnectedConnectorsList>(LIST_KEY, area) ?? ({} as RecentlyConnectedConnectorsList);
 
 const writeList = (area: 'localStorage' | 'sessionStorage', list: RecentlyConnectedConnectorsList) =>
-  window[area]?.setItem(LIST_KEY, JSON.stringify(list));
+  getBrowserStorage(area)?.setItem(LIST_KEY, JSON.stringify(list));
 
 const without = (list: RecentlyConnectedConnectorsList, connectorType: ConnectorType) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -111,9 +112,7 @@ export const recentlyConnectedConnectorsListHelpers = {
    * ```
    */
   setRecentlyConnectedConnectorsList: (connectors: RecentlyConnectedConnectorsList) =>
-    typeof window !== 'undefined'
-      ? window.localStorage.setItem(recentlyConnectedConnectorsListHelpers.STORAGE_KEY, JSON.stringify(connectors))
-      : undefined,
+    getBrowserStorage()?.setItem(LIST_KEY, JSON.stringify(connectors)),
 
   /**
    * Retrieves the current recently connected connectors list from localStorage.
@@ -343,8 +342,5 @@ export const recentlyConnectedConnectorsListHelpers = {
    * recentlyConnectedConnectorsListHelpers.removeRecentlyConnectedConnectorsList();
    * ```
    */
-  removeRecentlyConnectedConnectorsList: () =>
-    typeof window !== 'undefined'
-      ? window.localStorage.removeItem(recentlyConnectedConnectorsListHelpers.STORAGE_KEY)
-      : undefined,
+  removeRecentlyConnectedConnectorsList: () => getBrowserStorage()?.removeItem(LIST_KEY),
 };

@@ -10,22 +10,7 @@
 import { createSolanaRpc, createSolanaRpcSubscriptions } from '@solana/kit';
 
 import type { SolanaClient, SolanaClusterMoniker } from '../types';
-import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
-
-/**
- * Validates if a string represents a properly formatted URL
- *
- * @param str - String to validate as URL
- * @returns Boolean indicating if the string is a valid URL
- */
-function isValidUrl(str: string): boolean {
-  try {
-    new URL(str);
-    return true;
-  } catch {
-    return false;
-  }
-}
+import { resolveSolanaRpcUrl } from './resolveSolanaRpcUrl';
 
 /**
  * Converts an HTTP/HTTPS URL to a WS/WSS URL for subscriptions.
@@ -71,20 +56,7 @@ export const createSolanaClientWithCache = ({
     return clientsCache.get(rpcUrlOrMoniker)!;
   }
 
-  // Resolve RPC URL from input: direct URL or cluster moniker
-  const rpcUrl = isValidUrl(rpcUrlOrMoniker)
-    ? rpcUrlOrMoniker
-    : rpcUrls
-      ? (rpcUrls[rpcUrlOrMoniker as SolanaClusterMoniker] ??
-        defaultRpcUrlsByMoniker[rpcUrlOrMoniker as SolanaClusterMoniker])
-      : defaultRpcUrlsByMoniker[rpcUrlOrMoniker as SolanaClusterMoniker];
-
-  // Validate resolved RPC URL
-  if (!rpcUrl) {
-    throw new Error(
-      `Unable to resolve RPC URL for input: "${rpcUrlOrMoniker}". Ensure it's a valid URL or known moniker.`,
-    );
-  }
+  const rpcUrl = resolveSolanaRpcUrl(rpcUrlOrMoniker, rpcUrls);
 
   // Create new client instance with resolved URL
   const rpc = createSolanaRpc(rpcUrl);
