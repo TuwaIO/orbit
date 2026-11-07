@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.6.0...orbit-core-v0.6.1) (2026-11-07)
+
+
+### Bug Fixes
+
+* **orbit-core:** importing no longer fails with blocked storage, one connector type per wallet, and the base helpers ([#55](https://github.com/TuwaIO/orbit/issues/55)) ([50dfabc](https://github.com/TuwaIO/orbit/commit/50dfabcf095b8b118b29122eb4b7ca11991fecdc))
+
 ## [0.6.0](https://github.com/TuwaIO/orbit/compare/orbit-core-v0.5.1...orbit-core-v0.6.0) (2026-10-15)
 
 
