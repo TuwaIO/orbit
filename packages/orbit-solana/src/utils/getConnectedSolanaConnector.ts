@@ -14,7 +14,8 @@ export function getConnectedSolanaConnector() {
   const lastConnectedConnector = lastConnectedConnectorHelpers.getLastConnectedConnector();
   const connectors = getAvailableSolanaConnectors();
   const connectedConnector = connectors.find((w) =>
-    w.accounts.find((a) => a.address.toLowerCase() === lastConnectedConnector?.address?.toLowerCase()),
+    // Exactly: a base58 address in another case is another account
+    w.accounts.find((a) => a.address === lastConnectedConnector?.address),
   );
   if (!connectedConnector) {
     throw new Error('Connector not provided. Cannot perform chain check.');

@@ -179,6 +179,7 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 - [globalSingleton](/packages/orbit-core/functions/globalSingleton.md)
 - [isAddress](/packages/orbit-core/functions/isAddress.md)
 - [isRecord](/packages/orbit-core/functions/isRecord.md)
+- [isSameAdapterAddress](/packages/orbit-core/functions/isSameAdapterAddress.md)
 - [isSameAddress](/packages/orbit-core/functions/isSameAddress.md)
 - [isSolanaChain](/packages/orbit-core/functions/isSolanaChain.md)
 - [joinUrlPath](/packages/orbit-core/functions/joinUrlPath.md)
