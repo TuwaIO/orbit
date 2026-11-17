@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.4.2...orbit-evm-v0.4.3) (2026-11-17)
+
+
+### Bug Fixes
+
+* **deps:** Next.js 16.4.6, docs-ui 0.12.3, and the latest external packages ([#64](https://github.com/TuwaIO/orbit/issues/64)) ([04d8502](https://github.com/TuwaIO/orbit/commit/04d8502b470ee17d3d3cfb75c3c14a4bf1e44e53))
+
 ## [0.4.2](https://github.com/TuwaIO/orbit/compare/orbit-evm-v0.4.1...orbit-evm-v0.4.2) (2026-11-07)
 
 
