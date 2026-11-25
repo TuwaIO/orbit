@@ -6,7 +6,7 @@
 
 ## 🏛️ Core Capabilities
 
-- **Public clients:** `createViemClient` returns a cached `viem` public client per chain, so repeated reads do not create new clients.
+- **Public clients:** `createViemClient` returns a cached `viem` public client per chain, so repeated reads do not create new clients. `chainTransport` is its transport alone: every default RPC URL of a chain, the next one when one does not answer.
 - **Chain alignment:** `checkAndSwitchChain` asks the connected wallet to switch networks only when it is on a different chain, and throws a readable error when the user rejects.
 - **ENS resolution:** `getName`, `getAvatar` and `getAddress` always resolve against Ethereum Mainnet and cache results in memory; `isEnsName` tells names and addresses apart. They use a bare `viem` client, so they do not bundle every public action, and `getAvatar` and `getAddress` load the ENS normalization tables with a dynamic import on their first call.
 - **ERC-4337 smart accounts:** `createPimlicoSmartAccountClient` sets up a Solady smart account (EntryPoint v0.7), a bundler client and an optional gas-sponsoring paymaster in one call. Bundler and paymaster clients are cached in memory per endpoint. The building blocks (`createSoladySmartAccount`, `createBundlerRpcClient`, `createPimlicoPaymasterClient`, `createPimlicoRpcUrl`, `clearBundlerCache`) are exported for custom setups.
@@ -156,6 +156,7 @@ Licensed under the **Apache-2.0 License**. See the [LICENSE](https://github.com/
 
 ## Functions
 
+- [chainTransport](/packages/orbit-evm/functions/chainTransport.md)
 - [checkAndSwitchChain](/packages/orbit-evm/functions/checkAndSwitchChain.md)
 - [clearBundlerCache](/packages/orbit-evm/functions/clearBundlerCache.md)
 - [createBundlerRpcClient](/packages/orbit-evm/functions/createBundlerRpcClient.md)

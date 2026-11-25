@@ -6,11 +6,25 @@ import { fallback, http, Transport } from 'viem';
 import { Chain } from 'viem/chains';
 
 /**
- * The transport of a chain: every default RPC URL of its definition, the next when one does not answer.
+ * The viem transport of a chain over the default RPC URLs of its definition (`rpcUrls.default.http`): a read goes to the next URL when
+ * one does not answer.
  *
- * @internal
  * @param chain - The chain.
- * @returns The `http` transport of its URL, or a `fallback` over several.
+ * @returns An `http` transport of the URL, or a `fallback` over several, in their order.
+ *
+ * @example
+ * ```ts
+ * import { chainTransport } from '@tuwaio/orbit-evm';
+ * import { createPublicClient } from 'viem';
+ * import { mainnet } from 'viem/chains';
+ *
+ * const chain = {
+ *   ...mainnet,
+ *   rpcUrls: { default: { http: ['https://my-rpc-provider.example', 'https://eth.merkle.io'] } },
+ * } as const;
+ *
+ * const client = createPublicClient({ chain, transport: chainTransport(chain) });
+ * ```
  */
 export function chainTransport(chain: Chain): Transport {
   const urls = chain.rpcUrls.default.http;
