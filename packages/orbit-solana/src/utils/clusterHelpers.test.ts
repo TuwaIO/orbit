@@ -46,6 +46,12 @@ describe('clusterHelpers', () => {
       expect(url).toBe('https://custom-devnet.solana.com');
     });
 
+    it('returns the first URL of a cluster with several', () => {
+      const rpcUrls = { devnet: ['https://main.example', 'https://spare.example'] };
+      expect(getRpcUrlForCluster({ cluster: 'devnet', rpcUrls })).toBe('https://main.example');
+      expect(getRpcUrlForCluster({ cluster: 'devnet', rpcUrls: { devnet: [] } })).toBe('https://api.devnet.solana.com');
+    });
+
     it('falls back to the public endpoint of the same cluster if not specified in rpcUrls', () => {
       expect(getRpcUrlForCluster({ cluster: 'devnet', rpcUrls: {} })).toBe('https://api.devnet.solana.com');
       expect(getRpcUrlForCluster({ cluster: 'testnet', rpcUrls: { devnet: 'https://custom-devnet.solana.com' } })).toBe(

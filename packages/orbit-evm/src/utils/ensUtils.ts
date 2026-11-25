@@ -4,9 +4,11 @@
  * all specifically targeting the Ethereum Mainnet where ENS is deployed.
  */
 
-import { Address, Client, createClient, Hex, http, isAddress, Transport } from 'viem';
+import { Address, Client, createClient, Hex, isAddress, Transport } from 'viem';
 import { getEnsAddress, getEnsAvatar, getEnsName } from 'viem/actions';
 import { Chain, mainnet } from 'viem/chains';
+
+import { chainTransport, sameRpcUrls } from './chainTransport';
 
 const nameCache = new Map<Hex, string | null>();
 const avatarCache = new Map<string, string | null>();
@@ -21,8 +23,8 @@ let ensClient: Client<Transport, Chain> | undefined;
 // It is a bare client: the ENS actions take it as an argument, so an app does not bundle every public action of viem.
 const createENSClient = (chains: readonly [Chain, ...Chain[]]) => {
   const chain = chains.find((c) => c.id === mainnet.id) ?? mainnet;
-  if (ensClient?.chain.rpcUrls.default.http[0] !== chain.rpcUrls.default.http[0]) {
-    ensClient = createClient({ chain, transport: http() });
+  if (!ensClient || !sameRpcUrls(ensClient.chain, chain)) {
+    ensClient = createClient({ chain, transport: chainTransport(chain) });
   }
   return ensClient;
 };

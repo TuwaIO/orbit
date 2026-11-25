@@ -1,11 +1,11 @@
 import { type ChainIdentifierArray, getSolanaCluster } from '@tuwaio/orbit-core';
 
-import type { SolanaClusterMoniker } from '../types';
+import type { SolanaClusterMoniker, SolanaRpcUrl } from '../types';
 import { defaultRpcUrlsByMoniker } from './defaultRpcUrlsByMoniker';
 
 // Use a local type definition to avoid direct imports
 type SolanaRPCUrlsType = {
-  rpcUrls: Partial<Record<string, string>>;
+  rpcUrls: Partial<Record<string, SolanaRpcUrl>>;
 };
 
 /**
@@ -62,7 +62,7 @@ function buildSolanaRpcUrls(
  * @returns Cluster monikers, e.g. `['mainnet', 'devnet']`. Defaults to every cluster with a default RPC URL.
  */
 export function getSolanaClusters(
-  solanaRPCUrls?: Partial<Record<SolanaClusterMoniker, string>>,
+  solanaRPCUrls?: Partial<Record<SolanaClusterMoniker, SolanaRpcUrl>>,
   chains?: ChainIdentifierArray,
 ): string[] {
   if (chains && chains.length > 0) {

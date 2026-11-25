@@ -2,7 +2,7 @@
 
 > **getCluster**(`params`): `string`
 
-Defined in: [utils/clusterHelpers.ts:18](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/clusterHelpers.ts#L18)
+Defined in: [utils/clusterHelpers.ts:19](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/clusterHelpers.ts#L19)
 
 Safely extracts the cluster moniker from a chain identifier.
 Handles CAIP-2 chain IDs with the genesis hash (`'solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1'`), Wallet Standard chains

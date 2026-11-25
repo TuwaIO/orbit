@@ -47,7 +47,7 @@ const { rpc } = createSolanaClientWithCache({
 const { value: lamports } = await rpc.getBalance(address('So11111111111111111111111111111111111111112')).send();
 ```
 
-Clients are cached by the `rpcUrlOrMoniker` string. `localnet` has no default URL, so pass it in `rpcUrls`. The public `api.*.solana.com` endpoints are rate-limited; use your own RPC provider in production.
+Clients are cached by their URLs; a cluster without URLs in `rpcUrls` gets the client it already has, otherwise one over its public endpoint. `localnet` has no default URL, so pass it in `rpcUrls`. A cluster can have several URLs (`devnet: [first, second]`): a read goes to the next one when one fails or answers with an HTTP error, and the one that failed is left alone for a minute. Subscriptions go to the first. The public `api.*.solana.com` endpoints are rate-limited; use your own RPC provider in production.
 
 ### Wallet discovery
 

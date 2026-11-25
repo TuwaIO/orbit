@@ -43,7 +43,7 @@ const client = createViemClient(sepolia.id, chains);
 const blockNumber = await client?.getBlockNumber();
 ```
 
-The client uses the chain's default RPC URL. The cache is keyed by chain ID and is rebuilt when that URL changes.
+The client reads the chain through its default RPC URLs, the next one when one does not answer. The cache is keyed by chain ID and is rebuilt when one of those URLs changes.
 
 ### Chain switching
 
@@ -76,7 +76,7 @@ const input = 'vitalik.eth';
 const address = isEnsName(input) ? await getAddress(input, chains) : null; // lowercased address or null
 ```
 
-Lookups use the mainnet entry of `chains` when present (so your own RPC URL is used), otherwise viem's default mainnet RPC.
+Lookups use the mainnet entry of `chains` when present (so your own RPC URLs are used), otherwise viem's default mainnet RPC.
 
 ### ERC-4337 smart account with Pimlico
 
