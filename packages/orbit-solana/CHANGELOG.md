@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.7.4...orbit-solana-v0.8.0) (2026-11-26)
+
+
+### Features
+
+* several RPC URLs of a chain, the next one when one does not answer ([#66](https://github.com/TuwaIO/orbit/issues/66)) ([5a98f95](https://github.com/TuwaIO/orbit/commit/5a98f952ff8428dcb68b1db19a0f8b340128704d))
+
 ## [0.7.4](https://github.com/TuwaIO/orbit/compare/orbit-solana-v0.7.3...orbit-solana-v0.7.4) (2026-11-07)
 
 
