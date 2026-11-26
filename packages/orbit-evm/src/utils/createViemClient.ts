@@ -2,8 +2,10 @@
  * @file This file contains a utility function for creating a viem Public Client.
  */
 
-import { createPublicClient, http, PublicClient } from 'viem';
+import { createPublicClient, PublicClient } from 'viem';
 import { Chain } from 'viem/chains';
+
+import { chainTransport, sameRpcUrls } from './chainTransport';
 
 const viemClientCache = new Map<number, PublicClient>();
 
@@ -13,7 +15,8 @@ const viemClientCache = new Map<number, PublicClient>();
  * Creates or retrieves a cached viem Public Client for a specific chain.
  *
  * This client is used for read-only interactions with the blockchain, such as fetching
- * transaction receipts or reading contract state, without needing a wallet connection.
+ * transaction receipts or reading contract state, without needing a wallet connection. It reads the chain through the default RPC
+ * URLs of its definition: the next when one does not answer.
  *
  * @param {number} chainId - The ID of the chain for which to create the client.
  * @param {Chain[]} chains - An array of supported viem Chain objects.
@@ -25,14 +28,14 @@ export function createViemClient(chainId: number, chains: readonly [Chain, ...Ch
   const chain = chains.find((c) => c.id === chainId);
 
   const cachedClient = viemClientCache.get(chainId);
-  if (cachedClient && cachedClient.chain?.rpcUrls.default.http[0] === chain?.rpcUrls.default.http[0]) {
+  if (cachedClient && sameRpcUrls(cachedClient.chain, chain)) {
     return cachedClient;
   }
 
   if (chain) {
     const newClient = createPublicClient({
       chain: chain,
-      transport: http(),
+      transport: chainTransport(chain),
     });
     viemClientCache.set(chainId, newClient);
     return newClient;

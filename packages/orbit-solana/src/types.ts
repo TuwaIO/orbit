@@ -14,10 +14,15 @@ import type {
 export type SolanaClusterMoniker = (MainnetUrl | DevnetUrl | TestnetUrl)['~cluster'] | 'localnet';
 
 /**
+ * The RPC URL of a cluster, or several, the preferred one first: a read goes to the next when one does not answer.
+ */
+export type SolanaRpcUrl = string | readonly string[];
+
+/**
  * Configuration mapping Solana clusters to their RPC URLs.
  */
 export type SolanaRPCUrls = {
-  rpcUrls: Partial<Record<SolanaClusterMoniker, string>>;
+  rpcUrls: Partial<Record<SolanaClusterMoniker, SolanaRpcUrl>>;
 };
 
 /**

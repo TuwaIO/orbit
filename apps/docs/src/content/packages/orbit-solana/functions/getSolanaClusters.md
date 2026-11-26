@@ -10,7 +10,7 @@ Resolves the Solana clusters an app can use.
 
 ### solanaRPCUrls?
 
-`Partial`\<`Record`\<[`SolanaClusterMoniker`](/packages/orbit-solana/type-aliases/SolanaClusterMoniker.md), `string`\>\>
+`Partial`\<`Record`\<[`SolanaClusterMoniker`](/packages/orbit-solana/type-aliases/SolanaClusterMoniker.md), [`SolanaRpcUrl`](/packages/orbit-solana/type-aliases/SolanaRpcUrl.md)\>\>
 
 Optional mapping of cluster monikers to RPC URLs. When provided, only these clusters are allowed.
 
