@@ -1,14 +1,14 @@
 # getSolanaAddressName()
 
-> **getSolanaAddressName**(`address`): `Promise`\<`string`\>
+> **getSolanaAddressName**(`address`, `options?`): `Promise`\<`string`\>
 
-Defined in: [utils/getSolanaAddressName.ts:58](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L58)
+Defined in: [utils/getSolanaAddressName.ts:68](https://github.com/TuwaIO/orbit/blob/main/packages/orbit-solana/src/utils/getSolanaAddressName.ts#L68)
 
-Searches and returns the account name (label) for a given Solana address.
-Priority order:
-1. Check cache
-2. Try to resolve SNS domain name
-3. Fall back to original address
+Returns the name (label) of a Solana address: with `snsName`, its favorite SNS (`.sol`) domain.
+
+By default nothing is asked and the address itself comes back. With `snsName` the domain is asked of the Bonfida SNS
+API (`sns-api.bonfida.com`) and kept in memory for the life of the page; an address without one, or a failed
+request, gets the address back.
 
 ## Parameters
 
@@ -17,6 +17,12 @@ Priority order:
 `string`
 
 The Solana account address to look up.
+
+### options?
+
+[`SolanaAddressNameOptions`](/packages/orbit-solana/interfaces/SolanaAddressNameOptions.md) = `{}`
+
+The lookup to allow: [SolanaAddressNameOptions](/packages/orbit-solana/interfaces/SolanaAddressNameOptions.md)
 
 ## Returns
 

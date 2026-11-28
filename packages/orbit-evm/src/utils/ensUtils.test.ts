@@ -51,6 +51,8 @@ describe('ensUtils', () => {
       mockGetEnsAddress.mockResolvedValue(null);
 
       await getName('0x0000000000000000000000000000000000000003', [mainnet]);
+      // An avatar is looked up only when asked for, so asking without the option loads nothing either
+      await getAvatar('lazy.eth', [mainnet]);
       expect(ensModule.loaded).toBe(false);
 
       await getAddress('lazy.eth', [mainnet]);
@@ -79,14 +81,25 @@ describe('ensUtils', () => {
       expect(mockGetEnsAddress).toHaveBeenCalledTimes(1); // Cached on second call
     });
 
-    it('fetches and caches the avatar of a normalized name', async () => {
+    it('with ensAvatar, fetches and caches the avatar of a normalized name', async () => {
       mockGetEnsAvatar.mockResolvedValue('https://example.com/a.png');
 
-      expect(await getAvatar('Avatar.eth', [mainnet])).toBe('https://example.com/a.png');
-      expect(await getAvatar('avatar.eth', [mainnet])).toBe('https://example.com/a.png');
+      expect(await getAvatar('Avatar.eth', [mainnet], { ensAvatar: true })).toBe('https://example.com/a.png');
+      expect(await getAvatar('avatar.eth', [mainnet], { ensAvatar: true })).toBe('https://example.com/a.png');
 
       expect(mockGetEnsAvatar).toHaveBeenCalledTimes(1);
       expect(mockGetEnsAvatar.mock.calls[0][1]).toEqual({ name: 'avatar.eth' });
+    });
+
+    // viem fetches what the avatar record points to from any host it names, so nothing is looked up unless asked for
+    it('looks no avatar up unless ensAvatar is on, nor answers from the avatars it kept', async () => {
+      mockGetEnsAvatar.mockResolvedValue('https://example.com/b.png');
+      await getAvatar('kept.eth', [mainnet], { ensAvatar: true });
+      mockGetEnsAvatar.mockClear();
+
+      expect(await getAvatar('kept.eth', [mainnet])).toBeNull();
+      expect(await getAvatar('other.eth', [mainnet], { ensAvatar: false })).toBeNull();
+      expect(mockGetEnsAvatar).not.toHaveBeenCalled();
     });
 
     it('passes a client without public actions, so they stay out of the bundle', async () => {

@@ -1,11 +1,17 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest';
 
 import { clearSolanaNameCache, getSolanaAddressName, getSolanaNameCacheSize } from './getSolanaAddressName';
 
+const ADDRESS = '11111111111111111111111111111111';
+
 describe('getSolanaAddressName', () => {
+  // A test reaches no network: a request it does not answer itself fails
+  let fetchSpy: MockInstance<typeof fetch>;
+
   beforeEach(() => {
     clearSolanaNameCache();
     vi.restoreAllMocks();
+    fetchSpy = vi.spyOn(globalThis, 'fetch').mockRejectedValue(new Error('A test sends nothing over the network'));
   });
 
   afterEach(() => {
@@ -22,36 +28,34 @@ describe('getSolanaAddressName', () => {
     expect(await getSolanaAddressName(invalid)).toBe(invalid);
   });
 
-  it('fetches and caches SNS name for valid address', async () => {
-    const validAddress = '11111111111111111111111111111111';
-
-    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({
-        result: {
-          [validAddress]: 'satoshisystem.sol',
-        },
-      }),
-    } as unknown as Response);
-
-    const name1 = await getSolanaAddressName(validAddress);
-    expect(name1).toBe('satoshisystem.sol');
-    expect(getSolanaNameCacheSize()).toBe(1);
-
-    // Second call should hit cache without another fetch call
-    const name2 = await getSolanaAddressName(validAddress);
-    expect(name2).toBe('satoshisystem.sol');
-    expect(fetchSpy).toHaveBeenCalledTimes(1);
+  it('asks no name service unless snsName is on, and returns the address', async () => {
+    expect(await getSolanaAddressName(ADDRESS)).toBe(ADDRESS);
+    expect(await getSolanaAddressName(ADDRESS, { snsName: false })).toBe(ADDRESS);
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(getSolanaNameCacheSize()).toBe(0);
   });
 
-  it('falls back to address when SNS returns null/empty', async () => {
-    const validAddress = '11111111111111111111111111111111';
-
-    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
-      ok: false,
+  it('with snsName, takes the favorite domain of the address from the Bonfida SNS API and keeps it', async () => {
+    fetchSpy.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ result: { [ADDRESS]: 'satoshisystem.sol' } }),
     } as unknown as Response);
 
-    const name = await getSolanaAddressName(validAddress);
-    expect(name).toBe(validAddress);
+    expect(await getSolanaAddressName(ADDRESS, { snsName: true })).toBe('satoshisystem.sol');
+    expect(getSolanaNameCacheSize()).toBe(1);
+    expect(fetchSpy).toHaveBeenCalledWith(`https://sns-api.bonfida.com/v2/user/fav-domains/${ADDRESS}`);
+
+    // Second call should hit cache without another fetch call
+    expect(await getSolanaAddressName(ADDRESS, { snsName: true })).toBe('satoshisystem.sol');
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+
+    // Without the option the name it kept is not read either: the answer does not depend on an earlier call
+    expect(await getSolanaAddressName(ADDRESS)).toBe(ADDRESS);
+  });
+
+  it('with snsName, falls back to the address when SNS has no name', async () => {
+    fetchSpy.mockResolvedValueOnce({ ok: false } as unknown as Response);
+
+    expect(await getSolanaAddressName(ADDRESS, { snsName: true })).toBe(ADDRESS);
   });
 });

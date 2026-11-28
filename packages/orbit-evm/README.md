@@ -11,7 +11,7 @@
 
 - **Public clients:** `createViemClient` returns a cached `viem` public client per chain, so repeated reads do not create new clients. `chainTransport` is its transport alone: every default RPC URL of a chain, the next one when one does not answer.
 - **Chain alignment:** `checkAndSwitchChain` asks the connected wallet to switch networks only when it is on a different chain, and throws a readable error when the user rejects.
-- **ENS resolution:** `getName`, `getAvatar` and `getAddress` always resolve against Ethereum Mainnet and cache results in memory; `isEnsName` tells names and addresses apart. They use a bare `viem` client, so they do not bundle every public action, and `getAvatar` and `getAddress` load the ENS normalization tables with a dynamic import on their first call.
+- **ENS resolution:** `getName`, `getAvatar` and `getAddress` always resolve against Ethereum Mainnet and cache results in memory; `isEnsName` tells names and addresses apart. `getAvatar` looks an avatar up only with `ensAvatar`, as its record can point at any host, and otherwise returns `null`. They use a bare `viem` client, so they do not bundle every public action, and `getAvatar` and `getAddress` load the ENS normalization tables with a dynamic import on their first lookup.
 - **ERC-4337 smart accounts:** `createPimlicoSmartAccountClient` sets up a Solady smart account (EntryPoint v0.7), a bundler client and an optional gas-sponsoring paymaster in one call. Bundler and paymaster clients are cached in memory per endpoint. The building blocks (`createSoladySmartAccount`, `createBundlerRpcClient`, `createPimlicoPaymasterClient`, `createPimlicoRpcUrl`, `clearBundlerCache`) are exported for custom setups.
 - **Chain lists:** `getEvmChains` and `isEvmChainList` extract and detect EVM chain IDs in mixed multi-chain configurations.
 
@@ -70,7 +70,8 @@ import { mainnet } from 'viem/chains';
 const chains = [mainnet] as const;
 
 const name = await getName('0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045', chains); // "vitalik.eth" or null
-const avatar = name ? await getAvatar(name, chains) : null;
+// Opt-in: the avatar record can point at any host (see External Services); without the option it is null
+const avatar = name ? await getAvatar(name, chains, { ensAvatar: true }) : null;
 
 const input = 'vitalik.eth';
 const address = isEnsName(input) ? await getAddress(input, chains) : null; // lowercased address or null
@@ -134,6 +135,18 @@ const bundlerClient = createBundlerRpcClient({
 // Drops cached URLs, bundler and paymaster clients (e.g. after rotating the API key).
 clearBundlerCache();
 ```
+
+---
+
+## 🌐 External Services
+
+The helpers call the RPC URLs of the chains you pass. These are the requests to hosts outside your app, and what they carry:
+
+| Helper                                                                                      | When                          | Host                                                                                                                 | Sends                                                                    |
+| ------------------------------------------------------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `getName`, `getAddress`                                                                     | `chains` has no mainnet entry | viem's default Ethereum Mainnet RPC                                                                                  | The address or the name                                                  |
+| `getAvatar`                                                                                 | `ensAvatar: true`             | The mainnet RPC, then any host the avatar record names: an image, the metadata of an NFT, an IPFS or Arweave gateway | The name; the image is then loaded from its own host by whoever shows it |
+| `createPimlicoSmartAccountClient`, `createBundlerRpcClient`, `createPimlicoPaymasterClient` | no `bundlerUrl` of your own   | `api.pimlico.io` with an `apiKey`, `public.pimlico.io` without one                                                   | The user operations of your app                                          |
 
 ---
 
