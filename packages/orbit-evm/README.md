@@ -70,7 +70,7 @@ import { mainnet } from 'viem/chains';
 const chains = [mainnet] as const;
 
 const name = await getName('0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045', chains); // "vitalik.eth" or null
-// Opt-in: the avatar record can point at any host (see Requests to third parties); without the option it is null
+// Opt-in: the avatar record can point at any host (see External Services); without the option it is null
 const avatar = name ? await getAvatar(name, chains, { ensAvatar: true }) : null;
 
 const input = 'vitalik.eth';
@@ -138,7 +138,7 @@ clearBundlerCache();
 
 ---
 
-## 🌐 Requests to third parties
+## 🌐 External Services
 
 The helpers call the RPC URLs of the chains you pass. These are the requests to hosts outside your app, and what they carry:
 

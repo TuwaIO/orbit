@@ -115,7 +115,7 @@ const owner = 'So11111111111111111111111111111111111111112';
 
 const avatarUrl = await getSolanaAddressAvatar(owner); // an identicon drawn here: "data:image/svg+xml,…"
 
-// Opt-in SNS lookups, which send the address or the domain to Bonfida (see Requests to third parties)
+// Opt-in SNS lookups, which send the address or the domain to Bonfida (see External Services)
 const name = await getSolanaAddressName(owner, { snsName: true }); // "name.sol", or the address itself if no SNS domain is set
 const snsAvatarUrl = await getSolanaAddressAvatar(name, { snsAvatar: true }); // the SNS image of a domain, else the identicon
 
@@ -126,7 +126,7 @@ The cluster helpers (`getCluster`, `getSolanaClusters`, `getSolanaExplorerLink`)
 
 ---
 
-## 🌐 Requests to third parties
+## 🌐 External Services
 
 The name and avatar helpers send nothing unless an option asks for it: names stay addresses and avatars are drawn here. These are the requests to hosts outside your app, and what they carry:
 
