@@ -45,24 +45,38 @@ const getSNSName = async (address: string): Promise<string | null> => {
   }
 };
 
+/** Options of {@link getSolanaAddressName}. */
+export interface SolanaAddressNameOptions {
+  /**
+   * Ask the Bonfida SNS API (`sns-api.bonfida.com`) for the favorite `.sol` domain of the address: the request carries
+   * the address. Off by default, and then the function sends nothing and returns the address.
+   */
+  snsName?: boolean;
+}
+
 /**
- * Searches and returns the account name (label) for a given Solana address.
- * Priority order:
- * 1. Check cache
- * 2. Try to resolve SNS domain name
- * 3. Fall back to original address
+ * Returns the name (label) of a Solana address: with `snsName`, its favorite SNS (`.sol`) domain.
+ *
+ * By default nothing is asked and the address itself comes back. With `snsName` the domain is asked of the Bonfida SNS
+ * API (`sns-api.bonfida.com`) and kept in memory for the life of the page; an address without one, or a failed
+ * request, gets the address back.
  *
  * @param address The Solana account address to look up.
+ * @param options The lookup to allow: {@link SolanaAddressNameOptions}
  * @returns A promise that resolves to the account's name/label, or the original address string if no name is found.
  */
-export const getSolanaAddressName = async (address: string): Promise<string> => {
+export const getSolanaAddressName = async (
+  address: string,
+  options: SolanaAddressNameOptions = {},
+): Promise<string> => {
   if (!address) {
     return address || '';
   }
 
   const trimmedAddress = address.trim();
 
-  if (!isAddress(trimmedAddress)) {
+  // Without the lookup an address has no name, and nothing leaves the page
+  if (!isAddress(trimmedAddress) || !options.snsName) {
     return address;
   }
 

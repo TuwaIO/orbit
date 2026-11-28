@@ -59,17 +59,38 @@ export const getName = async (address: Hex, chains: readonly [Chain, ...Chain[]]
   }
 };
 
+/** Options of {@link getAvatar}. */
+export interface EnsAvatarOptions {
+  /**
+   * Look the avatar up: viem reads the `avatar` record of the name over the RPC of Ethereum Mainnet, then fetches what
+   * the record points to from any host it names (an image, the metadata of an NFT, an IPFS or Arweave gateway), and
+   * whoever shows the image loads it from the host of its URL. Off by default, and then the function sends nothing and
+   * returns `null`.
+   */
+  ensAvatar?: boolean;
+}
+
 /**
- * Fetches the avatar URL for a given ENS name from the Ethereum Mainnet.
- * Includes caching for performance. The first call loads the ENS normalization tables with a dynamic import of
- * `viem/ens`.
+ * Fetches the avatar URL for a given ENS name from the Ethereum Mainnet, with `ensAvatar` only: by default nothing is
+ * looked up and the answer is `null`. Includes caching for performance. The first lookup loads the ENS normalization
+ * tables with a dynamic import of `viem/ens`.
  *
  * @param {string} name - The ENS name (e.g., 'vitalik.eth').
  * @param {readonly [Chain, ...Chain[]]} chains - The list of chains to use for client creation.
+ * @param {EnsAvatarOptions} options - The lookup to allow: {@link EnsAvatarOptions}.
  * @returns {Promise<string | null>} The URL of the avatar image if found, otherwise null.
- * @throws {Error} When the name cannot be normalized or the normalization tables fail to load.
+ * @throws {Error} With `ensAvatar`, when the name cannot be normalized or the normalization tables fail to load.
  */
-export const getAvatar = async (name: string, chains: readonly [Chain, ...Chain[]]): Promise<string | null> => {
+export const getAvatar = async (
+  name: string,
+  chains: readonly [Chain, ...Chain[]],
+  options: EnsAvatarOptions = {},
+): Promise<string | null> => {
+  // Not asked for: nothing is read, not even the normalization tables
+  if (!options.ensAvatar) {
+    return null;
+  }
+
   const client = createENSClient(chains);
   const normalizedName = await normalizeName(name);
 
